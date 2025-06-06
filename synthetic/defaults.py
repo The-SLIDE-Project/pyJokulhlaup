@@ -13,9 +13,8 @@ from generic import generic
 from paterson import *
 from bcgsbjacobioptions import *
 from mumpsoptions import *
-from setflowequation import *
-from SetIceSheetBC import *
-from setmask import setmask
+#from SetIceSheetBC import *
+#from setmask import setmask
 
 
 
@@ -24,7 +23,7 @@ xvec = md.mesh.x
 onevec = 0*xvec + 1
 
 # Calving
-md.calving.calvingrate=0*onevec
+#md.calving.calvingrate=0*onevec
 
 # Geometry
 print(os.getcwd())
@@ -36,39 +35,34 @@ md.geometry.bed =bed
 md.geometry.surface = surf
 md.geometry.thickness = thick
 
+# Flow 
+
+
 # Velocity
 md.initialization.vx = -100.0 * np.ones(md.mesh.numberofvertices)  # Shape: (N,)
-md.initialization.vy = np.zeros(md.mesh.numberofvertices)          # Shape: (N,)
+md.initialization.vy = np.zeros(md.mesh.numberofvertices)         # Shape: (N,)
 md.initialization.vel = np.sqrt(md.initialization.vx**2 + md.initialization.vy**2)
 
-md.inversion.vx_obs = md.initialization.vx
-md.inversion.vy_obs = md.initialization.vy
-md.inversion.vel_obs = md.initialization.vel
+md.inversion.iscontrol = 0
 # Friction
 md.friction.p = 0.95 * np.ones((md.mesh.numberofelements, 1))
 md.friction.q = 1.25 * np.ones((md.mesh.numberofelements, 1))
-md.friction.coefficient = np.sqrt(10**2) * np.ones((md.mesh.numberofvertices, 1))
+md.friction.coefficient = np.sqrt(10.**2.) * np.ones((md.mesh.numberofvertices, 1))
 N = md.constants.g * md.materials.rho_ice * md.geometry.thickness
 md.friction.coupling = 4
 md.friction.effective_pressure = N
-md.friction.effective_pressure_limit = 0
-
-
-# Flow 
-md = setflowequation(md, 'SSA', 'all')
-md = SetIceSheetBC(md)
-md = setmask(md,'','')
-
-md.basalforcings.geothermalflux = (68/1000) * np.ones((md.mesh.numberofvertices, 1))  # W/m^2
+md.friction.effective_pressure_limit = 0.
+md.basalforcings.geothermalflux = (68./1000.) * np.ones((md.mesh.numberofvertices, 1))  # W/m^2
 
 # Constants
-md.materials.rheology_B = paterson(273-10)*onevec
+md.materials.rheology_B = paterson(273.)*onevec
 md.materials.rheology_law = 'Paterson'
-md.initialization.temperature = (273-10)*onevec
-md.thermal.spctemperature = md.initialization.temperature
-md.materials.rheology_n = 3
-md.materials.rho_freshwater = 1e3
-md.materials.rho_ice = 910
+md.initialization.temperature = (273.)*onevec
+#md.thermal.spctemperature = md.initialization.temperature
+md.materials.rheology_n = 3.*np.ones((md.mesh.numberofelements,1))
+md.materials.rho_water = 1023.
+md.materials.rho_freshwater = 1.e3
+md.materials.rho_ice = 917.
 md.materials.mu_water = md.materials.rho_freshwater * 1.793e-6
 md.constants.g = 9.81
 
@@ -78,12 +72,12 @@ md.hydrology = hydrologyglads()
 md.hydrology.sheet_conductivity = 0.05*onevec
 md.hydrology.sheet_alpha = 5./4.
 md.hydrology.sheet_beta = 3./2.
-md.hydrology.cavity_spacing = 10
+md.hydrology.cavity_spacing = 10.
 md.hydrology.bump_height = 0.5*onevec
 md.hydrology.channel_sheet_width = md.hydrology.cavity_spacing
-md.hydrology.omega = 1/2000
-md.hydrology.englacial_void_ratio = 1e-4
-md.hydrology.rheology_B_base = paterson(273)*onevec
+md.hydrology.omega = 1./2000.
+md.hydrology.englacial_void_ratio = 1.e-4
+md.hydrology.rheology_B_base = paterson(273.)*onevec
 md.hydrology.istransition = 1
 md.hydrology.ischannels = 1
 md.hydrology.islakes = 1
@@ -94,10 +88,10 @@ md.hydrology.creep_open_flag = 0
 md.hydrology.melt_flag = 1
 md.hydrology.elastic_sheet_flag = 0
 md.hydrology.elastic_sheet_depth_scale = 0
-md.hydrology.elastic_sheet_exponent = 1
-md.hydrology.uplift_reg_rate = 0.01/1e3/9.81
-md.hydrology.reg_pressure = 1e4
-md.hydrology.moulin_input = 0*onevec
+md.hydrology.elastic_sheet_exponent = 1.
+md.hydrology.uplift_reg_rate = 0.01/1.e3/9.81
+md.hydrology.reg_pressure = 1.e4
+md.hydrology.moulin_input = 0.*onevec
 
 
 # Lakes
@@ -128,14 +122,14 @@ md.hydrology.spcphi = np.nan*onevec
 pos = np.where(np.logical_and(
     md.mesh.vertexonboundary,
     md.mesh.x==np.min(md.mesh.x, axis=-1)))
-md.hydrology.spcphi[pos] = 5e5
+md.hydrology.spcphi[pos] = 5.e5
 md.hydrology.neumannflux = np.zeros((md.mesh.numberofelements, 1))
 
 
 
 
 # TOLERANCES
-md.stressbalance.restol = 1e-3
+md.stressbalance.restol = 1.e-3
 md.stressbalance.reltol = np.nan
 md.stressbalance.abstol = np.nan
 md.stressbalance.maxiter = 50
@@ -145,11 +139,11 @@ md.toolkits.DefaultAnalysis=bcgsbjacobioptions()
 md.toolkits.RecoveryAnalysis=mumpsoptions()
 
 # TIMESTEPPING
-nyears = 3
-hour = 3600
-day = 86400
-dt_hours = 1
-out_freq = 72/dt_hours
+nyears = 0.1
+hour = 3600.
+day = 86400.
+dt_hours = 1.
+out_freq = 72./dt_hours
 # out_freq = 1
 md.timestepping.time_step = dt_hours*hour/md.constants.yts
 md.timestepping.final_time = nyears

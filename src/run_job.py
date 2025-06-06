@@ -89,15 +89,15 @@ def run_job(run_table, job_id):
     md = meshconvert(md, mesh['elements'], mesh['x'], mesh['y'])
 
     # parameterize the model
-    print(os.getcwd())
 
-    md = parameterize(md, '../defaults.py')
-    md = setflowequation(md, 'SSA', 'all')
+    
     md = setmask(md,'','')
+    md = setflowequation(md, 'SSA', 'all')
+    md = parameterize(md, '../defaults.py')
     md = SetIceSheetBC(md)
-    pos = np.where(md.mesh.vertexonboundary)[0]
-    print("vx_obs at boundary:", md.inversion.vx_obs[pos][:5])
-    print("spcvx at boundary: ", md.stressbalance.spcvx[pos][:5])
+    
+
+
 
     md.miscellaneous.name = f"output_run_{job_id}_{paramsdict['Name']}"
     print('Model name:', md.miscellaneous.name)
