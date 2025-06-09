@@ -152,7 +152,7 @@ def run_job(run_table, job_id):
     #md.stressbalance.spcvy[pos] = 0.0 
     phi_bed = md.constants.g * md.materials.rho_freshwater * md.geometry.bed
     p_ice = md.constants.g * md.materials.rho_ice * md.geometry.thickness
-    
+
     # Lakes
     md.hydrology.islakes = 1
     md.hydrology.lake_mask = 0* onevec
@@ -190,7 +190,7 @@ def run_job(run_table, job_id):
     ]
 
     # Timestepping
-    nyears = 5
+    nyears = 0.05
     hour = 3600 # seconds
     day = 86400 # seconds
     dt_hours = 1
@@ -437,7 +437,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     # Combine legends from both axes
     lines, labels = ax1.get_legend_handles_labels()
     lines2, labels2 = ax1_twin.get_legend_handles_labels()
-    ax1.legend(lines + lines2, labels + labels2)
+    ax1.legend(lines + lines2, labels + labels2, loc='upper left')
 
 
     # --- AX2: Top-right plot (Flux vs Effective Pressure) ---
@@ -463,10 +463,11 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     ax2.axhline(y=Qr_line, linestyle='--', color='black')
 
     # Annotate "lake draining" and "lake filling"
-    ax2.text(NLake.min(), Qr_line + 0.05 * (QrLake.max() - QrLake.min()), 'lake draining', 
-        verticalalignment='bottom', horizontalalignment='left')
-    ax2.text(NLake.min(), Qr_line - 0.05 * (QrLake.max() - QrLake.min()), 'lake filling', 
-         verticalalignment='top', horizontalalignment='left')
+    mid_x = (NLake.min() + NLake.max()) / 2  # Calculate the middle of the x-axis span
+    ax2.text(mid_x, Qr_line + 0.1 * (QrLake.max() - QrLake.min()), 'lake draining', 
+        verticalalignment='bottom', horizontalalignment='center')
+    ax2.text(mid_x, Qr_line - 0.1 * (QrLake.max() - QrLake.min()), 'lake filling', 
+         verticalalignment='top', horizontalalignment='center')
 
 
 
