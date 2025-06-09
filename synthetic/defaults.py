@@ -8,26 +8,42 @@ ISSM_DIR = os.getenv('ISSM_DIR')
 sys.path.append(os.path.join(ISSM_DIR, 'src/m/dev/'))
 import devpath
 from issmversion import issmversion
-from hydrologyglads import hydrologyglads
+#from hydrologyglads import hydrologyglads
 from generic import generic
 from paterson import *
-from bcgsbjacobioptions import *
-from mumpsoptions import *
-#from SetIceSheetBC import *
-#from setmask import setmask
+#from bcgsbjacobioptions import *
+#from mumpsoptions import *
+#from model import *
+#from meshconvert import meshconvert
+from setflowequation import *
+from setmask import *
+from SetIceSheetBC import *
+"""
+# initialize the model
+md = model()
 
-
+    # read in mesh and pass to ISSM
+meshfile = 'data/geometry/synthetic_mesh.pkl'
+with open(meshfile, 'rb') as meshin:
+    mesh = pickle.load(meshin)
+md = meshconvert(md, mesh['elements'], mesh['x'], mesh['y'])
+"""
 
 # Vectors for convenience
 xvec = md.mesh.x
 onevec = 0*xvec + 1
+oneelem = np.ones((md.mesh.numberofelements))
+#print(np.shape(onevec), np.shape(oneelem))
 
 # Calving
 #md.calving.calvingrate=0*onevec
 
 # Geometry
+print('Setting geometry parameters')
 print(os.getcwd())
 bed = np.load('../data/geometry/synthetic_bed.npy')
+#bed = np.load('data/geometry/synthetic_bed.npy')
+#surf = np.load('data/geometry/synthetic_surface.npy')
 surf = np.load('../data/geometry/synthetic_surface.npy')
 thick = surf - bed
 md.geometry.base = bed
@@ -35,9 +51,66 @@ md.geometry.bed =bed
 md.geometry.surface = surf
 md.geometry.thickness = thick
 
-# Flow 
+# set flow params
+md = setflowequation(md, 'SSA', 'all')
+md = SetIceSheetBC(md)
+md = setmask(md,'','')
+
+# Unconstrained upper boudnary
+pos = np.where(np.logical_and(
+    md.mesh.vertexonboundary,
+    md.mesh.x == np.max(md.mesh.x, axis=-1)))
+
+md.stressbalance.spcvx[pos] = np.nan
+md.stressbalance.spcvy[pos] = np.nan
+# Velocity
+print('Creating velocity parameters')
+md.initialization.vx = -100.0*onevec
+md.initialization.vy = 0.0*onevec
+md.initialization.vel = np.sqrt(md.initialization.vx**2 + md.initialization.vy**2)
+md.inversion.vx_obs = -100.0*onevec
+md.inversion.vy_obs = 0.0*onevec
+md.inversion.vel_obs = np.sqrt(md.inversion.vx_obs**2 + md.inversion.vy_obs**2)
+
+# friction
+print('Creating friction parameters')
+md.friction.p = 0.95*oneelem
+md.friction.q = 1.25*oneelem
+md.friction.coefficient = np.sqrt(10.**2.)*onevec
+md.friction.coupling = 4
+md.friction.effective_pressure = md.constants.g * md.materials.rho_ice * md.geometry.thickness
+md.friction.effective_pressure_limit = 0.
+
+# rheology
+print('Creating flow law parameters')
+md.materials.rheology_n = 3.*oneelem
+md.materials.rheology_B = paterson(273.-10)*onevec
+md.materials.rheology_law = 'Paterson'
+md.initialization.temperature = 273.*onevec
+md.thermal.spctemperature = md.initialization.temperature
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 # Velocity
 md.initialization.vx = -100.0 * np.ones(md.mesh.numberofvertices)  # Shape: (N,)
 md.initialization.vy = np.zeros(md.mesh.numberofvertices)         # Shape: (N,)
@@ -55,8 +128,8 @@ md.friction.effective_pressure_limit = 0.
 md.basalforcings.geothermalflux = (68./1000.) * np.ones((md.mesh.numberofvertices, 1))  # W/m^2
 
 # Constants
-md.materials.rheology_B = paterson(273.)*onevec
-md.materials.rheology_law = 'Paterson'
+md.materials.rheology_B = cuffey(273.)*onevec
+md.materials.rheology_law = 'cuffey'
 md.initialization.temperature = (273.)*onevec
 #md.thermal.spctemperature = md.initialization.temperature
 md.materials.rheology_n = 3.*np.ones((md.mesh.numberofelements,1))
@@ -77,7 +150,7 @@ md.hydrology.bump_height = 0.5*onevec
 md.hydrology.channel_sheet_width = md.hydrology.cavity_spacing
 md.hydrology.omega = 1./2000.
 md.hydrology.englacial_void_ratio = 1.e-4
-md.hydrology.rheology_B_base = paterson(273.)*onevec
+md.hydrology.rheology_B_base = cuffey(273.)*onevec
 md.hydrology.istransition = 1
 md.hydrology.ischannels = 1
 md.hydrology.islakes = 1
@@ -171,6 +244,6 @@ else:
     md.cluster.executionpath = expath
 
 print(md.cluster.executionpath)
-
+"""
 
 
