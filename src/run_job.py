@@ -190,7 +190,7 @@ def run_job(run_table, job_id):
     ]
 
     # Timestepping
-    nyears = 0.05
+    nyears = 5
     hour = 3600 # seconds
     day = 86400 # seconds
     dt_hours = 1
