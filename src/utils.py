@@ -9,6 +9,12 @@ import csv
 
 import numpy as np
 from scipy import stats
+from scipy.signal import find_peaks
+from cmocean import cm
+from matplotlib.collections import LineCollection, PolyCollection
+from matplotlib.colors import Normalize
+import matplotlib.pyplot as plt
+
 
 def import_table(table_path):
 
@@ -144,3 +150,157 @@ def reorder_edges(md):
 
     edges = edges[:, :2]
     return edges
+
+def plotchannels(mesh,x, **kwargs):
+    """
+    Emulates the functionality of MATLAB plotchannels.m function to plot GlaDS channel data on a 2D mesh
+
+    Parameters: 
+        mesh: dict with 'x', 'y', and 'connect_edge' keys
+        x: values on edges, shape (n_edges, )
+        **kwargs:
+            ax: matplotlib axis to plot on (optional)
+            min: minimum value to display (optional, default 1)
+            max: maximum value to display (optional, default to the max of the data)
+            colormap: str or matplotlib colormap (optional, default cmocean.cm.ice_r)
+            linewidth: width of the edges in the plot (optional, default 1.0)
+            quiver: boolean, if True, plot arrows along edges (optional, default False)
+            arrow_scale: scale for arrows if quiver is True (optional, default 1.0)
+
+    Returns:
+        tuple: A tuple containing:
+            - matplotlib.axes.Axes: The axes object containing the plot.
+            - matplotlib.cm.ScalarMappable: The ScalarMappable object that contains
+              the colormap and normalization, used for creating the colorbar.
+    
+    """
+
+    # Process options from kwargs
+    ax = kwargs.get('ax', None)
+    is_quiver = kwargs.get('quiver', False)
+    linewidth = kwargs.get('linewidth', 1)
+    cmap_name = kwargs.get('colormap', cm.ice_r)
+    arrow_scale = kwargs.get('arrow_scale', 1.0)
+
+    # Use absolute values for colormap if plotting discharge with arrows
+    level = np.abs(x) if is_quiver else x
+
+    # Get min/max for color normalization
+    vmin = kwargs.get('min', np.min(level))
+    vmax = kwargs.get('max', np.max(level))
+    # Setup Axes and Colormap
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(10, 8))
+        ax.set_aspect('equal')
+        ax.set_xlabel("X-coordinate")
+        ax.set_ylabel("Y-coordinate")
+        ax.set_title("Channel Plot")
+
+    cmap = plt.get_cmap(cmap_name)
+    norm = Normalize(vmin=vmin, vmax=vmax)
+
+    # Prepare edges for plotting
+    edges = mesh['connect_edge']
+    x_coords = mesh['x']
+    y_coords = mesh['y']
+    # Get vertex coordinates for each edge
+    v1_idx, v2_idx = edges[:, 0], edges[:, 1]
+
+    x1, x2 = x_coords[v1_idx], x_coords[v2_idx]
+    y1, y2 = y_coords[v1_idx], y_coords[v2_idx]
+
+    # Create line segments for LineCollection
+    segments = np.array([[x1, y1], [x2, y2]]).transpose(2, 0, 1)
+
+    # Create a LineCollection for efficient plotting
+    line_collection = LineCollection(segments, cmap=cmap, norm=norm, linewidth=linewidth)
+    # Set the data values to be mapped to colors
+    line_collection.set_array(level)
+    ax.add_collection(line_collection)
+
+    # Plot Quivers (Arrows) if requested ---
+    if is_quiver:
+        arrow_verts = []
+        # Filter out zero-length edges to avoid division by zero
+        edge_len = np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        valid_edges = edge_len > 1e-9
+
+        # Midpoints of valid edges
+        xq = np.mean([x1[valid_edges], x2[valid_edges]], axis=0)
+        yq = np.mean([y1[valid_edges], y2[valid_edges]], axis=0)
+        
+        # Direction vectors (normalized)
+        tx = (x2[valid_edges] - x1[valid_edges]) / edge_len[valid_edges]
+        ty = (y2[valid_edges] - y1[valid_edges]) / edge_len[valid_edges]
+        
+        # Apply data sign for flow direction and scale for arrow size
+        arrow_size = edge_len[valid_edges].mean() * 0.1 * arrow_scale
+        flow_sign = np.sign(x[valid_edges])
+        tx = tx * flow_sign * arrow_size
+        ty = ty * flow_sign * arrow_size
+        
+        # Perpendicular vectors for arrowhead base
+        px = -ty
+        py = tx
+
+        # Define vertices for each arrow (as a triangle)
+        # Vertices: [tip, base_left, base_right]
+        v1 = np.array([xq + tx, yq + ty]).T
+        v2 = np.array([xq - tx + 0.5 * px, yq - ty + 0.5 * py]).T
+        v3 = np.array([xq - tx - 0.5 * px, yq - ty - 0.5 * py]).T
+        arrow_verts = np.dstack([v1, v2, v3]).transpose(0, 2, 1)
+
+        # Create a PolyCollection for efficient arrow plotting
+        arrow_collection = PolyCollection(
+            arrow_verts, 
+            cmap=cmap, 
+            norm=norm, 
+            edgecolors='none'
+        )
+        # Set the data values to be mapped to colors
+        arrow_collection.set_array(level[valid_edges])
+        ax.add_collection(arrow_collection)
+
+    # Add a colorbar to the plot
+    ax.set_aspect('equal')
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array(level)
+    #plt.colorbar(sm, ax=ax, label='Channel Area / Discharge Magnitude')
+    
+    ax.autoscale_view()
+    return ax,sm
+
+def lakeheightminmax(x):
+    """
+    Given a 1D np.array describing an evolving quantity X over time,
+    return the index of peaks and troughs
+    Parameters
+    ----------
+    X : np.array of time-evolving parameter
+    
+    Returns
+    -------
+    peaks : np.array
+        Indices of local maxima in X
+    troughs : np.array
+        Indices of local minima in X
+    """
+
+    peaks, properties = find_peaks(x, distance=5, prominence=1)
+
+    if len(peaks) == 0:
+        print("No peaks found in the data.")
+        peaks = np.argmax(x) # fallback to the maximum index
+
+    print("Peak indices:", peaks)
+
+
+    troughs, properties = find_peaks(-x, distance=5, prominence=1)
+    if len(troughs) == 0:
+        print("no troughs detected.")
+        troughs = [np.argmin(x[peaks[0]:])] # fallback to the end of the array
+
+    print("Trough indices:", troughs)
+    return peaks, troughs
+
+    

@@ -12,6 +12,7 @@
 *.tar.gz
 
 test/
+[TEST]*
 
 build/
 

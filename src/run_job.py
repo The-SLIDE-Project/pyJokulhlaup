@@ -49,7 +49,7 @@ from matplotlib import pyplot as plt
 
 from parameterize import parameterize
 
-from src.utils import import_table
+from src.utils import *
 
 def run_job(run_table, job_id):
     """
@@ -190,11 +190,11 @@ def run_job(run_table, job_id):
     ]
 
     # Timestepping
-    nyears = 5
+    nyears = 3
     hour = 3600 # seconds
     day = 86400 # seconds
     dt_hours = 1
-    outhours = 24
+    outhours = 72
     md.timestepping.time_step = dt_hours * hour/md.constants.yts  # seconds
     md.timestepping.final_time = nyears  # years
     md.settings.output_frequency = outhours / dt_hours  # output every outhours hours
@@ -244,7 +244,7 @@ def run_job(run_table, job_id):
         np.save(os.path.join(resdir, '{}.npy'.format(field)), 
            requested_outputs[field])
         
-    plot_requested_outputs(requested_outputs,md,paramsdict,resdir)    
+    #plot_requested_outputs(requested_outputs,md,paramsdict,resdir)    
     return md,requested_outputs,resdir
 
 
@@ -386,8 +386,8 @@ def extract_requested_outputs(md):
         Qr = np.array([ts.HydrologyLakeOutletQr[:,0] for ts in md.results.TransientSolution[imin:imax]]).T,
         h_s = np.array([ts.HydrologySheetThickness[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         S = np.array([ts.ChannelArea[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
-        Q = np.array([ts.ChannelDischarge[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
-        time = np.array([ts.time for ts in md.results.TransientSolution[imin:imax]]).T,
+        Qc = np.array([ts.ChannelDischarge[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
+        tt = np.array([ts.time for ts in md.results.TransientSolution[imin:imax]]).T,
         hydrovx = np.array([ts.HydrologyWaterVx[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         hydrovy = np.array([ts.HydrologyWaterVy[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         vel = np.array([ts.Vel[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
@@ -412,7 +412,8 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     with open(meshfile, 'rb') as meshin:
         mesh = pickle.load(meshin)
     lakepos = mesh['lakepos']
-    tt = outputs['time']
+    tt = outputs['tt']
+    Qc = outputs['Qc']
     lh = outputs['l_h']
     Qr = outputs['Qr']
     ff = outputs['ff']
@@ -513,6 +514,156 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
 
     # Save figure
     fig.savefig(os.path.join(resdir, 'Summary.png'), dpi=300)
+    print(f"Saved figure to {os.path.join(resdir, 'Summary.png')}")
+
+    # Plot channels during a lake drainage cycle
+    # Get index of channel peaks and troughs
+    lh_lake = lh[lakepos, :]
+    peaks,troughs = lakeheightminmax(lh_lake)
+    if len(peaks) == 1:
+        idx1 = troughs[-1]  # Last trough
+        # Find the mid lake height between max lake height and drainage
+        mid_value = (lh_lake[peaks[-1]] + lh_lake[troughs[-1]]) / 2
+        start = np.min([peaks[-1], troughs[-1]])
+        end = np.max([peaks[-1], troughs[-1]])
+        idx2 = min(range(start, end + 1), key=lambda i: abs(lh_lake[i] - mid_value))
+        idx3 = peaks[-1]  # Last peak
+
+        fig = plt.figure(figsize=(7, 8))
+        gs = gridspec.GridSpec(4, 2, width_ratios=[20,1], wspace=0.2, hspace=0.35)
+        # --- Top plot: Channel 1 ---
+        ax1 = fig.add_subplot(gs[0, 0])
+        ax1, sm1 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx1]),ax=ax1,min=0.1,quiver=False)
+        ax1.set_xlim([0, 10e3])
+        ax1.set_ylim([0, 3e3])
+        ax1.text(0.95, 0.95, f"{tt[idx1]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        cax1 = fig.add_subplot(gs[0, 1])
+        cbar1 = fig.colorbar(sm1, cax=cax1)
+        #cbar1.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Middle plot: Channel 2 ---
+        ax2 = fig.add_subplot(gs[1, 0])
+        ax2, sm2 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx2]),ax=ax2,min=0.1,quiver=False)
+        ax2.set_xlim([0, 10e3])
+        ax2.set_ylim([0, 3e3])
+        ax2.text(0.95, 0.95, f"{tt[idx2]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        ax2.set_ylabel('Y [m]')
+        cax2 = fig.add_subplot(gs[1, 1])
+        cbar2 = fig.colorbar(sm2, cax=cax2)
+        cbar2.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Bottom plot: Channel 3 ---
+        ax3 = fig.add_subplot(gs[2, 0])
+        ax3, sm3 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx3]),ax=ax3,min=0.1,quiver=False)
+        ax3.set_xlim([0, 10e3])
+        ax3.set_ylim([0, 3e3])
+        ax3.text(0.95, 0.95, f"{tt[idx3]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        ax3.set_xlabel('X [m]')
+        cax3 = fig.add_subplot(gs[2, 1])
+        cbar3 = fig.colorbar(sm3, cax=cax3)
+        #cbar3.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Fourth plot: lake height in idx range
+        ax4 = fig.add_subplot(gs[3, 0])
+        ax4.plot(tt, lh_lake, color='black', linestyle='-', label='Lake Height')
+        ax4.set_xlim([tt[idx1]-1.5, tt[idx3]+1.5])
+        ax4.set_ylabel('Lake Height [m]')
+        ax4.set_xlabel('model time [yrs]')
+        ax4.vlines([tt[idx1], tt[idx2], tt[idx3]],color='gray',linestyles='--',ymin=0,ymax=np.max(lh_lake)+50)
+
+        # Save figure
+        fig.savefig(os.path.join(resdir, 'Channel_plot.png'), dpi=300)
+    else:
+        idx1 = troughs[-2]  # Second last trough
+        # Find the mid lake height between index 1 and 2
+        mid_value = (lh_lake[peaks[-1]] + lh_lake[troughs[-2]]) / 2
+        start = np.min([peaks[-1], troughs[-2]])
+        end = np.max([peaks[-1], troughs[-2]])
+        idx2 = min(range(start, end + 1), key=lambda i: abs(lh_lake[i] - mid_value))
+        idx3 = peaks[-1]  # Last peak
+        # Find the mid lake height between index 3 and 5
+        mid_value = (lh_lake[peaks[-1]] + lh_lake[troughs[-1]]) / 2
+        start = np.min([peaks[-1], troughs[-1]])
+        end = np.max([peaks[-1], troughs[-1]])
+        idx4 = min(range(start, end + 1), key=lambda i: abs(lh_lake[i] - mid_value))
+        idx5 = troughs[-1]  # Last trough
+
+        # Plot channel evolution through a complete lake drainage cycle
+        fig = plt.figure(figsize=(7, 10))
+        gs = gridspec.GridSpec(6, 2, width_ratios=[20,1], wspace=0.2, hspace=0.35)
+        # --- Top plot: Channel 1 ---
+        ax1 = fig.add_subplot(gs[0, 0])
+        ax1, sm1 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx1]),ax=ax1,min=0.1,quiver=False)
+        ax1.set_xlim([0, 10e3])
+        ax1.set_ylim([0, 3e3])
+        ax1.text(0.95, 0.95, f"{tt[idx1]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        cax1 = fig.add_subplot(gs[0, 1])
+        cbar1 = fig.colorbar(sm1, cax=cax1)
+        #cbar1.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Second plot: Channel 2 ---                                       
+        ax2 = fig.add_subplot(gs[1, 0])
+        ax2, sm2 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx2]),ax=ax2,min=0.1,quiver=False)
+        ax2.set_xlim([0, 10e3])
+        ax2.set_ylim([0, 3e3])
+        ax2.text(0.95, 0.95, f"{tt[idx2]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        #ax2.set_ylabel('Y [m]')
+        cax2 = fig.add_subplot(gs[1, 1])
+        cbar2 = fig.colorbar(sm2, cax=cax2)
+        #cbar2.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Third plot: Channel 3 ---                                       
+        ax3 = fig.add_subplot(gs[2, 0])
+        ax3, sm3 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx3]),ax=ax3,min=0.1,quiver=False)
+        ax3.set_xlim([0, 10e3])
+        ax3.set_ylim([0, 3e3])
+        ax3.text(0.95, 0.95, f"{tt[idx3]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        #ax3.set_ylabel('Y [m]')
+        cax3 = fig.add_subplot(gs[2, 1])
+        cbar3 = fig.colorbar(sm3, cax=cax3)
+        cbar3.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Fourth plot: Channel 4 ---                                       
+        ax4 = fig.add_subplot(gs[3, 0])
+        ax4, sm4 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx4]),ax=ax4,min=0.1,quiver=False)
+        ax4.set_xlim([0, 10e3])
+        ax4.set_ylim([0, 3e3])
+        ax4.text(0.95, 0.95, f"{tt[idx4]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        ax4.set_ylabel('Y [m]')
+        cax4 = fig.add_subplot(gs[3, 1])
+        cbar4 = fig.colorbar(sm4, cax=cax4)
+        #cbar4.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Fifth plot: Channel 5 ---                                       
+        ax5 = fig.add_subplot(gs[4, 0])
+        ax5, sm5 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx5]),ax=ax5,min=0.1,quiver=False)
+        ax5.set_xlim([0, 10e3])
+        ax5.set_ylim([0, 3e3])
+        ax5.set_ylabel('Y [m]')
+        ax5.text(0.95, 0.95, f"{tt[idx5]:.2f} years", transform=plt.gca().transAxes,
+             ha='right', va='top', fontsize=12, bbox=dict(boxstyle="round", facecolor="white", alpha=0.5))
+        ax5.set_ylabel('Y [m]')
+        cax5 = fig.add_subplot(gs[4, 1])
+        cbar5 = fig.colorbar(sm5, cax=cax5)
+        #cbar5.set_label('Channel Discharge (m$^3$ s$^{-1}$)')
+        # --- Sixth plot: lake height in idx range
+        ax5 = fig.add_subplot(gs[5, 0])
+        ax5.plot(tt, lh_lake, color='black', linestyle='-', label='Lake Height')
+        ax5.set_xlim([tt[idx1]-1.5, tt[idx5]+1.5])
+        ax5.set_ylabel('Lake Height [m]')
+        ax5.set_xlabel('model time [yrs]')
+        ax5.vlines([tt[idx1], tt[idx2], tt[idx3],tt[idx4],tt[idx5]],color='gray',linestyles='--',ymin=0,ymax=np.max(lh_lake)+50)
+        ax5.set_ylim([0, np.max(lh_lake) + 20])
+        # Save figure
+        fig.savefig(os.path.join(resdir, 'Channel_plot.png'), dpi=300)
+
+        
+    
+
+    
+
+
+
 
 
 def main():
