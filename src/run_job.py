@@ -530,7 +530,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
         idx3 = peaks[-1]  # Last peak
 
         fig = plt.figure(figsize=(7, 8))
-        gs = gridspec.GridSpec(4, 2, width_ratios=[20,1], wspace=0.2, hspace=0.35)
+        gs = gridspec.GridSpec(4, 2, width_ratios=[20,1], wspace=0.1, hspace=0.35)
         # --- Top plot: Channel 1 ---
         ax1 = fig.add_subplot(gs[0, 0])
         ax1, sm1 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx1]),ax=ax1,min=0.1,quiver=False)
@@ -590,7 +590,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
 
         # Plot channel evolution through a complete lake drainage cycle
         fig = plt.figure(figsize=(7, 10))
-        gs = gridspec.GridSpec(6, 2, width_ratios=[20,1], wspace=0.2, hspace=0.35)
+        gs = gridspec.GridSpec(6, 2, width_ratios=[20,1], wspace=0.1, hspace=0.35)
         # --- Top plot: Channel 1 ---
         ax1 = fig.add_subplot(gs[0, 0])
         ax1, sm1 = plotchannels(mesh,np.abs(outputs['Qc'][:,idx1]),ax=ax1,min=0.1,quiver=False)
