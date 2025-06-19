@@ -188,6 +188,9 @@ def plotchannels(mesh,x, **kwargs):
     # Get min/max for color normalization
     vmin = kwargs.get('min', np.min(level))
     vmax = kwargs.get('max', np.max(level))
+    # Create mask for values above or equal to vmin
+    valid_mask = level >= vmin
+
     # Setup Axes and Colormap
     if ax is None:
         fig, ax = plt.subplots(figsize=(10, 8))
@@ -209,13 +212,17 @@ def plotchannels(mesh,x, **kwargs):
     x1, x2 = x_coords[v1_idx], x_coords[v2_idx]
     y1, y2 = y_coords[v1_idx], y_coords[v2_idx]
 
-    # Create line segments for LineCollection
-    segments = np.array([[x1, y1], [x2, y2]]).transpose(2, 0, 1)
+    # Create full segments
+    segments_all = np.array([[x1, y1], [x2, y2]]).transpose(2, 0, 1)
 
-    # Create a LineCollection for efficient plotting
+    # Apply mask to segments and levels
+    segments = segments_all[valid_mask]
+    level_valid = level[valid_mask]
+
+    # Create a LineCollection only for valid segments
     line_collection = LineCollection(segments, cmap=cmap, norm=norm, linewidth=linewidth)
-    # Set the data values to be mapped to colors
-    line_collection.set_array(level)
+    line_collection.set_array(level_valid)
+
     ax.add_collection(line_collection)
 
     # Plot Quivers (Arrows) if requested ---
@@ -258,7 +265,7 @@ def plotchannels(mesh,x, **kwargs):
             edgecolors='none'
         )
         # Set the data values to be mapped to colors
-        arrow_collection.set_array(level[valid_edges])
+        arrow_collection.set_array(level[valid_edges][level[valid_edges] >= vmin])
         ax.add_collection(arrow_collection)
 
     # Add a colorbar to the plot
