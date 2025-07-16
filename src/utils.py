@@ -14,6 +14,7 @@ from cmocean import cm
 from matplotlib.collections import LineCollection, PolyCollection
 from matplotlib.colors import Normalize
 import matplotlib.pyplot as plt
+from matplotlib.tri import Triangulation
 
 
 def import_table(table_path):
@@ -33,10 +34,10 @@ def import_table(table_path):
     -------
         ValueError: If any row has a different number of columns than the header.
     """
-    n_column = 13 # number of columns in the table
+    n_column = 18 # number of columns in the table
 
     filepath = table_path  # Define filepath as table_path
-    expected_columns = 13  # Define expected_columns
+    expected_columns = 18  # Define expected_columns
 
     with open(filepath, 'r', newline='') as f:
         reader = csv.reader(f)
@@ -78,7 +79,8 @@ def width_average(mesh, x, dx=2):
     -------
     array averaged over y in dx-width bins
     """
-    xedge = np.arange(0, 100+dx, dx)
+    xmax = np.max(mesh['x'])/1e3
+    xedge = np.arange(0, xmax+dx, dx)
     xmid = 0.5*(xedge[1:] + xedge[:-1])
     xavg = np.zeros((len(xmid), x.shape[1]))
     for i in range(len(xavg)):
@@ -178,9 +180,29 @@ def plotchannels(mesh,x, **kwargs):
     # Process options from kwargs
     ax = kwargs.get('ax', None)
     is_quiver = kwargs.get('quiver', False)
+    is_contours = kwargs.get('contours', False)
+    if is_contours:
+        phi = kwargs.get('phi', None)
+        if phi is None:
+            raise ValueError("Contours requested but no 'phi' provided.")
     linewidth = kwargs.get('linewidth', 1)
     cmap_name = kwargs.get('colormap', cm.ice_r)
     arrow_scale = kwargs.get('arrow_scale', 1.0)
+
+    #Plot contours if chosen
+    if is_contours:
+        tri = Triangulation(mesh['x'], mesh['y'])
+        contour_levels = np.arange(0, 1.5, 0.1)  # every 0.5 MPa
+        print('minimum phi:', np.min(phi))
+        print('maximum phi:', np.max(phi))
+
+        cs = ax.tricontour(
+            tri, phi, 
+            levels=contour_levels, 
+            colors='gray',
+            linewidths=0.5,
+        )
+        ax.clabel(cs, inline=True, fontsize=6, fmt=lambda x: f"{x:.1f} MPa")
 
     # Use absolute values for colormap if plotting discharge with arrows
     level = np.abs(x) if is_quiver else x
@@ -273,7 +295,9 @@ def plotchannels(mesh,x, **kwargs):
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array(level)
     #plt.colorbar(sm, ax=ax, label='Channel Area / Discharge Magnitude')
+
     
+
     ax.autoscale_view()
     return ax,sm
 

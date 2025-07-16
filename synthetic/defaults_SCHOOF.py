@@ -67,7 +67,7 @@ print('Creating friction parameters')
 md.friction = frictionschoof()
 md.friction.m = (1.0/3.0)*oneelem
 md.friction.Cmax = 0.8*onevec
-md.friction.C = 200*onevec
+md.friction.C = 100*onevec
 md.friction.coupling = 4
 md.friction.effective_pressure = md.constants.g * md.materials.rho_ice * md.geometry.thickness
 md.friction.effective_pressure_limit = 0.

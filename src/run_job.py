@@ -78,6 +78,11 @@ def run_job(run_table, job_id):
     paramsdict['h_b'] = float(run_table['$h_{b}$'][job_id-1])
     paramsdict['l_c'] = float(run_table['$l_{c}$'][job_id-1])
     paramsdict['l_s'] = float(run_table['$l_{s}$'][job_id-1])
+    paramsdict['C'] = float(run_table['friction C'][job_id-1])
+    paramsdict['p'] = float(run_table['friction p'][job_id-1])
+    paramsdict['q'] = float(run_table['friction q'][job_id-1])
+    paramsdict['bed_angle'] = float(run_table['bed angle'][job_id-1])
+    paramsdict['surface_parabola'] = float(run_table['surface parabola'][job_id-1])
     paramsdict['melt_rate'] = float(run_table['$melt rate$'][job_id-1])
     paramsdict['Q_in'] = float(run_table['$Q_{in}$'][job_id-1])
     paramsdict['s_melt_flag'] = int(run_table['seasonal melt flag'][job_id-1])
@@ -87,25 +92,32 @@ def run_job(run_table, job_id):
 
     # initialize the model
     md = model()
+    # Set model name
+    md.miscellaneous.name = 'output_run_{}_{}'.format(job_id, paramsdict['Name'])
+    print('Model name:', md.miscellaneous.name)
+    
 
     # read in mesh and pass to ISSM
     meshfile = '../data/geometry/synthetic_mesh.pkl'
     with open(meshfile, 'rb') as meshin:
         mesh = pickle.load(meshin)
     md = meshconvert(md, mesh['elements'], mesh['x'], mesh['y'])
+    lakepos = mesh['lakepos']
 
     # Vectors for convenience
     onevec = np.ones((md.mesh.numberofvertices))
 
+    # Set the geometry
+    md.geometry.bed = mesh['x'] * np.sin(paramsdict['bed_angle'])
+    md.geometry.thickness = 50 + np.sqrt(paramsdict['surface_parabola'] * mesh['x'])
+    md.geometry.surface = md.geometry.bed + md.geometry.thickness
+    md.geometry.base = md.geometry.bed      
+
     # parameterise the model
     print('parameterising model')
-    md = parameterize(md, '../defaults_BUDD.py')
+    md = parameterize(md, '../defaults_BUDD_5e4_15yrs.py')
+    #md = parameterize(md, '../defaults_BUDD.py')
     #md = parameterize(md, '../defaults_SCHOOF.py')
-
-    # Set model name
-    md.miscellaneous.name = 'output_run_{}_{}'.format(job_id, paramsdict['Name'])
-    print('Model name:', md.miscellaneous.name)
-    lakepos = mesh['lakepos']
 
     #Set model parameters
     md.basalforcings.groundedice_melting_rate = paramsdict['melt_rate'] * onevec
@@ -117,6 +129,14 @@ def run_job(run_table, job_id):
     md.hydrology.bump_height = paramsdict['h_b'] * onevec
     md.hydrology.englacial_void_ratio = paramsdict['evr'] * onevec
     md.hydrology.lake_Qin[lakepos] = paramsdict['Q_in']
+
+
+    # Set friction params 
+    md.friction.coefficient = paramsdict['C'] * onevec
+    md.friction.p = paramsdict['p'] * np.ones((md.mesh.numberofelements))
+    md.friction.q = paramsdict['q'] * np.ones((md.mesh.numberofelements))
+
+
 
     # Store the parameters in the model
     resdir = f"RES/output_run_{job_id}_{paramsdict['Name']}"
@@ -206,54 +226,89 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     vel = outputs['vel']
     N = outputs['N']
 
-    fig = plt.figure(figsize=(12, 9))
-    gs = gridspec.GridSpec(2, 2, figure=fig)
+    fig = plt.figure(figsize=(8.27,11.69))
+    gs = gridspec.GridSpec(4, 2, figure=fig)
 
     # --- AX1: Top-left plot (Lake Height and Flux) ---
-    ax1 = fig.add_subplot(gs[0, 0])
-    ax1.set_title('Lake Height and Outlet Flux')
+    ax1 = fig.add_subplot(gs[0, :])
+    ax1.set_title('Lake height')
     ax1.set_xlabel('Time')
-    ax1.set_ylabel('$Q_{r}$ (m$^3$s$^{-1}$)')
-    ax1.plot(tt, Qr[lakepos, :], color='black', linestyle='-', label='$Q_r$ (Outlet Flux)')
+
+    ax1.set_ylabel('Lake Height (m)')
+    ax1.plot(tt, lh[lakepos, :], color='black', linestyle='-', label='$l_h$ (Lake Height)')
 
     # Create a twin axis for Lake Height
     ax1_twin = ax1.twinx()
-    ax1_twin.set_ylabel('Lake Height (m)')
-    ax1_twin.plot(tt, lh[lakepos, :], color='black', linestyle='--', label='$l_h$ (Lake Height)')
+    ax1_twin.set_ylabel('$Q_{r}$ (m$^3$s$^{-1}$)')
+    ax1_twin.plot(tt, Qr[lakepos, :], color='gray', linestyle='-', label='$Q_r$ (Outlet Flux)')
 
     # Combine legends from both axes
     lines, labels = ax1.get_legend_handles_labels()
     lines2, labels2 = ax1_twin.get_legend_handles_labels()
     ax1.legend(lines + lines2, labels + labels2, loc='upper left')
 
+    # --- AX2: Bottom left plot (Flotation Fraction) ---
+    ax2 = fig.add_subplot(gs[1, :])  # The ':' makes this subplot span the entire row
+    ax2.set_title('Median Flotation Fraction and Ice Velocity')
+    ax2.set_xlabel('Time')
+    ax2.set_ylabel('Flotation Fraction')
+    ax2.plot(tt, np.median(ff, axis=0), color='black', linestyle='-', label='Median Flotation Fraction')
 
-    # --- AX2: Top-right plot (Flux vs Effective Pressure) ---
-    ax2 = fig.add_subplot(gs[0, 1])
+    # Create a twin axis for Qr
+    ax2_twin = ax2.twinx()
+    ax2_twin.set_ylabel('$Q_{r}$ (m$^3$s$^{-1}$)')
+    ax2_twin.plot(tt, Qr[lakepos, :], color='gray', linestyle='-', label='$Q_r$ (Outlet Flux)')
+
+    # Combine legends from both axes
+    lines3, labels3 = ax2.get_legend_handles_labels()
+    lines4, labels4 = ax2_twin.get_legend_handles_labels()
+    ax2.legend(lines3 + lines4, labels3 + labels4, loc='upper left')
+
+    # --- AX3: Bottom right plot (Velocity) ---
+    ax3 = fig.add_subplot(gs[2, :])
+    ax3.set_title('Ice Velocity')
+    ax3.set_xlabel('Time')
+    ax3.set_ylabel('Velocity (m a⁻¹)')
+    ax3.plot(tt, np.median(outputs['vel'], axis=0), color='black', linestyle='-', label='Median Velocity')
+    
+    # Create a twin axis for Qr
+    ax3_twin = ax3.twinx()
+    ax3_twin.set_ylabel('$Q_{r}$ (m$^3$s$^{-1}$)')
+    ax3_twin.plot(tt, Qr[lakepos, :], color='gray', linestyle='-', label='$Q_r$ (Outlet Flux)')
+
+
+    # Combine legends from both axes
+    lines5, labels5 = ax3.get_legend_handles_labels()
+    lines6, labels6 = ax3_twin.get_legend_handles_labels()
+    ax3.legend(lines5 + lines6, labels5 + labels6,loc='upper left')
+
+    # --- AX4: Bottom-right plot (Flux vs Effective Pressure) ---
+    ax4 = fig.add_subplot(gs[3:4, 0])
     QrLake = Qr[lakepos, :]
     NLake = N[lakepos, :] / 1e6  # Convert to MPa
-    ax2.set_title('Lake Outlet Flux vs. Effective Pressure')
-    ax2.set_xlabel('Effective Pressure, $N$ (MPa)')
-    ax2.set_ylabel('$Q_{r}$ (m$^3$s$^{-1}$)')
+    ax4.set_title('Qr vs. N')
+    ax4.set_xlabel('Effective Pressure, $N$ (MPa)')
+    ax4.set_ylabel('$Q_{r}$ (m$^3$s$^{-1}$)')
 
     # Plot line in the background
-    ax2.plot(NLake, QrLake, alpha=0.5, color='gray')
+    ax4.plot(NLake, QrLake, alpha=0.5, color='gray')
     # Plot scatter points on top, using a greyscale colormap
-    scatter = ax2.scatter(NLake, QrLake, c=tt, cmap='Greys', s=15, edgecolor='none', zorder=10)
-    cbar = fig.colorbar(scatter, ax=ax2)
+    scatter = ax4.scatter(NLake, QrLake, c=tt, cmap='Greys', s=15, edgecolor='none', zorder=10)
+    cbar = fig.colorbar(scatter, ax=ax4)
     cbar.set_label('Time')
     # Add vertical dashed line for "Lake empty"
     lake_empty_N = 9.81 * md.materials.rho_ice * md.geometry.thickness[lakepos] / 1e6  # Convert to MPa
-    ax2.axvline(x=lake_empty_N, linestyle='--', color='black', label='Lake empty')
+    ax4.axvline(x=lake_empty_N, linestyle='--', color='black', label='Lake empty')
 
     # Add horizontal dashed line for Qr = Qin
     Qr_line = paramsdict['Q_in']
-    ax2.axhline(y=Qr_line, linestyle='--', color='black')
+    ax4.axhline(y=Qr_line, linestyle='--', color='black')
 
     # Annotate "lake draining" and "lake filling"
     mid_x = (NLake.min() + NLake.max()) / 2  # Calculate the middle of the x-axis span
-    ax2.text(mid_x, Qr_line + 0.05 * (QrLake.max() - QrLake.min()), 'lake draining', 
+    ax4.text(mid_x, Qr_line + 0.05 * (QrLake.max() - QrLake.min()), 'lake draining', 
         verticalalignment='bottom', horizontalalignment='center')
-    ax2.text(mid_x, Qr_line - 0.05 * (QrLake.max() - QrLake.min()), 'lake filling', 
+    ax4.text(mid_x, Qr_line - 0.05 * (QrLake.max() - QrLake.min()), 'lake filling', 
          verticalalignment='top', horizontalalignment='center')
 
 
@@ -269,7 +324,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
         step_back = 5
         if i > step_back:
             x_tail, y_tail = NLake[i - step_back], QrLake[i - step_back]
-            ax2.annotate(
+            ax4.annotate(
                 '', # No text is needed for the arrow
                 xy=(x_head, y_head),
                 xytext=(x_tail, y_tail),
@@ -277,32 +332,35 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
                 zorder=20 # Ensure arrows are drawn on top
             )
 
+    # --- AX5: Bottom-right plot (Veocity distance from lake) ---
+    ax5 = fig.add_subplot(gs[3:4, 1])
+    ax5.set_title('Distance from Lake and Velocity')
+    ax5.set_xlabel('Time [yrs]')
+    ax5.set_ylabel('Velocity [m a-1]')
 
-    # --- AX3: Bottom plot (Flotation and Velocity) ---
-    ax3 = fig.add_subplot(gs[1, :])  # The ':' makes this subplot span the entire row
-    ax3.set_title('Median Flotation Fraction and Ice Velocity')
-    ax3.set_xlabel('Time')
-    ax3.set_ylabel('Flotation Fraction')
-    ax3.plot(tt, np.median(ff, axis=0), color='black', linestyle='-', label='Median Flotation Fraction')
+    # Define grayscale colors from black to light gray
+    grays = ['0.0', '0.25', '0.5', '0.7', '0.85']  # from black to light gray
 
-    # Create a twin axis for Velocity
-    ax3_twin = ax3.twinx()
-    ax3_twin.set_ylabel('Velocity (m a⁻¹)')
-    ax3_twin.plot(tt, np.median(vel, axis=0), color='black', linestyle='--', label='Median Velocity')
+    # Width-averaged velocities at different distances
+    xavg, xedge = width_average(mesh, vel, 1)
+
+    # Plot from furthest (9–10 km) to closest (1–0 km)
+    ax5.plot(tt, xavg[0, :], color=grays[0], linestyle='-', label='9–10 km from lake')
+    #ax5.plot(tt, xavg[2, :], color=grays[1], linestyle='-', label='7–8 km from lake')
+    ax5.plot(tt, xavg[4, :], color=grays[2], linestyle='-', label='5–6 km from lake')
+    #ax5.plot(tt, xavg[6, :], color=grays[3], linestyle='-', label='3–4 km from lake')
+    ax5.plot(tt, xavg[9, :], color=grays[4], linestyle='-', label='1–0 km from lake')
 
     # Combine legends from both axes
-    lines3, labels3 = ax3.get_legend_handles_labels()
-    lines4, labels4 = ax3_twin.get_legend_handles_labels()
-    ax3.legend(lines3 + lines4, labels3 + labels4)
-
+    lines7, labels7 = ax5.get_legend_handles_labels()
+    ax5.legend(lines7, labels7,loc='upper left')
     
-
-    axes = [ax1, ax2, ax3]  # Your existing axes
-    labels = ['a', 'b', 'c']
+    axes = [ax1, ax2, ax3, ax4, ax5]  # Your existing axes
+    labels = ['a', 'b', 'c','d','e']
     
     for ax, label in zip(axes, labels):
         # Panel label in upper-left corner
-        ax.text(-0.1, 1.1, label, transform=ax.transAxes,
+        ax.text(-0.05, 1, label, transform=ax.transAxes,
                 fontsize=12, fontweight='bold', va='bottom', ha='right')
         
     # Adjust layout automatically to prevent labels/titles from overlapping
@@ -312,11 +370,12 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     fig.savefig(os.path.join(resdir, 'Summary.png'), dpi=300)
     print(f"Saved figure to {os.path.join(resdir, 'Summary.png')}")
 
+    """
     # Plot channels during a lake drainage cycle
     # Get index of channel peaks and troughs
     lh_lake = lh[lakepos, :]
     peaks,troughs = lakeheightminmax(lh_lake)
-    if len(peaks) == 1:
+    if len(peaks) == 1 or len(troughs) == 1:
         idx3 = troughs[-1]  # Last trough
         # Find the mid lake height between max lake height and drainage
         mid_value = (lh_lake[peaks[-1]] + lh_lake[troughs[-1]]) / 2
@@ -483,7 +542,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
 
         # Save figure
         fig.savefig(os.path.join(resdir, 'Channel_plot.png'), dpi=300)
-
+"""
         
     
 
