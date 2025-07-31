@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  31 JUL 2025 15:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  31 JUL 2025 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2357,20 +2357,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \begin{thebibliography}{8}
+l.1 \begin{thebibliography}{9}
                               
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 1735) in paragraph at lines 32--34
+Underfull \hbox (badness 1735) in paragraph at lines 36--38
 []\T1/LinuxBiolinumT-TLF/m/n/10 Walder JS and Fowler A (1994) Chan-nel-ized sub
 -glacial
  []
 
 
-Underfull \hbox (badness 6173) in paragraph at lines 36--39
+Underfull \hbox (badness 6173) in paragraph at lines 40--43
 []\T1/LinuxBiolinumT-TLF/m/n/10 Werder MA, He-witt IJ, Schoof CG and Flow-ers G
 E
  []
@@ -2386,18 +2386,15 @@ L3 programming layer <2020/03/25>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 14655 strings out of 474116
- 291023 string characters out of 5743682
+ 14656 strings out of 474116
+ 291039 string characters out of 5743682
  1960187 words of memory out of 5000000
- 36735 multiletter control sequences out of 15000+600000
+ 36736 multiletter control sequences out of 15000+600000
  724384 words of font info for 242 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,18n,93p,2164b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,18n,93p,2141b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
 .pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolin
 umTB.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBi
@@ -2414,7 +2411,7 @@ fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></u
 sr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr
 /local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (9 pages, 2362101 bytes).
+Output written on MANUSCRIPT.pdf (9 pages, 2362186 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  76 compressed objects within 1 object stream

@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: MANUSCRIPT.aux
 The style file: igs.bst
 Database file #1: Jokulhlaup.bib
-You've used 8 entries,
+You've used 9 entries,
             2869 wiz_defined-function locations,
-            655 strings with 6149 characters,
-and the built_in function-call counts, 8551 in all, are:
-= -- 900
-> -- 172
-< -- 8
-+ -- 60
-- -- 53
-* -- 650
-:= -- 956
-add.period$ -- 8
-call.type$ -- 8
-change.case$ -- 66
-chr.to.int$ -- 9
-cite$ -- 8
-duplicate$ -- 878
-empty$ -- 675
-format.name$ -- 82
-if$ -- 1765
+            662 strings with 6249 characters,
+and the built_in function-call counts, 9283 in all, are:
+= -- 970
+> -- 186
+< -- 10
++ -- 65
+- -- 57
+* -- 710
+:= -- 1046
+add.period$ -- 9
+call.type$ -- 9
+change.case$ -- 73
+chr.to.int$ -- 10
+cite$ -- 9
+duplicate$ -- 944
+empty$ -- 737
+format.name$ -- 93
+if$ -- 1915
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 90
-newline$ -- 31
-num.names$ -- 32
-pop$ -- 406
+missing$ -- 100
+newline$ -- 34
+num.names$ -- 36
+pop$ -- 431
 preamble$ -- 1
-purify$ -- 58
+purify$ -- 64
 quote$ -- 0
-skip$ -- 185
+skip$ -- 204
 stack$ -- 0
-substring$ -- 970
-swap$ -- 222
+substring$ -- 1033
+swap$ -- 250
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 98
+type$ -- 109
 warning$ -- 0
-while$ -- 56
+while$ -- 62
 width$ -- 0
-write$ -- 102
+write$ -- 114

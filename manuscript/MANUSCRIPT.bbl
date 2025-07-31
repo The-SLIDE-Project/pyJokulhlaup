@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
@@ -22,6 +22,10 @@ Kamb B (1987) Glacier surge mechanism based on linked cavity configuration of
 Kingslake J and Ng F (2013) Modelling the coupling of flood discharge with
   glacier flow during j{\"o}kulhlaups. \emph{Annals of Glaciology},
   \textbf{54}(63), 25--31
+
+\bibitem[\protect\citename{Ng and Liu, }2009]{ng2009temporal}
+Ng F and Liu S (2009) Temporal dynamics of a j{\"o}kulhlaup system.
+  \emph{Journal of Glaciology}, \textbf{55}(192), 651--665
 
 \bibitem[\protect\citename{Stevens and others, }2022]{stevens2022tidewater}
 Stevens LA, Nettles M, Davis JL, Creyts TT, Kingslake J, Hewitt IJ and
