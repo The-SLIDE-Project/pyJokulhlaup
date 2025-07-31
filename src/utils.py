@@ -185,7 +185,7 @@ def plotchannels(mesh,x, **kwargs):
         phi = kwargs.get('phi', None)
         if phi is None:
             raise ValueError("Contours requested but no 'phi' provided.")
-    linewidth = kwargs.get('linewidth', 1)
+    linewidth = kwargs.get('linewidth', 1.35)
     cmap_name = kwargs.get('colormap', cm.ice_r)
     arrow_scale = kwargs.get('arrow_scale', 1.0)
 

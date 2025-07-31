@@ -1,0 +1,520 @@
+%\documentclass[review,jog]{igs}
+\documentclass[jog]{igs}
+% \documentclass[review,aog]{igs}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathabx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+\usepackage{igsnatbib}
+
+\setcounter{secnumdepth}{2}
+\jourvolume{XX}
+\jourissue{X}
+\jourpubyear{2025}
+
+\begin{document}
+
+\title[Modelling recurring Jökulhlaup in 2D]{A physical representation of recurring Jökulhlaup floods in a fully-coupled subglacial hydrology model}
+
+\author[Hepburn and others]{Adam J. HEPBURN,$^{1,*}$
+Sammie BUZZARD,$^{2}$
+Stephen LIVINGSTONE,$^{3}$
+Andrew SOLE,$^{3}$
+Liz BAGSHAW,$^{4}$
+Guilhem BARRUOL,$^{5}$
+Gianluca BIANCHI,$^{6}$
+Adam BOOTH,$^{7}$
+Caroline CLASON,$^{8}$
+Lisa CRAW,$^{6}$
+Thomas CHUDLEY,$^{8}$
+Christine DOW,$^{9}$
+Samuel DOYLE,$^{1,3}$
+Laura EDWARDS,$^{10}$
+Florent GIMBERT,$^{5}$
+Adrien GILBERT,$^{5}$
+Jonathon HAWKINGS,$^{6}$
+Ryan ING,$^{12}$
+Andrew JONES,$^{11}$
+Siobhan KILLINGBECK,$^{13}$
+Tifen LE BRIS,$^{5}$
+Matthew PEACEY,$^{1,4}$
+Michael PRIOR-JONES,$^{6}$
+Neil ROSS,$^{14}$
+Rob STORRAR,$^{11}$
+Sian THORPE,$^{3}$
+Remy VENESS,$^{11}$
+Alexandre MICHEL,$^{5}$
+Angus MOFFATT,$^{3}$
+Sarah MANN,$^{6}$
+Tun Jan YOUNG,$^{15}$
+}
+
+\affiliation{
+\textbf{1.} Centre for Glaciology, Department of Geography and Earth Sciences, Aberystwyth University, Aberystwyth, UK
+\textbf{2.} Department of Geography and Environmental Sciences, Northumbria University, Newcastle upon Tyne, UK
+\textbf{3.} Department of Geography, The University of Sheffield, Sheffield, UK
+\textbf{4.} School of Geographical Sciences, University of Bristol, Bristol, UK
+\textbf{5.} Institut des Géosciences de l'Environnement (IGE), Université Grenoble Alpes, CNRS, IRD, Grenoble INP, Saint Martin d'Hères, France
+\textbf{6.} School of Earth and Environmental Sciences, Cardiff University, Cardiff, UK
+\textbf{7.} School of Earth and Environment, University of Leeds, Leeds, UK
+\textbf{8.} Department of Geography, Durham University, Durham, UK
+\textbf{9.} Department of Geography and Environmental Management, University of Waterloo, Waterloo, ON, Canada
+\textbf{10.} School of Biological and Environmental Sciences, Liverpool John Moores University, Liverpool, UK
+\textbf{11.} Department of Natural and Built Environment, Sheffield Hallam University, Sheffield, UK
+\textbf{12.} School of GeoSciences, University of Edinburgh, Edinburgh, UK
+\textbf{13.} Department of Geography, Swansea University, Swansea, UK
+\textbf{14.} School of Natural and Environmental Sciences, Newcastle University, Newcastle upon Tyne, UK
+\textbf{15.} School of Geography and Sustainable Development, University of St Andrews, St Andrews, UK
+
+$^{*}$Correspondence: Adam J. Hepburn
+\email{adam.hepburn@aber.ac.uk}
+}
+
+\begin{frontmatter}
+\maketitle
+
+\begin{abstract}
+The design for the \emph{Journal of Glaciology} has been implemented as a \LaTeXe\ class file and is derived from article.cls. We recommend that authors use this guide as a template. While writing we suggest you use the two-column \texttt{[twocolumn]} option to check that mathematical equations fit the measure. Submitted papers must, however, be presented using the one-column \texttt{[review]} option. If you have any problems using the class file, please contact Overleaf support at \texttt{www.overleaf.com/contact}. The abstract should be less than 200 words and one paragraph long.
+\end{abstract}
+
+\end{frontmatter}
+
+\section{Introduction}
+
+\begin{enumerate}
+\item Importance of ice-marginal lake drainage and potential hazard implications
+\item Efforts to model
+\item shortcomings and opportunities to improve
+\end{enumerate}
+
+\section{Methods}
+In this paper we build upon earlier 1D work \citep{kingslake2013modelling} by incorporating a physically-consistent representation of ice-marginal lake drainage into the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}. Our work includes multiple couplings between the subglacial hydrological system and the ice-marginal lake, as well as between each of these and ice-velocity (Fig.~\ref{FIG:1}). In Section~\ref{methods:GlaDS} we describe the GlaDS model and relevant additional modifications to the version originally presented by \citep{werder2013modeling}. In Section~\ref{methods:Lake} we describe the equations governing ice-marginal lake-drainage. In Section~\ref{methods:coupling} we describe the coupling between hydrology and ice-dynamics, and our method of numerical solution is given in Section~\ref{methods:Numeric}. 
+
+\begin{figure}[!h]
+\centering{\includegraphics{./figures/Figure_1/Figure1.png}}
+\caption{Schematic illustration of our model. \textbf{a}) Oblique view showing an ice-marginal lake connected two-ways to a subglacial channel and sheet. This in turn modifies basal velocity, $u_{\mathrm{b}}$ through effective pressure, $N$. \textbf{b}) plan view of the same system. Note, although the ice-marginal lake is shown as connected to one channel, in our model an ice-marginal lake can be connected to the subglacial system at multiple outlets. \texttt{[SINGLE-COLUMN]}}
+\label{FIG:1}
+\end{figure}
+
+\subsection{Subglacial Drainage}\label{methods:GlaDS}
+
+The GlaDS model itself is a widely implemented (REF) 2D representation of subglacial hydrology. We refer interested readers to Appendix~\ref{Appendix:GlaDS} for an overview of key GlaDS equations, and to \cite{werder2013modeling} for a full description of the equations governing water flow in GlaDS. In summary, GlaDS operates on an anisotropic mesh generated using ISSM and includes a description of i) distributed flow through a series of linked cavities represented as a continuous sheet with variable thickness, and ii) channelised flow through Röthlisberger channels that are represented along element edges. Sheet elements exchange water with channels, and the cross-sectional area of these channels evolves through time due to the dissipation of potential energy, sensible heat exchange, and cavity closure rates due to viscous ice creep. Discharge in both the distributed ($q_{\mathrm{s}}$) and channelised system ($Q_{\mathrm{c}}$) is driven by gradients in the hydraulic potential, $\nabla \phi$, with steeper gradients driving enhanced water discharge. In GlaDS, $Q_{\mathrm{c}}$ is always non-zero along every internal edge, though only a few reach a discernible discharge. For ease of visualisation we follow previous work [REF] in declaring edges where $Q_{\mathrm{c}} \geq$0.5 m$^3$s$^{-1}$ to be `meaningful channels' (e.g., Figure~\ref{FIG:3}c--e).
+
+In addition to the ice-marginal lake modifications which we describe below, we note two key differences between the original GlaDS \citep{werder2013modeling} and the version used here: i) rather than assuming water flow within the sheet to always be turbulent \citep[cf:][]{werder2013modeling}, we make use of the \cite{hill2024improved} transition parametrisation, whereby sheet flow switches between laminar and turbulent flow according to the local Reynolds number, and ii) following \cite{stevens2022tidewater}, we implement a viscously deforming `elastic sheet layer' which crudely represents hydraulic jacking where water pressure exceeds ice overburden pressure (Add to SUPP EQ). 
+
+\subsection{Lake evolution}\label{methods:Lake}
+
+Following \cite{kingslake2013modelling} lake depth, $l_{\mathrm{h}}$ (Fig.~\ref{FIG:1}), evolves according to the continuity equation:
+
+
+\begin{equation}
+\label{eq:lakecontinuity}
+\begin{aligned}
+\frac{\mathrm{d} l_{\mathrm{h}}}{\mathrm{d} t} = \frac{1}{A_{\mathrm{L}}}[Q_{\mathrm{in}}-Q_{\mathrm{r}}(t-1)],
+\end{aligned}
+\end{equation}
+\noindent
+where $A_L$ is the uniform lake area, $Q_{\mathrm{in}}$ represents extraglacial lake input (e.g., rainfall, surface runoff) and $Q_{\mathrm{r}}$ represents inflow/outflow at the lake outlet(s) from the previous timestep. In moving from a 1D to 2D representation of subglacial hydrology and including the contribution from the sheet, $Q_{\mathrm{r}}$ in our model is given by:
+
+\begin{equation}
+\label{eq:sumQr}
+\begin{aligned}
+Q_{\mathrm{r}}(t) = \sum_{i=1}^{N} \left( q_{\mathrm{s},i}(t) + Q_{\mathrm{c},i}(t) \right),
+\end{aligned}
+\end{equation}
+\noindent
+or the sum of the width integrated sheet discharge, $q_{\mathrm{s}}$, and channel discharge, $Q_{\mathrm{c}}$ along $N$ vertices connected to an ice-marginal lake. [FIX ME] DO NOT STICK IN APPENDIX -> Following Eqn(\ref{appeq:GlaDSdirBC}), hydrostatic lake pressure fixes the lake outlet hydraulic potential, $\phi_{\mathrm{outlet}}$ to be: 
+
+\begin{equation}
+\label{eq:lakephi}
+\begin{aligned}
+\phi_{\mathrm{outlet}}(t) = \rho_{\mathrm{w}}gz_{\mathrm{b}} + \rho_{\mathrm{w}}gl_{\mathrm{h}}(t) ,
+\end{aligned}
+\end{equation}
+
+at all times, coupling an ice-marginal lake to the subglacial hydrological system through an additional Dirichlet boundary condition in GlaDS. 
+
+
+
+\subsection{Friction and ice flow}\label{methods:coupling}
+
+Coupling between basal velocity and subglacial hydrology can be implemented via any of the ISSM friction laws which include an effective pressure term [REF]. Here, we present results using either a Budd-style friction law [REF] [MOVE EQUATIONS TO APPENDIX] implemented in ISSM in terms of basal stress with the form:
+
+\begin{equation}
+\label{eq:frictionBudd}
+\begin{aligned}
+\tau_{\mathrm{b}} = C^{2}_{\mathrm{b}} N^{\mathrm{r}} u_{\mathrm{b}}^{s} ,
+\end{aligned}
+\end{equation}
+
+where $\tau_{\mathrm{b}}$ is the basal stress magnitude, $C_{\mathrm{b}}$ is the friction coefficient, $N$ is effective pressure, $u_{\mathrm{b}}$ is basal velocity magnitude, and both $r$ and $s$ are friction coefficients, or a Schoof-style friction law [REF] with the form: 
+
+\begin{equation}
+\label{eq:frictionSchoof}
+\begin{aligned}
+\tau_{\mathrm{b}}=\frac{C_{\mathrm{s}}^2 v_{\mathrm{b}}^m}{\left(1+\left(\frac{C_{\mathrm{s}}^2}{C_{\max } N}\right)^{1 / m} u_{\mathrm{b}}\right)^m},
+\end{aligned}
+\end{equation}
+
+where $C_{\mathrm{s}}^{2}$ is the \textit{Schoof} friction coefficient, $m$ is a friction law exponent, and $C_{\mathrm{max}}$ is Iken's bound.
+
+
+
+\subsection{Method of numerical solution}\label{methods:Numeric}
+
+We solve for $h_l$ using a Picard fixed-point iteration scheme comprising an outer and inner loop. In the outer loop, we update $l_{\mathrm{h}}$ given $Q_{\mathrm{r}}$ from the previous timestep (Eqn.~\ref{eq:lakecontinuity}) using a backward Euler solver and use this to set $\phi_{\mathrm{outlet}}$ (Eqn.~\ref{eq:lakephi}) at the current timestep. In the inner loop, GlaDS solves for the domain-wide $\phi$ until it satisfies a set convergence criteria, as in previous implementations of GlaDS \citep[see:][]{werder2013modeling,hill2024improved}. Following the inner loop converging, and given the global $\phi$, the model updates $h_{\mathrm{s}}$, $N$,$Q_{\mathrm{c}}$, and $q_{\mathrm{s}}$, before summing $Q_{\mathrm{c}}$ and $q_{\mathrm{s}}$ at lake outlet nodes to give $Q_{\mathrm{r}}$ (Eqn.~\ref{eq:sumQr}). The outer loop iterates until the norm of the current and previous $l_{\mathrm{h}}$ satisfies a given tolerance. 
+
+\begin{table}
+\begin{minipage}{86mm}
+\footnotesize
+\caption{Variables and Units\footnote{The first section lists dependent variables, the second section lists coordinates, and the third section lists derived variables [FIX ORDER.]}}
+\label{tab:Var}
+\begin{tabular}{@{}ccc}
+\hline
+Variable & Units & Description \\
+\hline
+$\phi$ & Pa & Hydraulic potential \\
+$Q_{\mathrm{c}}$ & m$^{3}$s$^{-1}$ & Channel discharge \\
+$q_{\mathrm{s}}$ & $\mathrm{m}^{2}\,s^{-1}$ & Sheet discharge \\
+$h_{\mathrm{s}}$ & m & Sheet thickness\footnote{Note this includes the elastic sheet and cavity sheet thickness, see Eq.~\ref{appeqn: hs_el}--\ref{appeqn: hs_cav}} \\
+$l_{\mathrm{h}}$ & m & Lake Height \\
+$Q_{\mathrm{r}}$ & m$^{3}$s$^{-1}$ & Lake discharge \\
+$u_{b}$ & $\mathrm(m\,a)^{-1}$ & Basal velocity \\
+$S$ & $\mathrm{m}^2$ & Channel cross-sectional area \\
+\hfill \\
+$t$ & yrs & Time coordinate \\
+$X$ & km & Horizontal coordinate \\
+$Y$ & km & Vertical coordinate \\
+\hfill \\
+\hfill \\
+$N$ & Pa & Effective pressure \\
+\hline
+\end{tabular}
+
+\end{minipage}
+\end{table}
+
+
+\section{Model application to a synthetic domain}\label{application:synth}
+
+We test our model on a simple 10$\times$3 km rectangular domain, discretised on a triangular mesh with a characteristic edge length of 100 m ($n_{\mathrm{vertices}}$=2486). The bed elevation, $h_{\mathrm{b}}$ is characterised by a gentle slope ($\sin=0.0075$) dipping towards the terminus, and ice thickness is parabolic ($H \propto \sqrt{x}$) increasing from from $H$=50 m at $X$= 0 km and $H$ = $\sim$155 m at $X$ = 10 km. To facilitate comparison with previous work, our domain is similar in scale and geometry to that in \cite{kingslake2013modelling}, chosen to be loosely analogous to the Merzbacher Lake and South Inylchek Glacier, Kyrgyztan [REF]. 
+
+Model variables are given in Table~\ref{tab:Var} and our synthetic model parameters are given in Table~\ref{tab:Synth}. The parameter dependency of GlaDS has already been extensively explore elsewhere [REF]. To efficiently explore the parameter dependence of our ice-marginal lake drainage model we limited our testing to those previously highlighted as critical to subglacial drainage (e.g., channel/sheet conductivity terms, $k_{\mathrm{c}}$/$k_{\mathrm{s}}$, the basal bump height, $h_{\mathrm{b}}$, the channel sheet width, $l_{\mathrm{c}}$, and the cavity spacing, $l_{\mathrm{r}}$) as well as the terms which control the input of water into both the subglacial system (basal melt rate), and the ice-marginal lake (lake refill rate, $Q_{\mathrm{in}}$). As is common-practice [REF], we varied one parameter at a time between a minimum and maximum bound with the limits (Table~\ref{tab:Synth}) informed both by previous work [REF] and the limits of numerical stability. As reference, an additional `default' simulation was taken as the approximate midpoint of each of these parameters (Fig.~\ref{FIG:3}). Each simulation was run for a total of 15 years and had a 30 minute timestep. Simulations were initialised with $u_{\mathrm{b}}$ 100 m a$^{-1}$, $\phi$ equivalent to 90\% of ice overburden pressure, and an initial sheet thickness, $h_{\mathrm{s}}$ equal to half the bump height, $h_{\mathrm{b}}$. We prescribe an hydraulic potential at the terminus $X = $0 km to be $\approx$1$\times$10$^{4}$ as our Dirichlet boundary condition, though arbitrary, this does not qualitatively affect our results below. We impose zero inflow as our Neumann boundary condition at the other three boundaries. The ice-marginal lake, connected to a single vertices where $(X, Y) = (10,\ 1.5)\ \text{km}$, had an initial height of 30 m ($l_{\mathrm{h}}$ at $t$=0). The evolution of the reference case through time is shown in Fig.~\ref{FIG:3}, and the sensitivity of lake height ($l_{\mathrm{h}}$), flood discharge ($Q_{\mathrm{r}}$), and basal velocity ($u_{\mathrm{b}}$) through time is shown in Figs.~\ref{FIG:4} \&~\ref{FIG:5}).
+
+\begin{table}[!h]
+\footnotesize
+\begin{minipage}{86mm}
+\footnotesize
+\caption{[NOTE, this fits in two-column mode!] Input parameters in our synthetic domain. The parameters we varied, and the range over which they varied are highlighted in bold.}
+\label{tab:Synth}
+\begin{tabular}{@{\,\,\,}l@{\,\,\,}c@{\,\,\,}c@{\,\,\,}c@{\,\,\,}}
+
+\hline
+Description & Symbol & Value(s) & Units \\
+\hline
+Gravitational acceleration & $g$ & 9.81 & m s$^{-1}$ \\
+Latent heat & $L$ & 3.34$\times$10$^{5}$ & J kg$^{-1}$ \\
+Ice density & $\rho_{\mathrm{i}}$ & 917* & kg m$^{-3}$ \\
+Freshwater density & $\rho_{\mathrm{w}}$ & 1000 & kg m$^{-3}$ \\
+Pressure melt coefficient & $c_{\mathrm{t}}$ & 7.5$\times$10$^{-8}$ & K Pa$^{-1}$ \\
+Heat capacity of water & $c_{\mathrm{w}}$ & FOLLOW UP & J kg$^{-1}$K$^{-1}$ \\
+Glen's $n$ & $n$ & 3 & \hfill \\
+Ice flow constant at the bed\footnote{The bed is assumed to be at pressure melting point, but the ice column is assumed equivalent to -10$^{\degree}$C or $A=$4.9$\times$10$^{-25}$ Pa$^{-n}$s$^{-1}$} & $A_{b}$ & 6.8$\times$10$^{-24}$ & Pa$^{-n}$s$^{-1}$ \\
+%\hfill \\
+Bed elevation & $z_{\mathrm{b}}$ & \hfill & m \\
+Ice thickness & $H$ & \hfill & m \\
+%\hfill \\
+Budd friction coefficient & $C_{\mathrm{b}}$ & 100 & CHECK \\ 
+First friction law exponent* & $r$ & 1/4 & \hfill \\
+Second friction law exponent* & $s$ & 1/4 & \hfill \\
+%\hfill \\
+Channel conductivity & $k_{\mathrm{c}}$ & \textbf{0.25--0.01} & m$^{\frac{3}{2}}$kg$^{-\frac{1}{2}}$ \\
+Sheet conductivity\footnote{Note that following \cite{hill2024improved} the units for $k_{s}$ differ from those given by \cite{werder2013modeling}} & $k_{s}$ & \textbf{0.05--0.005} & Pa s$^{-1}$ \\
+Englacial void ratio & $e_{\mathrm{v}}$ & 1$\times$10$^{-4}$ & \hfill \\
+First sheet flow exponent & $\alpha_{\mathrm{s}}$ & 5/4 & \hfill \\
+Second sheet flow exponent & $\beta_{\mathrm{s}}$ & 3/2 & \hfill \\
+First channel flow exponent & $\alpha_{\mathrm{c}}$ & 5/4 & \hfill \\
+Second channel flow exponent & $\beta_{\mathrm{c}}$ & 3/2 & \hfill \\
+Transition parameter & $\omega$ & 1/2000 & \hfill \\
+Basal bump height & $h_{\mathrm{b}}$ & \textbf{0.2--0.05} & m \\
+Channel sheet width & $l_{\mathrm{c}}$ & \textbf{50--5} & m \\
+Cavity spacing & $l_{\mathrm{r}}$ & \textbf{20--1} & m \\
+Basal melt rate & $M_{\mathrm{r}}$ & \textbf{5--0.1} & m a$^{-1}$ \\
+Lake refill rate & $Q_{\mathrm{in}}$ & \textbf{20--5} & m$^{3}$s$^{-1}$ \\
+Elastic sheet depth scale & $h_{\mathrm{c}}$ & 0 & m \\
+Elastic sheet exponent & $\gamma$ & 1 & \hfill \\
+Uplift regularisation rate & $h_{\varepsilon}$ & 1$\times$10$^{-6}$ & m Pa$^{-1}$ \\
+Regularising pressure & $N_{\varepsilon}$ & 1$\times$10$^{4}$ & Pa \\
+\hline
+\end{tabular}
+\end{minipage}
+\end{table}
+
+\subsection{Stable flood cycles}
+
+The full-evolution of our reference case is shown in Fig.~\ref{FIG:3}. The ice-marginal lake undergoes recurrent, stable, and asymmetric lake filling and draining cycles (Fig.~\ref{FIG:3}a). Likewise, each lake filling and draining cycle is associated with a recurring flood with stable maximum amplitude and duration (Fig.~\ref{FIG:3}b). The lake only partially drains each flood cycle, and never reaches a height necessary to sustain flotation ($N$=0, Fig.~\ref{FIG:3}f). For the initial 5 years of the simulation, as the model adjusts to initial conditions, peak flood discharge increases with each successive flood, and the lake reaches successively lower post-flood lowstands (Fig.~\ref{FIG:3}a,b). Thereafter, the flood cycles reach a stable periodicity (Fig.~\ref{FIG:3}f) with flood cycles occurring approximately every 1.5 years.  
+
+The evolution of the subglacial channel system through a single flood cycle is shown in Fig.~\ref{FIG:3}c--e (an animated version is shown in SUPP MOVIE), and the width-averaged basal velocity response over the same flood cycle and into the following in shown in Fig.~\ref{FIG:3}g. At the start of a flood cycle (Fig.~\ref{FIG:3}c), during the lake refilling phase (Fig.~\ref{FIG:3}a) the system is characterised by limited channelised drainage and $\nabla\phi$ generally perpendicular to the ice surface slope. Close to the lake outlet ($X > \mathrm{9 km}$), contours of hydraulic potential appear concave forming a `ridge' at the lake outlet. Sheet discharge, $q_{\mathrm{s}}$, is directed perpendicular to these contours and such ridges indicate sheet flow out of the lake. Two short ($<$100 m), low-discharge ($\leq$1 m$^{3}\mathrm{s}^{-1}$ channels remain open following the previous flood cycle, operating at the terminus and connected to the lake outlet.
+
+During the lake filling phase, increasing $l_\mathrm{{h}}$ drives $\phi_{\mathrm{outlet}}$ up (Eq.~\ref{eq:lakephi}), resulting in a steeper $\nabla \phi$ across the domain and promoting channelised drainage close to the lake outlet [SUPP MOVIE]. Once $l_\mathrm{{h}} \approx \mathrm{75\ m}$ (when $t \approx \mathrm{7.9 yrs}$) $Q_{\mathrm{r}}$ begins to rapidly exceed the lake refill rate, $Q_{\mathrm{in}}$ and an arborescent channel structure extends outwards across the full-width of the domain, perpendicular to the contours of $\phi$, and therefore offset to the direction of ice-surface slope. Closer to the ice terminus, contours of $\phi$ become increasingly convex, and channel tributaries coalesce into three primary channels which evacuate water from the system. As the lake level drops sharply during a flood, $\phi_{\mathrm{outlet}}$ drops, reducing $\nabla \phi$, and in turn reducing $Q_{\mathrm{c}}$ below the level necessary to sustain channels across the domain, including at the lake outlet. Once $Q_{\mathrm{r}} < Q_{\mathrm{in}}$ the flood terminates and the cycle begins anew.  
+
+Basal velocity, $u_{\mathrm{b}}$ changes significantly throughout a flood cycle, gradually accelerating during the flood initiation phase and abruptly decelerating $\approx$two months before the flood peak (Fig.~\ref{FIG:3}g). Ice flow acceleration propagates from the lake outlet towards the terminus, with maximum velocity sustained within 2 km of the lake outlet. 
+
+
+
+\begin{figure*}[!h]
+\centering{\includegraphics[width=0.95\textwidth]{./figures/Figure_3/Figure3.png}}
+\caption{[CHANGE $N$ IN F TO BE $\phi$, move channels to seperate 5 panel figure]Evolution of the 'reference' model configuration in our synthetic modelling domain. \textbf{a}) Lake height, $l_{\mathrm{h}}$ through time. Black points indicate $l_{\mathrm{h}}$ in panels \textbf{c}--\textbf{e}. \textbf{b}) Sum discharge at the lake outlet, $Q_{\mathrm{r}}$ through time. Grey points indicate $Q_{\mathrm{r}}$ in panels \textbf{c}--\textbf{e} the grey box indicates the time span of panel \textbf{g}. \textbf{c}--\textbf{e}) Channel discharge, $Q_{\mathrm{c}}$ at $t=$7.10 years (\textbf{c}), 8.38 years (\textbf{d}) and 9.00 years (\textbf{e}). In each panel, effective pressure, $N$ is shown as grey contours. Note the changes in colour bar scale between each panel. \textbf{f}) Phase-plane diagram showing the evolution of $Q_{\mathrm{r}}$ and $N$ through time at the ice-marginal lake outlet. Arrows and shading indicate the direction of time. The horizontal dashed line denotes the lake refill rate, $Q_{\mathrm{in}} =$ 10 m$^{3}$s$^{-1}$. The vertical dashed line indicates $N$ when $l_{\mathrm{h}}=$0 m. \textbf{g}) Filled contour plot showing the across-flow averaged velocity through time. White contours represent velocity (every 10 ma$^{-1}$) and the black line shows $Q_{\mathrm{r}}$ between years 7--11.}
+\label{FIG:3}
+\end{figure*}
+%\clearpage
+%\addtocounter{figure}{-1}
+%\noindent\captionof{figure}{test}
+
+
+
+\subsection{Parameter sensitivity}
+
+
+Fig.~\ref{FIG:4} shows the time series from a total of 14 simulations across the maximum (red lines), minimum (blue lines) parameter values with the reference default simulation in grey. The majority of simulations yield stable and recurring asymmetric lake filling and drainage cycles (Fig.~\ref{FIG:4}a(i)--f(i)) with corresponding floods in channel discharge at the lake outlet, $Q_{\mathrm{r}}$ (Fig.~\ref{FIG:4}a(ii)--f(ii)). Flood periodicity remains relatively stable $\approx 1.5\\mathrm{yrs}$ across most of the tested parameters. Across the parameters tested, the primary influence on flood characteristics 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+However, when $Q_{\mathrm{in}}$ is increased (Fig.~\ref{FIG:4}g) the lake oscillates between more extreme lake highstands and lowstands, with shorter, more intense floods as a result. When $Q_{\mathrm{in}}$ is reduced, oscillations in $l_{\mathrm{h}}$ are dampened and their periodicity reduced. Reducing $k_{\mathrm{c}}$ also reduces the periodicity of lake drainage, primarily by inhibiting channel onset, allowing the lake to sustain highstands $>$100 m and also reducing the efficiency of drainage during floods, producing near symetric fill-drain cycles (Fig.~\ref{FIG:4}a). 
+
+In all simulations, the maximum lake height remains below the maximum ice thickness and in the majority of simulations the lake lowstand does not fall below $\sim$10 m. In two simulations, the lake drains completely ($l_{\mathrm{h}}\approx$ 0 m) at the end of flood cycles. When $k_{\mathrm{c}}$ = 0.25 m$^{\frac{3}{2}}$kg$^{-\frac{1}{2}}$, peak flood discharge increases over eight flood cycles, failing to reach a stable state before tipping into an unstable runaway state    
+
+Across our parameter space, the primary variability  
+
+
+
+
+
+
+
+
+
+In the default case (Figure~\ref{FIG:3}a--b) and the majority of sensitivity simulations, the recurrence interval of flood cycles and their lake highstand/lowstand remains stable. Likewise, in the majority of cases peak flood discharge is comparable between successive floods, though in some cases, flood discharge increases over 3--4 successive flood cycles before reaching this stability (e.g., Fig.~\ref{FIG:4}f(ii)). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+and in the majority of cases, the lake highstand  
+
+
+
+
+\begin{figure*}[!h]
+\centering{\includegraphics[width=1\textwidth]{./figures/Figure_4/Figure4.png}}
+\caption{\textbf{NOT FINAL VERSION!} Lake height, $l_{\mathrm{h}}$ (left panels, i) and sum discharge at the lake outlet, $Q_{\mathrm{r}}$ (right panels, ii) across a range of key model parameters. \textbf{a}) Channel conductivity, $k_{\mathrm{c}}$. \textbf{b}) Sheet conductivity, $k_{\mathrm{s}}$. \textbf{c}) Basal bump height, $h_{\mathrm{b}}$. \textbf{d}) Channel sheet width, $l_{\mathrm{c}}$. \textbf{e}) Cavity spacing, $l_{\mathrm{r}}$. \textbf{f}) Basal melt rate, $M_{\mathrm{r}}$. \textbf{g}) Lake refill rate, $Q_{\mathrm{in}}$. In all panels, the default parameter run is shown in grey.}
+\label{FIG:4}
+\end{figure*}
+
+
+
+
+
+\begin{figure*}[!]
+\centering{\includegraphics[width=1\textwidth]{./figures/Figure_5/Figure5.png}}
+\caption{\textbf{NOT FINAL VERSION!} }
+\label{FIG:5}
+\end{figure*}
+
+
+
+
+
+
+
+
+
+
+
+\section{Model application to a real domain}\label{application:greenland}
+
+We invert for $C$* using an L-curve scheme as described in \cite{wolovick2023regularization}. 
+
+\begin{table}
+\begin{minipage}{86mm}
+\caption{Parameters in our Greenland run, listing those which differ from Table~\ref{tab:Synth}}
+\label{tab:Greenland}
+\begin{tabular}{@{}ccc}
+\hline
+Variable & Units & Description \\
+\hline
+\hline
+\end{tabular}
+
+\end{minipage}
+\end{table}
+
+\section{Discussion} 
+
+\section{Conclusions}
+
+
+
+
+
+
+
+
+
+
+\section{Acknowledgements} 
+
+
+% authors generating their own bbl file would uncomment the following two lines, and comment out/delete the references below:
+
+\bibliography{Jokulhlaup}   % reads igsrefs.bib
+\bibliographystyle{igs}  % imposes IGS bibliography style on output
+
+
+\appendix
+\section{Additional model description}\label{Appendix:MODEL}
+
+\setcounter{equation}{0}
+\renewcommand\theequation{A\arabic{equation}}
+
+\subsection{The Glacier Drainage System model}\label{Appendix:GlaDS}
+
+As described fully in \cite{werder2013modeling}, the hydraulic potential at the bed, $\phi$, is defined at the bed by: 
+
+\begin{equation}
+\label{appeq:GlaDSdirBC}
+\begin{aligned}
+\phi = \phi_{\mathrm{m}} + p_{\mathrm{w}},
+\end{aligned}
+\end{equation}
+
+with water pressure, $p_{\mathrm{w}}$, and elevation potential
+
+\begin{equation}
+\label{eq:elevationpotential}
+\begin{aligned}
+\phi_{\mathrm{m}} = \rho_{\mathrm{w}}gz_{\mathrm{b}},
+\end{aligned}
+\end{equation}
+
+where $\rho_{\mathrm{w}}$ is water density, $g$ is gravitational acceleration and $z_{\mathrm{b}}$ is bed elevation. In turn, effective pressure $N$ is given by: 
+
+\begin{equation}
+\label{appeqn}
+N = p_{\mathrm{i}}-p_{\mathrm{w}} = \phi_{\mathrm{O}}-\phi,
+\end{equation}
+
+where $p_{\mathrm{i}}$ is ice overburden pressure ($p_{\mathrm{i}} = \rho_{\mathrm{i}}gH$) and $\phi_{\mathrm{O}}$ is the overburden potential ($\rho_{\mathrm{O}} = \phi_{\mathrm{m}}+p_{\mathrm{i}}$).
+
+In the original GlaDS \citep{werder2013modeling}, sheet discharge, $q_{\mathrm{s}}$ is given by:
+
+\begin{equation}
+\label{appeqn:gladsqs}
+\begin{aligned}
+q_{\mathrm{s}} = -k_{\mathrm{s}}h_{\mathrm{s}}^{\alpha}|\nabla \phi|^{\beta}\nabla \phi,
+\end{aligned}
+\end{equation}
+
+where $k_{\mathrm{s}}$ is the sheet conductivity; $h_{\mathrm{s}}$ is the sheet thickness; and $\alpha$ and $\beta$ are flow exponents. Following the Darcy-Weisbach law, when flow is fully turbulent the flow exponents $\alpha=\mathrm{5/4}$ and $\beta=\mathrm{3/2}$. Here we use the \cite{hill2024improved} laminar-turbulent transition model, and with $\alpha_{\mathrm{s}}= \mathrm{5/4}$ as here, Eq~\ref{appeqn:gladsqs} becomes:  
+
+\begin{equation}
+\label{appeqn: Transition}
+\begin{aligned}
+q_{\mathrm{s}} = -\frac{\nu}{2 \omega} \left(\frac{h_{\mathrm{b}}}{h_{\mathrm{s}}}\right)^{1 / 2} \hspace{10em}\\
+\hspace{3em} \cdot \left(-1 + \sqrt{1 + 4 \frac{\omega}{\nu} \left(\frac{h}{h_{\mathrm{b}}}\right)^{1 / 2} k_{\mathrm{s}} h^3 |\nabla \phi|} \right) \frac{\nabla \phi}{|\nabla \phi|}
+\end{aligned}
+\end{equation}
+where $\omega$ is a laminar–turbulent transition parameter (corresponding to the Reynolds number at which water becomes fully-turbulent), $h_{\mathrm{b}}$ is the bed bump height, and $v$ is the kinematic viscosity of water at 0$^{\degree}$C. 
+
+In GlaDS, sheet thickness refers to the thickness of the cavity layer only and there is no representation of viscoelastic deformation of the overlying ice once $p_{\mathrm{w}} > p_{\mathrm{i}}$. Here, following \citeauthor{stevens2022tidewater} (\citeyear{stevens2022tidewater}, based on earlier work by \citeauthor{hewitt2013seasonal} \citeyear{hewitt2013seasonal}), we separate the distributed sheet into elastic sheet thickness $h_{\mathrm{el}}$, and cavity sheet thickness $h_{\mathrm{cav}}$, adding them together to give the overall sheet thickness, $h_{\mathrm{s}} = h_{\mathrm{el}} + h_{\mathrm{cav}}$. The elastic sheet thickness is directly related to the water pressure by:
+
+\begin{equation}
+\label{appeqn: hs_el}
+\begin{aligned}
+h_{\mathrm{el}}=h_c\left(\frac{p_{\mathrm{w}}}{p_{\mathrm{i}}}\right)^\gamma+h_{\varepsilon 2}\left[-N_{-}+\frac{1}{2} N_{\varepsilon}\left(1-N_{+} / N_{\varepsilon}\right)_{+}^2\right],
+\end{aligned}
+\end{equation}
+
+where $h_{\mathrm{c}}$ is the elastic sheet depth scale, $\gamma$, is the elastic sheet exponent, $h_{\varepsilon}$ is the uplift regularisation rate, and $N_{\varepsilon}$ is the regularising pressure for uplift regularisation rate. In addition, $N_{-} = \mathrm{min}(N,0)$ and $N_{+} = \mathrm{max}(N,0)$, with the second term designed to increase rapidly once $N<0$, as a basic representation of hydraulic jacking.
+
+The cavity sheet thickness evolves through time given by:
+
+\begin{equation}
+\label{appeqn: hs_cav}
+\begin{aligned}
+\frac{\partial h_{\mathrm{cav}}}{\partial t} = w - r,
+\end{aligned}
+\end{equation}
+
+for functions $w$ and $r$, which describe the cavity opening and closing rate, respectively \citep{kamb1987glacier,walder1994channelized}. Cavities open at a rate given by basal velocity $u_{\mathrm{b}}$ over basal bumps with height, $h_{\mathrm{b}}$:
+
+\begin{equation}
+\label{appeqn: basal sliding}
+w(h) = 
+	\begin{cases}
+	u_{\mathrm{b}}({h_{\mathrm{r}} - h_{\mathrm{s}}})/{l_{\mathrm{r}}} & \text{if } h < h_{\mathrm{r}} \\
+	0 & \text{otherwise}
+	\end{cases}
+\end{equation}
+
+[CHECK CODE TO ENSURE THIS IS $h_{s}$ not $h_{cav}$] where $l_{\mathrm{r}}$ is the horizontal cavity spacing. Viscous ice deformation leads to cavity closure, related to the effective pressure, $N$ by:
+
+\begin{equation}
+\label{appeqn: viscous closure}
+\begin{aligned}
+r(h,N) = Ah|N|^{n-1}N, 
+\end{aligned}
+\end{equation}
+
+where $A$ is the rheological constant of ice, multiplied by a first order geometrical factor, and $n$ is Glen's flow law exponent. 
+
+Sheet elements exhcange water with channels, the cross-sectional of which, $S$, evolve through time due to the dissipation of potential energy, $\Pi$, sensible heat exchange, $\Xi$, and cavity closure rates due to viscous ice creep $v_{\mathrm{c}}$
+
+\begin{equation}
+\label{apeq:channel cross section}
+\frac{\partial S}{\partial t}=\frac{\Xi-\Pi}{\rho_{\mathrm{i}} L}-v_c,
+\end{equation}
+\noindent
+where $\rho_{\mathrm{i}}$ is the ice density and $L$ is the latent heat of fusion. 
+
+Finally, channel discharge, $Q_{\mathrm{c}}$ is also related to the hydraulic potential gradient by:
+
+\begin{equation}
+\label{appeqn: Qc}
+\begin{aligned}
+Q_{\mathrm{c}} = -k_{\mathrm{c}}S^{\alpha_{\mathrm{c}}}\left|\frac{\partial \phi}{\partial s}\right|^{\beta_{c}-2}\frac{\partial \phi}{\partial s},
+\end{aligned}
+\end{equation}
+
+where $k_{\mathrm{c}}$ is the channel conductivity; $s$ is the horizontal coordinate along a channel; and $\alpha_{\mathrm{c}}$/$\beta_{\mathrm{c}}$ are channel flow exponents.
+
+
+
+
+
+\end{document}

@@ -18,8 +18,8 @@ with open('synthetic_mesh.pkl', 'rb') as meshin:
     mesh = pickle.load(meshin)
 
 #thickness = 25+(1.2*( np.sqrt(mesh['x'])))
-thickness = 25+np.sqrt(1.1*mesh['x'])
-bed = (mesh['x'] * np.sin(0.005))
+thickness = 50+np.sqrt(1.1*mesh['x'])
+bed = (mesh['x'] * np.sin(0.0075))
 surf = bed + thickness
 print('Min surface is ~', f"{np.min(surf):.2f}")
 print('Mean surface ~', f"{np.mean(surf):.2f}")    

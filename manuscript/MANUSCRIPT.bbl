@@ -1,0 +1,46 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[\protect\citename{Hewitt, }2013]{hewitt2013seasonal}
+Hewitt I (2013) Seasonal changes in ice sheet motion due to melt water
+  lubrication. \emph{Earth and Planetary Science Letters}, \textbf{371}, 16--25
+
+\bibitem[\protect\citename{Hill and others, }2024]{hill2024improved}
+Hill T, Flowers GE, Hoffman MJ, Bingham D and Werder MA (2024) Improved
+  representation of laminar and turbulent sheet flow in subglacial drainage
+  models. \emph{Journal of Glaciology}, \textbf{70}, e24
+
+\bibitem[\protect\citename{Kamb, }1987]{kamb1987glacier}
+Kamb B (1987) Glacier surge mechanism based on linked cavity configuration of
+  the basal water conduit system. \emph{Journal of Geophysical Research: Solid
+  Earth}, \textbf{92}(B9), 9083--9100
+
+\bibitem[\protect\citename{Kingslake and Ng, }2013]{kingslake2013modelling}
+Kingslake J and Ng F (2013) Modelling the coupling of flood discharge with
+  glacier flow during j{\"o}kulhlaups. \emph{Annals of Glaciology},
+  \textbf{54}(63), 25--31
+
+\bibitem[\protect\citename{Stevens and others, }2022]{stevens2022tidewater}
+Stevens LA, Nettles M, Davis JL, Creyts TT, Kingslake J, Hewitt IJ and
+  Stubblefield A (2022) Tidewater-glacier response to supraglacial lake
+  drainage. \emph{Nature Communications}, \textbf{13}(1), 6065
+
+\bibitem[\protect\citename{Walder and Fowler, }1994]{walder1994channelized}
+Walder JS and Fowler A (1994) Channelized subglacial drainage over a deformable
+  bed. \emph{Journal of glaciology}, \textbf{40}(134), 3--15
+
+\bibitem[\protect\citename{Werder and others, }2013]{werder2013modeling}
+Werder MA, Hewitt IJ, Schoof CG and Flowers GE (2013) Modeling channelized and
+  distributed subglacial drainage in two dimensions. \emph{Journal of
+  Geophysical Research: Earth Surface}, \textbf{118}(4), 2140--2158
+
+\bibitem[\protect\citename{Wolovick and others,
+  }2023]{wolovick2023regularization}
+Wolovick M, Humbert A, Kleiner T and R{\"u}ckamp M (2023) Regularization and
+  l-curves in ice sheet inverse models: a case study in the filchner--ronne
+  catchment. \emph{The Cryosphere}, \textbf{17}(12), 5027--5060
+
+\end{thebibliography}
