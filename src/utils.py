@@ -225,7 +225,7 @@ def plotchannels(mesh,x, **kwargs):
     norm = Normalize(vmin=vmin, vmax=vmax)
 
     # Prepare edges for plotting
-    edges = mesh['connect_edge']
+    edges = mesh['connect_edge'][:, :2]
     x_coords = mesh['x']
     y_coords = mesh['y']
     # Get vertex coordinates for each edge
@@ -235,7 +235,10 @@ def plotchannels(mesh,x, **kwargs):
     y1, y2 = y_coords[v1_idx], y_coords[v2_idx]
 
     # Create full segments
-    segments_all = np.array([[x1, y1], [x2, y2]]).transpose(2, 0, 1)
+    segments_all = np.stack([
+        np.stack([x1, y1], axis=1),  # shape (n_edges, 2)
+        np.stack([x2, y2], axis=1)   # shape (n_edges, 2)
+        ], axis=1)  # shape (n_edges, 2, 2)
 
     # Apply mask to segments and levels
     segments = segments_all[valid_mask]
@@ -288,6 +291,7 @@ def plotchannels(mesh,x, **kwargs):
         )
         # Set the data values to be mapped to colors
         arrow_collection.set_array(level[valid_edges][level[valid_edges] >= vmin])
+        ax.scatter(xq, yq, color='black', s=1, label='Arrow midpoints')  # Optional: scatter midpoints for visibility
         ax.add_collection(arrow_collection)
 
     # Add a colorbar to the plot
@@ -295,9 +299,7 @@ def plotchannels(mesh,x, **kwargs):
     sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
     sm.set_array(level)
     #plt.colorbar(sm, ax=ax, label='Channel Area / Discharge Magnitude')
-
     
-
     ax.autoscale_view()
     return ax,sm
 
