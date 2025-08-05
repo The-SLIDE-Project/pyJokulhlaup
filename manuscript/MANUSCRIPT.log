@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  31 JUL 2025 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  5 AUG 2025 16:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2228,6 +2228,11 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 84.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 86.
+
+
+Package natbib Warning: Citation `larour2012continental' on page 1 undefined on
+ input line 95.
+
 <./figures/Figure_1/Figure1.png, id=1, 238.2501pt x 356.7729pt>
 File: ./figures/Figure_1/Figure1.png Graphic file (type png)
 <use ./figures/Figure_1/Figure1.png>
@@ -2241,11 +2246,14 @@ LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 99.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+Package natbib Warning: Citation `larour2012continental' on page 1 undefined on
+ input line 108.
+
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 106.
+(Font)              scaled to size 8.0pt on input line 109.
 [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
 ocal/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/lo
 cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
@@ -2253,20 +2261,20 @@ cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
 
 
 ]
-Underfull \hbox (badness 1173) in paragraph at lines 119--122
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+(Font)              scaled to size 8.0pt on input line 139.
+ [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.en
+c} <./figures/Figure_1/Figure1.png>]
+Underfull \hbox (badness 1173) in paragraph at lines 144--147
 \T1/LinuxBiolinumT-TLF/m/n/10 where $\OML/ntxsfmi/m/it/10 A[]$ \T1/LinuxBiolinu
 mT-TLF/m/n/10 is the uni-form lake area, $\OML/ntxsfmi/m/it/10 Q[]$ \T1/LinuxBi
 olinumT-TLF/m/n/10 rep-re-sents ex-
  []
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 146.
-[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc
-} <./figures/Figure_1/Figure1.png>]
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.174 ...on lists derived variables [FIX ORDER.]}}
+l.173 ...on lists derived variables [FIX ORDER.]}}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -2280,75 +2288,78 @@ Runaway argument?
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.174 ...on lists derived variables [FIX ORDER.]}}
+l.173 ...on lists derived variables [FIX ORDER.]}}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 174.
+(Font)              scaled to size 7.3pt on input line 173.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 7.3pt on input line 174.
+(Font)              scaled to size 7.3pt on input line 173.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 174.
+(Font)              scaled to size 8.0pt on input line 173.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 174.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 174.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 6.2pt on input line 174.
+(Font)              scaled to size 6.2pt on input line 173.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 206.
+(Font)              scaled to size 5.5pt on input line 205.
+[3]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 235.
+(Font)              scaled to size 8.0pt on input line 234.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 1742) in paragraph at lines 259--260
+Underfull \hbox (badness 1742) in paragraph at lines 258--259
 \T1/LinuxBiolinumT-TLF/m/n/10 The ice-marginal lake un-der-goes re-cur-rent, st
 a-ble, and
  []
 
-[3]
-<./figures/Figure_3/Figure3.png, id=32, 483.7272pt x 600.5637pt>
+
+Underfull \vbox (badness 4492) has occurred while \output is active []
+
+<./figures/Figure_3/Figure3.png, id=33, 483.7272pt x 600.5637pt>
 File: ./figures/Figure_3/Figure3.png Graphic file (type png)
 <use ./figures/Figure_3/Figure3.png>
-Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 270
+Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 269
 .
 (pdftex.def)             Requested size: 481.13454pt x 597.3457pt.
 
 
-LaTeX Warning: Float too large for page by 85.49463pt on input line 273.
+LaTeX Warning: Float too large for page by 85.49463pt on input line 272.
 
+[4]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4]
-<./figures/Figure_4/Figure4.png, id=36, 509.2626pt x 632.3625pt>
+<./figures/Figure_4/Figure4.png, id=37, 509.2626pt x 632.3625pt>
 File: ./figures/Figure_4/Figure4.png Graphic file (type png)
 <use ./figures/Figure_4/Figure4.png>
-Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 334
+Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 333
 .
 (pdftex.def)             Requested size: 506.45905pt x 628.8873pt.
 
-
-LaTeX Warning: Float too large for page by 62.03622pt on input line 337.
+LaTeX Warning: Float too large for page by 62.03622pt on input line 336.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 343.
+               Default added (so using `!tbp') on input line 342.
 
-<./figures/Figure_5/Figure5.png, id=37, 509.2626pt x 361.35pt>
+<./figures/Figure_5/Figure5.png, id=38, 509.2626pt x 361.35pt>
 File: ./figures/Figure_5/Figure5.png Graphic file (type png)
 <use ./figures/Figure_5/Figure5.png>
-Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 344
+Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 343
 .
 (pdftex.def)             Requested size: 506.45905pt x 359.36417pt.
+
+Underfull \vbox (badness 4132) has occurred while \output is active []
+
+
 (./MANUSCRIPT.bbl
 
 ! LaTeX Error: No counter 'dummy' defined.
@@ -2375,8 +2386,15 @@ Underfull \hbox (badness 6173) in paragraph at lines 40--43
 E
  []
 
-) [5] [6] [7 <./figures/Figure_3/Figure3.png>] [8 <./figures/Figure_4/Figure4.p
-ng>] [9 <./figures/Figure_5/Figure5.png>] (./MANUSCRIPT.aux)
+[5])
+
+Package natbib Warning: There were undefined citations.
+
+
+Package natbib Warning: There were undefined citations.
+
+[6] [7 <./figures/Figure_3/Figure3.png>] [8 <./figures/Figure_4/Figure4.png>]
+[9 <./figures/Figure_5/Figure5.png>] (./MANUSCRIPT.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -2388,11 +2406,11 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 14656 strings out of 474116
- 291039 string characters out of 5743682
+ 14657 strings out of 474116
+ 291044 string characters out of 5743682
  1960187 words of memory out of 5000000
  36736 multiletter control sequences out of 15000+600000
- 724384 words of font info for 242 fonts, out of 8000000 for 9000
+ 724703 words of font info for 243 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,18n,93p,2141b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
@@ -2400,21 +2418,22 @@ Here is how much of TeX's memory you used:
 umTB.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBi
 olinumTBO.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/
 LinBiolinumTI.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmt
-k10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha9.p
-fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10
-.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (9 pages, 2362186 bytes).
+k10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha9.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
+Output written on MANUSCRIPT.pdf (9 pages, 2384884 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 134 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
