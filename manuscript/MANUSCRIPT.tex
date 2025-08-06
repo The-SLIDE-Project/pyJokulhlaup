@@ -92,7 +92,7 @@ The design for the \emph{Journal of Glaciology} has been implemented as a \LaTeX
 \end{enumerate}
 
 \section{Methods}
-In this paper we build upon earlier 1D work \citep{kingslake2013modelling} by incorporating a physically-consistent representation of ice-marginal lake drainage into the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}, part of the Ice-sheet and Sea-level System Model\citep[ISSM;][, \texttt{commit a9a3804}]{larour2012continental}. Our work includes multiple couplings between the subglacial hydrological system and the ice-marginal lake, as well as between each of these and ice-velocity (Fig.~\ref{FIG:1}). Section~\ref{methods:GlaDS} we describe the coupled ISSM-GlaDS model and relevant additional modifications to the version originally presented by \citep{werder2013modeling}. In Section~\ref{methods:Lake} we describe the equations governing ice-marginal lake-drainage. Our method of numerical solution is given in Section~\ref{methods:Numeric}. 
+In this paper we build upon earlier 1D work \citep{kingslake2013modelling} by incorporating a physically-consistent representation of ice-marginal lake drainage into the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}, part of the Ice-sheet and Sea-level System Model\citep[ISSM; ][, \texttt{commit a9a3804}]{larour2012continental}. Our work includes multiple couplings between the subglacial hydrological system and the ice-marginal lake, as well as between each of these and ice-velocity (Fig.~\ref{FIG:1}). Section~\ref{methods:GlaDS} we describe the coupled ISSM-GlaDS model and relevant additional modifications to the version originally presented by \citep{werder2013modeling}. In Section~\ref{methods:Lake} we describe the equations governing ice-marginal lake-drainage. Our method of numerical solution is given in Section~\ref{methods:Numeric}. 
 
 \begin{figure}[!h]
 \centering{\includegraphics{./figures/Figure_1/Figure1.png}}
@@ -109,7 +109,7 @@ We used the GlaDS model as integrated into ISSM, a finite element ice-flow model
 
 In addition to the ice-marginal lake modifications which we describe below (Section~\ref{methods:Lake}), we note two key differences between the original GlaDS \citep{werder2013modeling} and the ISSM version used here: i) rather than assuming water flow within the sheet to always be turbulent \citep[cf:][]{werder2013modeling}, we make use of the \cite{hill2024improved} transition parametrisation, whereby sheet flow switches between laminar and turbulent flow according to the local Reynolds number, and ii) following \cite{stevens2022tidewater}, we implemented a viscously deforming `elastic sheet layer' which crudely represents hydraulic jacking where water pressure exceeds ice overburden pressure (see Section~\ref{Appendix:GlaDS}). 
 
-Finally, to capture the influence of ice-marginal lake drainage of ice dynamics, we include a two-way coupling between ice flow and subglacial hydrology. The GlaDS derived effective pressure ($N=p_{\mathrm{i}}-p_{\mathrm{w}}$, where $p_{\mathrm{i}}$ is ice pressure and $p_{\mathrm{w}}$ is water pressure) modifies basal velocity $u_{\mathrm{b}}$ by governing frictional resistance at the ice-bed interface. In turn, the magnitude of $u_{mathrm{b}}$ modifies the rate at which cavities open and thereby controls the thickness of the sheet (Eq.~\ref{appeqn: hs_cav}--\ref{appeqn: basal sliding}*). Coupling between basal velocity and subglacial hydrology can be implemented via any of the ISSM friction laws which include an effective pressure term [REF]. Here, we present results using either a Budd-style friction law [REF] [MOVE EQUATIONS TO APPENDIX] implemented in ISSM in terms of basal stress with the form:
+Finally, to capture the influence of ice-marginal lake drainage of ice dynamics, we include a two-way coupling between ice flow and subglacial hydrology. The GlaDS derived effective pressure ($N=p_{\mathrm{i}}-p_{\mathrm{w}}$, where $p_{\mathrm{i}}$ is ice pressure and $p_{\mathrm{w}}$ is water pressure) modifies basal velocity $u_{\mathrm{b}}$ by governing frictional resistance at the ice-bed interface. In turn, the magnitude of $u_{\mathrm{b}}$ modifies the rate at which cavities open and thereby controls the thickness of the sheet (Eq.~\ref{appeqn: hs_cav}--\ref{appeqn: basal sliding}*). Two-way coupling between ISSM and GlaDS is a relatively new development, and the influence of friction parameters remains the subject of ongoing research \citep[e.g.,][]{khan2024inland}, though model response is known to be strongly influenced by the choice of friction law \citep{choi2023impact}. We view this work as necessarily explorative [Flesh this out more], and we do not undertake a full analysis of the modelling interactions between subglacial hydrology and ice dynamics, instead leaving this to others. Rather, we seek to capture the broad influence ice-marginal lake drainage cycles have upon ice dynamics. Accordingly, we present results using two widely applied friction laws: i) the `Budd-style' friction law [REF] [MOVE EQUATIONS TO APPENDIX] implemented in ISSM in terms of basal stress with the form:
 
 \begin{equation}
 \label{eq:frictionBudd}
@@ -118,7 +118,7 @@ Finally, to capture the influence of ice-marginal lake drainage of ice dynamics,
 \end{aligned}
 \end{equation}
 
-where $\tau_{\mathrm{b}}$ is the basal stress magnitude, $C_{\mathrm{b}}$ is the friction coefficient, $N$ is effective pressure, $u_{\mathrm{b}}$ is basal velocity magnitude, and both $r$ and $s$ are friction coefficients, or a Schoof-style friction law [REF] with the form: 
+where $\tau_{\mathrm{b}}$ is the basal stress magnitude, $C_{\mathrm{b}}$ is the friction coefficient, $N$ is effective pressure, $u_{\mathrm{b}}$ is basal velocity magnitude, and both $r$ and $s$ are friction coefficients, or ii) a Schoof-style friction law [REF] with the form: 
 
 \begin{equation}
 \label{eq:frictionSchoof}
@@ -127,7 +127,9 @@ where $\tau_{\mathrm{b}}$ is the basal stress magnitude, $C_{\mathrm{b}}$ is the
 \end{aligned}
 \end{equation}
 
-where $C_{\mathrm{s}}^{2}$ is the \textit{Schoof} friction coefficient, $m$ is a friction law exponent, and $C_{\mathrm{max}}$ is Iken's bound.
+where $C_{\mathrm{s}}^{2}$ is the \textit{Schoof} friction coefficient, $m$ is a friction law exponent, and $C_{\mathrm{max}}$ is Iken's bound. 
+
+
 
 
 
@@ -308,7 +310,7 @@ Across our parameter space, the primary variability
 
 
 
-In the default case (Figure~\ref{FIG:3}a--b) and the majority of sensitivity simulations, the recurrence interval of flood cycles and their lake highstand/lowstand remains stable. Likewise, in the majority of cases peak flood discharge is comparable between successive floods, though in some cases, flood discharge increases over 3--4 successive flood cycles before reaching this stability (e.g., Fig.~\ref{FIG:4}f(ii)). 
+In the default case (Figure~\ref{FIG:3}a--b) and the majority of sensitivity simulations, the recurrence interval of flood cycles and their lake highstand/lowstand remains stable. Likewise, in the majority of cases peak flood discharge is comparable between successive floods, though in some cases, flood discharge increases over 3--4 successive flood cycles before reaching this stability (e.g., Fig.~\ref{FIG:4}f[ii]). 
 
 
 
@@ -357,6 +359,22 @@ and in the majority of cases, the lake highstand
 
 \section{Model application to a real domain}\label{application:greenland}
 
+We run the model on Isunnguata Sermia, an outlet glacier in West Greenland draining a catchment of  $\approx\!16000\ \mathrm{km}^2$. A recently described  $\approx\!3\ \mathrm{km}^2$, $\approx\!100\ \mathrm{m}$ deep ice-dammed lake \citep{domgaard2024altimetry,livingstone2025ice} abuts the northern margin of Isunnguata Sermia's tongue (Need better way to describe this?). The lake drains subglacially with a periodicity of 1--3 years, undergoing at least 12 fill-drain cycles in the observational period between 1987--2024 \citep{livingstone2025ice}. Field data, including passive seismics, GNSS, and time-lapse imagery is available for one drainage in 2023 \citep[see; ][]{livingstone2025ice}. Two clear ice-contact boundaries are visible, with the lake predominately draining subglacially along a contact at its southwestern margin, and refilling by a proglacial river at its eastern margin \citep{livingstone2025ice}. 
+
+We discretise our Isunnguata Sermia domain (Source of original catchment?) using an anistropic mesh with an edge length of XX m close to terminus, dropping to XX km close to the upper margin of our domain at the approximate ELA (at \( H \approx 1600\ \text{m} \)). Bedmachine vX.X is used for $z_{\mathrm{b}}$ and $H$ [REF]. The MAR [REF} surface mass balance (SMB), runoff, and accumlation is used as climate forcing between XXXX--XXXX. An initialisation $u_{\mathrm{b}}$ is taken from the annual  MEASURES mosaic 2021, from which we invert for the basal friction coefficient using an L-curve scheme \citep[following; ][]{wolovick2023regularization}. Because we have an observational constraint on ice-surface velocity, we use a Schoof-style friction law (see Section~\ref{methods:GlaDS}) which has been shown to more faithfully represent ice-dynamics with a GlaDS derived $N$ than the Budd-style friction law used in are simple synthetic experiments. We invert for the basal friction coefficient $C$ using an L-curve analysis to select appropriate regularisation parameters \citep[as in; ][]{wolovick2023regularization}. Geothermal flux is taken from REF, the Karlsson[REF] basal melt rates are used, and ice temperature is taken from REF. 
+
+Our GlaDS parameters are given in Tables~\ref{tab:Synth} \& ~\ref{Appendix:GlaDS}, with changes to the specific values intended to reflect the anticipated change in the scale of basal drainage elements relative to our synthetic domain \citep{hill2024improved}. As boundary conditions, we set $\phi$ equivalent to atmospheric pressure at the lowest elevation vertices within a cluster adjacent to a proglacial river at the glacier terminus, and set two ice-contact boundaries at the l  
+
+Our experimental approach is as follows: 1) we generate our mesh and invert for an initial basal friction coefficient C, 2) we then run a simple GlaDS-only simulation for 10 years, which did not include an ice-marginal lake or surface melt, to derive a more realistic $N$ from which a second inversion for basal friction could be derived. This approach has previously been demonstrated to yield more faithful basal inversions \citep[see;][]{ehrenfeucht2023seasonal,mcarthur2023basal} 3) 
+
+
+
+ 2) a steady-state (i.e., no surface melt) GlaDS solution, without an ice-marginal lake, is used as an $N$ from which a more refined basal friction coefficient can be inverted for, 3) 
+
+Our  
+\citep{wolovick2023regularization}
+
+
 We invert for $C$* using an L-curve scheme as described in \cite{wolovick2023regularization}. 
 
 \begin{table}
@@ -384,11 +402,15 @@ Variable & Units & Description \\
 
 
 
+\section{Author contribution statement}
 
+The research was conceptualised by AJH, RB, AS, and SL. AJH developed the model, carried out the experiments, and prepared the analysis. AJH wrote the manuscript, with input from RB, AS, and SL. All authors reviewed and edited the manuscript, and fieldwork to deploy and maintain the sensors was carried out by everyone other than AJH [sad-face]. Funding was acquired by AJH, SL, RS, SB, AS, KL, KW, JG, EB, NR, LE, BG, TH, MPJ and AB. 
 
 \section{Acknowledgements} 
 
 A.J.H is funded by an Aberystwyth University Independent Research Fellowship. Work carried out as part of the NERC-funded SLIDE project (grant No. NE/X000257/1, awarded to S.L). 
+
+\section{Proper nouns will be corrected in references pre-submission...}
 
 
 % authors generating their own bbl file would uncomment the following two lines, and comment out/delete the references below:
