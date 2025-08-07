@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  6 AUG 2025 16:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  7 AUG 2025 13:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2228,19 +2228,23 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 84.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 86.
-<./figures/Figure_1/Figure1.png, id=1, 238.2501pt x 356.7729pt>
-File: ./figures/Figure_1/Figure1.png Graphic file (type png)
-<use ./figures/Figure_1/Figure1.png>
-Package pdftex.def Info: ./figures/Figure_1/Figure1.png  used on input line 98.
+<./figures/Figure_1/Figure_1b.png, id=1, 258.2448pt x 199.2243pt>
+File: ./figures/Figure_1/Figure_1b.png Graphic file (type png)
+<use ./figures/Figure_1/Figure_1b.png>
+Package pdftex.def Info: ./figures/Figure_1/Figure_1b.png  used on input line 9
+8.
+(pdftex.def)             Requested size: 258.24416pt x 199.22382pt.
 
-(pdftex.def)             Requested size: 238.24951pt x 356.77202pt.
+Overfull \hbox (13.55046pt too wide) in paragraph at lines 98--99
+ [][] 
+ []
+
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 99.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 9.0pt on input line 99.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 99.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2254,9 +2258,9 @@ cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
 
 ]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 128.
+(Font)              scaled to size 8.0pt on input line 146.
  [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.en
-c} <./figures/Figure_1/Figure1.png>]
+c} <./figures/Figure_1/Figure_1b.png>]
 Underfull \hbox (badness 1173) in paragraph at lines 146--149
 \T1/LinuxBiolinumT-TLF/m/n/10 where $\OML/ntxsfmi/m/it/10 A[]$ \T1/LinuxBiolinu
 mT-TLF/m/n/10 is the uni-form lake area, $\OML/ntxsfmi/m/it/10 Q[]$ \T1/LinuxBi
@@ -2300,39 +2304,38 @@ LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 6.2pt on input line 175.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 5.5pt on input line 207.
-[3]
+
+Underfull \vbox (badness 1540) has occurred while \output is active []
+
+ [3]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 8.0pt on input line 236.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 Underfull \hbox (badness 1742) in paragraph at lines 260--261
 \T1/LinuxBiolinumT-TLF/m/n/10 The ice-marginal lake un-der-goes re-cur-rent, st
 a-ble, and
  []
 
-[4]
-<./figures/Figure_3/Figure3.png, id=36, 483.7272pt x 600.5637pt>
+<./figures/Figure_3/Figure3.png, id=31, 483.7272pt x 600.5637pt>
 File: ./figures/Figure_3/Figure3.png Graphic file (type png)
 <use ./figures/Figure_3/Figure3.png>
 Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 271
 .
 (pdftex.def)             Requested size: 481.13454pt x 597.3457pt.
 
-
 LaTeX Warning: Float too large for page by 85.49463pt on input line 274.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./figures/Figure_4/Figure4.png, id=37, 509.2626pt x 632.3625pt>
+[4]
+<./figures/Figure_4/Figure4.png, id=36, 509.2626pt x 632.3625pt>
 File: ./figures/Figure_4/Figure4.png Graphic file (type png)
 <use ./figures/Figure_4/Figure4.png>
 Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 335
 .
 (pdftex.def)             Requested size: 506.45905pt x 628.8873pt.
+
 
 LaTeX Warning: Float too large for page by 62.03622pt on input line 338.
 
@@ -2343,7 +2346,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 344.
 
-<./figures/Figure_5/Figure5.png, id=38, 509.2626pt x 361.35pt>
+<./figures/Figure_5/Figure5.png, id=37, 509.2626pt x 361.35pt>
 File: ./figures/Figure_5/Figure5.png Graphic file (type png)
 <use ./figures/Figure_5/Figure5.png>
 Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 345
@@ -2363,11 +2366,7 @@ on input line 368.
 Package natbib Warning: Citation `mcarthur2023basal' on page 5 undefined on inp
 ut line 368.
 
-
-Underfull \vbox (badness 2591) has occurred while \output is active []
-
- [5]
-(./MANUSCRIPT.bbl
+[5] (./MANUSCRIPT.bbl
 
 ! LaTeX Error: No counter 'dummy' defined.
 
@@ -2399,10 +2398,7 @@ Underfull \hbox (badness 6173) in paragraph at lines 69--72
 E
  []
 
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6]
+) [6]
 
 Package natbib Warning: There were undefined citations.
 
@@ -2420,14 +2416,11 @@ L3 programming layer <2020/03/25>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  14662 strings out of 474116
- 291142 string characters out of 5743682
- 1959187 words of memory out of 5000000
+ 291156 string characters out of 5743682
+ 1961187 words of memory out of 5000000
  36741 multiletter control sequences out of 15000+600000
  724703 words of font info for 243 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2449,9 +2442,9 @@ ocal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr
 /texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (10 pages, 2391442 bytes).
+Output written on MANUSCRIPT.pdf (10 pages, 2376258 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
+ 136 PDF objects out of 1000 (max. 8388607)
  81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
