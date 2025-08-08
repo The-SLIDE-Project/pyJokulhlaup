@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
@@ -7,14 +7,20 @@
 \bibitem[\protect\citename{Choi and others, }2023]{choi2023impact}
 Choi Y, Seroussi H, Morlighem M, Schlegel NJ and Gardner A (2023) Impact of
   time-dependent data assimilation on ice flow model initialization and
-  projections: a case study of {Kjer Glacier, Greenland}. \emph{The
-  Cryosphere}, \textbf{17}(12), 5499--5517
+  projections: a case study of kjer glacier, greenland. \emph{The Cryosphere},
+  \textbf{17}(12), 5499--5517
 
 \bibitem[\protect\citename{D{\o}mgaard and others,
   }2024]{domgaard2024altimetry}
 D{\o}mgaard M, Kjeldsen K, How P and Bj{\o}rk A (2024) Altimetry-based
   ice-marginal lake water level changes in greenland. \emph{Communications
   Earth \& Environment}, \textbf{5}(1), 365
+
+\bibitem[\protect\citename{Ehrenfeucht and others,
+  }2023]{ehrenfeucht2023seasonal}
+Ehrenfeucht S, Morlighem M, Rignot E, Dow CF and Mouginot J (2023) Seasonal
+  acceleration of petermann glacier, greenland, from changes in subglacial
+  hydrology. \emph{Geophysical Research Letters}, \textbf{50}(1), e2022GL098009
 
 \bibitem[\protect\citename{Hewitt, }2013]{hewitt2013seasonal}
 Hewitt I (2013) Seasonal changes in ice sheet motion due to melt water
@@ -50,7 +56,12 @@ Larour E, Seroussi H, Morlighem M and Rignot E (2012) Continental scale, high
 \bibitem[\protect\citename{Livingstone and others, }2025]{livingstone2025ice}
 Livingstone S, Storrar R, Doyle S, Thorpe S, Moffatt A, Sole A, Chudley TR,
   Gimbert F, Graly J, Licht K and others (2025) Ice dynamic and hydrological
-  response to ice-dammed lake drainages at {Isunnguata Sermia, West Greenland}
+  response to ice-dammed lake drainages at isunnguata sermia, west greenland
+
+\bibitem[\protect\citename{McArthur and others, }2023]{mcarthur2023basal}
+McArthur K, McCormack FS and Dow CF (2023) Basal conditions of denman glacier
+  from glacier hydrology and ice dynamics modeling. \emph{The Cryosphere
+  Discussions}, \textbf{2023}, 1--29
 
 \bibitem[\protect\citename{Ng and Liu, }2009]{ng2009temporal}
 Ng F and Liu S (2009) Temporal dynamics of a j{\"o}kulhlaup system.

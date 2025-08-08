@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  7 AUG 2025 13:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  8 AUG 2025 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -10,8 +10,8 @@ L3 programming layer <2024-02-20>
 Document Class: igs 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count188
 \c@section=\count189
@@ -238,205 +238,58 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@olf=\skip67
 \f@nch@O@orf=\skip68
 )
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/libertine.sty
-Package: libertine 2023/11/26 (Bob Tennent) Supports Libertine and Biolinum fon
-ts for all LaTeX engines.
-
-(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifxetex.sty
-Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-)
-(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifluatex.sty
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
-
-(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks27
-\XKV@tempa@toks=\toks28
-)
-\XKV@depth=\count289
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-))
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(/usr/local/texlive/2024/texmf-dist/tex/latex/fontaxes/fontaxes.sty
-Package: fontaxes 2020/07/21 v1.0e Font selection axes
-LaTeX Info: Redefining \upshape on input line 29.
-LaTeX Info: Redefining \itshape on input line 31.
-LaTeX Info: Redefining \slshape on input line 33.
-LaTeX Info: Redefining \swshape on input line 35.
-LaTeX Info: Redefining \scshape on input line 37.
-LaTeX Info: Redefining \sscshape on input line 39.
-LaTeX Info: Redefining \ulcshape on input line 41.
-LaTeX Info: Redefining \textsw on input line 47.
-LaTeX Info: Redefining \textssc on input line 48.
-LaTeX Info: Redefining \textulc on input line 49.
-)
-LaTeX Info: Redefining \oldstylenums on input line 485.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LinLibertine_I.tex))
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/newtxsf.sty
-Package: newtxsf 2024/01/25 v1.056
-
-`newtxsf' v1.056, 2024/01/25 Math macros based on STIX sans serif and txfonts (
-msharpe) (/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
-\tx@Isdigit=\count290
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 58.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/LinuxBiolinumT-TLF/m/n on input lin
-e 58.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/LinuxBiolinumT-TLF/m/n on input li
-ne 58.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/LinuxBiolinumT-TLF/m/n --> OT1/LinuxBiolinumT-TLF/b
-/n on input line 59.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 65.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/LinuxBiolinumT-TLF/m/n on input li
-ne 65.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/LinuxBiolinumT-TLF/m/n on input l
-ine 65.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 66.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/LinuxBiolinumT-TLF/m/it on input l
-ine 66.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/LinuxBiolinumT-TLF/m/it on input 
-line 66.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 67.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 67.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 67.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 69.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/LinuxBiolinumT-TLF/b/n on input li
-ne 69.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/LinuxBiolinumT-TLF/b/n on input li
-ne 69.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/LinuxBiolinumT-TLF/m/it --> OT1/LinuxBiolinumT-TLF/
-b/it on input line 70.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/LinuxBiolinumT-TLF/m/n --> OT1/LinuxBiolinumT-TLF/b
-/n on input line 71.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> OT1/lmtt/b/n on input line 72.
-LaTeX Font Info:    Redeclaring symbol font `letters' on input line 77.
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
 LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/ntxsfmi/m/it on input line 77.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> OML/ntxsfmi/m/it on input line 77.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/ntxsfmi/m/it --> OML/ntxsfmi/b/it on input line 78.
-
-\symlettersA=\mathgroup4
-LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
-(Font)                  U/ntxsfmia/m/it --> U/ntxsfmia/b/it on input line 85.
-Now handling font encoding LMS ...
-... no UTF-8 mapping file for font encoding LMS
-LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 95.
-LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 95.
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> LMS/ntxsy/m/n on input line 95.
-LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 95.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> LMS/ntxsy/m/n on input line 95.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  LMS/ntxsy/m/n --> LMS/ntxsy/b/n on input line 96.
-\symAMSm=\mathgroup5
-LaTeX Font Info:    Overwriting symbol font `AMSm' in version `bold'
-(Font)                  U/ntxsym/m/n --> U/ntxsym/b/n on input line 115.
-\symsymbolsC=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
-(Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 137.
-Now handling font encoding LMX ...
-... no UTF-8 mapping file for font encoding LMX
-LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 150.
-LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 1
-50.
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 150.
-LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 150
-.
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 150.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  LMX/ntxexx/m/n --> LMX/ntxexx/b/n on input line 151.
-\symlargesymbolsTXA=\mathgroup7
-LaTeX Font Info:    Overwriting symbol font `largesymbolsTXA' in version `bold'
-
-(Font)                  U/ntxexa/m/n --> U/ntxexa/b/n on input line 162.
-LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 251.
-LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 252.
-LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 253.
-LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 254.
-LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 255.
-LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 256.
-LaTeX Font Info:    Redeclaring math delimiter \langle on input line 257.
-LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 259.
-LaTeX Font Info:    Redeclaring math delimiter \vert on input line 264.
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 284.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 301.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 302.
-LaTeX Font Info:    Redeclaring math accent \check on input line 303.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 304.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 305.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 306.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 307.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 308.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 309.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 310.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 311.
-LaTeX Font Info:    Redeclaring math accent \vec on input line 1332.
-LaTeX Font Info:    Redeclaring math symbol \m@thbbch@rA on input line 1532.
-LaTeX Info: Redefining \not on input line 1786.
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/was/upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
-\symugrf@m=\mathgroup8
+\symugrf@m=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
-LaTeX Font Info:    Redeclaring math symbol \upalpha on input line 40.
-LaTeX Font Info:    Redeclaring math symbol \upbeta on input line 41.
-LaTeX Font Info:    Redeclaring math symbol \upgamma on input line 42.
-LaTeX Font Info:    Redeclaring math symbol \updelta on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \upepsilon on input line 44.
-LaTeX Font Info:    Redeclaring math symbol \upzeta on input line 45.
-LaTeX Font Info:    Redeclaring math symbol \upeta on input line 46.
-LaTeX Font Info:    Redeclaring math symbol \uptheta on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \upiota on input line 48.
-LaTeX Font Info:    Redeclaring math symbol \upkappa on input line 49.
-LaTeX Font Info:    Redeclaring math symbol \uplambda on input line 50.
-LaTeX Font Info:    Redeclaring math symbol \upmu on input line 51.
-LaTeX Font Info:    Redeclaring math symbol \upnu on input line 52.
-LaTeX Font Info:    Redeclaring math symbol \upxi on input line 53.
-LaTeX Font Info:    Redeclaring math symbol \uprho on input line 55.
-LaTeX Font Info:    Redeclaring math symbol \upsigma on input line 56.
-LaTeX Font Info:    Redeclaring math symbol \uptau on input line 57.
-LaTeX Font Info:    Redeclaring math symbol \upupsilon on input line 58.
-LaTeX Font Info:    Redeclaring math symbol \upphi on input line 59.
-LaTeX Font Info:    Redeclaring math symbol \upchi on input line 60.
-LaTeX Font Info:    Redeclaring math symbol \uppsi on input line 61.
-LaTeX Font Info:    Redeclaring math symbol \upomega on input line 62.
-LaTeX Font Info:    Redeclaring math symbol \upvarepsilon on input line 63.
-LaTeX Font Info:    Redeclaring math symbol \upvartheta on input line 64.
-LaTeX Font Info:    Redeclaring math symbol \upvarpi on input line 65.
-LaTeX Font Info:    Redeclaring math symbol \upvarphi on input line 68.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
@@ -444,34 +297,47 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/local/texlive/2024/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
+
+! Package caption Error: Undefined justification `justified,doublespacing'.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.139 ...ied,doublespacing},singlelinecheck=false}
+                                                  
+If you do not understand this error, please take a closer look
+at the documentation of the `caption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip69
 \enit@outerparindent=\dimen178
-\enit@toks=\toks29
+\enit@toks=\toks27
 \enit@inbox=\box56
-\enit@count@id=\count291
-\enitdp@description=\count292
+\enit@count@id=\count289
+\enitdp@description=\count290
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip70
 \bibsep=\skip71
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count293
-)
-LaTeX Info: Redefining \uppartial on input line 169.
-)
+\c@NAT@ctr=\count291
+))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks30
-\inpenc@posthook=\toks31
+\inpenc@prehook=\toks28
+\inpenc@posthook=\toks29
 )
 (/usr/local/texlive/2024/texmf-dist/tex/generic/mathabx/mathabx.sty
 Package: mathabx 2003/07/29 v0.0 Non-standard LaTeX package mathabx
-\symmatha=\mathgroup9
-\symmathb=\mathgroup10
-\symmathx=\mathgroup11
+\symmatha=\mathgroup7
+\symmathb=\mathgroup8
+\symmathx=\mathgroup9
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/mathabx/mathabx.dcl
 LaTeX Font Info:    Redeclaring math symbol \cdotp on input line 25.
@@ -498,13 +364,9 @@ LaTeX Font Info:    Redeclaring math symbol \approx on input line 85.
 LaTeX Font Info:    Redeclaring math symbol \simeq on input line 86.
 LaTeX Font Info:    Redeclaring math symbol \asymp on input line 89.
 LaTeX Font Info:    Redeclaring math symbol \nsim on input line 97.
-LaTeX Font Info:    Redeclaring math symbol \napprox on input line 98.
-LaTeX Font Info:    Redeclaring math symbol \nsimeq on input line 99.
 LaTeX Font Info:    Redeclaring math symbol \ncong on input line 100.
 LaTeX Font Info:    Redeclaring math symbol \risingdotseq on input line 118.
 LaTeX Font Info:    Redeclaring math symbol \fallingdotseq on input line 119.
-LaTeX Font Info:    Redeclaring math symbol \coloneq on input line 120.
-LaTeX Font Info:    Redeclaring math symbol \eqcolon on input line 121.
 LaTeX Font Info:    Redeclaring math symbol \circeq on input line 125.
 LaTeX Font Info:    Redeclaring math symbol \eqcirc on input line 126.
 LaTeX Font Info:    Redeclaring math symbol \triangleq on input line 127.
@@ -532,15 +394,12 @@ LaTeX Font Info:    Redeclaring math symbol \leftthreetimes on input line 174.
 LaTeX Font Info:    Redeclaring math symbol \rightthreetimes on input line 175.
 
 LaTeX Font Info:    Redeclaring math symbol \pitchfork on input line 176.
-LaTeX Font Info:    Redeclaring math symbol \VDash on input line 180.
 LaTeX Font Info:    Redeclaring math symbol \nVDash on input line 182.
 LaTeX Font Info:    Redeclaring math symbol \Vvdash on input line 184.
 LaTeX Font Info:    Redeclaring math symbol \therefore on input line 189.
 LaTeX Font Info:    Redeclaring math symbol \because on input line 190.
 LaTeX Font Info:    Redeclaring math accent \dot on input line 193.
 LaTeX Font Info:    Redeclaring math accent \ddot on input line 195.
-LaTeX Font Info:    Redeclaring math accent \dddot on input line 197.
-LaTeX Font Info:    Redeclaring math accent \ddddot on input line 199.
 LaTeX Font Info:    Redeclaring math symbol \measuredangle on input line 202.
 LaTeX Font Info:    Redeclaring math symbol \sphericalangle on input line 203.
 LaTeX Font Info:    Redeclaring math symbol \setminus on input line 218.
@@ -574,8 +433,6 @@ LaTeX Font Info:    Redeclaring math symbol \doublecap on input line 331.
 LaTeX Font Info:    Redeclaring math symbol \doublecup on input line 333.
 LaTeX Font Info:    Redeclaring math symbol \subset on input line 344.
 LaTeX Font Info:    Redeclaring math symbol \supset on input line 345.
-LaTeX Font Info:    Redeclaring math symbol \nsubset on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \nsupset on input line 347.
 LaTeX Font Info:    Redeclaring math symbol \subseteq on input line 348.
 LaTeX Font Info:    Redeclaring math symbol \supseteq on input line 349.
 LaTeX Font Info:    Redeclaring math symbol \nsubseteq on input line 350.
@@ -594,14 +451,8 @@ LaTeX Font Info:    Redeclaring math symbol \varsubsetneqq on input line 363.
 LaTeX Font Info:    Redeclaring math symbol \varsupsetneqq on input line 364.
 LaTeX Font Info:    Redeclaring math symbol \Subset on input line 366.
 LaTeX Font Info:    Redeclaring math symbol \Supset on input line 367.
-LaTeX Font Info:    Redeclaring math symbol \nSubset on input line 368.
-LaTeX Font Info:    Redeclaring math symbol \nSupset on input line 369.
-LaTeX Font Info:    Redeclaring math symbol \nsqsubset on input line 378.
-LaTeX Font Info:    Redeclaring math symbol \nsqsupset on input line 379.
 LaTeX Font Info:    Redeclaring math symbol \sqsubseteq on input line 380.
 LaTeX Font Info:    Redeclaring math symbol \sqsupseteq on input line 381.
-LaTeX Font Info:    Redeclaring math symbol \nsqsubseteq on input line 382.
-LaTeX Font Info:    Redeclaring math symbol \nsqsupseteq on input line 383.
 LaTeX Font Info:    Redeclaring math symbol \triangleleft on input line 407.
 LaTeX Font Info:    Redeclaring math symbol \vartriangleleft on input line 408.
 
@@ -649,14 +500,10 @@ LaTeX Font Info:    Redeclaring math symbol \lesseqqgtr on input line 469.
 LaTeX Font Info:    Redeclaring math symbol \gtreqqless on input line 470.
 LaTeX Font Info:    Redeclaring math symbol \lesssim on input line 472.
 LaTeX Font Info:    Redeclaring math symbol \gtrsim on input line 473.
-LaTeX Font Info:    Redeclaring math symbol \nlesssim on input line 474.
-LaTeX Font Info:    Redeclaring math symbol \ngtrsim on input line 475.
 LaTeX Font Info:    Redeclaring math symbol \lnsim on input line 476.
 LaTeX Font Info:    Redeclaring math symbol \gnsim on input line 477.
 LaTeX Font Info:    Redeclaring math symbol \lessapprox on input line 478.
 LaTeX Font Info:    Redeclaring math symbol \gtrapprox on input line 479.
-LaTeX Font Info:    Redeclaring math symbol \nlessapprox on input line 480.
-LaTeX Font Info:    Redeclaring math symbol \ngtrapprox on input line 481.
 LaTeX Font Info:    Redeclaring math symbol \lnapprox on input line 482.
 LaTeX Font Info:    Redeclaring math symbol \gnapprox on input line 483.
 LaTeX Font Info:    Redeclaring math symbol \lessdot on input line 485.
@@ -669,8 +516,6 @@ LaTeX Font Info:    Redeclaring math symbol \nprec on input line 500.
 LaTeX Font Info:    Redeclaring math symbol \nsucc on input line 501.
 LaTeX Font Info:    Redeclaring math symbol \preccurlyeq on input line 502.
 LaTeX Font Info:    Redeclaring math symbol \succcurlyeq on input line 503.
-LaTeX Font Info:    Redeclaring math symbol \npreccurlyeq on input line 504.
-LaTeX Font Info:    Redeclaring math symbol \nsucccurlyeq on input line 505.
 LaTeX Font Info:    Redeclaring math symbol \preceq on input line 506.
 LaTeX Font Info:    Redeclaring math symbol \succeq on input line 507.
 LaTeX Font Info:    Redeclaring math symbol \npreceq on input line 508.
@@ -679,14 +524,10 @@ LaTeX Font Info:    Redeclaring math symbol \curlyeqprec on input line 512.
 LaTeX Font Info:    Redeclaring math symbol \curlyeqsucc on input line 513.
 LaTeX Font Info:    Redeclaring math symbol \precsim on input line 517.
 LaTeX Font Info:    Redeclaring math symbol \succsim on input line 518.
-LaTeX Font Info:    Redeclaring math symbol \nprecsim on input line 519.
-LaTeX Font Info:    Redeclaring math symbol \nsuccsim on input line 520.
 LaTeX Font Info:    Redeclaring math symbol \precnsim on input line 521.
 LaTeX Font Info:    Redeclaring math symbol \succnsim on input line 522.
 LaTeX Font Info:    Redeclaring math symbol \precapprox on input line 523.
 LaTeX Font Info:    Redeclaring math symbol \succapprox on input line 524.
-LaTeX Font Info:    Redeclaring math symbol \nprecapprox on input line 525.
-LaTeX Font Info:    Redeclaring math symbol \nsuccapprox on input line 526.
 LaTeX Font Info:    Redeclaring math symbol \precnapprox on input line 527.
 LaTeX Font Info:    Redeclaring math symbol \succnapprox on input line 528.
 LaTeX Font Info:    Redeclaring math symbol \leftarrow on input line 540.
@@ -723,7 +564,6 @@ LaTeX Font Info:    Redeclaring math symbol \nLeftarrow on input line 581.
 LaTeX Font Info:    Redeclaring math symbol \nRightarrow on input line 582.
 LaTeX Font Info:    Redeclaring math symbol \nLeftrightarrow on input line 583.
 
-LaTeX Font Info:    Redeclaring math symbol \Mapstochar on input line 586.
 LaTeX Font Info:    Redeclaring math symbol \leftleftarrows on input line 593.
 LaTeX Font Info:    Redeclaring math symbol \rightrightarrows on input line 594
 .
@@ -748,7 +588,6 @@ LaTeX Font Info:    Redeclaring math symbol \circlearrowleft on input line 641.
 
 LaTeX Font Info:    Redeclaring math symbol \circlearrowright on input line 642
 .
-LaTeX Font Info:    Redeclaring math symbol \leftsquigarrow on input line 644.
 LaTeX Font Info:    Redeclaring math symbol \rightsquigarrow on input line 645.
 
 LaTeX Font Info:    Redeclaring math symbol \leftrightsquigarrow on input line 
@@ -762,33 +601,13 @@ LaTeX Font Info:    Redeclaring math symbol \boxplus on input line 683.
 LaTeX Font Info:    Redeclaring math symbol \boxminus on input line 684.
 LaTeX Font Info:    Redeclaring math symbol \boxtimes on input line 686.
 LaTeX Font Info:    Redeclaring math symbol \boxdot on input line 688.
-LaTeX Font Info:    Redeclaring math symbol \boxleft on input line 694.
-LaTeX Font Info:    Redeclaring math symbol \boxright on input line 695.
-LaTeX Font Info:    Redeclaring math symbol \boxslash on input line 702.
-\mayacnter=\count294
-\mayacnta=\count295
-\mayacntb=\count296
-\mayacntc=\count297
+\mayacnter=\count292
+\mayacnta=\count293
+\mayacntb=\count294
+\mayacntc=\count295
 \mayawidth=\dimen179
 LaTeX Font Info:    Redeclaring math symbol \intop on input line 753.
-LaTeX Font Info:    Redeclaring math symbol \iintop on input line 754.
-LaTeX Font Info:    Redeclaring math symbol \iiintop on input line 757.
 LaTeX Font Info:    Redeclaring math symbol \ointop on input line 760.
-LaTeX Font Info:    Redeclaring math symbol \oiintop on input line 762.
-
-
-! LaTeX Error: Command `\bigtimes' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.767 ...thSymbol{\bigtimes}       {1}{mathx}{"91}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 842.
 LaTeX Info: Redefining \{ on input line 846.
 LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 848.
@@ -815,12 +634,13 @@ LaTeX Font Info:    Redeclaring math symbol \bracelu on input line 907.
 LaTeX Font Info:    Redeclaring math symbol \braceru on input line 909.
 LaTeX Font Info:    Redeclaring math accent \widehat on input line 944.
 LaTeX Font Info:    Redeclaring math accent \widetilde on input line 946.
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \col@sep=\dimen180
 \ar@mcellbox=\box57
 \extrarowheight=\dimen181
-\NC@list=\toks32
+\NC@list=\toks30
 \extratabsurround=\skip72
 \backup@length=\skip73
 \ar@cellbox=\box58
@@ -847,20 +667,20 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count298
-\l__siunitx_number_exponent_fixed_int=\count299
-\l__siunitx_number_min_decimal_int=\count300
-\l__siunitx_number_min_integer_int=\count301
-\l__siunitx_number_round_precision_int=\count302
-\l__siunitx_number_lower_threshold_int=\count303
-\l__siunitx_number_upper_threshold_int=\count304
-\l__siunitx_number_group_first_int=\count305
-\l__siunitx_number_group_size_int=\count306
-\l__siunitx_number_group_minimum_int=\count307
+\l__siunitx_number_uncert_offset_int=\count296
+\l__siunitx_number_exponent_fixed_int=\count297
+\l__siunitx_number_min_decimal_int=\count298
+\l__siunitx_number_min_integer_int=\count299
+\l__siunitx_number_round_precision_int=\count300
+\l__siunitx_number_lower_threshold_int=\count301
+\l__siunitx_number_upper_threshold_int=\count302
+\l__siunitx_number_group_first_int=\count303
+\l__siunitx_number_group_size_int=\count304
+\l__siunitx_number_group_minimum_int=\count305
 \l__siunitx_angle_tmp_dim=\dimen184
 \l__siunitx_angle_marker_box=\box59
 \l__siunitx_angle_unit_box=\box60
-\l__siunitx_compound_count_int=\count308
+\l__siunitx_compound_count_int=\count306
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
@@ -887,9 +707,9 @@ Package pdftexcmds Info: \pdfdraftmode found.
 \l__siunitx_table_after_box=\box66
 \l__siunitx_table_before_dim=\dimen187
 \l__siunitx_table_carry_dim=\dimen188
-\l__siunitx_unit_tmp_int=\count309
-\l__siunitx_unit_position_int=\count310
-\l__siunitx_unit_total_int=\count311
+\l__siunitx_unit_tmp_int=\count307
+\l__siunitx_unit_position_int=\count308
+\l__siunitx_unit_total_int=\count309
 )
 (./igsnatbib.sty
 Package: igsnatbib 2008/01/18 v1.00 IGS version of natbib.sty
@@ -2028,26 +1848,15 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-LaTeX Font Info:    Trying to load font information for T1+LinuxBiolinumT-TLF o
-n input line 19.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 19
+.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
-File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
-uxBiolinumT-TLF.
-)
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 19.
- (./MANUSCRIPT.aux)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) (./MANUSCRIPT.aux)
 \openout1 = `MANUSCRIPT.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 19.
-LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
-ne 19.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/omlntxsfmi.fd
-File: omlntxsfmi.fd 2014/11/16 Fontinst v1.933 font definitions for OML/ntxsfmi
-.
-)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
@@ -2061,16 +1870,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 19.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 19.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmsntxsy.fd
-File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
-)
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
 LaTeX Info: Command `\dddot' is already robust on input line 19.
 LaTeX Info: Command `\ddddot' is already robust on input line 19.
 
@@ -2081,50 +1880,48 @@ LaTeX Info: Command `\ddddot' is already robust on input line 19.
 * paper: letterpaper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(38.69576pt, 506.45905pt, 69.1402pt)
-* v-part:(T,H,B)=(56.9055pt, 609.85107pt, 128.21341pt)
+* v-part:(T,H,B)=(56.9055pt, 664.16058pt, 73.9039pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
 * \textwidth=506.45905pt
-* \textheight=609.85107pt
+* \textheight=664.16058pt
 * \oddsidemargin=-33.57423pt
-* \evensidemargin=-3.12979pt
-* \topmargin=-44.36082pt
+* \evensidemargin=-33.57423pt
+* \topmargin=-45.6963pt
 * \headheight=14.0pt
-* \headsep=14.99634pt
-* \topskip=10.0pt
+* \headsep=16.33182pt
+* \topskip=11.0pt
 * \footskip=30.0pt
 * \marginparwidth=26.39996pt
 * \marginparsep=6.0pt
 * \columnsep=17.07164pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
-* \@twocolumntrue
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-\c@mv@tabular=\count312
-\c@mv@boldtabular=\count313
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count314
+\scratchcounter=\count310
 \scratchdimen=\dimen189
 \scratchbox=\box67
-\nofMPsegments=\count315
-\nofMParguments=\count316
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count317
+\nofMPsegments=\count311
+\nofMParguments=\count312
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count313
 \MPscratchDim=\dimen190
-\MPnumerator=\count318
-\makeMPintoPDFobject=\count319
-\everyMPtoPDFconversion=\toks34
+\MPnumerator=\count314
+\makeMPintoPDFobject=\count315
+\everyMPtoPDFconversion=\toks32
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -2141,132 +1938,83 @@ nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 19.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 84.
-LaTeX Font Info:    Trying to load font information for OT1+LinuxBiolinumT-TLF 
-on input line 84.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 8
+4.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.f
-d
-File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/L
-inuxBiolinumT-TLF.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.8pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 84.
-LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 84.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/untxsfmia.fd
-File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
+4.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
+4.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
 84.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsym.fd
-File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
 84.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsyc.fd
-File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-84.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 84.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 84.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 84.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 84.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd
-File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/it' in size <10> not av
-ailable
-(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on in
-put line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sl' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 84.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 84.
 
 
-LaTeX Font Warning: Font shape `U/matha/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
-
-
-LaTeX Font Warning: Font shape `U/mathb/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
-
-
-LaTeX Font Warning: Font shape `U/mathx/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
-
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 5.5pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 84.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
 4.
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 86.
-<./figures/Figure_1/Figure_1b.png, id=1, 258.2448pt x 199.2243pt>
+ [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/
+local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
+
+{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/te
+xlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+<./figures/Figure_1/Figure_1b.png, id=18, 258.2448pt x 199.2243pt>
 File: ./figures/Figure_1/Figure_1b.png Graphic file (type png)
 <use ./figures/Figure_1/Figure_1b.png>
 Package pdftex.def Info: ./figures/Figure_1/Figure_1b.png  used on input line 9
 8.
 (pdftex.def)             Requested size: 258.24416pt x 199.22382pt.
-
-Overfull \hbox (13.55046pt too wide) in paragraph at lines 98--99
- [][] 
- []
-
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 99.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 99.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 99.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 109.
-[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
-ocal/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/lo
-cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
-
-
-
-]
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 146.
- [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.en
-c} <./figures/Figure_1/Figure_1b.png>]
-Underfull \hbox (badness 1173) in paragraph at lines 146--149
-\T1/LinuxBiolinumT-TLF/m/n/10 where $\OML/ntxsfmi/m/it/10 A[]$ \T1/LinuxBiolinu
-mT-TLF/m/n/10 is the uni-form lake area, $\OML/ntxsfmi/m/it/10 Q[]$ \T1/LinuxBi
-olinumT-TLF/m/n/10 rep-re-sents ex-
- []
-
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 99.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 99.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 99.
+ [2] [3{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <.
+/figures/Figure_1/Figure_1b.png>] [4]
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
@@ -2290,83 +2038,174 @@ I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 175.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 7.3pt on input line 175.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 175.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 175.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 175.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 6.2pt on input line 175.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 207.
-
-Underfull \vbox (badness 1540) has occurred while \output is active []
-
- [3]
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 236.
-
-Underfull \hbox (badness 1742) in paragraph at lines 260--261
-\T1/LinuxBiolinumT-TLF/m/n/10 The ice-marginal lake un-der-goes re-cur-rent, st
-a-ble, and
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 175.
+[5] [6]
+Underfull \hbox (badness 1024) in paragraph at lines 227--227
+\T1/lmr/m/n/9 but the ice col-umn is as-sumed equiv-a-lent to -10$[]$C or
  []
 
-<./figures/Figure_3/Figure3.png, id=31, 483.7272pt x 600.5637pt>
+
+Overfull \hbox (53.94832pt too wide) in paragraph at lines 215--255
+[][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 86.66281pt on input line 256.
+
+[7] [8]
+<./figures/Figure_3/Figure3.png, id=60, 483.7272pt x 600.5637pt>
 File: ./figures/Figure_3/Figure3.png Graphic file (type png)
 <use ./figures/Figure_3/Figure3.png>
 Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 271
 .
 (pdftex.def)             Requested size: 481.13454pt x 597.3457pt.
 
-LaTeX Warning: Float too large for page by 85.49463pt on input line 274.
+
+LaTeX Warning: Float too large for page by 63.18512pt on input line 274.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4]
-<./figures/Figure_4/Figure4.png, id=36, 509.2626pt x 632.3625pt>
+
+LaTeX Warning: Command \~ invalid in math mode on input line 286.
+
+! Undefined control sequence.
+<argument> \1
+             
+l.286 ...e and flood duration increase until $\~\1
+                                                  2\ \mathrm{years}$ into th...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.286 ...e and flood duration increase until $\~\1
+                                                  2\ \mathrm{years}$ into th...
+I'm changing \accent to \mathaccent here; wish me luck.
+(Accents are not the same in formulas as they are in text.)
+
+! Undefined control sequence.
+<argument> \1
+             
+l.286 ...e and flood duration increase until $\~\1
+                                                  2\ \mathrm{years}$ into th...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing { inserted.
+<to be read again> 
+                   \egroup 
+l.286 ...e and flood duration increase until $\~\1
+                                                  2\ \mathrm{years}$ into th...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.286 ...on increase until $\~\12\ \mathrm{years}$
+                                                   into the simulation when ...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[9]
+<./figures/Figure_4/Figure4.png, id=65, 509.2626pt x 632.3625pt>
 File: ./figures/Figure_4/Figure4.png Graphic file (type png)
 <use ./figures/Figure_4/Figure4.png>
-Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 335
+Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 297
 .
 (pdftex.def)             Requested size: 506.45905pt x 628.8873pt.
 
 
-LaTeX Warning: Float too large for page by 62.03622pt on input line 338.
+LaTeX Warning: Float too large for page by 22.72672pt on input line 300.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+Runaway argument?
+{m\,a^{-1}$) is associated with the low $k_{\mathrm {c}}$ case (Fig.~\ETC.
+! Paragraph ended before \math@egroup was complete.
+<to be read again> 
+                   \par 
+l.303 
+      
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.303 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.303 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 344.
+               Default added (so using `!tbp') on input line 305.
 
-<./figures/Figure_5/Figure5.png, id=37, 509.2626pt x 361.35pt>
+<./figures/Figure_5/Figure5.png, id=66, 509.2626pt x 361.35pt>
 File: ./figures/Figure_5/Figure5.png Graphic file (type png)
 <use ./figures/Figure_5/Figure5.png>
-Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 345
+Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 306
 .
 (pdftex.def)             Requested size: 506.45905pt x 359.36417pt.
+[10]
 ! Too many }'s.
-l.364 ...\mathrm{b}}$ and $H$ [REF]. The MAR [REF}
+l.315 ...\mathrm{b}}$ and $H$ [REF]. The MAR [REF}
                                                    surface mass balance (SMB...
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
+[11]
+! Missing } inserted.
+<inserted text> 
+                }
+l.321 ...m{w}\approx 0.7--0.9\times p_{\mathrm{i}$
+                                                  ). In the transient phase,...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-Package natbib Warning: Citation `ehrenfeucht2023seasonal' on page 5 undefined 
-on input line 368.
+! Missing } inserted.
+<inserted text> 
+                }
+l.321 ...m{w}\approx 0.7--0.9\times p_{\mathrm{i}$
+                                                  ). In the transient phase,...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-
-Package natbib Warning: Citation `mcarthur2023basal' on page 5 undefined on inp
-ut line 368.
-
-[5] (./MANUSCRIPT.bbl
+[12] (./MANUSCRIPT.bbl
 
 ! LaTeX Error: No counter 'dummy' defined.
 
@@ -2374,78 +2213,58 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \begin{thebibliography}{14}
+l.1 \begin{thebibliography}{16}
                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-Underfull \hbox (badness 1895) in paragraph at lines 15--18
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Dømgaard M, Kjeld-sen K, How P and Bjørk A (202
-4)
- []
-
-
-Underfull \hbox (badness 1735) in paragraph at lines 65--67
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Walder JS and Fowler A (1994) Chan-nel-ized sub
--glacial
- []
-
-
-Underfull \hbox (badness 6173) in paragraph at lines 69--72
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Werder MA, He-witt IJ, Schoof CG and Flow-ers G
-E
- []
-
-) [6]
-
-Package natbib Warning: There were undefined citations.
-
-
-Package natbib Warning: There were undefined citations.
-
-[7] [8 <./figures/Figure_3/Figure3.png>] [9 <./figures/Figure_4/Figure4.png>]
-[10 <./figures/Figure_5/Figure5.png>] (./MANUSCRIPT.aux)
+[13]) [14] [15] [16] [17] [18 <./figures/Figure_3/Figure3.png>] [19 <./figures/
+Figure_4/Figure4.png>] [20 <./figures/Figure_5/Figure5.png>] (./MANUSCRIPT.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
-
  ) 
 Here is how much of TeX's memory you used:
- 14662 strings out of 474116
- 291156 string characters out of 5743682
- 1961187 words of memory out of 5000000
- 36741 multiletter control sequences out of 15000+600000
- 724703 words of font info for 243 fonts, out of 8000000 for 9000
+ 12536 strings out of 474116
+ 255846 string characters out of 5743682
+ 1948187 words of memory out of 5000000
+ 34676 multiletter control sequences out of 15000+600000
+ 677731 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,18n,93p,2141b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
-.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolin
-umTB.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBi
-olinumTBO.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/
-LinBiolinumTI.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmt
-k10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha9.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (10 pages, 2376258 bytes).
+ 80i,18n,93p,2130b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/l
+mmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
+pe1/public/lm/lmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/l
+m/lmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr7.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/lm/lmri7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
+1/public/lm/lmri9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
+/lmss8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha9.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb>
+Output written on MANUSCRIPT.pdf (20 pages, 2535057 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 235 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

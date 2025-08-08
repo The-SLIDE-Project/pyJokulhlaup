@@ -4,45 +4,45 @@ The top-level auxiliary file: MANUSCRIPT.aux
 The style file: igs.bst
 Database file #1: Jokulhlaup.bib
 Warning--empty journal in livingstone2025ice
-You've used 14 entries,
+You've used 16 entries,
             2869 wiz_defined-function locations,
-            691 strings with 7652 characters,
-and the built_in function-call counts, 17426 in all, are:
-= -- 1870
-> -- 394
+            702 strings with 8093 characters,
+and the built_in function-call counts, 19905 in all, are:
+= -- 2137
+> -- 446
 < -- 10
-+ -- 136
-- -- 123
-* -- 1321
-:= -- 1889
-add.period$ -- 13
-call.type$ -- 14
-change.case$ -- 131
-chr.to.int$ -- 15
-cite$ -- 15
-duplicate$ -- 1812
-empty$ -- 1327
-format.name$ -- 174
-if$ -- 3605
++ -- 154
+- -- 139
+* -- 1513
+:= -- 2157
+add.period$ -- 15
+call.type$ -- 16
+change.case$ -- 149
+chr.to.int$ -- 17
+cite$ -- 17
+duplicate$ -- 2068
+empty$ -- 1520
+format.name$ -- 196
+if$ -- 4119
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 170
-newline$ -- 49
-num.names$ -- 56
-pop$ -- 888
+missing$ -- 194
+newline$ -- 55
+num.names$ -- 64
+pop$ -- 1013
 preamble$ -- 1
-purify$ -- 117
+purify$ -- 133
 quote$ -- 0
-skip$ -- 368
+skip$ -- 418
 stack$ -- 0
-substring$ -- 2049
-swap$ -- 408
+substring$ -- 2354
+swap$ -- 464
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 187
+type$ -- 213
 warning$ -- 1
-while$ -- 109
+while$ -- 124
 width$ -- 0
-write$ -- 172
+write$ -- 196
 (There was 1 warning)
