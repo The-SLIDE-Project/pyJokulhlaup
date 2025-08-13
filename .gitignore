@@ -11,10 +11,6 @@
 *tar
 *.tar.gz
 
-
-
-
-
 test/
 [TEST]*
 
