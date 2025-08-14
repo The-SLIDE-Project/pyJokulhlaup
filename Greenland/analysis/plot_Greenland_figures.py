@@ -108,6 +108,12 @@ Qc = np.load(Qc_path)
 # Create a mesh triangulation
 meshtri = Triangulation(x, y, md.mesh.elements-1)
 
+# Set lake and outlet positions
+# Add lake outlet and spc outlet
+lakepos1 = 6168
+lakepos2 = 8733
+spcpos  = 10655
+
 # Create a figure with GridSpec
 fig1 = plt.figure(figsize=(7.04724, 7))
 gs1 =gridspec.GridSpec(5,3,
@@ -190,13 +196,10 @@ ax1.add_collection(spc)
 ax1.text(bar_x + bar_length/2, bar_y + bar_height + 0.075*(ymax - ymin),  # a little below bar
          '5 km', ha='center', va='top', fontsize=10, color='k')
 
-# Add lake outlet and spc outlet
-lakepos = np.where(lakemask == 1)
+lakepos = [lakepos1, lakepos2]  # Combine lakepos1 and lakepos2 into a single list
 
-spcpos  = 10655
-
-for idx in lakepos[0]:  # use lakepos[0] because np.where returns a tuple
-    ax1.plot(x[idx], y[idx], marker='*', color='fuchsia',markeredgecolor='black', markersize=11)
+for idx in lakepos:  # Iterate through both lake positions
+    ax1.plot(x[idx], y[idx], marker='*', color='fuchsia', markeredgecolor='black', markersize=11)
 
 ax1.plot(x[spcpos], y[spcpos], marker='^', color='turquoise',markeredgecolor='black', markersize=9)
 
@@ -220,7 +223,13 @@ ax1.legend(
 )
 
 # Get coordinates for all lake outlets
-lake_coords = [(x[idx], y[idx]) for idx in lakepos[0]]
+lake_coords = (x[lakepos1], y[lakepos1])
+lake_coord2 = (x[lakepos2], y[lakepos2])
+
+# Combine lake coordinates into a list
+lake_coords = [lake_coords, lake_coord2]
+
+
 
 # Sort by x-coordinate to determine west vs east
 lake_coords_sorted = sorted(lake_coords, key=lambda p: p[0])  # (west, east)
@@ -439,17 +448,17 @@ ax1.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax1.xaxis.set_minor_locator(MultipleLocator(1/12))
 ax1.set_xlabel('Model time [yrs]', fontsize=10)
 ax1_secondary = ax1.twinx()
-ax1_secondary.plot(tt, np.max(Qr, axis=0), color='gray', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
+ax1_secondary.plot(tt, np.sum(Qr, axis=0), color='gray', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
 ax1_secondary.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]', fontsize=10,rotation=270, labelpad=15,color='gray')
 ax1.set_xlim(2017.25,2019.25)
 ax1.margins(x=0, y=0)
 ax1.set_ylim(0, 120)
-ax1_secondary.set_ylim(-20, 80)
+ax1_secondary.set_ylim(-40, 80)
 # Add vertical line
 time_to_show_1 = 1710
 time_to_show_2 = 1765
 time_to_show_3 = 1850
-time_to_show_4 = 1905
+time_to_show_4 = 1925
 time_to_show_5 = 2000
 
 ax1.axvline(tt[time_to_show_1], color='gray', linestyle='--', linewidth=1)
@@ -534,6 +543,10 @@ lc1 = LineCollection(lc_xy1, colors=lc_colors1, linewidths=lc_lw1,
     capstyle='round')
 lc1.set(rasterized=True)
 ax2.add_collection(lc1)
+ax2.plot(mesh['x'][(lakepos1)], mesh['y'][(lakepos1)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax2.plot(mesh['x'][(lakepos2)], mesh['y'][(lakepos2)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+# Plot the glacier outlet position
+ax2.plot(mesh['x'][spcpos], mesh['y'][spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 #cax2 = ax2.inset_axes((1.01, 0, 0.03, 1))
 #cb1 = fig1.colorbar(matplotlib.cm.ScalarMappable(norm=cnorm, cmap=cmocean.cm.ice_r),
 #    cax=cax2, orientation='vertical')
@@ -595,7 +608,11 @@ lc2 = LineCollection(lc_xy2, colors=lc_colors2, linewidths=lc_lw2,
     capstyle='round')
 lc2.set(rasterized=True)
 ax3.add_collection(lc2)
-cax3 = ax3.inset_axes((0, -0.9, 0.7, 0.06))
+cax3 = ax3.inset_axes((0.1, -0.9, 0.7, 0.06))
+ax3.plot(mesh['x'][(lakepos1)], mesh['y'][(lakepos1)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax3.plot(mesh['x'][(lakepos2)], mesh['y'][(lakepos2)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+# Plot the glacier outlet position
+ax3.plot(mesh['x'][spcpos], mesh['y'][spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 
 # --- fourth plot: Qc time series 3
 #tric3 = ax4.tripcolor(meshtri, bed, cmap=cmocean.cm.gray_r, edgecolors='w', linewidths=0.01, alpha=0.75)
@@ -688,6 +705,31 @@ ax5.text(bar_x + bar_length/2, bar_y + bar_height + 0.15*(ymax - ymin),  # a lit
          '5 km', ha='center', va='top', fontsize=10, color='k')
 
 
+ax5.plot(mesh['x'][(lakepos1)], mesh['y'][(lakepos1)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax5.plot(mesh['x'][(lakepos2)], mesh['y'][(lakepos2)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+# Plot the glacier outlet position
+ax5.plot(mesh['x'][spcpos], mesh['y'][spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+
+# Create dummy handles for legend
+lake_handle = plt.Line2D([], [], marker='*', color='fuchsia',markeredgecolor='black', linestyle='none',
+                         markersize=9, label='Lake outlet', markeredgewidth=0.5)
+spc_handle  = plt.Line2D([], [], marker='^', color='turquoise',markeredgecolor='black', linestyle='none',
+                         markersize=8, label='Glacier outlet', markeredgewidth=0.5)
+
+# Legend position just to the right of the scale bar
+legend_x = bar_x + bar_length + 0.25e3   # 0.5 km gap to the right
+legend_y = (bar_y + bar_height /2) - 0.6e3       # vertically centered on bar
+
+ax5.legend(
+    handles=[lake_handle, spc_handle],
+    loc='center left',                   # anchor legend's left edge to this point
+    bbox_to_anchor=(legend_x, legend_y),
+    bbox_transform=ax5.transData,        # match data coords of scale bar
+    frameon=False,
+    fontsize=8
+)
+
+
 
 
 # --- sixth plot: Qc time series 5
@@ -723,13 +765,18 @@ lc5 = LineCollection(lc_xy5, colors=lc_colors5, linewidths=lc_lw5,
     capstyle='round')
 lc5.set(rasterized=True)
 ax6.add_collection(lc5)
+ax6.plot(mesh['x'][(lakepos1)], mesh['y'][(lakepos1)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax6.plot(mesh['x'][(lakepos2)], mesh['y'][(lakepos2)], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+# Plot the glacier outlet position
+ax6.plot(mesh['x'][spcpos], mesh['y'][spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 
 #cax1 = ax6.inset_axes((0.1, -0.2, 1, 0.03))
 cb1 = fig1.colorbar(matplotlib.cm.ScalarMappable(norm=cnorm, cmap=cmocean.cm.ice_r),
     cax=cax3, orientation='horizontal')
-cb1.set_ticks([Qcmin,100,200,300])
+cb1.set_ticks([Qcmin, 100, 200, 300])
+cb1.ax.tick_params(labelsize=8)
 cb1.ax.xaxis.set_label_position('top')
-cb1.set_label('$Q_{\mathrm{c}}$ [m$^3$ s$^{-1}$]', fontsize=10)
+cb1.set_label('$Q_{\mathrm{c}}$ [m$^3$ s$^{-1}$]', fontsize=8)
 
 # Labels for time
 ax2.text(0.37, 0.91, f"{tt[time_to_show_1]:.2f} yrs", transform=ax2.transAxes,
