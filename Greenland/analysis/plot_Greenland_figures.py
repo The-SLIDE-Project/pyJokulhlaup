@@ -47,7 +47,7 @@ from src.utils import *
 
 #Set model path
 
-IS_dir = '../models/6-TrQin-transient-20-06-2025-08-19'
+IS_dir = '../models/7-HiStartLh-transient-14-08-2025-08-50'
 print(os.getcwd())
 Fig_dir = 'figures'
 if not os.path.exists(Fig_dir):
@@ -113,6 +113,13 @@ meshtri = Triangulation(x, y, md.mesh.elements-1)
 lakepos1 = 6168
 lakepos2 = 8733
 spcpos  = 10655
+
+# Set time span for  shading in fig 1 and span of fig 2
+time_to_show_1 = 1710
+time_to_show_2 = 1765
+time_to_show_3 = 1850
+time_to_show_4 = 1925
+time_to_show_5 = 2000
 
 # Create a figure with GridSpec
 fig1 = plt.figure(figsize=(7.04724, 7))
@@ -302,6 +309,8 @@ ax4.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax4.xaxis.set_minor_locator(MultipleLocator(1))
 ax4.set_xlabel('')  # Hide the x-axis label
 ax4.margins(x=0,y=0)
+ax4.axvspan(
+    tt[time_to_show_1], tt[time_to_show_5],alpha=0.15,color='grey')
 
 # --- fourth row, lh ---
 # Load lake height record
@@ -351,6 +360,8 @@ ax5.set_xlim([np.floor(np.min(runoff_tt)), np.ceil(np.max(runoff_tt))])
 ax5.margins(x=0,y=0.05)
 ax5.legend(loc='upper right', fontsize=6, frameon=True, handlelength=0.5, handletextpad=0.2,
            labelspacing=0.1, borderpad=0.1, borderaxespad=0.1,facecolor='white',edgecolor='none')
+ax5.axvspan(
+    tt[time_to_show_1], tt[time_to_show_5],alpha=0.15,color='grey')
 
 # --- fifth row, Qr ---
 ax6.plot(tt,np.sum(Qr,axis=0), color='black', linewidth=1)
@@ -361,6 +372,8 @@ ax6.xaxis.set_minor_locator(MultipleLocator(1))
 ax6.set_xlabel('Model time [yrs]',fontsize=10)
 ax6.set_xlim([np.floor(np.min(runoff_tt)), np.ceil(np.max(runoff_tt))])
 ax6.margins(x=0,y=0.05)
+ax6.axvspan(
+    tt[time_to_show_1], tt[time_to_show_5],alpha=0.15,color='grey')
 
 # Add vertical line
 ax4.axvline(tt[time_to_show], color='gray', linestyle='--', linewidth=1)
@@ -386,6 +399,34 @@ ax6.text(
     'c',
     ha='center', va='bottom',
     fontsize=10,
+    transform=matplotlib.transforms.blended_transform_factory(ax6.transData, ax6.transAxes)    
+)
+
+mid_tt = tt[time_to_show_1] + (tt[time_to_show_5] - tt[time_to_show_1]) / 2
+
+# Label span of figure 2
+ax4.text(
+    mid_tt, 0.83,
+    'Fig.X',
+    ha='center', va='bottom',
+    fontsize=8,
+    color='gray',
+    transform=matplotlib.transforms.blended_transform_factory(ax4.transData, ax4.transAxes)    
+)
+ax5.text(
+    mid_tt, 0.83,
+    'Fig.X',
+    ha='center', va='bottom',
+    fontsize=8,
+    color='gray',
+    transform=matplotlib.transforms.blended_transform_factory(ax5.transData, ax5.transAxes)    
+)
+ax6.text(
+    mid_tt, 0.83,
+    'Fig.X',
+    ha='center', va='bottom',
+    fontsize=8,
+    color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax6.transData, ax6.transAxes)    
 )
 
@@ -454,12 +495,7 @@ ax1.set_xlim(2017.25,2019.25)
 ax1.margins(x=0, y=0)
 ax1.set_ylim(0, 120)
 ax1_secondary.set_ylim(-40, 80)
-# Add vertical line
-time_to_show_1 = 1710
-time_to_show_2 = 1765
-time_to_show_3 = 1850
-time_to_show_4 = 1925
-time_to_show_5 = 2000
+
 
 ax1.axvline(tt[time_to_show_1], color='gray', linestyle='--', linewidth=1)
 ax1.axvline(tt[time_to_show_2], color='gray', linestyle='--', linewidth=1)
