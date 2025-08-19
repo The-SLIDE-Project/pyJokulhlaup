@@ -36,6 +36,7 @@ from model import model
 from meshconvert import meshconvert
 
 from src.utils import *
+from matplotlib.collections import LineCollection
 
 
 md = model()
@@ -111,8 +112,8 @@ ax1.set_ylim([0, 3e3])
 # Convert ticks to km labels
 ax1.set_xticklabels([f"{x / 1e3:.0f}" for x in ax1.get_xticks()])
 ax1.set_yticklabels([f"{y / 1e3:.0f}" for y in ax1.get_yticks()])
-ax1.set_xlabel('X [km]')
-ax1.set_ylabel('Y [km]')
+ax1.set_xlabel('$X$ [km]')
+ax1.set_ylabel('$Y$ [km]')
 
 ax2 = fig2.add_subplot(gs[1, 0],projection='3d', computed_zorder=False, facecolor='none')
 ax2.plot_trisurf(mtri, bed, cmap=cmocean.cm.ice, vmin=0, vmax=60,
@@ -137,8 +138,8 @@ ax2.set_ylim([0, 3e3])
 # Convert ticks to km labels
 ax2.set_xticklabels([f"{x / 1e3:.0f}" for x in ax1.get_xticks()])
 ax2.set_yticklabels([f"{y / 1e3:.0f}" for y in ax1.get_yticks()])
-ax2.set_xlabel('X [km]',labelpad=1)
-ax2.set_ylabel('Y [km]',labelpad=0.5)
+ax2.set_xlabel('$X$ [km]',labelpad=1)
+ax2.set_ylabel('$Y$ [km]',labelpad=0.5)
 ax2.set_zlim([0, 300])
 ax2.xaxis.set_rotate_label(True)
 ax2.yaxis.set_rotate_label(True)
@@ -172,6 +173,7 @@ fig2.savefig(os.path.join(filedir, 'figure2/figure2.svg'), dpi=300)
 
 # Load default results
 resdir = '../experiments/RES/output_run_1_Default'
+#resdir = '../experiments/RES/output_run_19_LoBSin'
 ff_path = os.path.join(resdir, 'ff.npy')
 ff = np.load(ff_path)
 phi_path = os.path.join(resdir, 'phi.npy')
@@ -203,7 +205,7 @@ md.geometry.base = md.geometry.bed
 
 # indexing channels
 # Find index of value closest to 7 and 9
-idx1 = np.argmin(np.abs(tt - 7.1))
+idx1 = np.argmin(np.abs(tt - 8))
 idx3 = np.argmin(np.abs(tt - 9))
 # Find idx2: index of max Qr value between idx1 and idx3 (inclusive)
 idx2_relative = np.argmax(Qr[lakepos,idx1:idx3 + 1])
@@ -229,9 +231,9 @@ fig3.subplots_adjust(left=0.075, right=0.925, top=0.98, bottom=0.05)
 
 # --- Ax1: top-left plot (l_h)
 ax1 = fig3.add_subplot(gs[0, 0])
-ax1.set_xlabel('Model time [yrs]',labelpad=0.05)  # Reduce padding between label and tick labels
-ax1.set_ylabel('$l_h$ [m]',labelpad=2.5)
-ax1.plot(tt, lh[lakepos, :], color='black', linestyle='-', label='$l_h$ (Lake Height)')
+ax1.set_xlabel('$t$ [yrs]',labelpad=0.05)  # Reduce padding between label and tick labels
+ax1.set_ylabel('$l_{\mathrm{h}}$ [m]',labelpad=2.5)
+ax1.plot(tt, lh[lakepos, :], color='black', linestyle='-', label='$l_\mathrm{h}$ (Lake Height)')
 rect = matplotlib.patches.Rectangle(
     (6.9, 17),         # (x, y) bottom-left corner
     11.1 - 6.9,        # width
@@ -257,8 +259,8 @@ ax1.xaxis.set_minor_locator(MultipleLocator(1))
 
 # --- Ax2: top-right plot (Qr)
 ax2 = fig3.add_subplot(gs[0, 1])
-ax2.set_xlabel('Model time [yrs]',labelpad=0.05)
-ax2.set_ylabel('$Q_r$ [m$^3$s$^-1$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
+ax2.set_xlabel('$t$ [yrs]',labelpad=0.05)
+ax2.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$s$^{-1}$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
 ax2.yaxis.set_label_position("right")
 ax2.yaxis.tick_right()
 ax2.plot(tt, Qr[lakepos, :], color='gray', linestyle='-', label='$Q_r$ (Lake Discharge)')
@@ -288,8 +290,15 @@ ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax2.xaxis.set_minor_locator(MultipleLocator(1))   
 # --- Ax3: second row plot (Q_c time i)
+cmap_plot = cmocean.cm.ice_r
+lscale_plot = 3  # Scale for the quiver plot
+Qcmin = 0.5
+Qcmax = 50
+
 ax3 = fig3.add_subplot(gs[2, :])
-ax3, sm1 = plotchannels(mesh,np.abs(Qc[:,idx1]),contours=True,phi=phi[:,idx1]/1e6,ax=ax3,min=0.5,quiver=False)
+#ax3, sm1 = plotchannels(mesh,np.abs(Qc[:,idx1]),contours=True,phi=phi[:,idx1]/1e6,ax=ax3,min=0.5,quiver=False)
+ax3, sm1  = plotchannels2(mesh, Qc[:, idx1], contours=True, phi=phi[:, idx1]/1e6, ax=ax3, 
+                          vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot,colormap=cmap_plot)
 ax3.set_xlim([0, 10e3])
 ax3.set_ylim([0, 3e3])
 ax3.set_xticks([])  # Hide the x-axis ticks
@@ -298,33 +307,56 @@ ax3.set_yticks(ax3.get_yticks())
 ax3.set_yticklabels([f"{y / 1e3:.0f}" for y in ax3.get_yticks()])
 ax3.text(0.01, 0.9, f"{tt[idx1]:.2f} yrs", transform=plt.gca().transAxes,
     ha='left', va='center', fontsize=10)
-divider1 = make_axes_locatable(ax3)
-cax1 = divider1.append_axes("right", size="3%", pad=0.1)  # Reduce size and padding
-cbar1 = fig3.colorbar(sm1, cax=cax1)
+
+# Annotate lake outlet
+x_pos, y_pos = md.mesh.x[lakepos], md.mesh.y[lakepos]
+ax3.annotate(
+    'Lake \noutlet',
+    xy=(x_pos, y_pos),
+    xycoords='data',
+    xytext=(1.1, 0.5),
+    textcoords='axes fraction',
+    arrowprops=dict(facecolor='black', arrowstyle='->'),
+    fontsize=10,
+    color='black',
+    ha='left',
+    va='center',
+    bbox=dict(boxstyle='round,pad=0.1', fc='white', ec='white', lw=0.9)
+)
 
 
 
 # --- Ax4: third row plot (Q_c time ii)
 ax4 = fig3.add_subplot(gs[4, :])  # Extend ax4 across both columns
-ax4, sm2 = plotchannels(mesh, np.abs(Qc[:, idx2]),contours=True,phi=phi[:,idx2]/1e6, ax=ax4, min=0.5, quiver=False)
+#ax4, sm2 = plotchannels(mesh, np.abs(Qc[:, idx2]),contours=True,phi=phi[:,idx2]/1e6, ax=ax4, min=0.5, quiver=False)
+ax4, sm2  = plotchannels2(mesh, Qc[:, idx2], contours=True, phi=phi[:, idx2]/1e6, ax=ax4,
+                          vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot,colormap=cmap_plot)
 ax4.set_xlim([0, 10e3])
 ax4.set_ylim([0, 3e3])
 ax4.text(0.01, 0.9, f"{tt[idx2]:.2f} yrs", transform=plt.gca().transAxes,
          ha='left', va='center', fontsize=10)
 ax4.set_xticks([])  # Hide the x-axis ticks
 ax4.set_xlabel('')  # Hide the x-axis label
-ax4.set_ylabel('Y [km]')  # Set the y-axis label
+ax4.set_ylabel('$Y$ [km]')  # Set the y-axis label
 ax4.set_yticks(ax4.get_yticks())
 ax4.set_yticklabels([f"{y / 1e3:.0f}" for y in ax4.get_yticks()])
-# Adjust colorbar size
-divider2 = make_axes_locatable(ax4)
-cax2 = divider2.append_axes("right", size="3%", pad=0.1)  # Reduce size and padding
+cax2 = fig3.add_axes([0.86, 0.47, 0.02, 0.2])  # [x0, y0, width, height] in figure coords
 cbar2 = fig3.colorbar(sm2, cax=cax2)
-cbar2.set_label('$Q_c$ [m$^3$s$^{-1}$]',rotation=270,labelpad=15)  # Rotate label and adjust padding
+
+# Add colorbar
+cbar2 = fig3.colorbar(sm2, cax=cax2,shrink=1.2, aspect=20)
+
+cbar2.set_label('$Q_{\mathrm{c}}$ [m$^3$s$^{-1}$]', rotation=270, labelpad=15)  # Rotate label and adjust padding
+# Add tick labels every 10
+cbar2.set_ticks([1,10,20,30,40,50])
+
+
 
 # --- Ax5: fourth row plot (Q_c time iii)
 ax5 = fig3.add_subplot(gs[6, :])
-ax5, sm3 = plotchannels(mesh, np.abs(Qc[:, idx3]),contours=True,phi=phi[:,idx3]/1e6, ax=ax5, min=0.5, quiver=False)
+#ax5, sm3 = plotchannels(mesh, np.abs(Qc[:, idx3]),contours=True,phi=phi[:,idx3]/1e6, ax=ax5, min=0.5, quiver=False)
+ax5, sm3  = plotchannels2(mesh, Qc[:, idx3], contours=True, phi=phi[:, idx3]/1e6, ax=ax5,
+                           vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot,colormap=cmap_plot)
 ax5.set_xlim([0, 10e3])
 ax5.set_ylim([0, 3e3])
 ax5.text(0.01, 0.9, f"{tt[idx3]:.2f} yrs", transform=plt.gca().transAxes,
@@ -337,11 +369,7 @@ ax5.set_xticklabels([f"{x / 1e3:.0f}" for x in ax5.get_xticks()])
 ax5.set_yticks(ax5.get_yticks())
 ax5.set_yticklabels([f"{y / 1e3:.0f}" for y in ax5.get_yticks()])
 
-ax5.set_xlabel('X [km]',labelpad=0.02)  # Set the x-axis label
-
-divider3 = make_axes_locatable(ax5)
-cax3 = divider3.append_axes("right", size="3%", pad=0.1)  # Reduce size and padding
-cbar3 = fig3.colorbar(sm3, cax=cax3)
+ax5.set_xlabel('$X$ [km]',labelpad=0.02)  # Set the x-axis label
 
 
 # --- Ax6: bottom-left plot (Qr vs N phase plane)
@@ -350,12 +378,21 @@ ax6 = fig3.add_subplot(gs[8,0])
 QrLake = Qr[lakepos, :]
 NLake = N[lakepos, :] / 1e6  # Convert to MPa
 ax6.set_xlabel('$N$ [MPa]',labelpad=0.5)
-ax6.set_ylabel('$Q_r$ [m$^3$s$^{-1}$]',labelpad=2.5)
+ax6.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$s$^{-1}$]',labelpad=2.5)
 
 # Plot line in the background
-ax6.plot(NLake, QrLake, alpha=0.5, color='gray')
+#ax6.plot(NLake, QrLake, alpha=0.5, color='gray')
 # Plot scatter points on top, using a greyscale colormap
-scatter = ax6.scatter(NLake, QrLake, c=tt, cmap='Greys', s=15, edgecolor='none', zorder=10)
+# Create a line whose color varies with `tt`
+points = np.array([NLake, QrLake]).T.reshape(-1, 1, 2)
+segments = np.concatenate([points[:-1], points[1:]], axis=1)
+lc = LineCollection(segments, cmap=cmocean.cm.matter, norm=plt.Normalize(tt.min(), tt.max()))
+lc.set_array(tt)
+lc.set_linewidth(3)  # Set line width
+ax6.add_collection(lc)
+
+# Add a colorbar for the line
+scatter = lc  # For compatibility with the existing colorbar setup
 
 #set up divider for ax6
 divider4 = make_axes_locatable(ax6)
@@ -363,7 +400,7 @@ cax4 = divider4.append_axes("top", size="5%", pad=0.05)
 cbar4 = fig3.colorbar(scatter, cax = cax4, orientation='horizontal')
 cax4.xaxis.set_ticks_position('top')
 cax4.xaxis.set_label_position('top')
-cbar4.set_label('Model time [yrs]')
+cbar4.set_label('$t$ [yrs]')
 formatter = matplotlib.ticker.FormatStrFormatter('%d')
 cbar4.formatter = formatter
 cbar4.set_ticks(np.arange(0, 20, 5))
@@ -376,7 +413,7 @@ lake_empty_N = (9.81 * md.materials.rho_ice * md.geometry.thickness[lakepos]) / 
 ax6.axvline(x=lake_empty_N, linestyle='--', color='black', label='Lake empty')
 
 # Annotate "lake empty" aligned with lake_empty_N
-text_str = '$l_h=0$ m'
+text_str = '$l_{\mathrm{h}}=0$ m'
 text_obj = ax6.text(
     lake_empty_N,
     QrLake.min() + 0.75 * (QrLake.max() - QrLake.min()), 
@@ -400,7 +437,7 @@ ax6.text(mid_x, Qr_line - 0.04 * (QrLake.max() - QrLake.min()), 'lake filling',
      verticalalignment='top', horizontalalignment='center',fontsize=8)
 
 
-
+"""
 num_points = len(NLake)
 arrow_indices = [int(num_points * 0.05), int(num_points * 0.15), int(num_points * 0.25), 
                  int(num_points * 0.35), int(num_points * 0.45), int(num_points * 0.55), 
@@ -412,7 +449,7 @@ for i in arrow_indices:
     x_head, y_head = NLake[i], QrLake[i]
     # Get a preceding point for the arrow's tail to indicate direction
     # A small step-back (e.g., 5 points) makes the arrow clear
-    step_back = 5
+    step_back = 10
     if i > step_back:
         x_tail, y_tail = NLake[i - step_back], QrLake[i - step_back]
         ax6.annotate(
@@ -422,7 +459,7 @@ for i in arrow_indices:
             arrowprops=dict(arrowstyle="->", color='black', lw=1.5),
             zorder=20 # Ensure arrows are drawn on top
         )
-
+"""
 
 ax6.set_xlim(NLake.min()-0.05, lake_empty_N+0.05)
 ax6.set_ylim(-5, QrLake.max()+5)
@@ -433,8 +470,8 @@ ax6.margins(x=0, y=0)
 # --- Ax7: bottom-right plot (ub vs x hovmoller)
 """
 ax7 = fig3.add_subplot(gs[8,1])
-ax7.set_xlabel('Model time [yrs]')
-ax7.set_ylabel('X [km]', labelpad=0.05)  # Reduce padding between label and tick labels
+ax7.set_xlabel('$t$ [yrs]')
+ax7.set_ylabel('$X$ [km]', labelpad=0.05)  # Reduce padding between label and tick labels
 
 # width average vel
 [vel_avg, xedge] = width_average(mesh,vel,dx=0.15)
@@ -456,9 +493,9 @@ levels_to_label = [200]  # Contour levels you want to label
 
 
 ax7 = fig3.add_subplot(gs[8, 1])
-ax7.set_xlabel('Model time [yrs]',labelpad=0.5)
+ax7.set_xlabel('$t$ [yrs]',labelpad=0.5)
 ax7.xaxis.set_minor_locator(MultipleLocator(1))   
-ax7.set_ylabel('X [km]', labelpad=0.001)  # Reduce padding between label and tick labels
+ax7.set_ylabel('$X$ [km]', labelpad=0.001)  # Reduce padding between label and tick labels
 
 # Width average velocity
 [vel_avg, xedge] = width_average(mesh, vel, dx=0.15)
@@ -480,7 +517,7 @@ cs = ax7.contour(T[:-1, :-1], X[:-1, :-1], np.transpose(vel_avg),
 # add Qr
 ax7r = ax7.twinx()
 ax7r.plot(tt, QrLake, color='k', label='Qr',linewidth=1.5)
-ax7r.set_ylabel('$Q_r$ [m$^3$ s$^{-1}$]', color='k',rotation=270,labelpad=15)  # Rotate label and adjust padding)
+ax7r.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$ s$^{-1}$]', color='k',rotation=270,labelpad=13)  # Rotate label and adjust padding)
 ax7r.tick_params(axis='y', labelcolor='k')
 
 ax7.set_xlim(7, 11)
@@ -497,7 +534,7 @@ cax6 = divider6.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar5 = fig3.colorbar(cf, cax=cax5, orientation='horizontal')
 cbar6 = fig3.colorbar(cf, cax=cax6, orientation='horizontal')
-cbar6.set_label('Ice velocity [m a$^{-1}$]')
+cbar6.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 
 
 # Move ticks and label to top
@@ -592,11 +629,12 @@ cax1b = divider1b.append_axes("top", size="20%", pad=0.175)
 cbar1b = fig3b.colorbar(tric1b, cax = cax1b, orientation='horizontal')
 cax1b.xaxis.set_ticks_position('top')
 cax1b.xaxis.set_label_position('top')
-cbar1b.set_label('$u_{\mathrm{b}}$ [$m^{3}s^{-1}$]')
+cbar1b.set_label('$U_{\mathrm{b}}$ [$m^{3}s^{-1}$]')
 
 
 ax1c = fig3b.add_subplot(gs[0,2])
 ax1c, sm1c = plotchannels(mesh, np.abs(Qc[:, idx1b]),contours=True,phi=phi[:,idx1b]/1e6, ax=ax1c, min=0.5,max=50, quiver=False)
+#ax1c, sm1c = plotchannels2(mesh, Qc[:, idx1b], contours=True, phi=phi[:, idx1b] / 1e6, ax=ax1c, vmin=0.5, vmax=50)
 ax1c.set_xlim([0, 10e3])
 ax1c.set_ylim([0, 3e3])
 ax1c.text(-0.55, 1.15, f"{tt[idx1b]:.2f} yrs", transform=plt.gca().transAxes,
@@ -612,7 +650,7 @@ cax1c = divider1c.append_axes("top", size="20%", pad=0.175)  # Reduce size and p
 cbar1c = fig3.colorbar(sm1c, cax=cax1c,orientation='horizontal')
 cax1c.xaxis.set_ticks_position('top')
 cax1c.xaxis.set_label_position('top')
-cbar1c.set_label('$Q_c$ [m$^3$s$^{-1}$]')  # Rotate label and adjust padding
+cbar1c.set_label('$Q_{\mathrm{c}}$ [m$^3$s$^{-1}$]')  # Rotate label and adjust padding
 
 # Second row
 ax2a = fig3b.add_subplot(gs[1,0])
@@ -683,13 +721,13 @@ if makemovie:
 
         ax.set_xlim([0, 10e3])
         ax.set_ylim([0, 3e3])
-        ax.set_xlabel('X [km]')
-        ax.set_ylabel('Y [km]')
+        ax.set_xlabel('$X$ [km]')
+        ax.set_ylabel('$Y$ [km]')
         ax.set_xticklabels([f"{x / 1e3:.0f}" for x in ax.get_xticks()])
         ax.set_yticklabels([f"{y / 1e3:.0f}" for y in ax.get_yticks()])
         ax.text(0.01, 1.2, f"$t$ = {tt[ti]:.2f} yrs", transform=ax.transAxes,
                 ha='left', va='center', fontsize=10)
-        ax.text(0.01, 1.1,fr"$Q_r = {Qr[lakepos, ti]:.2f}\ \mathrm{{m^3\,s^{{-1}}}}$",
+        ax.text(0.01, 1.1, fr"$Q_{{\mathrm{{r}}}} = {Qr[lakepos, ti]:.2f}\ \mathrm{{m^3\,s^{{-1}}}}$",
                 transform=ax.transAxes,
                 ha='left', va='center', fontsize=10)
 
@@ -697,13 +735,13 @@ if makemovie:
         divider = make_axes_locatable(ax)
         cax = divider.append_axes("right", size="3%", pad=0.1)  # Reduce size and padding
         cbar = fig.colorbar(sm, cax=cax)
-        cbar.set_label('$Q_c$ [m$^3$s$^{-1}$]',rotation=270,labelpad=15)  # Rotate label and adjust padding
+        cbar.set_label('$Q_{\mathrm{c}}$ [m$^3$s$^{-1}$]',rotation=270,labelpad=15)  # Rotate label and adjust padding
 
         ax1 = fig.add_subplot(gs[0, 1])
         lake_label = ['lake 1']
         lake_height = lh[lakepos, ti]
         ax1.bar(lake_label, lake_height, color='blue',width=0.3)
-        ax1.set_ylabel('$l_h$ [m]',rotation=270)
+        ax1.set_ylabel('$l_{\mathrm{h}}$ [m]',rotation=270)
         ax1.set_ylim(0, 100)
         ax1.set_xticks([])  # Hide the x-axis ticks
         ax1.margins(x=0, y=0)
@@ -774,13 +812,13 @@ ax2.yaxis.tick_right()
 ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax2.xaxis.set_minor_locator(MultipleLocator(1))
-ax2.text(1.52, 0.7, r"$k_c = 0.25\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax2.text(1.52, 0.7, r"$k_{\mathrm{c}} = 0.25\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax2.text(1.5, 0.5, r"$k_c = 0.1\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax2.text(1.5, 0.5, r"$k_{\mathrm{c}} = 0.1\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax2.text(1.52, 0.3, r"$k_c = 0.01\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax2.text(1.52, 0.3, r"$k_{\mathrm{c}} = 0.01\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 # --- Ax3-4: Sheet conductivity
@@ -815,13 +853,13 @@ ax4.yaxis.tick_right()
 ax4.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax4.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax4.xaxis.set_minor_locator(MultipleLocator(1))
-ax4.text(1.5, 0.7, r"$k_s = 0.05\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
+ax4.text(1.5, 0.7, r"$k_{\mathrm{s}} = 0.05\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax4.text(1.5, 0.5, r"$k_s = 0.02\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
+ax4.text(1.5, 0.5, r"$k_{\mathrm{s}} = 0.02\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax4.text(1.52, 0.3, r"$k_s = 0.005\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
+ax4.text(1.52, 0.3, r"$k_{\mathrm{s}} = 0.005\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 
@@ -858,13 +896,13 @@ ax6.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax6.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax6.xaxis.set_minor_locator(MultipleLocator(1))
 
-ax6.text(1.52, 0.7, r"$h_b = 0.25\ \mathrm{m} $", 
+ax6.text(1.52, 0.7, r"$h_{\mathrm{b}} = 0.25\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax6.text(1.5, 0.5, r"$h_b = 0.1\ \mathrm{m} $", 
+ax6.text(1.5, 0.5, r"$h_{\mathrm{b}} = 0.1\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax6.text(1.52, 0.3, r"$h_b = 0.05\ \mathrm{m} $", 
+ax6.text(1.52, 0.3, r"$h_{\mathrm{b}} = 0.05\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 
@@ -888,7 +926,7 @@ ax7.margins(x=0, y=0)
 ax7.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax7.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax7.xaxis.set_minor_locator(MultipleLocator(1))
-ax7.set_ylabel('$l_h$ [m]', labelpad=0.05)  # Reduce padding between label and tick labels
+ax7.set_ylabel('$l_{\mathrm{h}}$ [m]', labelpad=0.05)  # Reduce padding between label and tick labels
 
 ax8 = fig4.add_subplot(gs[3, 1])
 ax8.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
@@ -901,16 +939,16 @@ ax8.yaxis.tick_right()
 ax8.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax8.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax8.xaxis.set_minor_locator(MultipleLocator(1))
-ax8.set_ylabel('$Q_r$ [m$^3$s$^-1$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
+ax8.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$s$^{-1}$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
 ax8.yaxis.set_label_position("right")
 
-ax8.text(1.52, 0.7, r"$l_c = 50\ \mathrm{m} $", 
+ax8.text(1.52, 0.7, r"$l_{\mathrm{c}} = 50\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax8.text(1.52, 0.5, r"$l_c = 20\ \mathrm{m} $", 
+ax8.text(1.52, 0.5, r"$l_{\mathrm{c}} = 20\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax8.text(1.5, 0.3, r"$l_c = 5\ \mathrm{m} $", 
+ax8.text(1.5, 0.3, r"$l_{\mathrm{c}} = 5\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 
@@ -947,13 +985,13 @@ ax10.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax10.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax10.xaxis.set_minor_locator(MultipleLocator(1))
 
-ax10.text(1.52, 0.7, r"$l_r = 20\ \mathrm{m} $", 
+ax10.text(1.52, 0.7, r"$l_{\mathrm{r}} = 20\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax10.text(1.5, 0.5, r"$l_r = 5\ \mathrm{m} $", 
+ax10.text(1.5, 0.5, r"$l_{\mathrm{r}} = 5\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax10.text(1.5, 0.3, r"$l_r = 1\ \mathrm{m} $", 
+ax10.text(1.5, 0.3, r"$l_{\mathrm{r}} = 1\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 
@@ -990,13 +1028,13 @@ ax12.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax12.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax12.xaxis.set_minor_locator(MultipleLocator(1))
 
-ax12.text(1.5, 0.7, r"$M_r = 5\ \mathrm{m}\ \mathrm{a}^{-1}$", 
+ax12.text(1.5, 0.7, r"$M_{\mathrm{r}} = 5\ \mathrm{m}\ \mathrm{a}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax12.text(1.54, 0.5, r"$M_r = 0.25\ \mathrm{m}\ \mathrm{a}^{-1}$", 
+ax12.text(1.54, 0.5, r"$M_{\mathrm{r}} = 0.25\ \mathrm{m}\ \mathrm{a}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax12.text(1.52, 0.3, r"$M_r = 0.1\ \mathrm{m}\ \mathrm{a}^{-1}$", 
+ax12.text(1.52, 0.3, r"$M_{\mathrm{r}} = 0.1\ \mathrm{m}\ \mathrm{a}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 
@@ -1020,7 +1058,7 @@ ax13.margins(x=0, y=0)
 ax13.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax13.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax13.xaxis.set_minor_locator(MultipleLocator(1))
-ax13.set_xlabel('Model time [yrs]')
+ax13.set_xlabel('$t$ [yrs]')
 
 ax14 = fig4.add_subplot(gs[6, 1])
 ax14.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25, label='Default')
@@ -1033,15 +1071,15 @@ ax14.yaxis.tick_right()
 ax14.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax14.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax14.xaxis.set_minor_locator(MultipleLocator(1))
-ax14.set_xlabel('Model time [yrs]')
+ax14.set_xlabel('$t$ [yrs]')
 
-ax14.text(1.52, 0.7, r"$Q_{in} = 20\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
+ax14.text(1.52, 0.7, r"$Q_{\mathrm{in}} = 20\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax14.text(1.52, 0.5, r"$Q_{in} = 10\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
+ax14.text(1.52, 0.5, r"$Q_{\mathrm{in}} = 10\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
-ax14.text(1.5, 0.3, r"$Q_{in} = 5\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
+ax14.text(1.5, 0.3, r"$Q_{\mathrm{in}} = 5\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='blue')
 
@@ -1105,7 +1143,7 @@ Vel_HiKc = np.load(os.path.join(HiKc_dir, 'vel.npy'))
 Vel_LoKc = np.load(os.path.join(LoKc_dir, 'vel.npy'))
 
 ax1 = fig5.add_subplot(gs[0, 0])
-ax1.set_ylabel('X [km]', labelpad=0.001)
+ax1.set_ylabel('$X$ [km]', labelpad=0.001)
 #width average velocity
 [vel_avg_HiKc, xedge_HiKc] = width_average(mesh, Vel_HiKc, dx=0.15)
 
@@ -1150,7 +1188,7 @@ cax2 = divider2.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar1 = fig5.colorbar(cf_HiKc, cax=cax1, orientation='horizontal')
 cbar2 = fig5.colorbar(cf_HiKc, cax=cax2, orientation='horizontal')
-cbar2.set_label('Ice velocity [m a$^{-1}$]')
+cbar2.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 # Move ticks and label to top
 cax1.xaxis.set_ticks_position('top')
 cax1.xaxis.set_label_position('top')
@@ -1163,12 +1201,12 @@ ticks = np.arange(np.ceil(vmin / 100) * 50, vmax + 1, 50)
 cbar1.set_ticks(ticks)
 cbar2.set_ticks(ticks)
 
-ax1.text(0.5, 9.5, r"$k_c = 0.25\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax1.text(0.5, 9.5, r"$k_{\mathrm{c}} = 0.25\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
 
 ax2 = fig5.add_subplot(gs[1, 0])
-ax2.set_ylabel('X [km]', labelpad=0.001)
+ax2.set_ylabel('$X$ [km]', labelpad=0.001)
 #width average velocity
 [vel_avg_LoKc, xedge_LoKc] = width_average(mesh, Vel_LoKc, dx=0.15)
 
@@ -1198,7 +1236,7 @@ ax2r.plot(tt_LoKc, Qr_LoKc[lakepos, :], color='k', label='Qr', linewidth=1.5)
 ax2r.tick_params(axis='y', labelcolor='k')
 ax2.set_xlim(7, 11)
 ax2.set_ylim(0.25, 10)  # Convert to km
-ax2.set_xlabel('Model time [yrs]')
+ax2.set_xlabel('$t$ [yrs]')
 ax2r.set_ylim(0, 20)
 ticks_X = [5, 10]
 ax2.set_yticks(ticks_X)
@@ -1214,7 +1252,7 @@ cax4 = divider4.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar3 = fig5.colorbar(cf_LoKc, cax=cax3, orientation='horizontal')
 cbar4 = fig5.colorbar(cf_LoKc, cax=cax4, orientation='horizontal')
-cbar4.set_label('Ice velocity [m a$^{-1}$]')
+cbar4.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 # Move ticks and label to top
 cax3.xaxis.set_ticks_position('top')
 cax3.xaxis.set_label_position('top')
@@ -1227,7 +1265,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 100, vmax + 1, 100)
 cbar3.set_ticks(ticks)
 cbar4.set_ticks(ticks)
 
-ax2.text(0.5, 9.5, r"$k_c = 0.01\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax2.text(0.5, 9.5, r"$k_{\mathrm{c}} = 0.01\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
 
@@ -1237,7 +1275,7 @@ Vel_HiKs = np.load(os.path.join(HiKs_dir, 'vel.npy'))
 Vel_LoKs = np.load(os.path.join(LoKs_dir, 'vel.npy'))
 
 ax3 = fig5.add_subplot(gs[0, 1])
-#ax3.set_ylabel('X [km]', labelpad=0.001)
+#ax3.set_ylabel('$X$ [km]', labelpad=0.001)
 #width average velocity
 [vel_avg_HiKs, xedge_HiKs] = width_average(mesh, Vel_HiKs, dx=0.15)
 
@@ -1281,7 +1319,7 @@ cax6 = divider4.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar5 = fig5.colorbar(cf_HiKs, cax=cax5, orientation='horizontal')
 cbar6 = fig5.colorbar(cf_HiKs, cax=cax6, orientation='horizontal')
-cbar6.set_label('Ice velocity [m a$^{-1}$]')
+cbar6.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 # Move ticks and label to top
 cax5.xaxis.set_ticks_position('top')
 cax5.xaxis.set_label_position('top')
@@ -1294,7 +1332,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 100, vmax + 1, 100)
 cbar5.set_ticks(ticks)
 cbar6.set_ticks(ticks)
 
-ax3.text(0.5, 9.5, r"$k_s = 0.1\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
+ax3.text(0.5, 9.5, r"$k_{\mathrm{s}} = 0.1\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
 
@@ -1325,7 +1363,7 @@ ax4r.plot(tt_LoKs, Qr_LoKs[lakepos, :], color='k', label='Qr', linewidth=1.5)
 ax4r.tick_params(axis='y', labelcolor='k')
 ax4.set_xlim(7, 11)
 ax4.set_ylim(0.25, 10)  # Convert to km
-ax4.set_xlabel('Model time [yrs]')
+ax4.set_xlabel('$t$ [yrs]')
 ticks_X = [5, 10]
 ax4.set_yticks(ticks_X)
 ax4.xaxis.set_minor_locator(MultipleLocator(1))
@@ -1340,7 +1378,7 @@ cax8 = divider8.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar7 = fig5.colorbar(cf_LoKs, cax=cax7, orientation='horizontal')
 cbar8 = fig5.colorbar(cf_LoKs, cax=cax8, orientation='horizontal')
-cbar8.set_label('Ice velocity [m a$^{-1}$]')
+cbar8.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 # Move ticks and label to top
 cax7.xaxis.set_ticks_position('top')
 cax7.xaxis.set_label_position('top')
@@ -1353,7 +1391,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 100, vmax + 1, 100)
 cbar7.set_ticks(ticks)
 cbar8.set_ticks(ticks)
 
-ax4.text(0.5, 9.5, r"$k_s = 0.01\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
+ax4.text(0.5, 9.5, r"$k_{\mathrm{s}} = 0.01\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
          #ha='center', va='center', fontsize=9,color='black',bbox=dict(edgecolor='blue', alpha=1, facecolor='white'))
@@ -1365,7 +1403,7 @@ Vel_HiBh = np.load(os.path.join(HiBh_dir, 'vel.npy'))
 Vel_LoBh = np.load(os.path.join(LoBh_dir, 'vel.npy'))
 
 ax5 = fig5.add_subplot(gs[0, 2])
-#ax3.set_ylabel('X [km]', labelpad=0.001)
+#ax3.set_ylabel('$X$ [km]', labelpad=0.001)
 #width average velocity
 [vel_avg_HiBh, xedge_HiBh] = width_average(mesh, Vel_HiBh, dx=0.15)
 
@@ -1389,7 +1427,7 @@ cs_HiBh = ax5.contour(T_HiBh[:-1, :-1], X_HiBh[:-1, :-1], np.transpose(vel_avg_H
 # Add Qr
 ax5r = ax5.twinx()
 ax5r.plot(tt_HiBh, Qr_HiBh[lakepos, :], color='k', label='Qr', linewidth=1.5)
-ax5r.set_ylabel('$Q_r$ [m$^3$ s$^{-1}$]', color='k', rotation=270, labelpad=15)  # Rotate label and adjust padding
+ax5r.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$ s$^{-1}$]', color='k', rotation=270, labelpad=15)  # Rotate label and adjust padding
 ax5r.tick_params(axis='y', labelcolor='k')
 ax5.set_xlim(7, 11)
 ax5.set_ylim(0.25, 10)  # Convert to km
@@ -1407,7 +1445,7 @@ cax10 = divider10.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar9 = fig5.colorbar(cf_HiBh, cax=cax9, orientation='horizontal')
 cbar10 = fig5.colorbar(cf_HiBh, cax=cax10, orientation='horizontal')
-cbar10.set_label('Ice velocity [m a$^{-1}$]')
+cbar10.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 # Move ticks and label to top
 cax9.xaxis.set_ticks_position('top')
 cax9.xaxis.set_label_position('top')
@@ -1420,7 +1458,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 50, vmax + 1, 50)
 cbar9.set_ticks(ticks)
 cbar10.set_ticks(ticks)
 
-ax5.text(0.5, 9.5, r"$h_b = 1\ \mathrm{m} $", 
+ax5.text(0.5, 9.5, r"$h_{\mathrm{b}} = 1\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
 
@@ -1447,11 +1485,11 @@ cs_LoBh = ax6.contour(T_LoBh[:-1, :-1], X_LoBh[:-1, :-1], np.transpose(vel_avg_L
 # Add Qr
 ax6r = ax6.twinx()
 ax6r.plot(tt_LoBh, Qr_LoBh[lakepos, :], color='k', label='Qr', linewidth=1.5)
-ax6r.set_ylabel('$Q_r$ [m$^3$ s$^{-1}$]', color='k', rotation=270, labelpad=15)  # Rotate label and adjust padding
+ax6r.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$ s$^{-1}$]', color='k', rotation=270, labelpad=15)  # Rotate label and adjust padding
 ax6r.tick_params(axis='y', labelcolor='k')
 ax6.set_xlim(7, 11)
 ax6.set_ylim(0.25, 10)  # Convert to km
-ax6.set_xlabel('Model time [yrs]')
+ax6.set_xlabel('$t$ [yrs]')
 ticks_X = [5, 10]
 ax6.set_yticks(ticks_X)
 ax6.xaxis.set_minor_locator(MultipleLocator(1))
@@ -1466,7 +1504,7 @@ cax12 = divider12.append_axes("top", size="5%", pad=0.05)
 # Create horizontal colorbar in that new axis
 cbar11 = fig5.colorbar(cf_LoBh, cax=cax11, orientation='horizontal')
 cbar12 = fig5.colorbar(cf_LoBh, cax=cax12, orientation='horizontal')
-cbar12.set_label('Ice velocity [m a$^{-1}$]')
+cbar12.set_label('$U_{\mathrm{b}}$ [m a$^{-1}$]')
 # Move ticks and label to top
 cax11.xaxis.set_ticks_position('top')
 cax11.xaxis.set_label_position('top')
@@ -1479,7 +1517,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 100, vmax + 1, 100)
 cbar11.set_ticks(ticks)
 cbar12.set_ticks(ticks)
 
-ax6.text(0.5, 9.5, r"$h_b = 0.01\ \mathrm{m} $", 
+ax6.text(0.5, 9.5, r"$h_{\mathrm{b}} = 0.01\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
          #ha='center', va='center', fontsize=9,color='black',bbox=dict(edgecolor='blue', alpha=1, facecolor='white'))
@@ -1516,3 +1554,81 @@ fig5.savefig(os.path.join(filedir, 'figure5/figure5.png'), dpi=300)
 fig5.savefig(os.path.join(filedir, 'figure5/figure5.pdf'), dpi=300)
 fig5.savefig(os.path.join(filedir, 'figure5/figure5.eps'), dpi=300)
 fig5.savefig(os.path.join(filedir, 'figure5/figure5.svg'), dpi=300)
+
+
+
+"""
+CODE SNIPPETS:
+
+Old channel plots in fig3
+# --- Ax3: second row plot (Q_c time i)
+lscale_plot = 3  # Scale for the quiver plot
+Qcmin = 0.5
+Qcmax = 50
+
+ax3 = fig3.add_subplot(gs[2, :])
+#ax3, sm1 = plotchannels(mesh,np.abs(Qc[:,idx1]),contours=True,phi=phi[:,idx1]/1e6,ax=ax3,min=0.5,quiver=False)
+ax3, sm1  = plotchannels2(mesh, Qc[:, idx1], contours=True, phi=phi[:, idx1]/1e6, ax=ax3, vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot)
+ax3.set_xlim([0, 10e3])
+ax3.set_ylim([0, 3e3])
+ax3.set_xticks([])  # Hide the x-axis ticks
+ax3.set_xlabel('')  # Hide the x-axis label
+ax3.set_yticks(ax3.get_yticks())
+ax3.set_yticklabels([f"{y / 1e3:.0f}" for y in ax3.get_yticks()])
+ax3.text(0.01, 0.9, f"{tt[idx1]:.2f} yrs", transform=plt.gca().transAxes,
+    ha='left', va='center', fontsize=10)
+divider1 = make_axes_locatable(ax3)
+cax1 = divider1.append_axes("right", size="3%", pad=0.25)  # Reduce size and padding
+cbar1 = fig3.colorbar(sm1, cax=cax1)
+cax1.set_visible(False)
+
+
+# --- Ax4: third row plot (Q_c time ii)
+ax4 = fig3.add_subplot(gs[4, :])  # Extend ax4 across both columns
+#ax4, sm2 = plotchannels(mesh, np.abs(Qc[:, idx2]),contours=True,phi=phi[:,idx2]/1e6, ax=ax4, min=0.5, quiver=False)
+ax4, sm2  = plotchannels2(mesh, Qc[:, idx2], contours=True, phi=phi[:, idx2]/1e6, ax=ax4, vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot)
+ax4.set_xlim([0, 10e3])
+ax4.set_ylim([0, 3e3])
+ax4.text(0.01, 0.9, f"{tt[idx2]:.2f} yrs", transform=plt.gca().transAxes,
+         ha='left', va='center', fontsize=10)
+ax4.set_xticks([])  # Hide the x-axis ticks
+ax4.set_xlabel('')  # Hide the x-axis label
+ax4.set_ylabel('$Y$ [km]')  # Set the y-axis label
+ax4.set_yticks(ax4.get_yticks())
+ax4.set_yticklabels([f"{y / 1e3:.0f}" for y in ax4.get_yticks()])
+divider2 = make_axes_locatable(ax4)
+cax2 = divider2.append_axes("right", size="3%", pad=0.25)
+
+# Add colorbar
+cbar2 = fig3.colorbar(sm2, cax=cax2,shrink=1.2, aspect=20)
+
+
+cbar2.set_label('$Q_{\mathrm{c}}$ [m$^3$s$^{-1}$]', rotation=270, labelpad=15)  # Rotate label and adjust padding
+# Add tick labels every 10
+cbar2.set_ticks([1,10,20,30,40,50])
+
+
+
+# --- Ax5: fourth row plot (Q_c time iii)
+ax5 = fig3.add_subplot(gs[6, :])
+#ax5, sm3 = plotchannels(mesh, np.abs(Qc[:, idx3]),contours=True,phi=phi[:,idx3]/1e6, ax=ax5, min=0.5, quiver=False)
+ax5, sm3  = plotchannels2(mesh, Qc[:, idx3], contours=True, phi=phi[:, idx3]/1e6, ax=ax5, vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot)
+ax5.set_xlim([0, 10e3])
+ax5.set_ylim([0, 3e3])
+ax5.text(0.01, 0.9, f"{tt[idx3]:.2f} yrs", transform=plt.gca().transAxes,
+         ha='left', va='center', fontsize=10)
+
+# Modify x and y tick labels
+ax5.xaxis.set_minor_locator(MultipleLocator(1e3))  # Minor ticks every 2 km
+ax5.set_xticks(ax5.get_xticks())
+ax5.set_xticklabels([f"{x / 1e3:.0f}" for x in ax5.get_xticks()])
+ax5.set_yticks(ax5.get_yticks())
+ax5.set_yticklabels([f"{y / 1e3:.0f}" for y in ax5.get_yticks()])
+
+ax5.set_xlabel('$X$ [km]',labelpad=0.02)  # Set the x-axis label
+
+divider3 = make_axes_locatable(ax5)
+cax3 = divider3.append_axes("right", size="3%", pad=0.25)  # Reduce size and padding
+cbar3 = fig3.colorbar(sm3, cax=cax3)
+cax3.set_visible(False)
+"""

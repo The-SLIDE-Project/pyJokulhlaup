@@ -303,6 +303,120 @@ def plotchannels(mesh,x, **kwargs):
     ax.autoscale_view()
     return ax,sm
 
+def plotchannels2(mesh,x, **kwargs):
+    """
+    Emulates the functionality of MATLAB plotchannels.m function to plot GlaDS channel data on a 2D mesh
+
+    Parameters: 
+        mesh: dict with 'x', 'y', and 'connect_edge' keys
+        x: values on edges, shape (n_edges, )
+        **kwargs:
+            ax: matplotlib axis to plot on (optional)
+            min: minimum value to display (optional, default 1)
+            max: maximum value to display (optional, default to the max of the data)
+            colormap: str or matplotlib colormap (optional, default cmocean.cm.ice_r)
+            linewidth: width of the edges in the plot (optional, default 1.0)
+            quiver: boolean, if True, plot arrows along edges (optional, default False)
+            arrow_scale: scale for arrows if quiver is True (optional, default 1.0)
+
+    Returns:
+        tuple: A tuple containing:
+            - matplotlib.axes.Axes: The axes object containing the plot.
+            - matplotlib.cm.ScalarMappable: The ScalarMappable object that contains
+              the colormap and normalization, used for creating the colorbar.
+    
+    """
+    # Process options from kwargs
+    ax = kwargs.get('ax', None)
+    vmin = kwargs.get('min', 0.5)
+    vmax = kwargs.get('max', 50)
+    lscale = kwargs.get('lscale', 2.0)
+    is_contours = kwargs.get('contours', False)
+    if is_contours:
+        phi = kwargs.get('phi', None)
+        if phi is None:
+            raise ValueError("Contours requested but no 'phi' provided.")
+    cmap_name = kwargs.get('colormap', cm.ice_r)
+
+    cnorm = Normalize(vmin, vmax)
+    Q_arr = x
+    
+    #Plot contours if chosen
+    if is_contours:
+        tri = Triangulation(mesh['x'], mesh['y'])
+        contour_levels = np.arange(0, 1.5, 0.1)  # every 0.5 MPa
+        print('minimum phi:', np.min(phi))
+        print('maximum phi:', np.max(phi))
+
+        cs = ax.tricontour(
+            tri, phi, 
+            levels=contour_levels, 
+            colors='gray',
+            linewidths=0.5,
+        )
+        ax.clabel(cs, inline=True, fontsize=6, fmt=lambda x: f"{x:.1f} MPa")
+    """
+    qlist = np.where(np.abs(Q_arr[:])>vmin)[0]
+
+    lc_colors = []
+    lc_lw = []
+    lc_xy = []
+
+    for i in qlist:
+        Qi = np.abs(Q_arr[i])
+        x0,x1 = mesh['x'][mesh['connect_edge'][i,:]]
+        y0,y1 =  mesh['y'][mesh['connect_edge'][i,:]]
+        lc_xy.append([(x0, y0), (x1, y1)])
+        lc_lw.append(lscale*(0.25+1.25*cnorm(Qi)))
+        lc_colors.append(cmap_name(cnorm(Qi)))
+    
+    lc = LineCollection(lc_xy, colors=lc_colors, linewidths=lc_lw,
+        capstyle='round')
+    lc.set(rasterized=True)
+    ax.add_collection(lc)
+    ax.set_aspect('equal')
+    sm = plt.cm.ScalarMappable(cmap=cmap_name, norm=cnorm)
+    #sm.set_array(np.asb(Q_arr))
+    #plt.colorbar(sm, ax=ax, label='Channel Area / Discharge Magnitude')
+    """
+    qlist = np.where(np.abs(Q_arr[:]) > vmin)[0]
+
+    # --- sort qlist by discharge magnitude so smallest drawn first, largest last ---
+    qlist = qlist[np.argsort(np.abs(Q_arr[qlist]))]
+    
+    lc_colors = []
+    lc_lw = []
+    lc_xy = []
+    
+    for i in qlist:
+        Qi = np.abs(Q_arr[i])
+        x0, x1 = mesh['x'][mesh['connect_edge'][i, :]]
+        y0, y1 = mesh['y'][mesh['connect_edge'][i, :]]
+        lc_xy.append([(x0, y0), (x1, y1)])
+        lc_lw.append(lscale * (0.25 + 1.25 * cnorm(Qi)))
+        lc_colors.append(cmap_name(cnorm(Qi)))
+    
+    lc = LineCollection(
+        lc_xy,
+        colors=lc_colors,
+        linewidths=lc_lw,
+        capstyle='round'
+    )
+    lc.set(rasterized=True)
+    ax.add_collection(lc)
+    ax.set_aspect('equal')
+    
+    sm = plt.cm.ScalarMappable(cmap=cmap_name, norm=cnorm)
+    # sm.set_array(np.abs(Q_arr))
+    # plt.colorbar(sm, ax=ax, label='Channel Area / Discharge Magnitude')
+
+    ax.autoscale_view()
+    return ax,sm
+
+
+
+
+
 def lakeheightminmax(x):
     """
     Given a 1D np.array describing an evolving quantity X over time,

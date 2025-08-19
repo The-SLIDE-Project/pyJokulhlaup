@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  18 AUG 2025 16:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  19 AUG 2025 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2296,23 +2296,24 @@ LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
 (Font)              scaled to size 6.2pt on input line 175.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 205.
-[3]
+(Font)              scaled to size 5.5pt on input line 207.
+
+Underfull \vbox (badness 1406) has occurred while \output is active []
+
+ [3]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 236.
+(Font)              scaled to size 8.0pt on input line 238.
 
-Underfull \vbox (badness 2753) has occurred while \output is active []
-
- [4]
+[4]
 <./figures/Figure_3/Figure3.png, id=36, 483.7272pt x 600.5637pt>
 File: ./figures/Figure_3/Figure3.png Graphic file (type png)
 <use ./figures/Figure_3/Figure3.png>
-Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 271
+Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 273
 .
 (pdftex.def)             Requested size: 481.13454pt x 597.3457pt.
 
 
-LaTeX Warning: Float too large for page by 85.49463pt on input line 274.
+LaTeX Warning: Float too large for page by 85.49463pt on input line 276.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -2320,17 +2321,17 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <./figures/Figure_4/Figure4.png, id=37, 509.2626pt x 632.3625pt>
 File: ./figures/Figure_4/Figure4.png Graphic file (type png)
 <use ./figures/Figure_4/Figure4.png>
-Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 297
+Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 299
 .
 (pdftex.def)             Requested size: 506.45905pt x 628.8873pt.
 
-LaTeX Warning: Float too large for page by 62.03622pt on input line 300.
+LaTeX Warning: Float too large for page by 62.03622pt on input line 302.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 302--303
+Underfull \hbox (badness 1292) in paragraph at lines 304--305
 []\T1/LinuxBiolinumT-TLF/m/n/10 The char-ac-ter-is-tics of the lake filling-dra
 inage cy-cle
  []
@@ -2338,23 +2339,23 @@ inage cy-cle
 <./figures/Figure_5/Figure5.png, id=38, 509.2626pt x 361.35pt>
 File: ./figures/Figure_5/Figure5.png Graphic file (type png)
 <use ./figures/Figure_5/Figure5.png>
-Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 306
+Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 308
 .
 (pdftex.def)             Requested size: 506.45905pt x 359.36417pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[5]
 ! Too many }'s.
-l.317 ...\mathrm{b}}$ and $H$ [REF]. The MAR [REF}
+l.319 ...\mathrm{b}}$ and $H$ [REF]. The MAR [REF}
                                                    surface mass balance (SMB...
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-[5]
 ! Missing } inserted.
 <inserted text> 
                 }
-l.323 ...m{w}\approx 0.7--0.9\times p_{\mathrm{i}$
+l.325 ...m{w}\approx 0.7--0.9\times p_{\mathrm{i}$
                                                   ). In the transient phase,...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -2365,13 +2366,16 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.323 ...m{w}\approx 0.7--0.9\times p_{\mathrm{i}$
+l.325 ...m{w}\approx 0.7--0.9\times p_{\mathrm{i}$
                                                   ). In the transient phase,...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
+
+
+Underfull \vbox (badness 6157) has occurred while \output is active []
 
 <../Greenland/analysis/figures/figure1/figure1.png, id=42, 509.2626pt x 505.89p
 t>
@@ -2379,11 +2383,8 @@ File: ../Greenland/analysis/figures/figure1/figure1.png Graphic file (type png)
 
 <use ../Greenland/analysis/figures/figure1/figure1.png>
 Package pdftex.def Info: ../Greenland/analysis/figures/figure1/figure1.png  use
-d on input line 326.
+d on input line 328.
 (pdftex.def)             Requested size: 506.45905pt x 503.10982pt.
-
-Underfull \vbox (badness 6157) has occurred while \output is active []
-
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -2394,17 +2395,17 @@ File: ../Greenland/analysis/figures/figure2/figure2.png Graphic file (type png)
 
 <use ../Greenland/analysis/figures/figure2/figure2.png>
 Package pdftex.def Info: ../Greenland/analysis/figures/figure2/figure2.png  use
-d on input line 332.
+d on input line 334.
 (pdftex.def)             Requested size: 254.63068pt x 252.94438pt.
 
-Overfull \hbox (9.93698pt too wide) in paragraph at lines 332--333
+Overfull \hbox (9.93698pt too wide) in paragraph at lines 334--335
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(./MANUSCRIPT.bbl
+[6] (./MANUSCRIPT.bbl
 
 ! LaTeX Error: No counter 'dummy' defined.
 
@@ -2418,14 +2419,11 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[6]
+
 Underfull \hbox (badness 1895) in paragraph at lines 15--18
 []\T1/LinuxBiolinumT-TLF/m/n/10 Dømgaard M, Kjeld-sen K, How P and Bjørk A (202
 4)
  []
-
-
-Underfull \vbox (badness 1147) has occurred while \output is active []
 
 
 Underfull \hbox (badness 1735) in paragraph at lines 76--78
@@ -2459,11 +2457,11 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  14684 strings out of 474116
  292102 string characters out of 5743682
- 1959187 words of memory out of 5000000
+ 1957187 words of memory out of 5000000
  36762 multiletter control sequences out of 15000+600000
  725115 words of font info for 244 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,18n,93p,2038b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,18n,93p,2048b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
 .pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolin
 umTB.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBi
@@ -2481,7 +2479,7 @@ ocal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr
 /texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (13 pages, 4072349 bytes).
+Output written on MANUSCRIPT.pdf (13 pages, 4072008 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  88 compressed objects within 1 object stream

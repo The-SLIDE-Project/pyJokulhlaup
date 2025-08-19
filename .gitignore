@@ -11,6 +11,9 @@
 *tar
 *.tar.gz
 
+manuscript/Coauthor_comments/
+manuscript/Lake_drainage_preprint/
+
 test/
 [TEST]*
 
