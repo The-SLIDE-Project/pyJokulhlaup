@@ -205,8 +205,8 @@ md.geometry.base = md.geometry.bed
 
 # indexing channels
 # Find index of value closest to 7 and 9
-idx1 = np.argmin(np.abs(tt - 8))
-idx3 = np.argmin(np.abs(tt - 9))
+idx1 = np.argmin(np.abs(tt - 7.9))
+idx3 = np.argmin(np.abs(tt - 8.45))
 # Find idx2: index of max Qr value between idx1 and idx3 (inclusive)
 idx2_relative = np.argmax(Qr[lakepos,idx1:idx3 + 1])
 idx2 = idx1 + idx2_relative
@@ -247,7 +247,7 @@ ax1.add_patch(rect)
 ax1.scatter(tt[idx1], lh[lakepos, idx1], color='black', marker='o', s=8, label='c')
 ax1.scatter(tt[idx2], lh[lakepos, idx2], color='black', marker='o', s=8, label='d')
 ax1.scatter(tt[idx3], lh[lakepos, idx3], color='black', marker='o', s=8, label='e')
-ax1.text(tt[idx1] + 0.2, lh[lakepos, idx1] - 2, 'c', fontsize=10)
+ax1.text(tt[idx1] + 0.2, lh[lakepos, idx1] - 4.5, 'c', fontsize=10)
 ax1.text(tt[idx2] + 0.05, lh[lakepos, idx2] + 2, 'd', fontsize=10)
 ax1.text(tt[idx3] + 0.2, lh[lakepos, idx3] - 2, 'e', fontsize=10)
 ax1.set_ylim(15, 80)
@@ -279,9 +279,9 @@ ax2.add_patch(rect)
 ax2.scatter(tt[idx1],Qr[lakepos, idx1],color='gray',marker='o',s=8,label='c')
 ax2.scatter(tt[idx2],Qr[lakepos, idx2],color='gray',marker='o',s=8,label='d')
 ax2.scatter(tt[idx3],Qr[lakepos, idx3],color='gray',marker='o',s=8,label='e')
-ax2.text(tt[idx1] + 0.05, Qr[lakepos, idx1] + 4, 'c', fontsize=10)
+ax2.text(tt[idx1] - 0.5, Qr[lakepos, idx1] + 4, 'c', fontsize=10)
 ax2.text(tt[idx2] + 0.2, Qr[lakepos, idx2] - 2.85, 'd', fontsize=10)
-ax2.text(tt[idx3] - 0.25, Qr[lakepos, idx3] + 3, 'e', fontsize=10)
+ax2.text(tt[idx3] + 0.2, Qr[lakepos, idx3] + 3, 'e', fontsize=10)
 
 ax2.set_ylim(-5,55)
 ax2.set_xlim(0, 15)
@@ -292,16 +292,19 @@ ax2.xaxis.set_minor_locator(MultipleLocator(1))
 # --- Ax3: second row plot (Q_c time i)
 cmap_plot = cmocean.cm.ice_r
 lscale_plot = 3  # Scale for the quiver plot
-Qcmin = 0.5
+Qcmin = 0.01
 Qcmax = 50
 
 ax3 = fig3.add_subplot(gs[2, :])
+
 #ax3, sm1 = plotchannels(mesh,np.abs(Qc[:,idx1]),contours=True,phi=phi[:,idx1]/1e6,ax=ax3,min=0.5,quiver=False)
 ax3, sm1  = plotchannels2(mesh, Qc[:, idx1], contours=True, phi=phi[:, idx1]/1e6, ax=ax3, 
                           vmin=Qcmin, vmax=Qcmax,lscale=lscale_plot,colormap=cmap_plot)
+
 ax3.set_xlim([0, 10e3])
 ax3.set_ylim([0, 3e3])
-ax3.set_xticks([])  # Hide the x-axis ticks
+ax3.xaxis.set_minor_locator(MultipleLocator(1e3))
+ax3.set_xticklabels([])  # Hide the x-axis ticks
 ax3.set_xlabel('')  # Hide the x-axis label
 ax3.set_yticks(ax3.get_yticks())
 ax3.set_yticklabels([f"{y / 1e3:.0f}" for y in ax3.get_yticks()])
@@ -335,16 +338,17 @@ ax4.set_xlim([0, 10e3])
 ax4.set_ylim([0, 3e3])
 ax4.text(0.01, 0.9, f"{tt[idx2]:.2f} yrs", transform=plt.gca().transAxes,
          ha='left', va='center', fontsize=10)
-ax4.set_xticks([])  # Hide the x-axis ticks
+ax4.xaxis.set_minor_locator(MultipleLocator(1e3))
+ax4.set_xticklabels([])  # Hide the x-axis ticks
 ax4.set_xlabel('')  # Hide the x-axis label
 ax4.set_ylabel('$Y$ [km]')  # Set the y-axis label
 ax4.set_yticks(ax4.get_yticks())
 ax4.set_yticklabels([f"{y / 1e3:.0f}" for y in ax4.get_yticks()])
-cax2 = fig3.add_axes([0.86, 0.47, 0.02, 0.2])  # [x0, y0, width, height] in figure coords
+cax2 = fig3.add_axes([0.86, 0.468, 0.02, 0.2])  # [x0, y0, width, height] in figure coords
 cbar2 = fig3.colorbar(sm2, cax=cax2)
 
 # Add colorbar
-cbar2 = fig3.colorbar(sm2, cax=cax2,shrink=1.2, aspect=20)
+cbar2 = fig3.colorbar(sm2, cax=cax2)
 
 cbar2.set_label('$Q_{\mathrm{c}}$ [m$^3$s$^{-1}$]', rotation=270, labelpad=15)  # Rotate label and adjust padding
 # Add tick labels every 10
@@ -1129,6 +1133,276 @@ fig4.savefig(os.path.join(filedir, 'figure4/figure4.png'), dpi=300)
 fig4.savefig(os.path.join(filedir, 'figure4/figure4.pdf'), dpi=300)
 fig4.savefig(os.path.join(filedir, 'figure4/figure4.eps'), dpi=300)
 fig4.savefig(os.path.join(filedir, 'figure4/figure4.svg'), dpi=300)
+
+############################################################
+print('Making supplementary version of figure 4!')
+
+
+fig4b = plt.figure(figsize=(7.04724, (8.75/7)*5))  # J.Glac dual column figure spec
+gs = gridspec.GridSpec(5, 3, figure=fig4b, hspace=0.35, wspace=0.15, width_ratios=[0.4, 0.4, 0.2])
+fig4b.subplots_adjust(left=0.075, right=0.925, top=0.98, bottom=0.075)
+
+# Load default results once
+default_dir = '../experiments/RES/output_run_1_Default'
+lh_default = np.load(os.path.join(default_dir, 'l_h.npy'))
+Qr_default = np.load(os.path.join(default_dir, 'Qr.npy'))
+tt_default = np.load(os.path.join(default_dir, 'tt.npy'))
+
+# --- Ax1-2: Englacial void ratio
+HiEVR_dir = '../experiments/RES/output_run_6_HiEVR'
+LoEVR_dir = '../experiments/RES/output_run_7_LoEVR'
+lh_HiEVR = np.load(os.path.join(HiEVR_dir, 'l_h.npy'))
+lh_LoEVR = np.load(os.path.join(LoEVR_dir, 'l_h.npy'))
+Qr_HiEVR = np.load(os.path.join(HiEVR_dir, 'Qr.npy'))
+Qr_LoEVR = np.load(os.path.join(LoEVR_dir, 'Qr.npy'))
+tt_HiEVR = np.load(os.path.join(HiEVR_dir, 'tt.npy'))
+tt_LoEVR = np.load(os.path.join(LoEVR_dir, 'tt.npy'))
+
+ax1 = fig4b.add_subplot(gs[0, 0])
+ax1.plot(tt_default, lh_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax1.plot(tt_HiEVR, lh_HiEVR[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax1.plot(tt_LoEVR, lh_LoEVR[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax1.set_xlim(0, 15)
+ax1.set_ylim(-5, 125)
+ax1.margins(x=0, y=0)
+ax1.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax1.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax1.xaxis.set_minor_locator(MultipleLocator(1))
+
+ax2 = fig4b.add_subplot(gs[0, 1])
+ax2.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax2.plot(tt_HiEVR, Qr_HiEVR[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax2.plot(tt_LoEVR, Qr_LoEVR[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax2.set_xlim(0, 15)
+ax2.set_ylim(-5, 150)
+ax2.margins(x=0, y=0)
+ax2.yaxis.tick_right()
+ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax2.xaxis.set_minor_locator(MultipleLocator(1))
+ax2.text(1.5, 0.7, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-2}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='red')
+ax2.text(1.5, 0.5, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-4}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='grey')
+ax2.text(1.5, 0.3, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-5}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='blue')
+
+# --- Ax1-2: Friction coefficient
+HiFricC_dir = '../experiments/RES/output_run_14_HiFricC'
+LoFricC_dir = '../experiments/RES/output_run_15_LoFricC'
+lh_HiFricC = np.load(os.path.join(HiFricC_dir, 'l_h.npy'))
+lh_LoFricC = np.load(os.path.join(LoFricC_dir, 'l_h.npy'))
+Qr_HiFricC = np.load(os.path.join(HiFricC_dir, 'Qr.npy'))
+Qr_LoFricC = np.load(os.path.join(LoFricC_dir, 'Qr.npy'))
+tt_HiFricC = np.load(os.path.join(HiFricC_dir, 'tt.npy'))
+tt_LoFricC = np.load(os.path.join(LoFricC_dir, 'tt.npy'))
+
+ax3 = fig4b.add_subplot(gs[1, 0])
+ax3.plot(tt_default, lh_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax3.plot(tt_HiFricC, lh_HiFricC[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax3.plot(tt_LoFricC, lh_LoFricC[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax3.set_xlim(0, 15)
+ax3.set_ylim(-5, 125)
+ax3.margins(x=0, y=0)
+ax3.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax3.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax3.xaxis.set_minor_locator(MultipleLocator(1))
+
+ax4 = fig4b.add_subplot(gs[1, 1])
+ax4.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax4.plot(tt_HiFricC, Qr_HiFricC[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax4.plot(tt_LoFricC, Qr_LoFricC[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax4.set_xlim(0, 15)
+ax4.set_ylim(-5, 150)
+ax4.margins(x=0, y=0)
+ax4.yaxis.tick_right()
+ax4.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax4.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax4.xaxis.set_minor_locator(MultipleLocator(1))
+ax4.text(1.5, 0.7, r"$C = 200$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='red')
+ax4.text(1.5, 0.5, r"$C = 100$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='grey')
+ax4.text(1.5, 0.3, r"$C = 50$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='blue')
+
+# --- Ax5-6: Friction p and q 
+HiFricQ_dir = '../experiments/RES/output_run_17_HiFricq'
+LoFricP_dir = '../experiments/RES/output_run_16_LoFricp'
+lh_HiFricQ = np.load(os.path.join(HiFricQ_dir, 'l_h.npy'))
+lh_LoFricP = np.load(os.path.join(LoFricP_dir, 'l_h.npy'))
+Qr_HiFricQ = np.load(os.path.join(HiFricQ_dir, 'Qr.npy'))
+Qr_LoFricP = np.load(os.path.join(LoFricP_dir, 'Qr.npy'))
+tt_HiFricQ = np.load(os.path.join(HiFricQ_dir, 'tt.npy'))
+tt_LoFricP = np.load(os.path.join(LoFricP_dir, 'tt.npy'))
+
+ax5 = fig4b.add_subplot(gs[2, 0])
+ax5.plot(tt_default, lh_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax5.plot(tt_HiFricQ, lh_HiFricQ[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax5.plot(tt_LoFricP, lh_LoFricP[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax5.set_xlim(0, 15)
+ax5.set_ylim(-5, 125)
+ax5.margins(x=0, y=0)
+ax5.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax5.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax5.xaxis.set_minor_locator(MultipleLocator(1))
+ax5.set_ylabel('$l_{\mathrm{h}}$ [m]', labelpad=0.05)  # Reduce padding between label and tick labels
+
+
+ax6 = fig4b.add_subplot(gs[2, 1])
+ax6.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax6.plot(tt_HiFricQ, Qr_HiFricQ[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax6.plot(tt_LoFricP, Qr_LoFricP[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax6.set_xlim(0, 15)
+ax6.set_ylim(-5, 150)
+ax6.margins(x=0, y=0)
+ax6.yaxis.tick_right()
+ax6.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax6.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax6.xaxis.set_minor_locator(MultipleLocator(1))
+ax6.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$s$^{-1}$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
+ax6.yaxis.set_label_position("right")
+ax6.text(1.5, 0.7, r"$q = 2\ p = 4$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='red')
+ax4.text(1.5, 0.5, r"$q = 1\ p = 4$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='grey')
+ax4.text(1.5, 0.3, r"$q = 1\ p = 1$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='blue')
+
+# --- Ax7-8: Bed slope
+HiBSin_dir = '../experiments/RES/output_run_18_HiBSin'
+LoBSin_dir = '../experiments/RES/output_run_19_LoBSin'
+lh_HiBSin = np.load(os.path.join(HiBSin_dir, 'l_h.npy'))
+lh_LoBSin = np.load(os.path.join(LoBSin_dir, 'l_h.npy'))
+Qr_HiBSin = np.load(os.path.join(HiBSin_dir, 'Qr.npy'))
+Qr_LoBSin = np.load(os.path.join(LoBSin_dir, 'Qr.npy'))
+tt_HiBSin = np.load(os.path.join(HiBSin_dir, 'tt.npy'))
+tt_LoBSin = np.load(os.path.join(LoBSin_dir, 'tt.npy'))
+
+ax7 = fig4b.add_subplot(gs[3, 0])
+ax7.plot(tt_default, lh_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax7.plot(tt_HiBSin, lh_HiBSin[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax7.plot(tt_LoBSin, lh_LoBSin[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax7.set_xlim(0, 15)
+ax7.set_ylim(-5, 125)
+ax7.margins(x=0, y=0)
+ax7.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax7.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax7.xaxis.set_minor_locator(MultipleLocator(1))
+
+ax8 = fig4b.add_subplot(gs[3, 1])
+ax8.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax8.plot(tt_HiBSin, Qr_HiBSin[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax8.plot(tt_LoBSin, Qr_LoBSin[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax8.set_xlim(0, 15)
+ax8.set_ylim(-5, 150)
+ax8.margins(x=0, y=0)
+ax8.yaxis.tick_right()
+ax8.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax8.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax8.xaxis.set_minor_locator(MultipleLocator(1))
+ax8.text(1.5, 0.7, r"$z_{\mathrm{b}}= X sin(0.01)$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='red')
+ax8.text(1.5, 0.5, r"$z_{\mathrm{b}}= X sin(0.0075)$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='grey')
+ax8.text(1.5, 0.3, r"$z_{\mathrm{b}}= X sin(0.0005)$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='blue')
+
+# --- Ax9-10: Surface slope
+HiHPar_dir = '../experiments/RES/output_run_20_HiHPar'
+LoHPar_dir = '../experiments/RES/output_run_21_LoHPar'
+lh_HiHPar = np.load(os.path.join(HiHPar_dir, 'l_h.npy'))
+lh_LoHPar = np.load(os.path.join(LoHPar_dir, 'l_h.npy'))
+Qr_HiHPar = np.load(os.path.join(HiHPar_dir, 'Qr.npy'))
+Qr_LoHPar = np.load(os.path.join(LoHPar_dir, 'Qr.npy'))
+tt_HiHPar = np.load(os.path.join(HiHPar_dir, 'tt.npy'))
+tt_LoHPar = np.load(os.path.join(LoHPar_dir, 'tt.npy'))
+
+ax9 = fig4b.add_subplot(gs[4, 0])
+ax9.plot(tt_default, lh_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax9.plot(tt_HiHPar, lh_HiHPar[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax9.plot(tt_LoHPar, lh_LoHPar[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax9.set_xlim(0, 15)
+ax9.set_ylim(-5, 125)
+ax9.margins(x=0, y=0)
+ax9.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax9.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax9.xaxis.set_minor_locator(MultipleLocator(1))
+ax9.set_xlabel('$t$ [yrs]')
+
+ax10 = fig4b.add_subplot(gs[4, 1])
+ax10.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax10.plot(tt_HiHPar, Qr_HiHPar[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax10.plot(tt_LoHPar, Qr_LoHPar[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax10.set_xlim(0, 15)
+ax10.set_ylim(-5, 150)
+ax10.margins(x=0, y=0)
+ax10.yaxis.tick_right()
+ax10.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax10.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax10.xaxis.set_minor_locator(MultipleLocator(1))
+ax10.set_xlabel('$t$ [yrs]')
+ax10.text(1.5, 0.7, r"$H = 2\sqrt{X}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='red')
+ax10.text(1.5, 0.5, r"$H = 1.1\sqrt{X}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='grey')
+ax10.text(1.5, 0.3, r"$H = 0.5\sqrt{X}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='blue')
+
+# Labels for subplots: (a) to (g)
+labels = ['a','i', 'ii', 'b','i','ii', 'c','i','ii', 'd','i','ii', 'e','i','ii']
+axes = [ax1,ax1,ax2, ax3, ax3, ax4, ax5, ax5, ax6, ax7, ax7, ax8, ax9, ax9, ax10]
+
+# Custom (x, y) positions for each label in axis coordinates
+label_positions = [
+    (-0.23, 1.1),  # ax1
+    (0.02, 0.95),  # ax1
+    (0.02, 0.95),  # ax2
+    (-0.23, 1.1),  # ax3
+    (0.02, 0.95),  # ax3
+    (0.02, 0.95),  # ax4
+    (-0.23, 1.1),  # ax5
+    (0.02, 0.95),  # ax5
+    (0.02, 0.95),  # ax6
+    (-0.23, 1.1),  # ax7
+    (0.02, 0.95),  # ax7
+    (0.02, 0.95),  # ax8
+    (-0.23, 1.1),  # ax9
+    (0.02, 0.95),  # ax9
+    (0.02, 0.95),  # ax10
+]
+
+for ax, label, (x, y) in zip(axes, labels, label_positions):
+    ax.text(
+        x, y, label,
+        transform=ax.transAxes,
+        ha='left', va='top',
+        fontsize=10,
+        fontweight='bold'
+    )
+
+# Save figure
+os.makedirs(os.path.join(filedir, 'figure4'), exist_ok=True)
+fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.png'), dpi=300)
+fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.pdf'), dpi=300)
+fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.eps'), dpi=300)
+fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.svg'), dpi=300)
+
 
 ############################################################
 
