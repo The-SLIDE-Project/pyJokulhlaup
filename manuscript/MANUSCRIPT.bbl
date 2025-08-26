@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
@@ -81,6 +81,12 @@ Livingstone S, Storrar R, Doyle S, Thorpe S, Moffatt A, Sole A, Chudley TR,
   Gimbert F, Graly J, Licht K and others (2025) Ice dynamic and hydrological
   response to ice-dammed lake drainages at isunnguata sermia, west greenland
 
+\bibitem[\protect\citename{Mangerud and others, }2004]{mangerud2004ice}
+Mangerud J, Jakobsson M, Alexanderson H, Astakhov V, Clarke GK, Henriksen M,
+  Hjort C, Krinner G, Lunkka JP, M{\"o}ller P and others (2004) Ice-dammed
+  lakes and rerouting of the drainage of northern eurasia during the last
+  glaciation. \emph{Quaternary Science Reviews}, \textbf{23}(11-13), 1313--1332
+
 \bibitem[\protect\citename{McArthur and others, }2023]{mcarthur2023basal}
 McArthur K, McCormack FS and Dow CF (2023) Basal conditions of denman glacier
   from glacier hydrology and ice dynamics modeling. \emph{The Cryosphere
@@ -89,6 +95,11 @@ McArthur K, McCormack FS and Dow CF (2023) Basal conditions of denman glacier
 \bibitem[\protect\citename{Ng and Liu, }2009]{ng2009temporal}
 Ng F and Liu S (2009) Temporal dynamics of a j{\"o}kulhlaup system.
   \emph{Journal of Glaciology}, \textbf{55}(192), 651--665
+
+\bibitem[\protect\citename{Schomacker, }2010]{schomacker2010expansion}
+Schomacker A (2010) Expansion of ice-marginal lakes at the vatnaj{\"o}kull ice
+  cap, iceland, from 1999 to 2009. \emph{Geomorphology}, \textbf{119}(3-4),
+  232--236
 
 \bibitem[\protect\citename{Shapiro and Ritzwoller, }2004]{shapiro2004inferring}
 Shapiro NM and Ritzwoller MH (2004) Inferring surface heat flux distributions
@@ -99,6 +110,21 @@ Shapiro NM and Ritzwoller MH (2004) Inferring surface heat flux distributions
 Stevens LA, Nettles M, Davis JL, Creyts TT, Kingslake J, Hewitt IJ and
   Stubblefield A (2022) Tidewater-glacier response to supraglacial lake
   drainage. \emph{Nature Communications}, \textbf{13}(1), 6065
+
+\bibitem[\protect\citename{Stokes and Clark, }2004]{stokes2004evolution}
+Stokes CR and Clark CD (2004) Evolution of late glacial ice-marginal lakes on
+  the northwestern canadian shield and their influence on the location of the
+  dubawnt lake palaeo-ice stream. \emph{Palaeogeography, Palaeoclimatology,
+  Palaeoecology}, \textbf{215}(1-2), 155--171
+
+\bibitem[\protect\citename{S{\"u}fke and others, }2022]{sufke2022arctic}
+S{\"u}fke F, Gutjahr M, Keigwin LD, Reilly B, Giosan L and Lippold J (2022)
+  Arctic drainage of laurentide ice sheet meltwater throughout the past 14,700
+  years. \emph{Communications Earth \& Environment}, \textbf{3}(1), 98
+
+\bibitem[\protect\citename{Teller, }1995]{teller1995history}
+Teller JT (1995) History and drainage of large ice-dammed lakes along the
+  laurentide ice sheet. \emph{Quaternary International}, \textbf{28}, 83--92
 
 \bibitem[\protect\citename{Walder and Fowler, }1994]{walder1994channelized}
 Walder JS and Fowler A (1994) Channelized subglacial drainage over a deformable

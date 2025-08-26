@@ -1,11 +1,11 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: MANUSCRIPT.aux
-White space in argument---line 85 of file MANUSCRIPT.aux
+White space in argument---line 93 of file MANUSCRIPT.aux
  : \citation{Morlighem_Et
  :                        Al_2022}
 I'm skipping whatever remains of this command
-White space in argument---line 86 of file MANUSCRIPT.aux
+White space in argument---line 94 of file MANUSCRIPT.aux
  : \citation{Morlighem_Et
  :                        Al_2022}
 I'm skipping whatever remains of this command
@@ -16,45 +16,45 @@ I was expecting a `,' or a `}'---line 1 of file Jokulhlaup.bib
  :                    Al_2022,
 I'm skipping whatever remains of this entry
 Warning--empty journal in livingstone2025ice
-You've used 21 entries,
+You've used 26 entries,
             2869 wiz_defined-function locations,
-            731 strings with 9460 characters,
-and the built_in function-call counts, 28317 in all, are:
-= -- 3089
-> -- 654
-< -- 12
-+ -- 227
-- -- 205
-* -- 2144
-:= -- 3020
-add.period$ -- 19
-call.type$ -- 21
-change.case$ -- 207
-chr.to.int$ -- 22
-cite$ -- 22
-duplicate$ -- 2972
-empty$ -- 2118
-format.name$ -- 281
-if$ -- 5866
+            763 strings with 10618 characters,
+and the built_in function-call counts, 34622 in all, are:
+= -- 3774
+> -- 790
+< -- 18
++ -- 274
+- -- 247
+* -- 2612
+:= -- 3699
+add.period$ -- 24
+call.type$ -- 26
+change.case$ -- 253
+chr.to.int$ -- 27
+cite$ -- 27
+duplicate$ -- 3634
+empty$ -- 2601
+format.name$ -- 340
+if$ -- 7177
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 261
-newline$ -- 70
-num.names$ -- 84
-pop$ -- 1481
+missing$ -- 322
+newline$ -- 85
+num.names$ -- 104
+pop$ -- 1798
 preamble$ -- 1
-purify$ -- 186
+purify$ -- 227
 quote$ -- 0
-skip$ -- 579
+skip$ -- 709
 stack$ -- 0
-substring$ -- 3433
-swap$ -- 622
+substring$ -- 4197
+swap$ -- 769
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 291
+type$ -- 357
 warning$ -- 1
-while$ -- 172
+while$ -- 212
 width$ -- 0
-write$ -- 255
+write$ -- 315
 (There were 3 error messages)
