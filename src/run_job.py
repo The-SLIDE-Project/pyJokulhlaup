@@ -116,8 +116,6 @@ def run_job(run_table, job_id):
     # parameterise the model
     print('parameterising model')
     md = parameterize(md, '../default.py')
-    #md = parameterize(md, '../defaults_BUDD.py')
-    #md = parameterize(md, '../defaults_SCHOOF.py')
 
     #Set model parameters
     md.basalforcings.groundedice_melting_rate = paramsdict['melt_rate'] * onevec
@@ -373,7 +371,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     fig.savefig(os.path.join(resdir, 'Summary.png'), dpi=300)
     print(f"Saved figure to {os.path.join(resdir, 'Summary.png')}")
 
-    fig2 = plt.figure(figsize=(8.27/4,11.69))
+    fig2 = plt.figure(figsize=(8.27,11.69/4))
 
     ax1 = fig2.add_subplot()
     ax1.set_title('Qr partition')
