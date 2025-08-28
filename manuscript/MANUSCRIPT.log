@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  26 AUG 2025 16:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  27 AUG 2025 15:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2229,34 +2229,23 @@ LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 86.
 
-Overfull \hbox (5.30392pt too wide) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 nif-i-cant sed-i-ment/nutrient ac-cu-mu-la-tion b
-asins (Schomacker,
+Underfull \hbox (badness 1776) in paragraph at lines 94--95
+[]\T1/LinuxBiolinumT-TLF/m/n/10 Ice-marginal lakes, wa-ter bod-ies damned by ic
+e or
  []
 
 
-Overfull \hbox (5.21793pt too wide) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 tem , and ac-cel-er-ate glacier re-ces-sion/mass 
-loss. In the palaeo-
- []
+Package natbib Warning: Citation `nye1976water' on page 1 undefined on input li
+ne 96.
 
 
-Overfull \hbox (24.2449pt too wide) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 and their sub-se-quent drainage pre-cip-i-tated a
-brupt and widespread
- []
-
-
-Overfull \hbox (14.86192pt too wide) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 changes in ocean cir-cu-la-tion and cli-mate (Tel
-ler, 1995; Mangerud
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 111.
-[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
-ocal/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/lo
-cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
+(Font)              scaled to size 8.0pt on input line 114.
+ [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/
+local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
 
 
 
@@ -2265,27 +2254,30 @@ cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
 File: ./figures/Figure_1/Figure_1b.png Graphic file (type png)
 <use ./figures/Figure_1/Figure_1b.png>
 Package pdftex.def Info: ./figures/Figure_1/Figure_1b.png  used on input line 1
-13.
+16.
 (pdftex.def)             Requested size: 253.06442pt x 188.23767pt.
 
-Overfull \hbox (8.37073pt too wide) in paragraph at lines 113--114
+Overfull \hbox (8.37073pt too wide) in paragraph at lines 116--117
  [][] 
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 114.
+(Font)              scaled to size 9.0pt on input line 117.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 114.
+(Font)              scaled to size 9.0pt on input line 117.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 114.
+(Font)              scaled to size 9.0pt on input line 117.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 8.0pt on input line 137.
-[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.enc
-} <./figures/Figure_1/Figure_1b.png>]
+(Font)              scaled to size 8.0pt on input line 131.
+ [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.en
+c} <./figures/Figure_1/Figure_1b.png>]
 ! Argument of \caption@ydblarg has an extra }.
 <inserted text> 
                 \par 
-l.190 ...on lists derived variables [FIX ORDER.]}}
+l.193 ...on lists derived variables [FIX ORDER.]}}
                                                   
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -2299,75 +2291,73 @@ Runaway argument?
 ! Paragraph ended before \caption@ydblarg was complete.
 <to be read again> 
                    \par 
-l.190 ...on lists derived variables [FIX ORDER.]}}
+l.193 ...on lists derived variables [FIX ORDER.]}}
                                                   
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 190.
+(Font)              scaled to size 7.3pt on input line 193.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 7.3pt on input line 190.
+(Font)              scaled to size 7.3pt on input line 193.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 190.
+(Font)              scaled to size 8.0pt on input line 193.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 190.
+(Font)              scaled to size 6.2pt on input line 193.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 190.
+(Font)              scaled to size 6.2pt on input line 193.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 6.2pt on input line 190.
+(Font)              scaled to size 6.2pt on input line 193.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 222.
+(Font)              scaled to size 5.5pt on input line 225.
 [3]
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 253.
+(Font)              scaled to size 8.0pt on input line 256.
  [4]
+Underfull \vbox (badness 6157) has occurred while \output is active []
+
 <./figures/Figure_3/Figure3.png, id=36, 481.0773pt x 600.5637pt>
 File: ./figures/Figure_3/Figure3.png Graphic file (type png)
 <use ./figures/Figure_3/Figure3.png>
-Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 288
+Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 291
 .
 (pdftex.def)             Requested size: 481.13454pt x 600.6447pt.
 
 
-LaTeX Warning: Float too large for page by 88.79362pt on input line 291.
+LaTeX Warning: Float too large for page by 88.79362pt on input line 294.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./figures/Figure_4/Figure4.png, id=37, 509.2626pt x 632.3625pt>
+[5]
+<./figures/Figure_4/Figure4.png, id=40, 509.2626pt x 632.3625pt>
 File: ./figures/Figure_4/Figure4.png Graphic file (type png)
 <use ./figures/Figure_4/Figure4.png>
-Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 314
+Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 317
 .
 (pdftex.def)             Requested size: 506.45905pt x 628.8873pt.
 
-LaTeX Warning: Float too large for page by 62.03622pt on input line 317.
+
+LaTeX Warning: Float too large for page by 62.03622pt on input line 320.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 319--320
+Underfull \hbox (badness 1292) in paragraph at lines 322--323
 []\T1/LinuxBiolinumT-TLF/m/n/10 The char-ac-ter-is-tics of the lake filling-dra
 inage cy-cle
  []
 
-[5]
 <./figures/Figure_5/Figure5.png, id=41, 509.2626pt x 361.35pt>
 File: ./figures/Figure_5/Figure5.png Graphic file (type png)
 <use ./figures/Figure_5/Figure5.png>
-Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 323
+Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 326
 .
 (pdftex.def)             Requested size: 506.45905pt x 359.36417pt.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Package natbib Warning: Citation `Morlighem_Et Al_2022' on page 6 undefined on 
-input line 334.
 
 <../Greenland/analysis/figures/figure1/figure1.png, id=42, 509.2626pt x 505.89p
 t>
@@ -2375,7 +2365,7 @@ File: ../Greenland/analysis/figures/figure1/figure1.png Graphic file (type png)
 
 <use ../Greenland/analysis/figures/figure1/figure1.png>
 Package pdftex.def Info: ../Greenland/analysis/figures/figure1/figure1.png  use
-d on input line 343.
+d on input line 346.
 (pdftex.def)             Requested size: 506.45905pt x 503.10982pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -2386,17 +2376,21 @@ File: ../Greenland/analysis/figures/figure2/figure2.png Graphic file (type png)
 
 <use ../Greenland/analysis/figures/figure2/figure2.png>
 Package pdftex.def Info: ../Greenland/analysis/figures/figure2/figure2.png  use
-d on input line 349.
+d on input line 352.
 (pdftex.def)             Requested size: 254.63068pt x 252.94438pt.
 
-Overfull \hbox (9.93698pt too wide) in paragraph at lines 349--350
+Overfull \hbox (9.93698pt too wide) in paragraph at lines 352--353
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6] (./MANUSCRIPT.bbl
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+(./MANUSCRIPT.bbl
 
 ! LaTeX Error: No counter 'dummy' defined.
 
@@ -2404,35 +2398,32 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \begin{thebibliography}{26}
+l.1 \begin{thebibliography}{32}
                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 15--18
+Underfull \vbox (badness 3623) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1895) in paragraph at lines 31--34
 []\T1/LinuxBiolinumT-TLF/m/n/10 Dømgaard M, Kjeld-sen K, How P and Bjørk A (202
 4)
  []
 
-
+[7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
-Underfull \hbox (badness 1122) in paragraph at lines 115--119
-\T1/LinuxBiolinumT-TLF/m/n/10 palaeo-ice stream. \T1/LinuxBiolinumT-TLF/m/it/10
- Palaeo-geog-ra-phy, Palaeo-cli-ma-tol-ogy,
- []
 
-
-Underfull \hbox (badness 1735) in paragraph at lines 130--132
+Underfull \hbox (badness 1735) in paragraph at lines 160--162
 []\T1/LinuxBiolinumT-TLF/m/n/10 Walder JS and Fowler A (1994) Chan-nel-ized sub
 -glacial
  []
 
 
-Underfull \hbox (badness 6173) in paragraph at lines 134--137
+Underfull \hbox (badness 6173) in paragraph at lines 164--167
 []\T1/LinuxBiolinumT-TLF/m/n/10 Werder MA, He-witt IJ, Schoof CG and Flow-ers G
 E
  []
@@ -2444,11 +2435,9 @@ Package natbib Warning: There were undefined citations.
 
 Package natbib Warning: There were undefined citations.
 
-[9
-
-] [10 <./figures/Figure_3/Figure3.png>] [11 <./figures/Figure_4/Figure4.png>] [
-12 <./figures/Figure_5/Figure5.png>] [13 <../Greenland/analysis/figures/figure1
-/figure1.png>] [14
+[9] [10 <./figures/Figure_3/Figure3.png>] [11 <./figures/Figure_4/Figure4.png>]
+[12 <./figures/Figure_5/Figure5.png>] [13 <../Greenland/analysis/figures/figure
+1/figure1.png>] [14
 
 
  <../Greenland/analysis/figures/figure2/figure2.png>]
@@ -2464,10 +2453,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 14694 strings out of 474116
- 292299 string characters out of 5743682
+ 14700 strings out of 474116
+ 292403 string characters out of 5743682
  1956187 words of memory out of 5000000
- 36772 multiletter control sequences out of 15000+600000
+ 36778 multiletter control sequences out of 15000+600000
  725115 words of font info for 244 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,18n,93p,2399b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2488,7 +2477,7 @@ ocal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr
 /texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (14 pages, 4169200 bytes).
+Output written on MANUSCRIPT.pdf (14 pages, 4171500 bytes).
 PDF statistics:
  153 PDF objects out of 1000 (max. 8388607)
  90 compressed objects within 1 object stream

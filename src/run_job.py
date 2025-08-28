@@ -115,7 +115,7 @@ def run_job(run_table, job_id):
 
     # parameterise the model
     print('parameterising model')
-    md = parameterize(md, '../defaults_BUDD_5e4_15yrs.py')
+    md = parameterize(md, '../default.py')
     #md = parameterize(md, '../defaults_BUDD.py')
     #md = parameterize(md, '../defaults_SCHOOF.py')
 
@@ -190,9 +190,11 @@ def extract_requested_outputs(md):
         ff = ff,
         l_h = np.array([ts.HydrologyLakeHeight[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         Qr = np.array([ts.HydrologyLakeOutletQr[:,0] for ts in md.results.TransientSolution[imin:imax]]).T,
+        Qrc = np.array([ts.HydrologyLakeChannelQr[:,0] for ts in md.results.TransientSolution[imin:imax]]).T,
         h_s = np.array([ts.HydrologySheetThickness[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         S = np.array([ts.ChannelArea[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         Qc = np.array([ts.ChannelDischarge[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
+        qs = np.array([ts.HydrologySheetDischarge[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         tt = np.array([ts.time for ts in md.results.TransientSolution[imin:imax]]).T,
         hydrovx = np.array([ts.HydrologyWaterVx[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         hydrovy = np.array([ts.HydrologyWaterVy[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
@@ -220,6 +222,7 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     lakepos = mesh['lakepos']
     tt = outputs['tt']
     Qc = outputs['Qc']
+    Qrc = outputs['Qrc']
     lh = outputs['l_h']
     Qr = outputs['Qr']
     ff = outputs['ff']
@@ -369,6 +372,26 @@ def plot_requested_outputs(outputs,md,paramsdict,resdir):
     # Save figure
     fig.savefig(os.path.join(resdir, 'Summary.png'), dpi=300)
     print(f"Saved figure to {os.path.join(resdir, 'Summary.png')}")
+
+    fig2 = plt.figure(figsize=(8.27/4,11.69))
+
+    ax1 = fig2.add_subplot()
+    ax1.set_title('Qr partition')
+    ax1.set_xlabel('Time [yrs]')
+    ax1.set_ylabel('Flux (m$^3$s$^{-1}$)')
+    ax1.plot(tt, Qrc[lakepos, :], color='red', linestyle='-', label='$Q_{rc}$ (Channel Flux)')
+    ax1.plot(tt, Qr[lakepos,:] - Qrc[lakepos, :], color='blue', linestyle='-', label='$Q_{rs}$ (Sheet Flux)')
+    ax1.plot(tt, Qr[lakepos, :], color='black', linestyle='-', label='$Q_{r}$ (Total Flux)')
+    ax1.legend(loc='upper left')
+    fig2.tight_layout()
+    # Set log scale
+    ax1.set_yscale('log')
+
+    # Save figure
+    fig2.savefig(os.path.join(resdir, 'Qr_partition.png'), dpi=300)
+    print(f"Saved figure to {os.path.join(resdir, 'Qr_partition.png')}")
+
+
 
     """
     # Plot channels during a lake drainage cycle

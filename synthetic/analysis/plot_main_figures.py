@@ -190,6 +190,7 @@ vel_path = os.path.join(resdir, 'vel.npy')
 vel = np.load(vel_path)
 Qc_path = os.path.join(resdir, 'Qc.npy')
 Qc = np.load(Qc_path)
+Qs_path
 h_s_path = os.path.join(resdir, 'h_s.npy')
 h_s = np.load(h_s_path)
 

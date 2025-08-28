@@ -18,7 +18,7 @@
 
 \begin{document}
 
-\title[2D model of recurring Jökulhlaup]{A physically consistent representation of recurring Jökulhlaup floods in a fully-coupled subglacial hydrology model}
+\title[2D model of recurring Jökulhlaup]{A physically consistent representation of recurring Jökulhlaup floods in a fully-coupled 2D subglacial hydrology model}
 
 \author[Hepburn and others]{Adam J. HEPBURN,$^{1,*}$
 Sammie BUZZARD,$^{2}$
@@ -91,7 +91,10 @@ The design for the \emph{Journal of Glaciology} has been implemented as a \LaTeX
 \item shortcomings and opportunities to improve
 \end{enumerate}
 
-Ice-marginal lakes are bodies of water found dammed by ice or moraines, or trapped within glaciated overdeepenings. Ice-marginal lakes are important because they can act as significant sediment/nutrient accumulation basins \citep{schomacker2010expansion}, buffer the delivery of freshwater to the proglacial system , and accelerate glacier recession/mass loss. In the palaeo-record, particularly large ice-marginal lakes imposed major controls on ice-stream dynamics \citep{stokes2004evolution} and their subsequent drainage precipitated abrupt and widespread changes in ocean circulation and climate \citep{teller1995history,mangerud2004ice,sufke2022arctic}. 
+Ice-marginal lakes, \sloppy{water bodies damned by ice or moraine}, are increasing in size and frequency as a result of basin geometry changes driven by glacier thinning and retreat \citep{clague2012climate,shugar2020rapid,molg2021inventory}. Around Greenland alone, $>3000$ ice-marginal lakes have been recorded \citep{carrivick2022ice}, and their potential to repeatedly and catastrophically drain (known as jökulhlaup or glacier outburst floods) pose major risks to downstream communities \citep{ng2003clague}. In addition, jökulhlaup from ice-marginal lakes can impart significant influence on ice-dynamics \citep{carrivick2022ice,domgaard2024altimetry,harpur2025emerging,livingstone2025ice}, and Pleistocene jökulhlaup are considered large enough to have precipitated abrupt changes in global ocean circulation and climate \citep{teller1995history,clark2001freshwater,mangerud2004ice,sufke2022arctic}.
+
+Understanding the timings and triggers of jökulhlaup is imperative, and numerous attempts to realise a numerical theory of ice-dammed jökulhlaup have been made. The majority of models are based on the assumption that an ice-marginal lake drains via a semi-circular channel towards the glacier margin \citep{nye1976water}
+
 
 
 
@@ -331,7 +334,7 @@ We run the model on Isunnguata Sermia, an outlet glacier in West Greenland drain
 
 % Field data, including passive seismics, GNSS, and time-lapse imagery is available for one drainage in 2023 \citep[see; ][]{livingstone2025ice}. 
 
-We discretise our Isunnguata Sermia domain (Source of original catchment?) using an anistropic mesh with an edge length of XX m close to terminus, dropping to XX km close to the upper margin of our domain at the approximate ELA (at \( H \approx 1600\ \text{m} \)). Bedmachine v5 is used for $z_{\mathrm{b}}$ and $H$ \citep{Morlighem_Et Al_2022}. As climate forcing, we used the 10 km resolution daily Modèle Atmosphérique Régional (MAR, v3.14) runoff and accumlation data \citep{fettweis2017reconstructions} between 2013--2024. An initialisation $U_{\mathrm{b}}$ is taken from the 2021 MEaSUREs annual mosaic \citep{MEASURES}, from which we invert for the basal friction coefficient using an L-curve scheme \citep[following; ][]{wolovick2023regularization}. Because we have an observational constraint on ice-surface velocity, we use a Schoof-style friction law (see Eq.~\ref{eq:frictionSchoof}, Section~\ref{methods:GlaDS}) which has been shown to more faithfully represent ice-dynamics with a GlaDS derived $N$ than the Budd-style friction law used in our simple synthetic experiments \citep{mcarthur2023basal}. Geothermal heat flux is taken from \citep{shapiro2004inferring}, basal melt rates are taken from \cite{karlsson2021first} and surface ice temperature is taken from \citep{ettema2009higher}.
+We discretise our Isunnguata Sermia domain (Source of original catchment?) using an anistropic mesh with an edge length of XX m close to terminus, dropping to XX km close to the upper margin of our domain at the approximate ELA (at \( H \approx 1600\ \text{m} \)). Bedmachine v5 is used for $z_{\mathrm{b}}$ and $H$ \citep{Morlighem_Et_Al_2022}. As climate forcing, we used the 10 km resolution daily Modèle Atmosphérique Régional (MAR, v3.14) runoff and accumlation data \citep{fettweis2017reconstructions} between 2013--2024. An initialisation $U_{\mathrm{b}}$ is taken from the 2021 MEaSUREs annual mosaic \citep{MEASURES}, from which we invert for the basal friction coefficient using an L-curve scheme \citep[following; ][]{wolovick2023regularization}. Because we have an observational constraint on ice-surface velocity, we use a Schoof-style friction law (see Eq.~\ref{eq:frictionSchoof}, Section~\ref{methods:GlaDS}) which has been shown to more faithfully represent ice-dynamics with a GlaDS derived $N$ than the Budd-style friction law used in our simple synthetic experiments \citep{mcarthur2023basal}. Geothermal heat flux is taken from \citep{shapiro2004inferring}, basal melt rates are taken from \cite{karlsson2021first} and surface ice temperature is taken from \citep{ettema2009higher}.
 
 Our GlaDS parameters are given in Tables~\ref{tab:Synth} \& ~\ref{Appendix:GlaDS}, with changes to the specific values intended to reflect the anticipated change in the scale of basal drainage elements relative to our synthetic domain \citep{hill2024improved}. As boundary conditions, we set $\phi$ equivalent to atmospheric pressure at the lowest elevation vertices within a cluster adjacent to a proglacial river at the glacier terminus, and set two ice-contact boundaries at the lowest elevation nodes along the western and eastern lake boundaries. 
 

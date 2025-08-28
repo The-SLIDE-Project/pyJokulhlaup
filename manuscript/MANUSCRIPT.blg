@@ -1,60 +1,48 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: MANUSCRIPT.aux
-White space in argument---line 93 of file MANUSCRIPT.aux
- : \citation{Morlighem_Et
- :                        Al_2022}
-I'm skipping whatever remains of this command
-White space in argument---line 94 of file MANUSCRIPT.aux
- : \citation{Morlighem_Et
- :                        Al_2022}
-I'm skipping whatever remains of this command
 The style file: igs.bst
 Database file #1: Jokulhlaup.bib
-I was expecting a `,' or a `}'---line 1 of file Jokulhlaup.bib
- : @misc{Morlighem_Et 
- :                    Al_2022,
-I'm skipping whatever remains of this entry
 Warning--empty journal in livingstone2025ice
-You've used 26 entries,
+You've used 32 entries,
             2869 wiz_defined-function locations,
-            763 strings with 10618 characters,
-and the built_in function-call counts, 34622 in all, are:
-= -- 3774
-> -- 790
+            801 strings with 12080 characters,
+and the built_in function-call counts, 45219 in all, are:
+= -- 4971
+> -- 1054
 < -- 18
-+ -- 274
-- -- 247
-* -- 2612
-:= -- 3699
-add.period$ -- 24
-call.type$ -- 26
-change.case$ -- 253
-chr.to.int$ -- 27
-cite$ -- 27
-duplicate$ -- 3634
-empty$ -- 2601
-format.name$ -- 340
-if$ -- 7177
++ -- 366
+- -- 331
+* -- 3422
+:= -- 4779
+add.period$ -- 29
+call.type$ -- 32
+change.case$ -- 325
+chr.to.int$ -- 33
+cite$ -- 33
+duplicate$ -- 4754
+empty$ -- 3358
+format.name$ -- 447
+if$ -- 9376
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 322
-newline$ -- 85
-num.names$ -- 104
-pop$ -- 1798
+missing$ -- 407
+newline$ -- 103
+num.names$ -- 128
+pop$ -- 2383
 preamble$ -- 1
-purify$ -- 227
+purify$ -- 293
 quote$ -- 0
-skip$ -- 709
+skip$ -- 909
 stack$ -- 0
-substring$ -- 4197
-swap$ -- 769
+substring$ -- 5577
+swap$ -- 973
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 357
+type$ -- 453
 warning$ -- 1
-while$ -- 212
+while$ -- 275
 width$ -- 0
-write$ -- 315
-(There were 3 error messages)
+write$ -- 386
+(There was 1 warning)

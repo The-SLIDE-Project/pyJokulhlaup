@@ -1,14 +1,30 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[\protect\citename{Carrivick and others, }2022]{carrivick2022ice}
+Carrivick JL, How P, Lea JM, Sutherland JL, Grimes M, Tweed FS, Cornford S,
+  Quincey DJ and Mallalieu J (2022) Ice-marginal proglacial lakes across
+  greenland: Present status and a possible future. \emph{Geophysical Research
+  Letters}, \textbf{49}(12), e2022GL099276
 
 \bibitem[\protect\citename{Choi and others, }2023]{choi2023impact}
 Choi Y, Seroussi H, Morlighem M, Schlegel NJ and Gardner A (2023) Impact of
   time-dependent data assimilation on ice flow model initialization and
   projections: a case study of kjer glacier, greenland. \emph{The Cryosphere},
   \textbf{17}(12), 5499--5517
+
+\bibitem[\protect\citename{Clague and others, }2012]{clague2012climate}
+Clague JJ, Huggel C, KOrup O and MCguire B (2012) Climate change and hazardous
+  processes in high mountains. \emph{Revista de la Asociaci{\'o}n Geol{\'o}gica
+  Argentina}, \textbf{69}(3), 328--338
+
+\bibitem[\protect\citename{Clark and others, }2001]{clark2001freshwater}
+Clark PU, Marshall SJ, Clarke GK, Hostetler SW, Licciardi JM and Teller JT
+  (2001) Freshwater forcing of abrupt climate change during the last
+  glaciation. \emph{Science}, \textbf{293}(5528), 283--287
 
 \bibitem[\protect\citename{D{\o}mgaard and others,
   }2024]{domgaard2024altimetry}
@@ -34,6 +50,11 @@ Fettweis X, Box JE, Agosta C, Amory C, Kittel C, Lang C, Van~As D, Machguth H
   and Gall{\'e}e H (2017) Reconstructions of the 1900--2015 greenland ice sheet
   surface mass balance using the regional climate mar model. \emph{The
   Cryosphere}, \textbf{11}(2), 1015--1033
+
+\bibitem[\protect\citename{Harpur and others, }2025]{harpur2025emerging}
+Harpur C, Carrivick JL, Sutherland JL and Mallalieu J (2025) The emerging
+  importance of ice-marginal lakes across greenland. \emph{Geography},
+  \textbf{110}(1), 6--15
 
 \bibitem[\protect\citename{Hewitt, }2013]{hewitt2013seasonal}
 Hewitt I (2013) Seasonal changes in ice sheet motion due to melt water
@@ -92,30 +113,39 @@ McArthur K, McCormack FS and Dow CF (2023) Basal conditions of denman glacier
   from glacier hydrology and ice dynamics modeling. \emph{The Cryosphere
   Discussions}, \textbf{2023}, 1--29
 
+\bibitem[\protect\citename{M{\"o}lg and others, }2021]{molg2021inventory}
+M{\"o}lg N, Huggel C, Herold T, Storck F, Allen S, Haeberli W, Schaub Y and
+  Odermatt D (2021) Inventory and evolution of glacial lakes since the little
+  ice age: Lessons from the case of switzerland. \emph{Earth Surface Processes
+  and Landforms}, \textbf{46}(13), 2551--2564
+
+\bibitem[\protect\citename{Morlighem and Al, }2022]{Morlighem_Et_Al_2022}
+Morlighem M and Al E (2022) Icebridge bedmachine greenland, version 5 (\doi
+  {10.5067/GMEVBWFLWA7X})
+
+\bibitem[\protect\citename{Ng and Bj{\"o}rnsson, }2003]{ng2003clague}
+Ng F and Bj{\"o}rnsson H (2003) On the clague--mathews relation for
+  j{\"o}kulhlaups. \emph{Journal of Glaciology}, \textbf{49}(165), 161--172
+
 \bibitem[\protect\citename{Ng and Liu, }2009]{ng2009temporal}
 Ng F and Liu S (2009) Temporal dynamics of a j{\"o}kulhlaup system.
   \emph{Journal of Glaciology}, \textbf{55}(192), 651--665
-
-\bibitem[\protect\citename{Schomacker, }2010]{schomacker2010expansion}
-Schomacker A (2010) Expansion of ice-marginal lakes at the vatnaj{\"o}kull ice
-  cap, iceland, from 1999 to 2009. \emph{Geomorphology}, \textbf{119}(3-4),
-  232--236
 
 \bibitem[\protect\citename{Shapiro and Ritzwoller, }2004]{shapiro2004inferring}
 Shapiro NM and Ritzwoller MH (2004) Inferring surface heat flux distributions
   guided by a global seismic model: particular application to antarctica.
   \emph{Earth and Planetary Science Letters}, \textbf{223}(1-2), 213--224
 
+\bibitem[\protect\citename{Shugar and others, }2020]{shugar2020rapid}
+Shugar DH, Burr A, Haritashya UK, Kargel JS, Watson CS, Kennedy MC, Bevington
+  AR, Betts RA, Harrison S and Strattman K (2020) Rapid worldwide growth of
+  glacial lakes since 1990. \emph{Nature climate change}, \textbf{10}(10),
+  939--945
+
 \bibitem[\protect\citename{Stevens and others, }2022]{stevens2022tidewater}
 Stevens LA, Nettles M, Davis JL, Creyts TT, Kingslake J, Hewitt IJ and
   Stubblefield A (2022) Tidewater-glacier response to supraglacial lake
   drainage. \emph{Nature Communications}, \textbf{13}(1), 6065
-
-\bibitem[\protect\citename{Stokes and Clark, }2004]{stokes2004evolution}
-Stokes CR and Clark CD (2004) Evolution of late glacial ice-marginal lakes on
-  the northwestern canadian shield and their influence on the location of the
-  dubawnt lake palaeo-ice stream. \emph{Palaeogeography, Palaeoclimatology,
-  Palaeoecology}, \textbf{215}(1-2), 155--171
 
 \bibitem[\protect\citename{S{\"u}fke and others, }2022]{sufke2022arctic}
 S{\"u}fke F, Gutjahr M, Keigwin LD, Reilly B, Giosan L and Lippold J (2022)
