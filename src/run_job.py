@@ -88,12 +88,13 @@ def run_job(run_table, job_id):
     paramsdict['s_melt_flag'] = int(run_table['seasonal melt flag'][job_id-1])
     paramsdict['h_el_flag'] = int(run_table['$h_{el}$ flag'][job_id-1])
     paramsdict['Name'] = run_table['Name'][job_id-1]
+    paramsdict['run_id'] = run_table['ID'][job_id-1]
     paramsdict['Notes'] = run_table['Notes'][job_id-1]
 
     # initialize the model
     md = model()
     # Set model name
-    md.miscellaneous.name = 'output_run_{}_{}'.format(job_id, paramsdict['Name'])
+    md.miscellaneous.name = 'output_run_{}_{}'.format(paramsdict['run_id'], paramsdict['Name'])
     print('Model name:', md.miscellaneous.name)
     
 
@@ -137,7 +138,7 @@ def run_job(run_table, job_id):
 
 
     # Store the parameters in the model
-    resdir = f"RES/output_run_{job_id}_{paramsdict['Name']}"
+    resdir = f"RES/output_run_{paramsdict['run_id']}_{paramsdict['Name']}"
 
     if not os.path.exists(resdir):
         os.makedirs(resdir)

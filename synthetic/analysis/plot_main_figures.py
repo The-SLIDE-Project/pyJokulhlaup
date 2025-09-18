@@ -190,7 +190,6 @@ vel_path = os.path.join(resdir, 'vel.npy')
 vel = np.load(vel_path)
 Qc_path = os.path.join(resdir, 'Qc.npy')
 Qc = np.load(Qc_path)
-Qs_path
 h_s_path = os.path.join(resdir, 'h_s.npy')
 h_s = np.load(h_s_path)
 
@@ -702,7 +701,7 @@ fig3b.savefig(os.path.join(filedir, 'figure3b/figure3b.svg'), dpi=300)
 
 ############################################################
 # BONUS, make a movie
-makemovie = False
+makemovie = True
 
 if makemovie:
 
@@ -711,7 +710,9 @@ if makemovie:
     os.makedirs(frame_dir, exist_ok=True)
 
     # Time indices
-    t = np.arange(idx1, idx3)
+    idxmov1 = np.argmin(np.abs(tt - 7.9))
+    idxmov3 = np.argmin(np.abs(tt - 10))
+    t = np.arange(idxmov1, idxmov3)
 
     # Generate and save each frame
     for i, ti in enumerate(t):

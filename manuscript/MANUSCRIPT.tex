@@ -96,25 +96,12 @@ Ice-marginal lakes, \sloppy{water bodies damned by ice or moraine}, are increasi
 Understanding the timings and triggers of jökulhlaup is imperative, and numerous attempts to realise a numerical theory of ice-dammed jökulhlaup have been made. The majority of models are based on the assumption that an ice-marginal lake drains via a semi-circular channel towards the glacier margin \citep{nye1976water}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Methods}
 In this paper we build upon earlier 1D work \citep{kingslake2013modelling} by incorporating a physically-consistent representation of ice-marginal lake drainage into the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}, part of the Ice-sheet and Sea-level System Model \citep[ISSM; ][, \texttt{commit a9a3804}]{larour2012continental}. Our work includes several couplings i) between the subglacial hydrological system and the ice-marginal lake ii) the subglacial hydrological system and ice dynamics, and iii) the ice-marginal lake and ice dynamics (Fig.~\ref{FIG:1}). In Section~\ref{methods:GlaDS} we describe the coupled ISSM-GlaDS model and relevant additional modifications to the version originally presented by \citep{werder2013modeling}. We describe the equations governing ice-marginal lake drainage in Section~\ref{methods:Lake}, and our method of numerical solution is given in Section~\ref{methods:Numeric}. 
 
 \begin{figure}
-\centering{\includegraphics{./figures/Figure_1/Figure_1b.png}}
-\caption{Schematic illustration of our model, showing a glacier (with thickness, $H$) and ice-marginal lake (with height, $l_{\mathrm{h}}$, and input, $Q_{\mathrm{in}}$). The lake is connected two-ways to a subglacial channel (with discharge, $Q_{\mathrm{c}}$) and a `sheet' of linked cavities (with discharge $q_{\mathrm{c}}$) fed by a basal melt term ($M_{\mathrm{r}}$). Changes in $l_{\mathrm{h}}$ modifies $Q_{\mathrm{s}}$ and $q_{\mathrm{s}}$ which in turn changes basal velocity, $U_{\mathrm{b}}$ through effective pressure, $N$. Note, although the ice-marginal lake is shown as connected to one channel, in our model an ice-marginal lake can be connected to the subglacial system at multiple outlets. \texttt{[SINGLE-COLUMN]}}
+\centering{\includegraphics{./figures/Figure_1/Figure_1c.png}}
+\caption{Schematic illustration of our model, showing a glacier (with thickness, $H$) and ice-marginal lake (with height, $l_{\mathrm{h}}$, and input, $Q_{\mathrm{in}}$). The lake is connected two-ways to a subglacial channel (with discharge, $Q_{\mathrm{c}}$) and a `sheet' of linked cavities (with discharge $q_{\mathrm{s}}$) fed by a basal melt term ($M_{\mathrm{r}}$). Changes in $l_{\mathrm{h}}$ modifies $Q_{\mathrm{s}}$ and $q_{\mathrm{s}}$ which in turn changes basal velocity, $U_{\mathrm{b}}$ through effective pressure, $N$. Note, although the ice-marginal lake is shown as connected to one channel, in our model an ice-marginal lake can be connected to the subglacial system at multiple outlets. \texttt{[SINGLE-COLUMN]}}
 \label{FIG:1}
 \end{figure}
 
@@ -391,7 +378,7 @@ Variable & Units & Description \\
 
 \section{Author contribution statement}
 
-The research was conceptualised by AJH, SB, AS, and SL. AJH developed the model, carried out the experiments, and prepared the analysis. AJH wrote the manuscript, with input from SB, AS, and SL. All authors reviewed and edited the manuscript, and fieldwork to deploy and maintain the sensors was carried out by everyone other than AJH [sad-face]. Fellowship funding was acquired by AJH and project funding by SL, RS, SB, AS, KL, KW, JG, EB, NR, LE, BG, TH, MPJ and AB. 
+The research was conceptualised by A.Hepburn, S.Buzzard, A.Sole, and S.Livingstone. A.Hepburn developed the model, carried out the experiments, and prepared the analysis. A.Hepburn wrote the manuscript, with input from S.Buzzard, A.Sole, and S.Livingstone. All authors reviewed and edited the manuscript, and fieldwork to deploy and maintain the sensors was carried out by everyone other than A.Hepburn. T.Irvine-Fynn is thanked for his assistance producing Figure 1. Fellowship funding was acquired by A.Hepburn and project funding by S.Livingstone, R.Storrar, S.Buzzard, A.Sole, [FINISH].
 
 \section{Acknowledgements} 
 
