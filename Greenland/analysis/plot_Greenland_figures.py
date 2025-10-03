@@ -16,7 +16,7 @@ import cmocean
 import imageio
 from datetime import datetime
 import matplotlib
-import matplotlib.image
+import matplotlib.image 
 import matplotlib.patches
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from mpl_toolkits.axes_grid1 import make_axes_locatable
@@ -46,8 +46,7 @@ from read_netCDF import read_netCDF
 from src.utils import *
 
 #Set model path
-IS_dir = '../models/6-TrQin-transient-20-06-2025-08-19'
-#IS_dir = '../models/7-HiStartLh-transient-14-08-2025-08-50'
+IS_dir = '../models/23-HiKcZeroChSS-transient-29-09-2025-11-53'
 print(os.getcwd())
 Fig_dir = 'figures'
 if not os.path.exists(Fig_dir):
@@ -322,6 +321,7 @@ data = np.genfromtxt(datapath, delimiter=',', names=True, dtype=None, encoding=N
 
 # Extract columns
 lhm = data['Medc']
+minlhm = np.min(lhm)
 date_strings = data['Datec']  # strings like 'YYYY-MM-DD'
 stdevc = data['StDevc']
 
@@ -346,8 +346,8 @@ dectime = years + days_elapsed / days_in_year
 err = stdevc / 2
 
 
-ax5.plot(dectime, lhm-266, color='grey', linewidth=0.5)
-ax5.fill_between(dectime, lhm-266-err, lhm-266+err, color='grey', alpha=0.5, label='$l_{\mathrm{h}}$ (meas.)')
+ax5.plot(dectime, lhm-minlhm, color='grey', linewidth=0.5)
+ax5.fill_between(dectime, lhm-minlhm-err, lhm-minlhm+err, color='grey', alpha=0.5, label='$l_{\mathrm{h}}$ (meas.)')
 
 
 ax5.plot(tt,np.max(lh,axis=0), color='black', linewidth=1, label='$l_{\mathrm{h}}$ (model)')
@@ -864,21 +864,21 @@ fig2.savefig(os.path.join(Fig_dir, 'figure2/figure2.svg'), dpi=300)
 print('making figure 3')
 
 # Create a figure with GridSpec
-fig3 = plt.figure(figsize=(7.04724, 4.5))
-gs3 =gridspec.GridSpec(2,2,
+fig3 = plt.figure(figsize=(7.04724/2, 8))
+gs3 =gridspec.GridSpec(4,2,
                        hspace=0.005, wspace=0.2,
                        left=0.05, bottom=0.062, right=0.99, top=0.985,
                        )
 
 
-# Load vel results
+# Load model vel results
 vx_path = os.path.join(IS_dir, 'results/Vx.npy')
 vy_path = os.path.join(IS_dir, 'results/Vy.npy')
 vx = np.load(vx_path)
 vy = np.load(vy_path)
 mean_vx = np.mean(vx, axis=1)
 mean_vy = np.mean(vy, axis=1)
-
+# idx the correct observation period
 #idx1 = np.argmin(np.abs(tt - 2018.5))
 #idx2 = np.argmin(np.abs(tt - 2019))
 idx1 = 1903
@@ -886,12 +886,25 @@ idx2 = 1950
 anomaly_vx = np.mean(vx[:, idx1:idx2+1], axis=1) - mean_vx
 anomaly_vy = np.mean(vy[:, idx1:idx2+1], axis=1) - mean_vy
 
+# Load observed vel results
+Obs_dir = '../models/velanom'
+obs_mean_vx_path = os.path.join(Obs_dir, 'Uavg.npy')
+obs_lake_vx_path = os.path.join(Obs_dir, 'Ulake.npy')
+obs_mean_vy_path = os.path.join(Obs_dir, 'Vavg.npy')
+obs_lake_vy_path = os.path.join(Obs_dir, 'Vlake.npy')
+obs_mean_vx = np.load(obs_mean_vx_path)
+obs_lake_vx = np.load(obs_lake_vx_path)
+obs_mean_vy = np.load(obs_mean_vy_path)
+obs_lake_vy = np.load(obs_lake_vy_path)
+
+
 # set view
 xmin = -232.5 * 1e3
-xmax = -215 * 1e3
+xmax = -220 * 1e3
 ymin = -2498 * 1e3
 ymax = -2489 * 1e3
 
+# Modelled data
 # First plot
 ax1 = fig3.add_subplot(gs3[0, 0])
 
@@ -955,6 +968,71 @@ cax4 = ax4.inset_axes((0, 0.1, 1, 0.05))
 cbar4 = fig3.colorbar(tric4, shrink=0.5, pad=0.02, cax=cax4, orientation='horizontal')
 cbar4.set_label('Lake drain anomaly $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
+# Observed data
+# First plot
+ax5 = fig3.add_subplot(gs3[2, 0])
+
+tric5 = ax5.tripcolor(meshtri, obs_mean_vx, cmap=cmocean.cm.tempo)
+ax5.set_xlim([xmin, xmax])
+ax5.set_ylim([ymin, ymax])
+ax5.set_axis_off()
+ax5.set_aspect('equal')
+
+# Add colorbar
+cax5 = ax5.inset_axes((0, 0.1, 1, 0.05))
+cbar5 = fig3.colorbar(tric5, shrink=0.5, pad=0.02, cax=cax5, orientation='horizontal')
+cbar5.set_label('mean $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+
+# Second plot
+ax6 = fig3.add_subplot(gs3[2, 1])
+
+tric6 = ax6.tripcolor(meshtri, obs_mean_vy, cmap=cmocean.cm.tempo)
+ax6.set_xlim([xmin, xmax])
+ax6.set_ylim([ymin, ymax])
+ax6.set_axis_off()
+ax6.set_aspect('equal')
+
+# Add colorbar
+cax6 = ax6.inset_axes((0, 0.1, 1, 0.05))
+cbar6 = fig3.colorbar(tric6, shrink=0.5, pad=0.02, cax=cax6, orientation='horizontal')
+cbar6.set_label('mean $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+
+# Third plot
+ax7 = fig3.add_subplot(gs3[3, 0])
+
+# Center the colormap on 0 by setting vmin and vmax symmetrically
+anomaly_vx_obs = obs_lake_vx - obs_mean_vx
+umin_obs = -max(abs(anomaly_vx_obs.min()), abs(anomaly_vx_obs.max()))
+umax_obs = max(abs(anomaly_vx_obs.min()), abs(anomaly_vx_obs.max()))
+tric7 = ax7.tripcolor(meshtri, anomaly_vx_obs, cmap=cmocean.cm.balance, vmin=umin_obs, vmax=umax_obs)
+ax7.set_xlim([xmin, xmax])
+ax7.set_ylim([ymin, ymax])
+ax7.set_axis_off()
+ax7.set_aspect('equal')
+
+# Add colorbar
+cax7 = ax7.inset_axes((0, 0.1, 1, 0.05))
+cbar7 = fig3.colorbar(tric7, shrink=0.5, pad=0.02, cax=cax7, orientation='horizontal')
+cbar3.set_label('Lake drain anomaly $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+
+# Fourth plot
+ax8 = fig3.add_subplot(gs3[3, 1])
+
+# Center the colormap on 0 by setting vmin and vmax symmetrically
+anomaly_vy_obs = obs_lake_vy - obs_mean_vy
+vmin_obs = -max(abs(anomaly_vy_obs.min()), abs(anomaly_vy_obs.max()))
+vmax_obs = max(abs(anomaly_vy_obs.min()), abs(anomaly_vy_obs.max()))
+tric8 = ax8.tripcolor(meshtri, anomaly_vy_obs, cmap=cmocean.cm.balance, vmin=vmin_obs, vmax=vmax_obs)
+
+ax8.set_xlim([xmin, xmax])
+ax8.set_ylim([ymin, ymax])
+ax8.set_axis_off()
+ax8.set_aspect('equal')
+
+# Add colorbar
+cax8 = ax8.inset_axes((0, 0.1, 1, 0.05))
+cbar8 = fig3.colorbar(tric8, shrink=0.5, pad=0.02, cax=cax8, orientation='horizontal')
+cbar8.set_label('Lake drain anomaly $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 
 os.makedirs(os.path.join(Fig_dir, 'figure3'), exist_ok=True)
