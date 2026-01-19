@@ -46,7 +46,8 @@ from read_netCDF import read_netCDF
 from src.utils import *
 
 #Set model path
-IS_dir = '../models/23-HiKcZeroChSS-transient-29-09-2025-11-53'
+IS_dir = '../models/1-Base-transient-01-12-2025-20-50'
+#IS_dir = '../models/2-spcHts-transient-23-10-2025-13-32'
 print(os.getcwd())
 Fig_dir = 'figures'
 if not os.path.exists(Fig_dir):
@@ -109,16 +110,22 @@ meshtri = Triangulation(x, y, md.mesh.elements-1)
 
 # Set lake and outlet positions
 # Add lake outlet and spc outlet
-lakepos1 = 6168
-lakepos2 = 8733
-spcpos  = 10655
+lakepos1 = [365-1,366-1,367-1,368-1,369-1,370-1,371-1]
+lakepos2 = 420-1
+spcpos  = 167-1
 
 # Set time span for  shading in fig 1 and span of fig 2
-time_to_show_1 = 1710
-time_to_show_2 = 1765
-time_to_show_3 = 1850
-time_to_show_4 = 1925
-time_to_show_5 = 2000
+#time_to_show_1 = 1710
+#time_to_show_2 = 1765
+#time_to_show_3 = 1850
+#time_to_show_4 = 1925
+#time_to_show_5 = 2000
+
+time_to_show_1 = 2331
+time_to_show_2 = 2682
+time_to_show_3 = 2699
+time_to_show_4 = 2742
+time_to_show_5 = 2840
 
 # Create a figure with GridSpec
 fig1 = plt.figure(figsize=(7.04724, 7))
@@ -145,14 +152,14 @@ ax6 = fig1.add_subplot(gs1[4, 1])
 tric1 = ax1.tripcolor(meshtri, bed, cmap=cmocean.cm.gray_r, edgecolors='w', linewidths=0.01, alpha=0.75)
 #ax1, sm1 = plotchannels(mesh, np.abs(Qc[:,2000]), ax=ax1, min=1,quiver=False,linewidth=0.5)
 ax1.set_aspect('equal')
-ax1.set_xlim([-232.5*1e3, -194*1e3])
+ax1.set_xlim([-234*1e3, -197.5*1e3])
 ax1.set_ylim([-2502*1e3, -2488*1e3])
 ax1.set_axis_off()
 
 Qcmin = 1
-Qcmax = 100
+Qcmax = 500
 cnorm = matplotlib.colors.Normalize(vmin=Qcmin, vmax=Qcmax)
-time_to_show = 2000
+time_to_show = 1614
 Q_arr = Qc[:,time_to_show]
 
 lscale = 1.5 
@@ -179,7 +186,7 @@ ax1.add_collection(lc)
 cax2 = ax1.inset_axes((0.4, 0.065, 0.25, 0.03))
 cb2 = fig1.colorbar(matplotlib.cm.ScalarMappable(norm=cnorm, cmap=cmocean.cm.ice_r),
     cax=cax2, orientation='horizontal')
-cb2.set_ticks([Qcmin, 50, 100, 150])
+cb2.set_ticks([Qcmin, 250,500])
 cb2.ax.xaxis.set_label_position('top')
 cb2.set_label('$Q_{\mathrm{c}}$ [m$^3$ s$^{-1}$]')
 # Coordinates
@@ -229,27 +236,20 @@ ax1.legend(
 )
 
 # Get coordinates for all lake outlets
-lake_coords = (x[lakepos1], y[lakepos1])
-lake_coord2 = (x[lakepos2], y[lakepos2])
+west_out_coords = (np.mean(x[lakepos1]), np.mean(y[lakepos1]))
+east_out_coords = (x[lakepos2], y[lakepos2])
+east_label = "\n".join(textwrap.wrap("East lake outlet", width=12))
+west_label = "\n".join(textwrap.wrap("West lake outlet", width=12))
 
 # Combine lake coordinates into a list
-lake_coords = [lake_coords, lake_coord2]
-
-
-
-# Sort by x-coordinate to determine west vs east
-lake_coords_sorted = sorted(lake_coords, key=lambda p: p[0])  # (west, east)
-west_out_coords, east_out_coords = lake_coords_sorted
-
-# Labels with wrapping
-west_label = "\n".join(textwrap.wrap("West lake outlet", width=12))
-east_label = "\n".join(textwrap.wrap("East lake outlet", width=12))
-
+#lake_coords = [lake_coords, lake_coord2]
 # Annotate west lake
+# Use the third row (index 2), first and second columns as x and y
+wx, wy = west_out_coords[0], west_out_coords[1]
 ax1.annotate(
     west_label,
-    xy=west_out_coords, xycoords='data',
-    xytext=(west_out_coords[0] + 2.5e3, west_out_coords[1] + 2.1e3),  # offset position
+    xy=(wx, wy), xycoords='data',
+    xytext=(wx + 2.5e3, wy + 2.1e3),
     arrowprops=dict(facecolor='black', arrowstyle="-", lw=0.8),
     ha='center', va='bottom', fontsize=9
 )
@@ -293,7 +293,7 @@ rect = matplotlib.patches.Rectangle((x0, y0), x1 - x0, y1 - y0,
                  edgecolor='black', facecolor='none', linewidth=1, linestyle='-')
 ax3.add_patch(rect)
 # Add label 'c' at top-left of the extent box
-ax3.text(x0-1500, y1+1500, 'c', fontsize=10,
+ax3.text(x0-2000, y1+2000, 'c', fontsize=10,
          verticalalignment='top', horizontalalignment='right',
          color='black', bbox=dict(facecolor='none', edgecolor='none'))
 
@@ -313,7 +313,7 @@ ax4.axvspan(
 
 # --- fourth row, lh ---
 # Load lake height record
-datapath = '/Volumes/ajh24/GlaDS/GREENLAND_LAKES/Data/LakeMeasurements/IceMarginalLakeHeight.csv'
+datapath = '/Volumes/ajh24-a/GlaDS/GrIS-Jokulhlaup/data/LakeMeasurements/IceMarginalLakeHeight.csv'
 
 # Load CSV manually with numpy.genfromtxt
 # Assuming the CSV has headers and columns: Medc, Datec, StDevc, Source (Datec format: yyyy-mm-dd)
@@ -364,7 +364,7 @@ ax5.axvspan(
     tt[time_to_show_1], tt[time_to_show_5],alpha=0.15,color='grey')
 
 # --- fifth row, Qr ---
-ax6.plot(tt,np.sum(Qr,axis=0), color='black', linewidth=1)
+ax6.plot(tt,np.max(Qr,axis=0), color='black', linewidth=1)
 ax6.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]',fontsize=10,labelpad=0.5)
 ax6.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax6.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
@@ -489,12 +489,12 @@ ax1.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax1.xaxis.set_minor_locator(MultipleLocator(1/12))
 ax1.set_xlabel('Model time [yrs]', fontsize=10)
 ax1_secondary = ax1.twinx()
-ax1_secondary.plot(tt, np.sum(Qr, axis=0), color='gray', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
+ax1_secondary.plot(tt, np.max(Qr, axis=0), color='gray', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
 ax1_secondary.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]', fontsize=10,rotation=270, labelpad=15,color='gray')
-ax1.set_xlim(2017.25,2019.25)
+ax1.set_xlim(tt[time_to_show_1]-0.1,tt[time_to_show_5]+0.1)
 ax1.margins(x=0, y=0)
-ax1.set_ylim(0, 120)
-ax1_secondary.set_ylim(-40, 80)
+ax1.set_ylim(0, 150)
+ax1_secondary.set_ylim(-40, 300)
 
 
 ax1.axvline(tt[time_to_show_1], color='gray', linestyle='--', linewidth=1)
@@ -545,8 +545,8 @@ ax1.text(
 tric1 = ax2.tripcolor(meshtri, bed, cmap=cmocean.cm.gray_r, edgecolors='w', linewidths=0.01, alpha=0.75)
 #ax1, sm1 = plotchannels(mesh, np.abs(Qc[:,2000]), ax=ax1, min=1,quiver=False,linewidth=0.5)
 ax2.set_aspect('equal')
-xmin = -232.5 * 1e3
-xmax = -217 * 1e3
+xmin = -236.5 * 1e3
+xmax = -225 * 1e3
 ymin = -2498 * 1e3
 ymax = -2489 * 1e3
 ax2.set_xlim([xmin, xmax])
@@ -554,7 +554,7 @@ ax2.set_ylim([ymin, ymax])
 ax2.set_axis_off()
 
 Qcmin = 1
-Qcmax = 300
+Qcmax = 750
 cnorm = matplotlib.colors.Normalize(vmin=Qcmin, vmax=Qcmax)
 Q_arr = Qc[:,time_to_show_1]
 
@@ -809,7 +809,7 @@ ax6.plot(mesh['x'][spcpos], mesh['y'][spcpos], marker='^', color='turquoise', ma
 #cax1 = ax6.inset_axes((0.1, -0.2, 1, 0.03))
 cb1 = fig1.colorbar(matplotlib.cm.ScalarMappable(norm=cnorm, cmap=cmocean.cm.ice_r),
     cax=cax3, orientation='horizontal')
-cb1.set_ticks([Qcmin, 100, 200, 300])
+cb1.set_ticks([Qcmin, 250, 500,750])
 cb1.ax.tick_params(labelsize=8)
 cb1.ax.xaxis.set_label_position('top')
 cb1.set_label('$Q_{\mathrm{c}}$ [m$^3$ s$^{-1}$]', fontsize=8)
@@ -879,10 +879,10 @@ vy = np.load(vy_path)
 mean_vx = np.mean(vx, axis=1)
 mean_vy = np.mean(vy, axis=1)
 # idx the correct observation period
-#idx1 = np.argmin(np.abs(tt - 2018.5))
-#idx2 = np.argmin(np.abs(tt - 2019))
-idx1 = 1903
-idx2 = 1950
+idx1 = np.argmin(np.abs(tt - 2019.5))
+idx2 = np.argmin(np.abs(tt - 2019.6))
+#idx1 = 1903
+#idx2 = 1950
 anomaly_vx = np.mean(vx[:, idx1:idx2+1], axis=1) - mean_vx
 anomaly_vy = np.mean(vy[:, idx1:idx2+1], axis=1) - mean_vy
 
@@ -948,7 +948,7 @@ ax3.set_aspect('equal')
 # Add colorbar
 cax3 = ax3.inset_axes((0, 0.1, 1, 0.05))
 cbar3 = fig3.colorbar(tric3, shrink=0.5, pad=0.02, cax=cax3, orientation='horizontal')
-cbar3.set_label('Lake drain anomaly $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar3.set_label('Flood $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Fourth plot
 ax4 = fig3.add_subplot(gs3[1, 1])
@@ -966,7 +966,7 @@ ax4.set_aspect('equal')
 # Add colorbar
 cax4 = ax4.inset_axes((0, 0.1, 1, 0.05))
 cbar4 = fig3.colorbar(tric4, shrink=0.5, pad=0.02, cax=cax4, orientation='horizontal')
-cbar4.set_label('Lake drain anomaly $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar4.set_label('Flood $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Observed data
 # First plot
@@ -1001,10 +1001,10 @@ cbar6.set_label('mean $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 ax7 = fig3.add_subplot(gs3[3, 0])
 
 # Center the colormap on 0 by setting vmin and vmax symmetrically
-anomaly_vx_obs = obs_lake_vx - obs_mean_vx
+anomaly_vx_obs = obs_lake_vx
 umin_obs = -max(abs(anomaly_vx_obs.min()), abs(anomaly_vx_obs.max()))
 umax_obs = max(abs(anomaly_vx_obs.min()), abs(anomaly_vx_obs.max()))
-tric7 = ax7.tripcolor(meshtri, anomaly_vx_obs, cmap=cmocean.cm.balance, vmin=umin_obs, vmax=umax_obs)
+tric7 = ax7.tripcolor(meshtri, obs_lake_vx, cmap=cmocean.cm.balance, vmin=umin_obs, vmax=umax_obs)
 ax7.set_xlim([xmin, xmax])
 ax7.set_ylim([ymin, ymax])
 ax7.set_axis_off()
@@ -1013,16 +1013,16 @@ ax7.set_aspect('equal')
 # Add colorbar
 cax7 = ax7.inset_axes((0, 0.1, 1, 0.05))
 cbar7 = fig3.colorbar(tric7, shrink=0.5, pad=0.02, cax=cax7, orientation='horizontal')
-cbar3.set_label('Lake drain anomaly $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar3.set_label('Flood $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Fourth plot
 ax8 = fig3.add_subplot(gs3[3, 1])
 
 # Center the colormap on 0 by setting vmin and vmax symmetrically
-anomaly_vy_obs = obs_lake_vy - obs_mean_vy
+anomaly_vy_obs = obs_lake_vy
 vmin_obs = -max(abs(anomaly_vy_obs.min()), abs(anomaly_vy_obs.max()))
 vmax_obs = max(abs(anomaly_vy_obs.min()), abs(anomaly_vy_obs.max()))
-tric8 = ax8.tripcolor(meshtri, anomaly_vy_obs, cmap=cmocean.cm.balance, vmin=vmin_obs, vmax=vmax_obs)
+tric8 = ax8.tripcolor(meshtri, obs_lake_vy, cmap=cmocean.cm.balance, vmin=vmin_obs, vmax=vmax_obs)
 
 ax8.set_xlim([xmin, xmax])
 ax8.set_ylim([ymin, ymax])

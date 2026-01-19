@@ -91,7 +91,7 @@ The design for the \emph{Journal of Glaciology} has been implemented as a \LaTeX
 \item shortcomings and opportunities to improve
 \end{enumerate}
 
-Ice-marginal lakes, \sloppy{water bodies damned by ice or moraine}, are increasing in size and frequency as a result of basin geometry changes driven by glacier thinning and retreat \citep{clague2012climate,shugar2020rapid,molg2021inventory}. Around Greenland alone, $>3000$ ice-marginal lakes have been recorded \citep{carrivick2022ice}, and their potential to repeatedly and catastrophically drain (known as jökulhlaup or glacier outburst floods) pose major risks to downstream communities \citep{ng2003clague}. In addition, jökulhlaup from ice-marginal lakes can impart significant influence on ice-dynamics \citep{carrivick2022ice,domgaard2024altimetry,harpur2025emerging,livingstone2025ice}, and Pleistocene jökulhlaup are considered large enough to have precipitated abrupt changes in global ocean circulation and climate \citep{teller1995history,clark2001freshwater,mangerud2004ice,sufke2022arctic}. Understanding the timings and triggers of jökulhlaup is imperative. 
+Ice-marginal lakes, \sloppy{glacier abutting water bodies damned by ice or moraine}, are increasing in size and frequency as a result of basin geometry changes driven by glacier thinning and retreat \citep{clague2012climate,shugar2020rapid,molg2021inventory}. Around Greenland alone, $>$3,000 ice-marginal lakes have been recorded \citep{carrivick2022ice}, and their potential to repeatedly and catastrophically drain (known as jökulhlaup or glacier outburst floods) pose major risks to downstream communities \citep{ng2003clague}. In addition, jökulhlaup from ice-marginal lakes can impart significant influence on ice-dynamics \citep{carrivick2022ice,domgaard2024altimetry,harpur2025emerging,livingstone2025ice}, and Pleistocene jökulhlaup are considered large enough to have precipitated abrupt changes in global ocean circulation and climate \citep{teller1995history,clark2001freshwater,mangerud2004ice,sufke2022arctic}. Understanding the timings and triggers of jökulhlaup is imperative. 
 
 Numerous attempts to realise a numerical jökulhlaup theory have been made, all based upon mass conservation within a subglacial drainage system. \cite{nye1976water} presented the first modern thermomechanical description, in which an ice-dammed lake drains via a single semi-circular subglacial channel connected to the glacier terminus. During the first stage of a flood (the `rising limb' of a flood hydrograph) the cross-sectional area of the channel increases as heat dissipated by flowing water drives wall melting. A positive feedback between channel enlargement and the rate of melting enables escalating discharge and rapid lake drainage. However, this cannot be sustained indefinitely and once the lake level drops below a threshold level, water pressure drops and the rate of channel enlargement falls and ice deformation leads to channel closure. Though capable of qualitatively capturing many characteristics of Jokulhlaup behaviour, the Nye model includes no coupling to ice-dynamics 
 
@@ -312,7 +312,7 @@ Basal velocity, $U_{\mathrm{b}}$ changes significantly throughout a flood cycle 
 
 \begin{figure*}[!h]
 \centering{\includegraphics[width=0.95\textwidth]{./figures/Figure_3/Figure3.png}}
-\caption{[CHANGE $N$ IN F TO BE $\phi$, move channels to seperate 5 panel figure]Evolution of the 'reference' model configuration in our synthetic modelling domain. \textbf{a}) Lake height, $l_{\mathrm{h}}$ through time. Black points indicate $l_{\mathrm{h}}$ in panels \textbf{c}--\textbf{e}. \textbf{b}) Sum discharge at the lake outlet, $Q_{\mathrm{r}}$ through time. Grey points indicate $Q_{\mathrm{r}}$ in panels \textbf{c}--\textbf{e} the grey box indicates the time span of panel \textbf{g}. \textbf{c}--\textbf{e}) Channel discharge, $Q_{\mathrm{c}}$ at $t=$7.10 years (\textbf{c}), 8.38 years (\textbf{d}) and 9.00 years (\textbf{e}). In each panel, effective pressure, $N$ is shown as grey contours. Note the changes in colour bar scale between each panel. \textbf{f}) Phase-plane diagram showing the evolution of $Q_{\mathrm{r}}$ and $N$ through time at the ice-marginal lake outlet. Arrows and shading indicate the direction of time. The horizontal dashed line denotes the lake refill rate, $Q_{\mathrm{in}} =$ 10 m$^{3}$s$^{-1}$. The vertical dashed line indicates $N$ when $l_{\mathrm{h}}=$0 m. \textbf{g}) Filled contour plot showing the across-flow averaged velocity through time. White contours represent velocity (every 10 ma$^{-1}$) and the black line shows $Q_{\mathrm{r}}$ between years 7--11.}
+\caption{Evolution of the 'reference' model configuration in our synthetic modelling domain. \textbf{a}) Lake height, $l_{\mathrm{h}}$ through time. Black points indicate $l_{\mathrm{h}}$ in panels \textbf{c}--\textbf{e}. \textbf{b}) Sum discharge at the lake outlet, $Q_{\mathrm{r}}$ through time. Grey points indicate $Q_{\mathrm{r}}$ in panels \textbf{c}--\textbf{e} the grey box indicates the time span of panel \textbf{g}. \textbf{c}--\textbf{e}) Channel discharge, $Q_{\mathrm{c}}$ at $t=$7.10 years (\textbf{c}), 8.38 years (\textbf{d}) and 9.00 years (\textbf{e}). In each panel, effective pressure, $N$ is shown as grey contours and the lake outlet is marked by a magenta star. \textbf{f}) Phase-plane diagram showing the evolution of $Q_{\mathrm{r}}$ and $N$ through time at the ice-marginal lake outlet. Arrows and shading indicate the direction of time. The horizontal dashed line denotes the lake refill rate, $Q_{\mathrm{in}} =$ 10 m$^{3}$s$^{-1}$. The vertical dashed line indicates $N$ when $l_{\mathrm{h}}=$0 m. \textbf{g}) Filled contour plot showing the across-flow averaged velocity through time. White contours represent velocity (every 10 ma$^{-1}$) and the black line shows $Q_{\mathrm{r}}$ between years 7--11.}
 \label{FIG:3}
 \end{figure*}
 %\clearpage
@@ -485,21 +485,21 @@ where $k_{\mathrm{s}}$ is the sheet conductivity; $h_{\mathrm{s}}$ is the sheet 
 \label{appeqn: Transition}
 \begin{aligned}
 q_{\mathrm{s}} = -\frac{\nu}{2 \omega} \left(\frac{h_{\mathrm{b}}}{h_{\mathrm{s}}}\right)^{1 / 2} \hspace{10em}\\
-\hspace{3em} \cdot \left(-1 + \sqrt{1 + 4 \frac{\omega}{\nu} \left(\frac{h}{h_{\mathrm{b}}}\right)^{1 / 2} k_{\mathrm{s}} h^3 |\nabla \phi|} \right) \frac{\nabla \phi}{|\nabla \phi|}
+\hspace{3em} \cdot \left(-1 + \sqrt{1 + 4 \frac{\omega}{\nu} \left(\frac{h_{\mathrm{s}}}{h_{\mathrm{b}}}\right)^{1 / 2} k_{\mathrm{s}} h^3 |\nabla \phi|} \right) \frac{\nabla \phi}{|\nabla \phi|}
 \end{aligned}
 \end{equation}
 where $\omega$ is a laminar–turbulent transition parameter (corresponding to the Reynolds number at which water becomes fully-turbulent), $h_{\mathrm{b}}$ is the bed bump height, and $v$ is the kinematic viscosity of water at 0$^{\degree}$C. 
 
-In GlaDS, sheet thickness refers to the thickness of the cavity layer only and there is no representation of viscoelastic deformation of the overlying ice once $p_{\mathrm{w}} > p_{\mathrm{i}}$. Here, following \citeauthor{stevens2022tidewater} (\citeyear{stevens2022tidewater}, based on earlier work by \citeauthor{hewitt2013seasonal} \citeyear{hewitt2013seasonal}), we separate the distributed sheet into elastic sheet thickness $h_{\mathrm{el}}$, and cavity sheet thickness $h_{\mathrm{cav}}$, adding them together to give the overall sheet thickness, $h_{\mathrm{s}} = h_{\mathrm{el}} + h_{\mathrm{cav}}$. The elastic sheet thickness is directly related to the water pressure by:
+%In GlaDS, sheet thickness refers to the thickness of the cavity layer only and there is no representation of viscoelastic deformation of the overlying ice once $p_{\mathrm{w}} > p_{\mathrm{i}}$. Here, following \citeauthor{stevens2022tidewater} (\citeyear{stevens2022tidewater}, based on earlier work by \citeauthor{hewitt2013seasonal} \citeyear{hewitt2013seasonal}), we separate the distributed sheet into elastic sheet thickness $h_{\mathrm{el}}$, and cavity sheet thickness $h_{\mathrm{cav}}$, adding them together to give the overall sheet thickness, $h_{\mathrm{s}} = h_{\mathrm{el}} + h_{\mathrm{cav}}$. The elastic sheet thickness is directly related to the water pressure by:
 
-\begin{equation}
-\label{appeqn: hs_el}
-\begin{aligned}
-h_{\mathrm{el}}=h_c\left(\frac{p_{\mathrm{w}}}{p_{\mathrm{i}}}\right)^\gamma+h_{\varepsilon 2}\left[-N_{-}+\frac{1}{2} N_{\varepsilon}\left(1-N_{+} / N_{\varepsilon}\right)_{+}^2\right],
-\end{aligned}
-\end{equation}
+%\begin{equation}
+%\label{appeqn: hs_el}
+%\begin{aligned}
+%h_{\mathrm{el}}=h_c\left(\frac{p_{\mathrm{w}}}{p_{\mathrm{i}}}\right)^\gamma+h_{\varepsilon 2}\left[-N_{-}+\frac{1}{2} %N_{\varepsilon}\left(1-N_{+} / N_{\varepsilon}\right)_{+}^2\right],
+%\end{aligned}
+%\end{equation}
 
-where $h_{\mathrm{c}}$ is the elastic sheet depth scale, $\gamma$, is the elastic sheet exponent, $h_{\varepsilon}$ is the uplift regularisation rate, and $N_{\varepsilon}$ is the regularising pressure for uplift regularisation rate. In addition, $N_{-} = \mathrm{min}(N,0)$ and $N_{+} = \mathrm{max}(N,0)$, with the second term designed to increase rapidly once $N<0$, as a basic representation of hydraulic jacking.
+%where $h_{\mathrm{c}}$ is the elastic sheet depth scale, $\gamma$, is the elastic sheet exponent, $h_{\varepsilon}$ is the uplift regularisation rate, and $N_{\varepsilon}$ is the regularising pressure for uplift regularisation rate. In addition, $N_{-} = \mathrm{min}(N,0)$ and $N_{+} = \mathrm{max}(N,0)$, with the second term designed to increase rapidly once $N<0$, as a basic representation of hydraulic jacking.
 
 The cavity sheet thickness evolves through time given by:
 
@@ -521,7 +521,7 @@ w(h) =
 	\end{cases}
 \end{equation}
 
-[CHECK CODE TO ENSURE THIS IS $h_{s}$ not $h_{cav}$] where $l_{\mathrm{r}}$ is the horizontal cavity spacing. Viscous ice deformation leads to cavity closure, related to the effective pressure, $N$ by:
+where $l_{\mathrm{r}}$ is the horizontal cavity spacing. Viscous ice deformation leads to cavity closure, related to the effective pressure, $N$ by:
 
 \begin{equation}
 \label{appeqn: viscous closure}
@@ -532,7 +532,7 @@ r(h,N) = Ah|N|^{n-1}N,
 
 where $A$ is the rheological constant of ice, multiplied by a first order geometrical factor (h, but double check it is sheet thickness), and $n$ is Glen's flow law exponent. 
 
-Sheet elements exhcange water with channels, the cross-sectional of which, $S$, evolve through time due to the dissipation of potential energy, $\Pi$, sensible heat exchange, $\Xi$, and cavity closure rates due to viscous ice creep $v_{\mathrm{c}}$
+Sheet elements exchange water with channels, the cross-sectional of which, $S$, evolve through time due to the dissipation of potential energy, $\Pi$, sensible heat exchange, $\Xi$, and cavity closure rates due to viscous ice creep $v_{\mathrm{c}}$
 
 \begin{equation}
 \label{apeq:channel cross section}

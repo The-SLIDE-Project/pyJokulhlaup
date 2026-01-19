@@ -710,7 +710,7 @@ if makemovie:
     os.makedirs(frame_dir, exist_ok=True)
 
     # Time indices
-    idxmov1 = np.argmin(np.abs(tt - 7.9))
+    idxmov1 = np.argmin(np.abs(tt - 8.27))
     idxmov3 = np.argmin(np.abs(tt - 10))
     t = np.arange(idxmov1, idxmov3)
 
