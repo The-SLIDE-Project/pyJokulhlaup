@@ -13,6 +13,7 @@ import os
 import pickle
 import textwrap
 import cmocean
+import geopandas as gpd
 import imageio
 from datetime import datetime
 import matplotlib
@@ -22,7 +23,7 @@ from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.collections import LineCollection, PolyCollection, PatchCollection
 import matplotlib.gridspec as gridspec
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 from matplotlib.colors import Normalize
 from matplotlib import pyplot as plt
 import numpy as np
@@ -46,8 +47,7 @@ from read_netCDF import read_netCDF
 from src.utils import *
 
 #Set model path
-IS_dir = '../models/1-Base-transient-01-12-2025-20-50'
-#IS_dir = '../models/2-spcHts-transient-23-10-2025-13-32'
+IS_dir = '../models/18-FricNLim1Cmax8-transient-13-01-2026-17-53'
 print(os.getcwd())
 Fig_dir = 'figures'
 if not os.path.exists(Fig_dir):
@@ -141,7 +141,7 @@ ax1 = fig1.add_subplot(gs1[1, :])
 inset_width = 0.475
 inset_height = 0.475
 ax2 = ax1.inset_axes([-0.16, 0.8, inset_width, inset_height])  # top-left corner of ax1
-ax3 = ax1.inset_axes([0.23, 0.73, 0.57, 0.57])
+ax3 = ax1.inset_axes([0.355, 0.79, 0.52, 0.52])
 
 ax4 = fig1.add_subplot(gs1[2, 1])
 ax5 = fig1.add_subplot(gs1[3, 1])
@@ -156,10 +156,10 @@ ax1.set_xlim([-234*1e3, -197.5*1e3])
 ax1.set_ylim([-2502*1e3, -2488*1e3])
 ax1.set_axis_off()
 
-Qcmin = 1
-Qcmax = 500
+Qcmin = 10
+Qcmax = 620
 cnorm = matplotlib.colors.Normalize(vmin=Qcmin, vmax=Qcmax)
-time_to_show = 1614
+time_to_show = 3798
 Q_arr = Qc[:,time_to_show]
 
 lscale = 1.5 
@@ -186,7 +186,7 @@ ax1.add_collection(lc)
 cax2 = ax1.inset_axes((0.4, 0.065, 0.25, 0.03))
 cb2 = fig1.colorbar(matplotlib.cm.ScalarMappable(norm=cnorm, cmap=cmocean.cm.ice_r),
     cax=cax2, orientation='horizontal')
-cb2.set_ticks([Qcmin, 250,500])
+cb2.set_ticks([Qcmin, 300,600])
 cb2.ax.xaxis.set_label_position('top')
 cb2.set_label('$Q_{\mathrm{c}}$ [m$^3$ s$^{-1}$]')
 # Coordinates
@@ -210,8 +210,9 @@ ax1.text(bar_x + bar_length/2, bar_y + bar_height + 0.075*(ymax - ymin),  # a li
          '5 km', ha='center', va='top', fontsize=10, color='k')
 
 lakepos = [lakepos1, lakepos2]  # Combine lakepos1 and lakepos2 into a single list
+lakepos_centered = [lakepos1[2], lakepos2]
 
-for idx in lakepos:  # Iterate through both lake positions
+for idx in lakepos_centered:  # Iterate through both lake positions
     ax1.plot(x[idx], y[idx], marker='*', color='fuchsia', markeredgecolor='black', markersize=11)
 
 ax1.plot(x[spcpos], y[spcpos], marker='^', color='turquoise',markeredgecolor='black', markersize=9)
@@ -263,6 +264,22 @@ ax1.annotate(
     ha='center', va='bottom', fontsize=9
 )
 
+
+
+# Load the shapefile
+lake_shp = gpd.read_file('SubglacialLakes/Lake0.shp')
+
+# Extract the polygon (assuming only one)
+polygon = lake_shp.geometry.iloc[0]
+
+# Get the exterior coordinates
+x, y = polygon.exterior.xy
+
+# Plot the polygon as a black line with transparent fill
+ax1.plot(x, y, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax1.fill(x, y, facecolor='none', edgecolor='k', linewidth=1)
+
 # Greenland map
 img = matplotlib.image.imread('Greenland_IS_Location.png')
 # Display in ax2
@@ -313,7 +330,7 @@ ax4.axvspan(
 
 # --- fourth row, lh ---
 # Load lake height record
-datapath = '/Volumes/ajh24-a/GlaDS/GrIS-Jokulhlaup/data/LakeMeasurements/IceMarginalLakeHeight.csv'
+datapath = '/Volumes/ajh24-b/GlaDS/GrIS-Jokulhlaup/data/LakeMeasurements/IceMarginalLakeHeight.csv'
 
 # Load CSV manually with numpy.genfromtxt
 # Assuming the CSV has headers and columns: Medc, Datec, StDevc, Source (Datec format: yyyy-mm-dd)

@@ -8,7 +8,7 @@ import pickle
 
 import numpy as np
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 from matplotlib.tri import Triangulation
 from matplotlib.gridspec import GridSpec

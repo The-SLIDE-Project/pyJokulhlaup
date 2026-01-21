@@ -44,7 +44,7 @@ from bcgslbjacobioptions import bcgslbjacobioptions
 from mumpsoptions import mumpsoptions
 import matplotlib
 import matplotlib.gridspec as gridspec
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 
 from parameterize import parameterize
