@@ -110,8 +110,8 @@ md.hydrology.islakes = 1
 md.hydrology.lake_mask = 0* onevec
 md.hydrology.lake_mask[lakepos] = 1
 md.hydrology.num_lakes = np.max(md.hydrology.lake_mask)
-md.hydrology.lake_area = 0. * onevec
-md.hydrology.lake_area[lakepos] = 5e6  # m^2
+md.hydrology.max_lake_area = 0. * onevec
+md.hydrology.max_lake_area[lakepos] = 5e6  # m^2
 md.hydrology.lake_Qin = 0. * onevec
 
 # flags
@@ -174,7 +174,7 @@ md.transient.deactivateall()
 md.transient.ishydrology = True
 md.transient.isstressbalance = True
 # Execution path
-md.cluster = generic('name',socket.gethostname(),'np', 8)
+md.cluster = generic('name',socket.gethostname(),'np', 20)
 cwd = os.getcwd()
 expath = os.path.join(cwd, 'TMP/')
 if not os.path.exists(expath):

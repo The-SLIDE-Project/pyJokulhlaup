@@ -70,26 +70,45 @@ def run_job(run_table, job_id):
     # Load the run table
     run_table = import_table(run_table)
 
-    # Get the job parameters for the specified job_id
+    # Resolve the requested job against the table ID column (preferred)
+    # and fall back to legacy 1-based row indexing when needed.
+    nrows = len(run_table['ID'])
+    row_idx = None
+    if 'ID' in run_table:
+        table_ids = np.asarray(run_table['ID']).astype(int)
+        matches = np.where(table_ids == int(job_id))[0]
+        if matches.size > 0:
+            row_idx = int(matches[0])
+
+    if row_idx is None:
+        if 1 <= int(job_id) <= nrows:
+            row_idx = int(job_id) - 1
+            print(f"[WARN] Requested job_id={job_id} not found in 'ID' column; using legacy row index {row_idx + 1}.")
+        else:
+            raise ValueError(
+                f"job_id={job_id} not found in 'ID' column and out of row-index range 1..{nrows}."
+            )
+
+    # Get the job parameters for the resolved row
     paramsdict = {}
-    paramsdict['k_c'] = float(run_table['$k_{c}$'][job_id-1])
-    paramsdict['k_s'] = float(run_table['$k_{s}$'][job_id-1])
-    paramsdict['evr'] = float(run_table['$evr$'][job_id-1])
-    paramsdict['h_b'] = float(run_table['$h_{b}$'][job_id-1])
-    paramsdict['l_c'] = float(run_table['$l_{c}$'][job_id-1])
-    paramsdict['l_s'] = float(run_table['$l_{s}$'][job_id-1])
-    paramsdict['C'] = float(run_table['friction C'][job_id-1])
-    paramsdict['p'] = float(run_table['friction p'][job_id-1])
-    paramsdict['q'] = float(run_table['friction q'][job_id-1])
-    paramsdict['bed_angle'] = float(run_table['bed angle'][job_id-1])
-    paramsdict['surface_parabola'] = float(run_table['surface parabola'][job_id-1])
-    paramsdict['melt_rate'] = float(run_table['$melt rate$'][job_id-1])
-    paramsdict['Q_in'] = float(run_table['$Q_{in}$'][job_id-1])
-    paramsdict['s_melt_flag'] = int(run_table['seasonal melt flag'][job_id-1])
-    paramsdict['h_el_flag'] = int(run_table['$h_{el}$ flag'][job_id-1])
-    paramsdict['Name'] = run_table['Name'][job_id-1]
-    paramsdict['run_id'] = run_table['ID'][job_id-1]
-    paramsdict['Notes'] = run_table['Notes'][job_id-1]
+    paramsdict['k_c'] = float(run_table['$k_{c}$'][row_idx])
+    paramsdict['k_s'] = float(run_table['$k_{s}$'][row_idx])
+    paramsdict['evr'] = float(run_table['$evr$'][row_idx])
+    paramsdict['h_b'] = float(run_table['$h_{b}$'][row_idx])
+    paramsdict['l_c'] = float(run_table['$l_{c}$'][row_idx])
+    paramsdict['l_s'] = float(run_table['$l_{s}$'][row_idx])
+    paramsdict['C'] = float(run_table['friction C'][row_idx])
+    paramsdict['p'] = float(run_table['friction p'][row_idx])
+    paramsdict['q'] = float(run_table['friction q'][row_idx])
+    paramsdict['bed_angle'] = float(run_table['bed angle'][row_idx])
+    paramsdict['surface_parabola'] = float(run_table['surface parabola'][row_idx])
+    paramsdict['melt_rate'] = float(run_table['$melt rate$'][row_idx])
+    paramsdict['Q_in'] = float(run_table['$Q_{in}$'][row_idx])
+    paramsdict['s_melt_flag'] = int(run_table['seasonal melt flag'][row_idx])
+    paramsdict['h_el_flag'] = int(run_table['$h_{el}$ flag'][row_idx])
+    paramsdict['Name'] = run_table['Name'][row_idx]
+    paramsdict['run_id'] = run_table['ID'][row_idx]
+    paramsdict['Notes'] = run_table['Notes'][row_idx]
 
     # initialize the model
     md = model()
