@@ -484,28 +484,28 @@ ax6.axvline(tt[time_to_show], color='gray', linestyle='--', linewidth=1)
 ax7.axvline(tt[time_to_show], color='gray', linestyle='--', linewidth=1)
 # Add label 'c' slightly above the line
 ax4.text(
-    tt[time_to_show]+0.2, 0.83,
+    tt[time_to_show]-0.4, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax4.transData, ax4.transAxes)    
 )
 ax5.text(
-    tt[time_to_show]+0.2, 0.83,
+    tt[time_to_show]-0.4, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax5.transData, ax5.transAxes)    
 )
 ax6.text(
-    tt[time_to_show]+0.2, 0.83,
+    tt[time_to_show]-0.4, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax6.transData, ax6.transAxes)    
 )
 ax7.text(
-    tt[time_to_show]+0.2, 0.83,
+    tt[time_to_show]-0.4, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
@@ -516,33 +516,33 @@ mid_tt = tt[time_to_show_1] + (tt[time_to_show_5] - tt[time_to_show_1]) / 2
 
 # Label span of figure 2
 ax4.text(
-    mid_tt, 0.83,
-    'Fig.X',
-    ha='center', va='bottom',
+    tt[time_to_show_5]+0.05, 0.83,
+    'Fig.6',
+    ha='right', va='bottom',
     fontsize=8,
     color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax4.transData, ax4.transAxes)    
 )
 ax5.text(
-    mid_tt, 0.83,
-    'Fig.X',
-    ha='center', va='bottom',
+    tt[time_to_show_5]+0.05, 0.83,
+    'Fig.6',
+    ha='right', va='bottom',
     fontsize=8,
     color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax5.transData, ax5.transAxes)    
 )
 ax6.text(
-    mid_tt, 0.83,
-    'Fig.X',
-    ha='center', va='bottom',
+    tt[time_to_show_5]+0.05, 0.83,
+    'Fig.6',
+    ha='right', va='bottom',
     fontsize=8,
     color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax6.transData, ax6.transAxes)    
 )
 ax7.text(
-    mid_tt, 0.83,
-    'Fig.X',
-    ha='center', va='bottom',
+    tt[time_to_show_5]+0.05, 0.83,
+    'Fig.6',
+    ha='right', va='bottom',
     fontsize=8,
     color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax7.transData, ax7.transAxes)    
