@@ -22,6 +22,7 @@ import matplotlib.patches
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.collections import LineCollection, PolyCollection, PatchCollection
+from matplotlib.path import Path
 import matplotlib.gridspec as gridspec
 matplotlib.use('Agg')
 from matplotlib.colors import Normalize
@@ -236,13 +237,27 @@ lake_handle = plt.Line2D([], [], marker='*', color='fuchsia',markeredgecolor='bl
                          markersize=10, label='Lake outlet')
 spc_handle  = plt.Line2D([], [], marker='^', color='turquoise',markeredgecolor='black', linestyle='none',
                          markersize=9, label='Glacier outlet')
+#Custom subglacial lake marker: 
+angles = np.linspace(0, 2*np.pi, 20, endpoint=False)
+r = 1 + 0.15*np.random.rand(len(angles))  # slight irregularity
+
+xlake = r * np.cos(angles)
+ylake = r * np.sin(angles)
+
+verts = list(zip(xlake, ylake))
+verts.append((xlake[0], ylake[0]))
+codes = [Path.MOVETO] + [Path.LINETO]*(len(verts)-2) + [Path.CLOSEPOLY]
+
+subglacial_lake_marker = Path(verts, codes)
+
+subglacial_lake_handle = plt.Line2D([], [], marker=subglacial_lake_marker, color='w', markeredgecolor='black',markersize=10, linestyle='none', label='Subglacial lake')
 
 # Add legend above scale bar
 legend_x = bar_x + bar_length / 2
-legend_y = bar_y + bar_height + 0.2 * (ymax - ymin)
+legend_y = bar_y + bar_height + 0.25 * (ymax - ymin)
 
 ax1.legend(
-    handles=[lake_handle, spc_handle],
+    handles=[lake_handle, spc_handle, subglacial_lake_handle],
     loc='center',
     bbox_to_anchor=(legend_x, legend_y),
     bbox_transform=ax1.transData,
@@ -588,15 +603,15 @@ ax6 = ax1.inset_axes([0.3, -2.62, inset_width, inset_height])
 #ax6 = fig2.add_subplot(gs2[3, 1])
 
 # --- Top plot: lh Qr time series ---
-ax1.plot(tt, np.max(lh, axis=0), color='black', linewidth=1, label='$l_{\mathrm{h}}$ [m]')
-ax1.set_ylabel('$l_\mathrm{h}$ [m]', fontsize=10, labelpad=0.5)
+ax1.plot(tt, np.max(lh, axis=0), color='gray', linewidth=1, label='$l_{\mathrm{h}}$ [m]')
+ax1.set_ylabel('$l_\mathrm{h}$ [m]', fontsize=10, labelpad=0.5,color='gray')
 ax1.xaxis.set_major_locator(MultipleLocator(1))         # Tick every 3 years
 ax1.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax1.xaxis.set_minor_locator(MultipleLocator(1/12))
 ax1.set_xlabel('Model time [yrs]', fontsize=10)
 ax1_secondary = ax1.twinx()
-ax1_secondary.plot(tt, np.max(Qr, axis=0), color='gray', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
-ax1_secondary.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]', fontsize=10,rotation=270, labelpad=12,color='gray')
+ax1_secondary.plot(tt, np.max(Qr, axis=0), color='black', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
+ax1_secondary.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]', fontsize=10,rotation=270, labelpad=12,color='black')
 ax1.set_xlim(tt[time_to_show_1]-0.2,tt[time_to_show_5]+0.2)
 ax1.margins(x=0, y=0)
 ax1.set_ylim(0, 120)
@@ -691,7 +706,25 @@ ax2.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', 
 for idx in spcpos:  # use spcpos because np.where returns a tuple
     ax2.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 
+# Get the exterior coordinates
+xl0, yl0 = polyL0.exterior.xy
+xl1, yl1 = polyL1.exterior.xy
+xl2, yl2 = polyL2.exterior.xy
+xl3, yl3 = polyL3.exterior.xy
 
+# Plot the polygon as a black line with transparent fill
+ax2.plot(xl0, yl0, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax2.fill(xl0, yl0, facecolor='none', edgecolor='k', linewidth=1)
+ax2.plot(xl1, yl1, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax2.fill(xl1, yl1, facecolor='none', edgecolor='k', linewidth=1)
+ax2.plot(xl2, yl2, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax2.fill(xl2, yl2, facecolor='none', edgecolor='k', linewidth=1)
+ax2.plot(xl3, yl3, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax2.fill(xl3, yl3, facecolor='none', edgecolor='k', linewidth=1)
 
 
 
@@ -763,6 +796,20 @@ ax3.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', 
 
 for idx in spcpos:  # use spcpos because np.where returns a tuple
     ax3.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+
+# Plot the polygon as a black line with transparent fill
+ax3.plot(xl0, yl0, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax3.fill(xl0, yl0, facecolor='none', edgecolor='k', linewidth=1)
+ax3.plot(xl1, yl1, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax3.fill(xl1, yl1, facecolor='none', edgecolor='k', linewidth=1)
+ax3.plot(xl2, yl2, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax3.fill(xl2, yl2, facecolor='none', edgecolor='k', linewidth=1)
+ax3.plot(xl3, yl3, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax3.fill(xl3, yl3, facecolor='none', edgecolor='k', linewidth=1)
 
 # --- fourth plot: Qc time series 3
 #tric3 = ax4.tripcolor(meshtri, bed, cmap=cmocean.cm.gray_r, edgecolors='w', linewidths=0.01, alpha=0.75)
@@ -859,19 +906,36 @@ ax5.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', 
 
 for idx in spcpos:  # use spcpos because np.where returns a tuple
     ax5.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+# Plot the polygon as a black line with transparent fill
+ax5.plot(xl0, yl0, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax5.fill(xl0, yl0, facecolor='none', edgecolor='k', linewidth=1)
+ax5.plot(xl1, yl1, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax5.fill(xl1, yl1, facecolor='none', edgecolor='k', linewidth=1)
+ax5.plot(xl2, yl2, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax5.fill(xl2, yl2, facecolor='none', edgecolor='k', linewidth=1)
+ax5.plot(xl3, yl3, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax5.fill(xl3, yl3, facecolor='none', edgecolor='k', linewidth=1)
 
 # Create dummy handles for legend
 lake_handle = plt.Line2D([], [], marker='*', color='fuchsia',markeredgecolor='black', linestyle='none',
                          markersize=9, label='Lake outlet', markeredgewidth=0.5)
 spc_handle  = plt.Line2D([], [], marker='^', color='turquoise',markeredgecolor='black', linestyle='none',
                          markersize=8, label='Glacier outlet', markeredgewidth=0.5)
+subglacial_lake_handle = plt.Line2D([], [], marker=subglacial_lake_marker, color='w', markeredgecolor='black',markersize=9, linestyle='none', label='Subglacial lake')
 
 # Legend position just to the right of the scale bar
-legend_x = bar_x + bar_length + 0.25e3   # 0.5 km gap to the right
-legend_y = (bar_y + bar_height /2) - 0.6e3       # vertically centered on bar
+#legend_x = bar_x + bar_length + 0.25e3   # 0.5 km gap to the right
+#legend_y = (bar_y + bar_height /2) - 0.6e3       # vertically centered on 
+legend_x = bar_x + bar_length# + 0.05e3   # 0.5 km gap to the right
+legend_y = bar_y + bar_height / 2 - 0.05e3       # vertically centered on scale bar
+# bar
 
 ax5.legend(
-    handles=[lake_handle, spc_handle],
+    handles=[lake_handle, spc_handle, subglacial_lake_handle],
     loc='center left',                   # anchor legend's left edge to this point
     bbox_to_anchor=(legend_x, legend_y),
     bbox_transform=ax5.transData,        # match data coords of scale bar
@@ -919,6 +983,20 @@ ax6.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', 
 
 for idx in spcpos:  # use spcpos because np.where returns a tuple
     ax6.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+
+# Plot the polygon as a black line with transparent fill
+ax6.plot(xl0, yl0, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax6.fill(xl0, yl0, facecolor='none', edgecolor='k', linewidth=1)
+ax6.plot(xl1, yl1, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax6.fill(xl1, yl1, facecolor='none', edgecolor='k', linewidth=1)
+ax6.plot(xl2, yl2, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax6.fill(xl2, yl2, facecolor='none', edgecolor='k', linewidth=1)
+ax6.plot(xl3, yl3, color='k', linewidth=1)  # black outline
+# Optional: fill with transparent color
+ax6.fill(xl3, yl3, facecolor='none', edgecolor='k', linewidth=1)
 
 #cax1 = ax6.inset_axes((0.1, -0.2, 1, 0.03))
 cb1 = fig1.colorbar(matplotlib.cm.ScalarMappable(norm=cnorm, cmap=cmocean.cm.ice_r),
