@@ -1,39 +1,78 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.28)  3 OCT 2025 15:47
-entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.2.28)  5 MAR 2026 15:23
+ restricted system commands enabled.
 **MANUSCRIPT.tex
 (./MANUSCRIPT.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
-(./igs.cls
+Lua module: luaotfload 2024-02-14 3.28 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "/Users/ajh24/Library/texlive/2024/t
+exmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "/usr/local/texlive/2024/texmf-dist/tex/luatex/luaotfload/fontloader-
+2023-12-28.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "/Users/ajh24/Library/texlive/2024/t
+exmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (./igs.cls
 Document Class: igs 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
-)
-\c@part=\count188
-\c@section=\count189
-\c@subsection=\count190
-\c@subsubsection=\count191
-\c@paragraph=\count192
-\c@subparagraph=\count193
-\c@figure=\count194
-\c@table=\count195
+luaotfload | db : Font names database loaded from /Users/ajh24/Library/texlive/2
+024/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
-\bibindent=\dimen140
+\bibindent=\dimen139
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
+2.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2023/05/20 line numbers on paragraphs v5.3
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count196
+\etb@tempcnta=\count194
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
@@ -48,19 +87,19 @@ Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ))
-\linenopenalty=\count197
+\linenopenalty=\count195
 \output=\toks18
-\linenoprevgraf=\count198
-\linenumbersep=\dimen141
-\linenumberwidth=\dimen142
-\c@linenumber=\count199
-\c@pagewiselinenumber=\count266
-\c@LN@truepage=\count267
-\c@internallinenumber=\count268
-\c@internallinenumbers=\count269
-\quotelinenumbersep=\dimen143
-\bframerule=\dimen144
-\bframesep=\dimen145
+\linenoprevgraf=\count196
+\linenumbersep=\dimen140
+\linenumberwidth=\dimen141
+\c@linenumber=\count197
+\c@pagewiselinenumber=\count198
+\c@LN@truepage=\count199
+\c@internallinenumber=\count266
+\c@internallinenumbers=\count267
+\quotelinenumbersep=\dimen142
+\bframerule=\dimen143
+\bframesep=\dimen144
 \bframebox=\box51
 LaTeX Info: Redefining \\ on input line 3180.
 )
@@ -78,23 +117,23 @@ Package: amstext 2021/08/26 v2.01 AMS text
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
-\ex@=\dimen146
+\ex@=\dimen145
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen147
+\pmbraise@=\dimen146
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count270
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count271
-\leftroot@=\count272
+\inf@bad=\count268
+LaTeX Info: Redefining \frac on input line 236.
+\uproot@=\count269
+\leftroot@=\count270
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count273
-\DOTSCASE@=\count274
+\classnum@=\count271
+\DOTSCASE@=\count272
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -104,30 +143,30 @@ LaTeX Info: Redefining \big on input line 722.
 LaTeX Info: Redefining \Big on input line 723.
 LaTeX Info: Redefining \bigg on input line 724.
 LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen148
+\big@size=\dimen147
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count275
+\macc@depth=\count273
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count276
+\c@MaxMatrixCols=\count274
 \dotsspace@=\muskip16
-\c@parentequation=\count277
-\dspbrk@lvl=\count278
+\c@parentequation=\count275
+\dspbrk@lvl=\count276
 \tag@help=\toks20
-\row@=\count279
-\column@=\count280
-\maxfields@=\count281
+\row@=\count277
+\column@=\count278
+\maxfields@=\count279
 \andhelp@=\toks21
-\eqnshift@=\dimen149
-\alignsep@=\dimen150
-\tagshift@=\dimen151
-\tagwidth@=\dimen152
-\totwidth@=\dimen153
-\lineht@=\dimen154
+\eqnshift@=\dimen148
+\alignsep@=\dimen149
+\tagshift@=\dimen150
+\tagwidth@=\dimen151
+\totwidth@=\dimen152
+\lineht@=\dimen153
 \@envbody=\toks22
 \multlinegap=\skip51
 \multlinetaggap=\skip52
@@ -135,15 +174,16 @@ LaTeX Info: Redefining \Relbar on input line 971.
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
-\linenoamsmath@ams@eqpen=\count282
+\linenoamsmath@ams@eqpen=\count280
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/xpatch/xpatch.sty
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2024-02-20 L3 programming layer (loader) 
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count283
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2024-02-20 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count281
+Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box54
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
@@ -160,24 +200,24 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count284
-\Gm@cntv=\count285
-\c@Gm@tempcnt=\count286
-\Gm@bindingoffset=\dimen155
-\Gm@wd@mp=\dimen156
-\Gm@odd@mp=\dimen157
-\Gm@even@mp=\dimen158
-\Gm@layoutwidth=\dimen159
-\Gm@layoutheight=\dimen160
-\Gm@layouthoffset=\dimen161
-\Gm@layoutvoffset=\dimen162
+\Gm@cnth=\count282
+\Gm@cntv=\count283
+\c@Gm@tempcnt=\count284
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
 \Gm@dimlist=\toks24
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/footmisc/footmisc.sty
 Package: footmisc 2023/07/05 v6.0f a miscellany of footnote facilities
 \FN@temptoken=\toks25
-\footnotemargin=\dimen163
-\@outputbox@depth=\dimen164
+\footnotemargin=\dimen162
+\@outputbox@depth=\dimen163
 Package footmisc Info: Declaring symbol style bringhurst on input line 696.
 Package footmisc Info: Declaring symbol style chicago on input line 704.
 Package footmisc Info: Declaring symbol style wiley on input line 713.
@@ -192,30 +232,30 @@ Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen165
-\captionmargin=\dimen166
-\caption@leftmargin=\dimen167
-\caption@rightmargin=\dimen168
-\caption@width=\dimen169
-\caption@indent=\dimen170
-\caption@parindent=\dimen171
-\caption@hangindent=\dimen172
+\caption@tempdima=\dimen164
+\captionmargin=\dimen165
+\caption@leftmargin=\dimen166
+\caption@rightmargin=\dimen167
+\caption@width=\dimen168
+\caption@indent=\dimen169
+\caption@parindent=\dimen170
+\caption@hangindent=\dimen171
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count287
-\c@continuedfloat=\count288
+\c@caption@flags=\count285
+\c@continuedfloat=\count286
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \ttl@box=\box55
 \beforetitleunit=\skip53
 \aftertitleunit=\skip54
-\ttl@plus=\dimen173
-\ttl@minus=\dimen174
+\ttl@plus=\dimen172
+\ttl@minus=\dimen173
 \ttl@toksa=\toks26
-\titlewidth=\dimen175
-\titlewidthlast=\dimen176
-\titlewidthfirst=\dimen177
+\titlewidth=\dimen174
+\titlewidthlast=\dimen175
+\titlewidthfirst=\dimen176
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/abstract/abstract.sty
 Package: abstract 2009/06/08 v1.2a configurable abstracts
@@ -256,61 +296,729 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks27
 \XKV@tempa@toks=\toks28
 )
-\XKV@depth=\count289
+\XKV@depth=\count287
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2024/02/13 2.9a Font selection for XeLaTeX and LuaLaTeX
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaT
+eX
+\l__fontspec_script_int=\count288
+\l__fontspec_language_int=\count289
+\l__fontspec_strnum_int=\count290
+\l__fontspec_tmp_int=\count291
+\l__fontspec_tmpa_int=\count292
+\l__fontspec_tmpb_int=\count293
+\l__fontspec_tmpc_int=\count294
+\l__fontspec_em_int=\count295
+\l__fontspec_emdef_int=\count296
+\l__fontspec_strong_int=\count297
+\l__fontspec_strongdef_int=\count298
+\l__fontspec_tmpa_dim=\dimen177
+\l__fontspec_tmpb_dim=\dimen178
+\l__fontspec_tmpc_dim=\dimen179
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
-(/usr/local/texlive/2024/texmf-dist/tex/latex/fontaxes/fontaxes.sty
-Package: fontaxes 2020/07/21 v1.0e Font selection axes
-LaTeX Info: Redefining \upshape on input line 29.
-LaTeX Info: Redefining \itshape on input line 31.
-LaTeX Info: Redefining \slshape on input line 33.
-LaTeX Info: Redefining \swshape on input line 35.
-LaTeX Info: Redefining \scshape on input line 37.
-LaTeX Info: Redefining \sscshape on input line 39.
-LaTeX Info: Redefining \ulcshape on input line 41.
-LaTeX Info: Redefining \textsw on input line 47.
-LaTeX Info: Redefining \textssc on input line 48.
-LaTeX Info: Redefining \textulc on input line 49.
-)
-LaTeX Info: Redefining \oldstylenums on input line 485.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LinLibertine_I.tex))
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: Font family 'LinLibertine(0)' created for font
+(fontspec)             'LinLibertine' with options [Ligatures = TeX,Extension
+(fontspec)             =
+(fontspec)             .otf,SmallCapsFeatures={Letters=SmallCaps},Ligatures=TeX
+,Numbers
+(fontspec)             = {Monospaced,Lining},Scale = 1,UprightFont =
+(fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
+(fontspec)             *_RBI].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_R.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_R.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RI.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RI.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;+smcp;"
+
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 307.
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RB scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RB scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RI scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RI scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RBO scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RBO scale = 1.
+
+
+Package fontspec Info: Font family 'LinBiolinum(0)' created for font
+(fontspec)             'LinBiolinum' with options [Ligatures = TeX,Extension =
+(fontspec)             .otf,SmallCapsFeatures={Letters=SmallCaps},Ligatures=TeX
+,Numbers
+(fontspec)             = {Monospaced, Lining},Scale = 1,UprightFont =
+(fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
+(fontspec)             *_RBO].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_R.otf]:mode=node;script=latn;langu
+age=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_R.otf]:mode=node;script=latn;langu
+age=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RB.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RB.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RI.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RI.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RBO.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RBO.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: Font family 'LinLibertine(1)' created for font
+(fontspec)             'LinLibertine' with options [Ligatures = TeX,Extension
+(fontspec)             = .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
+(fontspec)             {Monospaced,Lining},Scale = 1,UprightFont =
+(fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
+(fontspec)             *_RBI].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_R.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_R.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RI.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RI.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;+smcp;"
+
+
+Package fontspec Info: LinLibertine_RZ scale = 1.
+
+
+Package fontspec Info: LinLibertine_RZ scale = 1.
+
+
+Package fontspec Info: LinLibertine_RZ scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RZI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RZI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: Font family 'LinLibertine(2)' created for font
+(fontspec)             'LinLibertine' with options [Ligatures = TeX,Extension
+(fontspec)             = .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
+(fontspec)             { Monospaced, Lining},Scale = 1,UprightFont =
+(fontspec)             *_RZ,ItalicFont = *_RZI,BoldFont = *_RB,BoldItalicFont
+(fontspec)             = *_RBI].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RZ.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RZ.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RZI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RZI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+lnum;+smcp;"
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RB scale = 1.
+
+
+Package fontspec Info: LinLibertine_RI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: LinLibertine_RBI scale = 1.
+
+
+Package fontspec Info: Font family 'LinLibertine(3)' created for font
+(fontspec)             'LinLibertine' with options [Ligatures = TeX,Extension
+(fontspec)             = .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
+(fontspec)             {Monospaced,OldStyle},Scale = 1,UprightFont =
+(fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
+(fontspec)             *_RBI].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_R.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_R.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+onum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RB.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+onum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RI.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RI.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+onum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_RBI.otf]:mode=node;script=latn;la
+nguage=dflt;+tlig;+tnum;+onum;+smcp;"
+
+
+Package fontspec Info: LinLibertine_R scale = 1.
+
+luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: Font family 'LinLibertine(4)' created for font
+(fontspec)             'LinLibertine' with options [Ligatures = TeX,Extension
+(fontspec)             = .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
+(fontspec)             {Monospaced,Lining},UprightFont = *_DR,ItalicFont =
+(fontspec)             *_RI,BoldFont = *_RB,BoldItalicFont = *_RBI].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_DR.otf]:mode=node;script=latn;language
+=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_RB.otf]:mode=node;script=latn;language
+=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_RB.otf]:mode=node;script=latn;language
+=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_RI.otf]:mode=node;script=latn;language
+=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_RI.otf]:mode=node;script=latn;language
+=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_RBI.otf]:mode=node;script=latn;languag
+e=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_RBI.otf]:mode=node;script=latn;languag
+e=dflt;+tlig;+tnum;+lnum;+smcp;"
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RB scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RB scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RI scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RI scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RBO scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RBO scale = 1.
+
+
+Package fontspec Info: Font family 'LinBiolinum(1)' created for font
+(fontspec)             'LinBiolinum' with options [Ligatures = TeX,Extension =
+(fontspec)             .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
+(fontspec)             {Monospaced, Lining},Scale = 1,UprightFont =
+(fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
+(fontspec)             *_RBO].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_R.otf]:mode=node;script=latn;langu
+age=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_R.otf]:mode=node;script=latn;langu
+age=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RB.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RB.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RI.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RI.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RBO.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RBO.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+lnum;+smcp;"
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RB scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RB scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RI scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RI scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RBO scale = 1.
+
+
+Package fontspec Info: LinBiolinum_RBO scale = 1.
+
+
+Package fontspec Info: Font family 'LinBiolinum(2)' created for font
+(fontspec)             'LinBiolinum' with options [Ligatures = TeX,Extension =
+(fontspec)             .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
+(fontspec)             {Monospaced, OldStyle},Scale = 1,UprightFont =
+(fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
+(fontspec)             *_RBO].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_R.otf]:mode=node;script=latn;langu
+age=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_R.otf]:mode=node;script=latn;langu
+age=dflt;+tlig;+tnum;+onum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RB.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RB.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+onum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RI.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RI.otf]:mode=node;script=latn;lang
+uage=dflt;+tlig;+tnum;+onum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RBO.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+onum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinBiolinum_RBO.otf]:mode=node;script=latn;lan
+guage=dflt;+tlig;+tnum;+onum;+smcp;"
+
+
+Package fontspec Info: LinBiolinum_R scale = 1.
+
+
+Package fontspec Info: LinLibertine_M scale = 1.
+
+
+Package fontspec Info: LinLibertine_M scale = 1.
+
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: LinLibertine_MB scale = 1.
+
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: LinLibertine_MO scale = 1.
+
+luaotfload | aux : font no 42 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: LinLibertine_MBO scale = 1.
+
+luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: Font family 'LinLibertine(5)' created for font
+(fontspec)             'LinLibertine' with options [Extension =
+(fontspec)             .otf,HyphenChar=None,WordSpace={1,0,0},HyphenChar=None,P
+unctuationSpace=WordSpace,Scale
+(fontspec)             = 1,UprightFont = *_M,ItalicFont = *_MO,BoldFont =
+(fontspec)             *_MB,BoldItalicFont = *_MBO].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_M.otf]:mode=node;script=latn;lang
+uage=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_MB.otf]:mode=node;script=latn;lan
+guage=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_MO.otf]:mode=node;script=latn;lan
+guage=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_MBO.otf]:mode=node;script=latn;la
+nguage=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
+Package fontspec Info: LinLibertine_M scale = 1.
+
+
+Package fontspec Info: LinLibertine_M scale = 1.
+
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: LinLibertine_MB scale = 1.
+
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: LinLibertine_MO scale = 1.
+
+luaotfload | aux : font no 42 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: LinLibertine_MBO scale = 1.
+
+luaotfload | aux : font no 43 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: Font family 'LinLibertine(6)' created for font
+(fontspec)             'LinLibertine' with options [Extension =
+(fontspec)             .otf,HyphenChar=None,Scale = 1,UprightFont =
+(fontspec)             *_M,ItalicFont = *_MO,BoldFont = *_MB,BoldItalicFont =
+(fontspec)             *_MBO].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_M.otf]:mode=node;script=latn;lang
+uage=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_MB.otf]:mode=node;script=latn;lan
+guage=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_MO.otf]:mode=node;script=latn;lan
+guage=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[LinLibertine_MBO.otf]:mode=node;script=latn;la
+nguage=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
+Package fontspec Info: Font family 'LinBiolinum_K(0)' created for font
+(fontspec)             'LinBiolinum_K' with options [Extension =
+(fontspec)             .otf,HyphenChar=None,BoldFont={},ItalicFont={},SmallCaps
+Font={}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[LinBiolinum_K.otf]:mode=node;script=latn;language=d
+flt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
+Package fontspec Info: Font family 'LinLibertine_I(0)' created for font
+(fontspec)             'LinLibertine_I' with options [Extension =
+(fontspec)             .otf,HyphenChar=None,BoldFont={},ItalicFont={},SmallCaps
+Font={}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[LinLibertine_I.otf]:mode=node;script=latn;language=
+dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+LaTeX Info: Redefining \oldstylenums on input line 475.
+LaTeX Info: Redefining \liningnums on input line 476.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LinLibertine_R.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LinBiolinum_R.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LinBiolinum_K.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LinLibertine_I.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/LKey.tex)
+LaTeX Info: Redefining \textsup on input line 552.
+)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/newtxsf.sty
 Package: newtxsf 2024/01/25 v1.056
 
 `newtxsf' v1.056, 2024/01/25 Math macros based on STIX sans serif and txfonts (
 msharpe) (/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex)
-\tx@Isdigit=\count290
+\tx@Isdigit=\count299
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 58.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/LinuxBiolinumT-TLF/m/n on input lin
-e 58.
+(Font)                  OT1/cmr/m/n --> OT1/LinBiolinum(0)/m/n on input line 58
+.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/LinuxBiolinumT-TLF/m/n on input li
-ne 58.
+(Font)                  OT1/cmr/bx/n --> OT1/LinBiolinum(0)/m/n on input line 5
+8.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/LinuxBiolinumT-TLF/m/n --> OT1/LinuxBiolinumT-TLF/b
-/n on input line 59.
+(Font)                  OT1/LinBiolinum(0)/m/n --> OT1/LinBiolinum(0)/b/n on in
+put line 59.
 LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 65.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/LinuxBiolinumT-TLF/m/n on input li
-ne 65.
+(Font)                  OT1/cmss/m/n --> OT1/LinBiolinum(0)/m/n on input line 6
+5.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/LinuxBiolinumT-TLF/m/n on input l
-ine 65.
+(Font)                  OT1/cmss/bx/n --> OT1/LinBiolinum(0)/m/n on input line 
+65.
 LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 66.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/LinuxBiolinumT-TLF/m/it on input l
-ine 66.
+(Font)                  OT1/cmr/m/it --> OT1/LinBiolinum(0)/m/it on input line 
+66.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/LinuxBiolinumT-TLF/m/it on input 
-line 66.
+(Font)                  OT1/cmr/bx/it --> OT1/LinBiolinum(0)/m/it on input line
+ 66.
 LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 67.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 67.
@@ -318,17 +1026,17 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 67.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 69.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/LinuxBiolinumT-TLF/b/n on input li
-ne 69.
+(Font)                  OT1/cmr/bx/n --> OT1/LinBiolinum(0)/b/n on input line 6
+9.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/LinuxBiolinumT-TLF/b/n on input li
-ne 69.
+(Font)                  OT1/cmr/bx/n --> OT1/LinBiolinum(0)/b/n on input line 6
+9.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/LinuxBiolinumT-TLF/m/it --> OT1/LinuxBiolinumT-TLF/
-b/it on input line 70.
+(Font)                  OT1/LinBiolinum(0)/m/it --> OT1/LinBiolinum(0)/b/it on 
+input line 70.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/LinuxBiolinumT-TLF/m/n --> OT1/LinuxBiolinumT-TLF/b
-/n on input line 71.
+(Font)                  OT1/LinBiolinum(0)/m/n --> OT1/LinBiolinum(0)/b/n on in
+put line 71.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/lmtt/m/n --> OT1/lmtt/b/n on input line 72.
 LaTeX Font Info:    Redeclaring symbol font `letters' on input line 77.
@@ -342,8 +1050,6 @@ LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
 \symlettersA=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
 (Font)                  U/ntxsfmia/m/it --> U/ntxsfmia/b/it on input line 85.
-Now handling font encoding LMS ...
-... no UTF-8 mapping file for font encoding LMS
 LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 95.
 LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
 (Font)              `symbols' in the math version `normal' on input line 95.
@@ -361,8 +1067,6 @@ LaTeX Font Info:    Overwriting symbol font `AMSm' in version `bold'
 \symsymbolsC=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
 (Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 137.
-Now handling font encoding LMX ...
-... no UTF-8 mapping file for font encoding LMX
 LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 150.
 LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
@@ -447,18 +1151,18 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip69
-\enit@outerparindent=\dimen178
+\enit@outerparindent=\dimen180
 \enit@toks=\toks29
 \enit@inbox=\box56
-\enit@count@id=\count291
-\enitdp@description=\count292
+\enit@count@id=\count300
+\enitdp@description=\count301
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip70
 \bibsep=\skip71
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count293
+\c@NAT@ctr=\count302
 )
 LaTeX Info: Redefining \uppartial on input line 169.
 )
@@ -466,8 +1170,11 @@ LaTeX Info: Redefining \uppartial on input line 169.
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks30
 \inpenc@posthook=\toks31
-)
-(/usr/local/texlive/2024/texmf-dist/tex/generic/mathabx/mathabx.sty
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/mathabx/mathabx.sty
 Package: mathabx 2003/07/29 v0.0 Non-standard LaTeX package mathabx
 \symmatha=\mathgroup9
 \symmathb=\mathgroup10
@@ -765,11 +1472,11 @@ LaTeX Font Info:    Redeclaring math symbol \boxdot on input line 688.
 LaTeX Font Info:    Redeclaring math symbol \boxleft on input line 694.
 LaTeX Font Info:    Redeclaring math symbol \boxright on input line 695.
 LaTeX Font Info:    Redeclaring math symbol \boxslash on input line 702.
-\mayacnter=\count294
-\mayacnta=\count295
-\mayacntb=\count296
-\mayacntc=\count297
-\mayawidth=\dimen179
+\mayacnter=\count303
+\mayacnta=\count304
+\mayacntb=\count305
+\mayacntc=\count306
+\mayawidth=\dimen181
 LaTeX Font Info:    Redeclaring math symbol \intop on input line 753.
 LaTeX Font Info:    Redeclaring math symbol \iintop on input line 754.
 LaTeX Font Info:    Redeclaring math symbol \iiintop on input line 757.
@@ -783,7 +1490,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.767 ...thSymbol{\bigtimes}       {1}{mathx}{"91}
+l.767 ...MathSymbol{\bigtimes}       {1}{mathx}{"91}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -817,9 +1524,9 @@ LaTeX Font Info:    Redeclaring math accent \widehat on input line 944.
 LaTeX Font Info:    Redeclaring math accent \widetilde on input line 946.
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen180
+\col@sep=\dimen182
 \ar@mcellbox=\box57
-\extrarowheight=\dimen181
+\extrarowheight=\dimen183
 \NC@list=\toks32
 \extratabsurround=\skip72
 \backup@length=\skip73
@@ -837,30 +1544,30 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: luatex.def on input line 107.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 ))
-\Gin@req@height=\dimen182
-\Gin@req@width=\dimen183
+\Gin@req@height=\dimen184
+\Gin@req@width=\dimen185
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count298
-\l__siunitx_number_exponent_fixed_int=\count299
-\l__siunitx_number_min_decimal_int=\count300
-\l__siunitx_number_min_integer_int=\count301
-\l__siunitx_number_round_precision_int=\count302
-\l__siunitx_number_lower_threshold_int=\count303
-\l__siunitx_number_upper_threshold_int=\count304
-\l__siunitx_number_group_first_int=\count305
-\l__siunitx_number_group_size_int=\count306
-\l__siunitx_number_group_minimum_int=\count307
-\l__siunitx_angle_tmp_dim=\dimen184
+\l__siunitx_number_uncert_offset_int=\count307
+\l__siunitx_number_exponent_fixed_int=\count308
+\l__siunitx_number_min_decimal_int=\count309
+\l__siunitx_number_min_integer_int=\count310
+\l__siunitx_number_round_precision_int=\count311
+\l__siunitx_number_lower_threshold_int=\count312
+\l__siunitx_number_upper_threshold_int=\count313
+\l__siunitx_number_group_first_int=\count314
+\l__siunitx_number_group_size_int=\count315
+\l__siunitx_number_group_minimum_int=\count316
+\l__siunitx_angle_tmp_dim=\dimen186
 \l__siunitx_angle_marker_box=\box59
 \l__siunitx_angle_unit_box=\box60
-\l__siunitx_compound_count_int=\count308
+\l__siunitx_compound_count_int=\count317
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
@@ -876,20 +1583,21 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks33
 ))
 \l__siunitx_table_tmp_box=\box61
-\l__siunitx_table_tmp_dim=\dimen185
-\l__siunitx_table_column_width_dim=\dimen186
+\l__siunitx_table_tmp_dim=\dimen187
+\l__siunitx_table_column_width_dim=\dimen188
 \l__siunitx_table_integer_box=\box62
 \l__siunitx_table_decimal_box=\box63
 \l__siunitx_table_uncert_box=\box64
 \l__siunitx_table_before_box=\box65
 \l__siunitx_table_after_box=\box66
-\l__siunitx_table_before_dim=\dimen187
-\l__siunitx_table_carry_dim=\dimen188
-\l__siunitx_unit_tmp_int=\count309
-\l__siunitx_unit_position_int=\count310
-\l__siunitx_unit_total_int=\count311
+\l__siunitx_table_before_dim=\dimen189
+\l__siunitx_table_carry_dim=\dimen190
+\l__siunitx_unit_tmp_int=\count318
+\l__siunitx_unit_position_int=\count319
+\l__siunitx_unit_total_int=\count320
 )
 (./igsnatbib.sty
 Package: igsnatbib 2008/01/18 v1.00 IGS version of natbib.sty
@@ -902,7 +1610,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.166 ...tyle@chicago{\bibpunct{(}{)}{;}{a}{,}{,}}
+l.166 ...bstyle@chicago{\bibpunct{(}{)}{;}{a}{,}{,}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -916,7 +1624,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.167 ...bstyle@named{\bibpunct{[}{]}{;}{a}{,}{,}}
+l.167 ...bibstyle@named{\bibpunct{[}{]}{;}{a}{,}{,}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -930,7 +1638,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.168 ...ibstyle@agu{\bibpunct{[}{]}{;}{a}{,}{,~}}
+l.168 ...\bibstyle@agu{\bibpunct{[}{]}{;}{a}{,}{,~}}
                                                   %Amer. Geophys. Union
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -944,7 +1652,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.169 ...bibstyle@egs{\bibpunct{(}{)}{;}{a}{,}{,}}
+l.169 ...d\bibstyle@egs{\bibpunct{(}{)}{;}{a}{,}{,}}
                                                   %Eur. Geophys. Soc.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -958,7 +1666,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.170 ...nct{(}{)}{,}{a}{}{,}\gdef\harvardand{\&}}
+l.170 ...punct{(}{)}{,}{a}{}{,}\gdef\harvardand{\&}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -972,7 +1680,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.171 ...nct{(}{)}{,}{a}{}{,}\gdef\harvardand{\&}}
+l.171 ...punct{(}{)}{,}{a}{}{,}\gdef\harvardand{\&}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -986,7 +1694,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.172 ...t{(}{)}{;}{a}{;}{,}\gdef\harvardand{and}}
+l.172 ...nct{(}{)}{;}{a}{;}{,}\gdef\harvardand{and}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1000,7 +1708,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.173 ...d\bibstyle@aa{\bibpunct{(}{)}{;}{a}{}{,}}
+l.173 ...and\bibstyle@aa{\bibpunct{(}{)}{;}{a}{}{,}}
                                                    %Astronomy & Astrophysics
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1014,7 +1722,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.174 ...ibstyle@pass{\bibpunct{(}{)}{;}{a}{,}{,}}
+l.174 ...\bibstyle@pass{\bibpunct{(}{)}{;}{a}{,}{,}}
                                                   %Planet. & Space Sci
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1028,7 +1736,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.175 ...style@anngeo{\bibpunct{(}{)}{;}{a}{,}{,}}
+l.175 ...ibstyle@anngeo{\bibpunct{(}{)}{;}{a}{,}{,}}
                                                   %Annales Geophysicae
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1042,7 +1750,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.176 ...yle@nlinproc{\bibpunct{(}{)}{;}{a}{,}{,}}
+l.176 ...style@nlinproc{\bibpunct{(}{)}{;}{a}{,}{,}}
                                                   %Nonlin.Proc.Geophys.
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1057,7 +1765,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.179      \gdef\NAT@biblabelnum##1{##1.}}
-                                          
+                                        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1070,7 +1778,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.181 ...def\NAT@biblabelnum##1{##1.\hspace{1em}}}
+l.181 ...\gdef\NAT@biblabelnum##1{##1.\hspace{1em}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1085,7 +1793,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.183      \gdef\NAT@biblabelnum##1{##1.}}
-                                          
+                                        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1098,7 +1806,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.185 ...ibstyle@plain{\bibpunct{[}{]}{,}{n}{}{,}}
+l.185 ...\bibstyle@plain{\bibpunct{[}{]}{,}{n}{}{,}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1112,7 +1820,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.190 ...yle@plainnat{\bibpunct{[}{]}{,}{a}{,}{,}}
+l.190 ...style@plainnat{\bibpunct{[}{]}{,}{a}{,}{,}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1126,7 +1834,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.237 ...[1]{\@citestyle{#1}\let\bibstyle\@gobble}
+l.237 ...le[1]{\@citestyle{#1}\let\bibstyle\@gobble}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1141,7 +1849,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.248   }
-         
+       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1155,7 +1863,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.250 \newcommand\NAT@open{(}
-                              \newcommand\NAT@close{)}
+                            \newcommand\NAT@close{)}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1168,7 +1876,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.250 ...mand\NAT@open{(} \newcommand\NAT@close{)}
+l.250 ...ommand\NAT@open{(} \newcommand\NAT@close{)}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1183,7 +1891,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.251 \newcommand\NAT@sep{;}
-                            
+                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1197,7 +1905,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.253 \newcommand\NAT@aysep{,}
-                               \newcommand\NAT@yrsep{,}
+                             \newcommand\NAT@yrsep{,}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1210,7 +1918,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.253 ...and\NAT@aysep{,} \newcommand\NAT@yrsep{,}
+l.253 ...mmand\NAT@aysep{,} \newcommand\NAT@yrsep{,}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1225,7 +1933,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.254 \newcommand\NAT@cmt{, }
-                             
+                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1238,7 +1946,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.257 ...T@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+l.257 ...NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1252,7 +1960,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.260 ...T@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+l.260 ...NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1266,8 +1974,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.263 ...if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
-                                                  
+l.263    \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
+                                                 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1281,7 +1989,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.267 \newcommand\NAT@citexnum{}
-                                
+                              
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1295,7 +2003,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.352    on page \thepage}\else \NAT@date \fi \fi}
-                                                  
+                                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1309,7 +2017,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.354 \newcommand\NAT@citex{}
-                             
+                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1322,8 +2030,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.442 ...command\NAT@@open{\ifNAT@par\NAT@open\fi}
-                                                  
+l.442 \newcommand\NAT@@open{\ifNAT@par\NAT@open\fi}
+                                                 
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1336,7 +2044,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.443 ...mmand\NAT@@close{\ifNAT@par\NAT@close\fi}
+l.443 ...command\NAT@@close{\ifNAT@par\NAT@close\fi}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1350,7 +2058,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.447 ...}}{\@nameuse{al@\@citeb\@extra@b@citeb}}}
+l.447 ...ge}}{\@nameuse{al@\@citeb\@extra@b@citeb}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1364,7 +2072,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.450 ...T@deftemp#1}\expandafter\NAT@UP\NAT@temp}
+l.450 ...NAT@deftemp#1}\expandafter\NAT@UP\NAT@temp}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1378,7 +2086,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.451 ...ommand\NAT@deftemp[1]{\xdef\NAT@temp{#1}}
+l.451 \newcommand\NAT@deftemp[1]{\xdef\NAT@temp{#1}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1393,7 +2101,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.453   \let\@tempa\relax\else#1\fi\@tempa}
-                                           
+                                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1406,7 +2114,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.457 ...f{bv@\@citeb\@extra@b@citeb}{}}\@esphack}
+l.457 ...def{bv@\@citeb\@extra@b@citeb}{}}\@esphack}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1421,7 +2129,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.458 \newcommand\NAT@biblabel[1]{\hfill}
-                                         
+                                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1434,7 +2142,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.459 ...ommand\NAT@biblabelnum[1]{\bibnumfmt{#1}}
+l.459 \newcommand\NAT@biblabelnum[1]{\bibnumfmt{#1}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1449,7 +2157,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.460 \newcommand\bibnumfmt[1]{[#1]}
-                                    
+                                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1463,7 +2171,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.472 }
-       
+     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1477,7 +2185,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.473 \newlength{\bibhang}
-                          
+                        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1491,7 +2199,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.475 \newlength{\bibsep}
-                         
+                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1504,7 +2212,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.480 ...temsep}{\bibsep}\setlength{\parsep}{\z@}}
+l.480 ...\itemsep}{\bibsep}\setlength{\parsep}{\z@}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1519,7 +2227,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.498  \fi}
-           
+         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1533,7 +2241,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.515 ...fnextchar[{\NAT@@citetp}{\NAT@@citetp[]}}
+l.515 ...@ifnextchar[{\NAT@@citetp}{\NAT@@citetp[]}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1548,7 +2256,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.516 \newcommand\NAT@@citetp{}
-                               
+                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1564,7 +2272,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.528     \NAT@@citetp[]}}
-                          
+                        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1587,7 +2295,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.562 ...ommand\citetext[1]{\NAT@open#1\NAT@close}
+l.562 \newcommand\citetext[1]{\NAT@open#1\NAT@close}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1603,7 +2311,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.568    \@namedef{al@#1\@extra@b@citeb}{#2}}
-                                             
+                                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1619,7 +2327,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.589 }
-       
+     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1632,7 +2340,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.593 ...NAT@all@names \gdef\NAT@all@names{#3}\fi}
+l.593 ...e\NAT@all@names \gdef\NAT@all@names{#3}\fi}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1647,7 +2355,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.594 \newcommand\NAT@parse@date{}
-                                  
+                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1661,7 +2369,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.601 \newcommand\NAT@index{}
-                             
+                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1674,7 +2382,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.606 ...{\NAT@name\ \NAT@open\NAT@date\NAT@close}
+l.606 ...xt{\NAT@name\ \NAT@open\NAT@date\NAT@close}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1689,7 +2397,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.609 \newcommand\citeindextype{default}
-                                        
+                                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1702,7 +2410,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.611 ...xtxt}}\expandafter\NAT@exp\NAT@temp\@nil}
+l.611 ...idxtxt}}\expandafter\NAT@exp\NAT@temp\@nil}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1717,7 +2425,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.612 \newcommand\NAT@exp{}
-                           
+                         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1730,7 +2438,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.617 ...NAT@ifcmd{\futurelet\NAT@temp\NAT@ifxcmd}
+l.617 ...d\NAT@ifcmd{\futurelet\NAT@temp\NAT@ifxcmd}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1744,7 +2452,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.618 ...@temp\relax\else\expandafter\NAT@bare\fi}
+l.618 ...AT@temp\relax\else\expandafter\NAT@bare\fi}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1759,7 +2467,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.631 \ignorespaces}
-                    
+                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1772,7 +2480,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.666 ...   Rerun to get citations correct}\fi\fi}
+l.666 ...     Rerun to get citations correct}\fi\fi}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1787,7 +2495,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.667 \newcommand\NAT@apalk{}
-                             
+                           
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1801,7 +2509,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.673 \newcommand\citeauthoryear{}
-                                  
+                                
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1815,7 +2523,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.677 \newcommand\citestarts{\NAT@open}
-                                       
+                                     
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1829,7 +2537,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.678 \newcommand\citeends{\NAT@close}
-                                      
+                                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1843,7 +2551,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.679 \newcommand\betweenauthors{and}
-                                     
+                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1857,7 +2565,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.680 \newcommand\astroncite{}
-                              
+                            
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1871,7 +2579,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.683 \newcommand\citename{}
-                            
+                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1885,7 +2593,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.687         \bibitem[#1(#3)#2]{#4}\fi }
-                                         
+                                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1899,7 +2607,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.688 \newcommand\harvardleft{\NAT@open}
-                                        
+                                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1913,7 +2621,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.689 \newcommand\harvardright{\NAT@close}
-                                          
+                                        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1927,7 +2635,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.690 \newcommand\harvardyearleft{\NAT@open}
-                                            
+                                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1941,7 +2649,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.691 \newcommand\harvardyearright{\NAT@close}
-                                              
+                                            
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1954,7 +2662,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.693 ...\harvardurl[1]{\textbf{URL:} \textit{#1}}
+l.693 ...nd\harvardurl[1]{\textbf{URL:} \textit{#1}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1969,7 +2677,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.708 \newcounter{NAT@ctr}
-                          
+                        
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -1982,7 +2690,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.751 ...natbib}{There were undefined citations}}}
+l.751 ...e{natbib}{There were undefined citations}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1996,7 +2704,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.754 ...{There were multiply defined citations}}}
+l.754 ...b}{There were multiply defined citations}}}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -2010,7 +2718,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.828 ...AT@sort@cites[1]{\edef\NAT@cite@list{#1}}
+l.828 ...\NAT@sort@cites[1]{\edef\NAT@cite@list{#1}}
                                                   \fi
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -2025,20 +2733,14 @@ Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 149.
+Package color Info: Driver file: luatex.def on input line 149.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-LaTeX Font Info:    Trying to load font information for T1+LinuxBiolinumT-TLF o
-n input line 19.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
-File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
-uxBiolinumT-TLF.
-)
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 10.0pt on input line 19.
- (./MANUSCRIPT.aux)
-\openout1 = `MANUSCRIPT.aux'.
+
+(./MANUSCRIPT.aux)
+\openout1 = MANUSCRIPT.aux
 
 LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 19.
 LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
@@ -2056,6 +2758,14 @@ LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
+9.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
@@ -2075,24 +2785,24 @@ LaTeX Info: Command `\dddot' is already robust on input line 19.
 LaTeX Info: Command `\ddddot' is already robust on input line 19.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: luatex
 * paper: letterpaper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
 * h-part:(L,W,R)=(38.69576pt, 506.45905pt, 69.1402pt)
-* v-part:(T,H,B)=(56.9055pt, 609.85107pt, 128.21341pt)
+* v-part:(T,H,B)=(56.9055pt, 610.0pt, 128.06448pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
 * \textwidth=506.45905pt
-* \textheight=609.85107pt
+* \textheight=610.0pt
 * \oddsidemargin=-33.57423pt
 * \evensidemargin=-3.12979pt
-* \topmargin=-44.36082pt
+* \topmargin=-44.36449pt
 * \headheight=14.0pt
-* \headsep=14.99634pt
+* \headsep=15.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
 * \marginparwidth=26.39996pt
@@ -2110,21 +2820,84 @@ LaTeX Info: Command `\ddddot' is already robust on input line 19.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-\c@mv@tabular=\count312
-\c@mv@boldtabular=\count313
+
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup12
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 19.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 19.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 19.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 19.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 19.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 19.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 19.
+LaTeX Font Info:    Redeclaring math accent \check on input line 19.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 19.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 19.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 19.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 19.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 19.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 19.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/LinBiolinum(0)/m/n --> TU/LinLibertine(0)/m/n on in
+put line 19.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 19.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/LinBiolinum(0)/b/n --> TU/LinLibertine(0)/m/n on in
+put line 19.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/LinLibertine(0)/m/n --> TU/LinLibertine(0)/m/n on in
+put line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/LinBiolinum(0)/m/it --> TU/LinLibertine(0)/m/it on 
+input line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/LinBiolinum(0)/b/n --> TU/LinLibertine(0)/b/n on in
+put line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/LinBiolinum(0)/m/n --> TU/LinBiolinum(0)/m/n on inp
+ut line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 19.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/LinLibertine(0)/m/n --> TU/LinLibertine(0)/b/n on in
+put line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/LinBiolinum(0)/b/it --> TU/LinLibertine(0)/b/it on 
+input line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/LinBiolinum(0)/b/n --> TU/LinBiolinum(0)/b/n on inp
+ut line 19.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/lmtt/b/n --> TU/lmtt/b/n on input line 19.
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count314
-\scratchdimen=\dimen189
+\scratchcounter=\count321
+\scratchdimen=\dimen191
 \scratchbox=\box67
-\nofMPsegments=\count315
-\nofMParguments=\count316
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count317
-\MPscratchDim=\dimen190
-\MPnumerator=\count318
-\makeMPintoPDFobject=\count319
-\everyMPtoPDFconversion=\toks34
+\nofMPsegments=\count322
+\nofMParguments=\count323
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count324
+\MPscratchDim=\dimen192
+\MPnumerator=\count325
+\makeMPintoPDFobject=\count326
+\everyMPtoPDFconversion=\toks35
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -2141,29 +2914,22 @@ nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 19.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 17.28pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 84.
-LaTeX Font Info:    Trying to load font information for OT1+LinuxBiolinumT-TLF 
-on input line 84.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.f
-d
-File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/L
-inuxBiolinumT-TLF.
-)
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 8.8pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 6.6pt on input line 84.
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
 e 84.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/untxsfmia.fd
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
@@ -2184,19 +2950,13 @@ LaTeX Font Info:    Trying to load font information for U+ntxexa on input line
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
 (Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/it' in size <10> not av
-ailable
-(Font)              Font shape `T1/LinuxBiolinumT-TLF/b/sl' tried instead on in
-put line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/sl' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/it' will be
 (Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 7.3pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 5.5pt on input line 84.
 
 
@@ -2211,189 +2971,180 @@ LaTeX Font Warning: Font shape `U/mathb/m/n' in size <5.5> not available
 LaTeX Font Warning: Font shape `U/mathx/m/n' in size <5.5> not available
 (Font)              size <5> substituted on input line 84.
 
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 84.
+
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 (Font)              scaled to size 10.0pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 (Font)              scaled to size 7.3pt on input line 84.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
 (Font)              scaled to size 5.5pt on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 84.
+
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 7.3pt on input line 84.
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 8
-4.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 84.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 12.0pt on input line 86.
 
 Underfull \hbox (badness 10000) in paragraph at lines 94--95
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Ice-marginal lakes, glacier abut-ting wa-ter bo
-d-ies
+[]\TU/LinBiolinum(0)/m/n/10 Ice-marginal lakes, glacier abut-ting wa-ter bod-ies
+
  []
 
 
-Underfull \hbox (badness 1558) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 damned by ice or moraine, are in-creas-ing in siz
-e and
+Underfull \hbox (badness 1577) in paragraph at lines 94--95
+\TU/LinBiolinum(0)/m/n/10 damned by ice or moraine, are in-creas-ing in size and
+
  []
 
 
 Underfull \hbox (badness 2293) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 Green-land alone, $\U/matha/m/n/10 ¡$\T1/LinuxBio
-linumT-TLF/m/n/10 3,000 ice-marginal lakes have been
+\TU/LinBiolinum(0)/m/n/10 Green-land alone, $\U/matha/m/n/10 Â¡$\TU/LinBiolinum
+(0)/m/n/10 3,000 ice-marginal lakes have been
  []
 
 
 Underfull \hbox (badness 1242) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 recorded (Car-riv-ick and oth-ers, 2022), and the
-ir po-ten-
+\TU/LinBiolinum(0)/m/n/10 recorded (Car-riv-ick and oth-ers, 2022), and their po
+-ten-
  []
 
 
 Underfull \hbox (badness 1067) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 tial to re-peat-edly and catas-troph-i-cally drai
-n (known as
+\TU/LinBiolinum(0)/m/n/10 tial to re-peat-edly and catas-troph-i-cally drain (kn
+own as
  []
 
 
-Underfull \hbox (badness 1137) in paragraph at lines 94--95
-\T1/LinuxBiolinumT-TLF/m/n/10 changes in global ocean cir-cu-la-tion and cli-ma
-te (Teller,
- []
+Underfull \vbox (badness 1297) has occurred while \output is active []
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 8.0pt on input line 97.
-[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
-ocal/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/lo
-cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
+ [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
-<./figures/Figure_1/Figure_1c.png, id=17, 254.96857pt x 150.61069pt>
-File: ./figures/Figure_1/Figure_1c.png Graphic file (type png)
-<use ./figures/Figure_1/Figure_1c.png>
-Package pdftex.def Info: ./figures/Figure_1/Figure_1c.png  used on input line 1
-36.
-(pdftex.def)             Requested size: 254.96793pt x 150.6103pt.
+<./figures/Figure_1/Figure_1.png, id=17, 254.96857pt x 150.61069pt>
+File: ./figures/Figure_1/Figure_1.png Graphic file (type png)
+<use ./figures/Figure_1/Figure_1.png>
+Package luatex.def Info: ./figures/Figure_1/Figure_1.png  used on input line 13
+6.
+(luatex.def)             Requested size: 254.96793pt x 150.6103pt.
 
 Overfull \hbox (10.27423pt too wide) in paragraph at lines 136--137
  [][] 
  []
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 137.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 9.0pt on input line 137.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 137.
 
-Underfull \vbox (badness 6978) has occurred while \output is active []
+Underfull \vbox (badness 7362) has occurred while \output is active []
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
 (Font)              scaled to size 8.0pt on input line 147.
- [2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertine/lbtn_edcawa.en
-c} <./figures/Figure_1/Figure_1c.png>]
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+ [2<./figures/Figure_1/Figure_1.png>]
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 7.3pt on input line 214.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 8.0pt on input line 216.
-LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
 (Font)              scaled to size 6.2pt on input line 216.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 6.2pt on input line 223.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
 (Font)              scaled to size 6.2pt on input line 223.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
 (Font)              scaled to size 8.0pt on input line 223.
 
 
 LaTeX Warning: Reference `appeqn: hs_el' on page 3 undefined on input line 223.
 
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 (Font)              scaled to size 5.5pt on input line 248.
-[3] [4]
-Underfull \vbox (badness 6157) has occurred while \output is active []
+[3]
+Overfull \hbox (0.71132pt too wide) in paragraph at lines 258--298
+[][] 
+ []
 
-<./figures/Figure_3/Figure3.png, id=36, 483.7272pt x 600.8046pt>
-File: ./figures/Figure_3/Figure3.png Graphic file (type png)
-<use ./figures/Figure_3/Figure3.png>
-Package pdftex.def Info: ./figures/Figure_3/Figure3.png  used on input line 314
-.
-(pdftex.def)             Requested size: 481.13454pt x 597.58531pt.
+[4]
+<./figures/Figure_2/Figure_2.png, id=42, 483.7272pt x 600.8046pt>
+File: ./figures/Figure_2/Figure_2.png Graphic file (type png)
+<use ./figures/Figure_2/Figure_2.png>
+Package luatex.def Info: ./figures/Figure_2/Figure_2.png  used on input line 31
+4.
+(luatex.def)             Requested size: 481.13454pt x 597.58531pt.
 
 
-LaTeX Warning: Float too large for page by 74.73424pt on input line 317.
+LaTeX Warning: Float too large for page by 74.58531pt on input line 317.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5]
-<./figures/Figure_4/Figure4.png, id=40, 509.2626pt x 632.3625pt>
-File: ./figures/Figure_4/Figure4.png Graphic file (type png)
-<use ./figures/Figure_4/Figure4.png>
-Package pdftex.def Info: ./figures/Figure_4/Figure4.png  used on input line 340
-.
-(pdftex.def)             Requested size: 506.45905pt x 628.8873pt.
+<./figures/Figure_3/Figure_3.png, id=46, 509.2626pt x 632.3625pt>
+File: ./figures/Figure_3/Figure_3.png Graphic file (type png)
+<use ./figures/Figure_3/Figure_3.png>
+Package luatex.def Info: ./figures/Figure_3/Figure_3.png  used on input line 34
+0.
+(luatex.def)             Requested size: 506.45905pt x 628.8873pt.
 
 
-LaTeX Warning: Float too large for page by 62.03622pt on input line 343.
+LaTeX Warning: Float too large for page by 61.8873pt on input line 343.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \hbox (badness 1292) in paragraph at lines 345--346
-[]\T1/LinuxBiolinumT-TLF/m/n/10 The char-ac-ter-is-tics of the lake filling-dra
-inage cy-cle
+[]\TU/LinBiolinum(0)/m/n/10 The char-ac-ter-is-tics of the lake filling-drainage
+ cy-cle
  []
 
-<./figures/Figure_5/Figure5.png, id=41, 509.2626pt x 361.35pt>
-File: ./figures/Figure_5/Figure5.png Graphic file (type png)
-<use ./figures/Figure_5/Figure5.png>
-Package pdftex.def Info: ./figures/Figure_5/Figure5.png  used on input line 349
-.
-(pdftex.def)             Requested size: 506.45905pt x 359.36417pt.
+<./figures/Figure_4/Figure_4.png, id=47, 509.2626pt x 361.35pt>
+File: ./figures/Figure_4/Figure_4.png Graphic file (type png)
+<use ./figures/Figure_4/Figure_4.png>
+Package luatex.def Info: ./figures/Figure_4/Figure_4.png  used on input line 34
+9.
+(luatex.def)             Requested size: 506.45905pt x 359.36417pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \hbox (badness 1881) in paragraph at lines 356--357
-\T1/LinuxBiolinumT-TLF/m/n/10 glacier in West Green-land drain-ing a catch-ment
- of $\U/matha/m/n/10 ^^S
+\TU/LinBiolinum(0)/m/n/10 glacier in West Green-land drain-ing a catch-ment of 
+$\U/matha/m/n/10 
  []
 
-
-Underfull \vbox (badness 6157) has occurred while \output is active []
-
- [6]
-<../Greenland/analysis/figures/figure1/figure1.png, id=45, 509.2626pt x 505.89p
-t>
-File: ../Greenland/analysis/figures/figure1/figure1.png Graphic file (type png)
-
-<use ../Greenland/analysis/figures/figure1/figure1.png>
-Package pdftex.def Info: ../Greenland/analysis/figures/figure1/figure1.png  use
-d on input line 371.
-(pdftex.def)             Requested size: 506.45905pt x 503.10982pt.
+[6]
+<./figures/Figure_5/Figure_5.png, id=51, 509.2626pt x 542.025pt>
+File: ./figures/Figure_5/Figure_5.png Graphic file (type png)
+<use ./figures/Figure_5/Figure_5.png>
+Package luatex.def Info: ./figures/Figure_5/Figure_5.png  used on input line 37
+1.
+(luatex.def)             Requested size: 506.45905pt x 539.04623pt.
 
 
-LaTeX Warning: Float too large for page by 2.25874pt on input line 374.
+LaTeX Warning: Float too large for page by 49.04623pt on input line 374.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../Greenland/analysis/figures/figure2/figure2.png, id=46, 254.6313pt x 252.945
-pt>
-File: ../Greenland/analysis/figures/figure2/figure2.png Graphic file (type png)
-
-<use ../Greenland/analysis/figures/figure2/figure2.png>
-Package pdftex.def Info: ../Greenland/analysis/figures/figure2/figure2.png  use
-d on input line 381.
-(pdftex.def)             Requested size: 254.63068pt x 252.94438pt.
+<./figures/Figure_6/Figure_6.png, id=52, 254.6313pt x 252.945pt>
+File: ./figures/Figure_6/Figure_6.png Graphic file (type png)
+<use ./figures/Figure_6/Figure_6.png>
+Package luatex.def Info: ./figures/Figure_6/Figure_6.png  used on input line 38
+1.
+(luatex.def)             Requested size: 254.63068pt x 252.94438pt.
 
 Overfull \hbox (9.93698pt too wide) in paragraph at lines 381--382
  [][] 
@@ -2401,6 +3152,24 @@ Overfull \hbox (9.93698pt too wide) in paragraph at lines 381--382
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./figures/Figure_7/Figure_7.png, id=53, 255.1131pt x 359.6637pt>
+File: ./figures/Figure_7/Figure_7.png Graphic file (type png)
+<use ./figures/Figure_7/Figure_7.png>
+Package luatex.def Info: ./figures/Figure_7/Figure_7.png  used on input line 40
+5.
+(luatex.def)             Requested size: 255.11247pt x 359.66281pt.
+
+Overfull \hbox (10.41878pt too wide) in paragraph at lines 405--406
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \vbox (badness 1365) has occurred while \output is active []
+
 
 (./MANUSCRIPT.bbl
 
@@ -2411,41 +3180,56 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.1 \begin{thebibliography}{33}
-                               
+                             
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
+Underfull \hbox (badness 1092) in paragraph at lines 17--18
+\TU/LinBiolinum(0)/m/n/10 change dur-ing the last glacia-tion. \TU/LinBiolinum(
+0)/m/it/10 Sci-ence\TU/LinBiolinum(0)/m/n/10 , \TU/LinBiolinum(0)/b/n/10 293\TU
+/LinBiolinum(0)/m/n/10 (5528),
+ []
+
+
 Underfull \hbox (badness 1895) in paragraph at lines 20--21
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Dømgaard M, Kjeld-sen K, How P and Bjørk A (202
-4)
+[]\TU/LinBiolinum(0)/m/n/10 DÃ¸m-gaard M, Kjeld-sen K, How P and BjÃ¸rk A (2024)
+
  []
 
 [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1248) in paragraph at lines 44--45
+\TU/LinBiolinum(0)/m/it/10 Jour-nal of Geo-phys-i-cal Re-search: Solid Earth\TU
+/LinBiolinum(0)/m/n/10 , \TU/LinBiolinum(0)/b/n/10 92\TU/LinBiolinum(0)/m/n/10 
+(B9),
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 74--75
+\TU/LinBiolinum(0)/m/n/10 la-tion for jÃ¶kulh-laups. \TU/LinBiolinum(0)/m/it/10
+ Jour-nal of Glaciol-ogy\TU/LinBiolinum(0)/m/n/10 , \TU/LinBiolinum(0)/b/n/10 49
+\TU/LinBiolinum(0)/m/n/10 (165),
+ []
 
 
 Underfull \hbox (badness 1735) in paragraph at lines 98--99
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Walder JS and Fowler A (1994) Chan-nel-ized sub
--glacial
+[]\TU/LinBiolinum(0)/m/n/10 Walder JS and Fowler A (1994) Chan-nel-ized sub-glac
+ial
+ []
+
+
+Underfull \hbox (badness 6173) in paragraph at lines 101--102
+[]\TU/LinBiolinum(0)/m/n/10 Werder MA, He-witt IJ, Schoof CG and Flow-ers GE
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8]
-Underfull \hbox (badness 6173) in paragraph at lines 101--102
-[]\T1/LinuxBiolinumT-TLF/m/n/10 Werder MA, He-witt IJ, Schoof CG and Flow-ers G
-E
- []
-
-) [9] [10 <./figures/Figure_3/Figure3.png>] [11 <./figures/Figure_4/Figure4.png
->] [12 <./figures/Figure_5/Figure5.png>] [13 <../Greenland/analysis/figures/fig
-ure1/figure1.png>] [14
-
-
- <../Greenland/analysis/figures/figure2/figure2.png>]
+ [8])
+[9] [10<./figures/Figure_2/Figure_2.png>] [11<./figures/Figure_3/Figure_3.png>]
+[12<./figures/Figure_4/Figure_4.png>] [13<./figures/Figure_5/Figure_5.png>]
+[14<./figures/Figure_6/Figure_6.png><./figures/Figure_7/Figure_7.png>]
 (./MANUSCRIPT.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -2459,36 +3243,48 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
- ) 
-Here is how much of TeX's memory you used:
- 14704 strings out of 474116
- 292412 string characters out of 5743682
- 1962187 words of memory out of 5000000
- 36778 multiletter control sequences out of 15000+600000
- 721130 words of font info for 247 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 80i,18n,93p,2399b,533s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolinumT
-.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBiolin
-umTB.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/LinBi
-olinumTBO.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertine/
-LinBiolinumTI.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmt
-k10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha10.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb></usr/loca
-l/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/matha9.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (14 pages, 4162124 bytes).
-PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+)
+
+Here is how much of LuaTeX's memory you used:
+ 25782 strings out of 476447
+ 156263,1977958 words of node,token memory allocated
+ 671 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 37 attribute, 64 glue_spec
+, 37 attribute_list, 2 write nodes
+   avail lists: 2:1457,3:372,4:144,5:1667,6:86,7:16369,8:42,9:1232,10:20,11:1080
+
+ 47334 multiletter control sequences out of 65536+600000
+ 341 fonts using 39302087 bytes
+ 90i,18n,127p,2400b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf
+></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/libertine/LinLibertin
+e_R.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono10-re
+gular.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmonolt1
+0-bold.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/libertine/L
+inBiolinum_RI.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/public/libe
+rtine/LinBiolinum_RBO.otf></usr/local/texlive/2024/texmf-dist/fonts/opentype/pub
+lic/libertine/LinBiolinum_RB.otf></usr/local/texlive/2024/texmf-dist/fonts/opent
+ype/public/libertine/LinBiolinum_R.otf></usr/local/texlive/2024/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-t
+ype1/matha10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-
+type1/matha6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-
+type1/matha7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-
+type1/matha8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-
+type1/matha9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathabx-
+type1/mathx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts
+/rtxmi.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtx/txexs.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
+Output written on MANUSCRIPT.pdf (14 pages, 4680814 bytes).
+
+PDF statistics: 187 PDF objects out of 1000 (max. 8388607)
+ 115 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
