@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.2.28)  5 MAR 2026 15:23
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.2.28)  5 MAR 2026 16:37
  restricted system commands enabled.
 **MANUSCRIPT.tex
 (./MANUSCRIPT.tex
@@ -2726,7 +2726,7 @@ or  <return>  to continue without it.
 
 )
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 19.
+h' as default language. on input line 20.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
 
@@ -2737,52 +2737,55 @@ Package color Info: Driver file: luatex.def on input line 149.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 19.
+(Font)              scaled to size 10.0pt on input line 20.
 
-(./MANUSCRIPT.aux)
+(./MANUSCRIPT.aux
+
+LaTeX Warning: Label `FIG:7' multiply defined.
+
+)
 \openout1 = MANUSCRIPT.aux
 
-LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 19.
+LaTeX Font Info:    Checking defaults for OML/ntxsfmi/m/it on input line 20.
 LaTeX Font Info:    Trying to load font information for OML+ntxsfmi on input li
-ne 19.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/omlntxsfmi.fd
+ne 20.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/omlntxsfmi.fd
 File: omlntxsfmi.fd 2014/11/16 Fontinst v1.933 font definitions for OML/ntxsfmi
 .
 )
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-9.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+0.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 20.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 19.
+ 20.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Info: Command `\dddot' is already robust on input line 19.
-LaTeX Info: Command `\ddddot' is already robust on input line 19.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Info: Command `\dddot' is already robust on input line 20.
+LaTeX Info: Command `\ddddot' is already robust on input line 20.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -2826,65 +2829,65 @@ Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 
 \symlegacymaths=\mathgroup12
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 19.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 19.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 19.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 19.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 19.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 19.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 19.
-LaTeX Font Info:    Redeclaring math accent \check on input line 19.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 19.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 19.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 19.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 19.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 20.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 20.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 20.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 20.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 20.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 20.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 20.
+LaTeX Font Info:    Redeclaring math accent \check on input line 20.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 20.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 20.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 20.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 20.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 20.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 19.
+(Font)              `operators' in the math version `normal' on input line 20.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/LinBiolinum(0)/m/n --> TU/LinLibertine(0)/m/n on in
-put line 19.
+put line 20.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 19.
+(Font)              `operators' in the math version `bold' on input line 20.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/LinBiolinum(0)/b/n --> TU/LinLibertine(0)/m/n on in
-put line 19.
+put line 20.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/LinLibertine(0)/m/n --> TU/LinLibertine(0)/m/n on in
-put line 19.
+put line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/LinBiolinum(0)/m/it --> TU/LinLibertine(0)/m/it on 
-input line 19.
+input line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/LinBiolinum(0)/b/n --> TU/LinLibertine(0)/b/n on in
-put line 19.
+put line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/LinBiolinum(0)/m/n --> TU/LinBiolinum(0)/m/n on inp
-ut line 19.
+ut line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 19.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 20.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/LinLibertine(0)/m/n --> TU/LinLibertine(0)/b/n on in
-put line 19.
+put line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/LinBiolinum(0)/b/it --> TU/LinLibertine(0)/b/it on 
-input line 19.
+input line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/LinBiolinum(0)/b/n --> TU/LinBiolinum(0)/b/n on inp
-ut line 19.
+ut line 20.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/b/n --> TU/lmtt/b/n on input line 19.
+(Font)                  OT1/lmtt/b/n --> TU/lmtt/b/n on input line 20.
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count321
@@ -2913,108 +2916,108 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 19.
+or `english'. on input line 20.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 17.28pt on input line 84.
+(Font)              scaled to size 17.28pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 84.
+(Font)              scaled to size 12.0pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 84.
+(Font)              scaled to size 12.0pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 8.8pt on input line 84.
+(Font)              scaled to size 8.8pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 6.6pt on input line 84.
+(Font)              scaled to size 6.6pt on input line 85.
 LaTeX Font Info:    Trying to load font information for U+ntxsfmia on input lin
-e 84.
+e 85.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtxsf/untxsfmia.fd
 File: untxsfmia.fd 2014/11/16 Fontinst v1.933 font definitions for U/ntxsfmia.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-84.
+85.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-84.
+85.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
 LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-84.
+85.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/it' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 5.5pt on input line 84.
+(Font)              scaled to size 5.5pt on input line 85.
 
 
 LaTeX Font Warning: Font shape `U/matha/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
+(Font)              size <5> substituted on input line 85.
 
 
 LaTeX Font Warning: Font shape `U/mathb/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
+(Font)              size <5> substituted on input line 85.
 
 
 LaTeX Font Warning: Font shape `U/mathx/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
+(Font)              size <5> substituted on input line 85.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
+(Font)              size <5> substituted on input line 85.
 
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 84.
+(Font)              scaled to size 10.0pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 5.5pt on input line 84.
+(Font)              scaled to size 5.5pt on input line 85.
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
+(Font)              size <5> substituted on input line 85.
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 7.3pt on input line 84.
+(Font)              scaled to size 7.3pt on input line 85.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 86.
+(Font)              scaled to size 12.0pt on input line 87.
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 []\TU/LinBiolinum(0)/m/n/10 Ice-marginal lakes, glacier abut-ting wa-ter bod-ies
 
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 94--95
+Underfull \hbox (badness 1577) in paragraph at lines 95--96
 \TU/LinBiolinum(0)/m/n/10 damned by ice or moraine, are in-creas-ing in size and
 
  []
 
 
-Underfull \hbox (badness 2293) in paragraph at lines 94--95
+Underfull \hbox (badness 2293) in paragraph at lines 95--96
 \TU/LinBiolinum(0)/m/n/10 Green-land alone, $\U/matha/m/n/10 ¡$\TU/LinBiolinum
 (0)/m/n/10 3,000 ice-marginal lakes have been
  []
 
 
-Underfull \hbox (badness 1242) in paragraph at lines 94--95
+Underfull \hbox (badness 1242) in paragraph at lines 95--96
 \TU/LinBiolinum(0)/m/n/10 recorded (Car-riv-ick and oth-ers, 2022), and their po
 -ten-
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 94--95
+Underfull \hbox (badness 1067) in paragraph at lines 95--96
 \TU/LinBiolinum(0)/m/n/10 tial to re-peat-edly and catas-troph-i-cally drain (kn
 own as
  []
@@ -3023,7 +3026,7 @@ own as
 Underfull \vbox (badness 1297) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 97.
+(Font)              scaled to size 8.0pt on input line 98.
  [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -3033,46 +3036,46 @@ LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
 File: ./figures/Figure_1/Figure_1.png Graphic file (type png)
 <use ./figures/Figure_1/Figure_1.png>
 Package luatex.def Info: ./figures/Figure_1/Figure_1.png  used on input line 13
-6.
+7.
 (luatex.def)             Requested size: 254.96793pt x 150.6103pt.
 
-Overfull \hbox (10.27423pt too wide) in paragraph at lines 136--137
+Overfull \hbox (10.27423pt too wide) in paragraph at lines 137--138
  [][] 
  []
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 137.
+(Font)              scaled to size 9.0pt on input line 138.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 9.0pt on input line 137.
+(Font)              scaled to size 9.0pt on input line 138.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 137.
+(Font)              scaled to size 9.0pt on input line 138.
 
 Underfull \vbox (badness 7362) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
-(Font)              scaled to size 8.0pt on input line 147.
+(Font)              scaled to size 8.0pt on input line 146.
  [2<./figures/Figure_1/Figure_1.png>]
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 7.3pt on input line 214.
+(Font)              scaled to size 7.3pt on input line 213.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 216.
+(Font)              scaled to size 8.0pt on input line 215.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 6.2pt on input line 216.
+(Font)              scaled to size 6.2pt on input line 215.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 6.2pt on input line 223.
+(Font)              scaled to size 6.2pt on input line 222.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/it' will be
-(Font)              scaled to size 6.2pt on input line 223.
+(Font)              scaled to size 6.2pt on input line 222.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 8.0pt on input line 223.
+(Font)              scaled to size 8.0pt on input line 222.
 
 
-LaTeX Warning: Reference `appeqn: hs_el' on page 3 undefined on input line 223.
+LaTeX Warning: Reference `appeqn: hs_el' on page 3 undefined on input line 222.
 
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 5.5pt on input line 248.
+(Font)              scaled to size 5.5pt on input line 247.
 [3]
-Overfull \hbox (0.71132pt too wide) in paragraph at lines 258--298
+Overfull \hbox (0.71132pt too wide) in paragraph at lines 257--297
 [][] 
  []
 
@@ -3081,11 +3084,11 @@ Overfull \hbox (0.71132pt too wide) in paragraph at lines 258--298
 File: ./figures/Figure_2/Figure_2.png Graphic file (type png)
 <use ./figures/Figure_2/Figure_2.png>
 Package luatex.def Info: ./figures/Figure_2/Figure_2.png  used on input line 31
-4.
+3.
 (luatex.def)             Requested size: 481.13454pt x 597.58531pt.
 
 
-LaTeX Warning: Float too large for page by 74.58531pt on input line 317.
+LaTeX Warning: Float too large for page by 74.58531pt on input line 316.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -3094,18 +3097,18 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <./figures/Figure_3/Figure_3.png, id=46, 509.2626pt x 632.3625pt>
 File: ./figures/Figure_3/Figure_3.png Graphic file (type png)
 <use ./figures/Figure_3/Figure_3.png>
-Package luatex.def Info: ./figures/Figure_3/Figure_3.png  used on input line 34
-0.
+Package luatex.def Info: ./figures/Figure_3/Figure_3.png  used on input line 33
+9.
 (luatex.def)             Requested size: 506.45905pt x 628.8873pt.
 
 
-LaTeX Warning: Float too large for page by 61.8873pt on input line 343.
+LaTeX Warning: Float too large for page by 61.8873pt on input line 342.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 345--346
+Underfull \hbox (badness 1292) in paragraph at lines 344--345
 []\TU/LinBiolinum(0)/m/n/10 The char-ac-ter-is-tics of the lake filling-drainage
  cy-cle
  []
@@ -3114,13 +3117,13 @@ Underfull \hbox (badness 1292) in paragraph at lines 345--346
 File: ./figures/Figure_4/Figure_4.png Graphic file (type png)
 <use ./figures/Figure_4/Figure_4.png>
 Package luatex.def Info: ./figures/Figure_4/Figure_4.png  used on input line 34
-9.
+8.
 (luatex.def)             Requested size: 506.45905pt x 359.36417pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 356--357
+Underfull \hbox (badness 1881) in paragraph at lines 355--356
 \TU/LinBiolinum(0)/m/n/10 glacier in West Green-land drain-ing a catch-ment of 
 $\U/matha/m/n/10 
  []
@@ -3130,11 +3133,11 @@ $\U/matha/m/n/10 
 File: ./figures/Figure_5/Figure_5.png Graphic file (type png)
 <use ./figures/Figure_5/Figure_5.png>
 Package luatex.def Info: ./figures/Figure_5/Figure_5.png  used on input line 37
-1.
+0.
 (luatex.def)             Requested size: 506.45905pt x 539.04623pt.
 
 
-LaTeX Warning: Float too large for page by 49.04623pt on input line 374.
+LaTeX Warning: Float too large for page by 49.04623pt on input line 373.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -3143,10 +3146,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: ./figures/Figure_6/Figure_6.png Graphic file (type png)
 <use ./figures/Figure_6/Figure_6.png>
 Package luatex.def Info: ./figures/Figure_6/Figure_6.png  used on input line 38
-1.
+0.
 (luatex.def)             Requested size: 254.63068pt x 252.94438pt.
 
-Overfull \hbox (9.93698pt too wide) in paragraph at lines 381--382
+Overfull \hbox (9.93698pt too wide) in paragraph at lines 380--381
  [][] 
  []
 
@@ -3157,10 +3160,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: ./figures/Figure_7/Figure_7.png Graphic file (type png)
 <use ./figures/Figure_7/Figure_7.png>
 Package luatex.def Info: ./figures/Figure_7/Figure_7.png  used on input line 40
-5.
+4.
 (luatex.def)             Requested size: 255.11247pt x 359.66281pt.
 
-Overfull \hbox (10.41878pt too wide) in paragraph at lines 405--406
+Overfull \hbox (10.41878pt too wide) in paragraph at lines 404--405
  [][] 
  []
 
@@ -3179,47 +3182,47 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \begin{thebibliography}{33}
+l.1 \begin{thebibliography}{31}
                              
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 17--18
+Underfull \hbox (badness 1092) in paragraph at lines 25--28
 \TU/LinBiolinum(0)/m/n/10 change dur-ing the last glacia-tion. \TU/LinBiolinum(
 0)/m/it/10 Sci-ence\TU/LinBiolinum(0)/m/n/10 , \TU/LinBiolinum(0)/b/n/10 293\TU
 /LinBiolinum(0)/m/n/10 (5528),
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 20--21
+Underfull \hbox (badness 1895) in paragraph at lines 31--34
 []\TU/LinBiolinum(0)/m/n/10 Døm-gaard M, Kjeld-sen K, How P and Bjørk A (2024)
 
  []
 
 [7]
-Underfull \hbox (badness 1248) in paragraph at lines 44--45
+Underfull \hbox (badness 1248) in paragraph at lines 69--72
 \TU/LinBiolinum(0)/m/it/10 Jour-nal of Geo-phys-i-cal Re-search: Solid Earth\TU
 /LinBiolinum(0)/m/n/10 , \TU/LinBiolinum(0)/b/n/10 92\TU/LinBiolinum(0)/m/n/10 
 (B9),
  []
 
 
-Underfull \hbox (badness 1264) in paragraph at lines 74--75
+Underfull \hbox (badness 1264) in paragraph at lines 123--125
 \TU/LinBiolinum(0)/m/n/10 la-tion for jökulh-laups. \TU/LinBiolinum(0)/m/it/10
  Jour-nal of Glaciol-ogy\TU/LinBiolinum(0)/m/n/10 , \TU/LinBiolinum(0)/b/n/10 49
 \TU/LinBiolinum(0)/m/n/10 (165),
  []
 
 
-Underfull \hbox (badness 1735) in paragraph at lines 98--99
+Underfull \hbox (badness 1735) in paragraph at lines 155--157
 []\TU/LinBiolinum(0)/m/n/10 Walder JS and Fowler A (1994) Chan-nel-ized sub-glac
 ial
  []
 
 
-Underfull \hbox (badness 6173) in paragraph at lines 101--102
+Underfull \hbox (badness 6173) in paragraph at lines 159--162
 []\TU/LinBiolinum(0)/m/n/10 Werder MA, He-witt IJ, Schoof CG and Flow-ers GE
  []
 
@@ -3243,17 +3246,20 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 )
 
 Here is how much of LuaTeX's memory you used:
- 25782 strings out of 476447
+ 25780 strings out of 476447
  156263,1977958 words of node,token memory allocated
  671 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 37 attribute, 64 glue_spec
 , 37 attribute_list, 2 write nodes
-   avail lists: 2:1457,3:372,4:144,5:1667,6:86,7:16369,8:42,9:1232,10:20,11:1080
+   avail lists: 2:1457,3:374,4:140,5:1667,6:84,7:16632,8:42,9:1232,10:20,11:1080
 
- 47334 multiletter control sequences out of 65536+600000
+ 47332 multiletter control sequences out of 65536+600000
  341 fonts using 39302087 bytes
  90i,18n,127p,2400b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf
@@ -3281,7 +3287,7 @@ type1/mathx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts
 b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-bol.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmi-reg.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/newtxsf/zsfmia-reg.pfb>
-Output written on MANUSCRIPT.pdf (14 pages, 4680814 bytes).
+Output written on MANUSCRIPT.pdf (14 pages, 4681054 bytes).
 
 PDF statistics: 187 PDF objects out of 1000 (max. 8388607)
  115 compressed objects within 2 object streams

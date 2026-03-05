@@ -1,3 +1,4 @@
+% !BIB TS-program = biber
 %\documentclass[review,jog]{igs}
 \documentclass[jog]{igs}
 %\documentclass[review,aog]{igs}
@@ -137,8 +138,6 @@ In this paper we build upon earlier 1D work \citep{kingslake2013modelling} by in
 \caption{Schematic illustration of our model, showing a glacier (with thickness, $H$) and ice-marginal lake (with height, $l_{\mathrm{h}}$, and input, $Q_{\mathrm{in}}$). The lake is connected two-ways to a subglacial channel (with discharge, $Q_{\mathrm{c}}$) and a `sheet' of linked cavities (with discharge $q_{\mathrm{s}}$) fed by a basal melt term ($M_{\mathrm{r}}$). Changes in $l_{\mathrm{h}}$ modifies $Q_{\mathrm{s}}$ and $q_{\mathrm{s}}$ which in turn changes basal velocity, $U_{\mathrm{b}}$ through effective pressure, $N$. Note, although the ice-marginal lake is shown as connected to one channel, in our model an ice-marginal lake can be connected to the subglacial system at multiple outlets. \texttt{[SINGLE-COLUMN]}}
 \label{FIG:1}
 \end{figure}
-
-
 
 
 \subsection{Ice Flow and subglacial drainage models}\label{methods:GlaDS}
@@ -347,7 +346,7 @@ The characteristics of the lake filling-drainage cycle across our parameter spac
 
 \begin{figure*}[!h]
 \centering{\includegraphics[width=1\textwidth]{./figures/Figure_4/Figure_4.png}}
-\caption{\textbf{NOT FINAL VERSION!} }
+\caption{\textbf{NOT FINAL VERSION!} Across-flow velocity through time for key GlaDS parameters in the synthetic experiment. \textbf{a--c}) The high channel conductivity ($k_{\mathrm{c}}$, a), sheet conductivity ($k_{\mathrm{s}}$, b), and bump height ($h_{b}$, c) cases. \textbf{d--e}) The low $k_{\mathrm{c}}$ (d), $k_{\mathrm{s}}$ (e), and $h_{b}$ (f) cases. In each panel, white contours represent velocity (every 10 ma$^{-1}$) and the black line shows $Q_{\mathrm{r}}$ between years 7--11.}
 \label{FIG:4}
 \end{figure*}
 
@@ -406,6 +405,9 @@ Variable & Units & Description \\
 \caption{Comparison of modelled (a--d) and observed (e--h) velocity during a lake drainage. \textbf{a--b}) Mean modelled velocity components, $u_{\mathrm{b}}$ (a) and  $v_{\mathrm{b}}$ (b), for the model years 2014--2025. \textbf{c--d}) Anomalies in velocity components, $u_{\mathrm{b}}$ (c) and  $v_{\mathrm{b}}$ (d), during the modelled 2018 lake drainage (see Fig~\ref{FIG:5} \& \ref{FIG:6}. \textbf{e--f}) Mean observed velocity components, $u_{\mathrm{b}}$ (e) and  $v_{\mathrm{b}}$ (f), between 2014--2025. \textbf{g--h}) Anomalies in velocity components, $u_{\mathrm{b}}$ (g) and  $v_{\mathrm{b}}$ (h), during an observed lake drainage in 2023 (see Fig~\ref{FIG:5}g). Lake drainage anomalies (c--d \& g--h) calculated by subtracting mean velocity components (2014--2025) from the mean velocity components during a lake drainage event, red colours indicate higher velocity during the lake drainage and blue colours indicate slower velocity. Observed velocity components estimated from Sentinel-1a and Sentinel-1b Synthetic  Aperture  Radar  (SAR), see \cite{livingstone2025ice} for details.}
 \label{FIG:7}
 \end{figure}
+
+
+
 
 \begin{itemize}
 \item model reproduces 1) many observed characteristics of Jokulhlaup theory, 2) matches well with Felix and Jonny's work, and 3) successfully reproduces many of the characteristics of IS flooding
