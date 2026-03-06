@@ -29,6 +29,7 @@ from matplotlib.transforms import Bbox
 from mpl_toolkits.mplot3d import Axes3D
 
 ISSM_DIR = os.getenv('ISSM_DIR')
+print(f"ISSM_DIR: {ISSM_DIR}")
 sys.path.append(os.path.join(ISSM_DIR, 'src/m/dev/'))
 import devpath
 from issmversion import issmversion

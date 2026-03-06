@@ -105,7 +105,6 @@ def run_job(run_table, job_id):
     paramsdict['melt_rate'] = float(run_table['$melt rate$'][row_idx])
     paramsdict['Q_in'] = float(run_table['$Q_{in}$'][row_idx])
     paramsdict['s_melt_flag'] = int(run_table['seasonal melt flag'][row_idx])
-    paramsdict['h_el_flag'] = int(run_table['$h_{el}$ flag'][row_idx])
     paramsdict['Name'] = run_table['Name'][row_idx]
     paramsdict['run_id'] = run_table['ID'][row_idx]
     paramsdict['Notes'] = run_table['Notes'][row_idx]
@@ -139,7 +138,7 @@ def run_job(run_table, job_id):
 
     #Set model parameters
     md.basalforcings.groundedice_melting_rate = paramsdict['melt_rate'] * onevec
-    md.hydrology.elastic_sheet_flag = paramsdict['h_el_flag']
+    md.hydrology.elastic_sheet_flag = 0
     md.hydrology.channel_sheet_width = paramsdict['l_c']
     md.hydrology.cavity_spacing = paramsdict['l_s']
     md.hydrology.sheet_conductivity = paramsdict['k_s'] * onevec
@@ -220,8 +219,6 @@ def extract_requested_outputs(md):
         vx = np.array([ts.Vx[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
         vy = np.array([ts.Vy[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T,
     )
-    if md.hydrology.elastic_sheet_flag == 1:
-        outputs['h_el'] = np.array([ts.HydrologyElasticSheetThickness[:, 0] for ts in md.results.TransientSolution[imin:imax]]).T
     return outputs
 
 def plot_requested_outputs(outputs,md,paramsdict,resdir):

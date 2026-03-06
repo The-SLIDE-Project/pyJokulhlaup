@@ -98,12 +98,13 @@ md.hydrology.channel_alpha = 5./4.
 md.hydrology.channel_beta = 3./2.
 md.hydrology.creep_open_flag = 0
 md.hydrology.melt_flag = 1
+md.hydrology.moulin_input = 0.*onevec
+# UNDER DEVELOPMENT
 md.hydrology.elastic_sheet_flag = 0
 md.hydrology.elastic_sheet_depth_scale = 0
 md.hydrology.elastic_sheet_exponent = 1.
 md.hydrology.uplift_reg_rate = 0.01/1.e3/9.81
 md.hydrology.reg_pressure = 1.e4
-md.hydrology.moulin_input = 0.*onevec
 
 # Lakes
 md.hydrology.islakes = 1
