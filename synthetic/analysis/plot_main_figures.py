@@ -5,9 +5,11 @@ Plot the (python relevant) figures for the main paper
     Usage: python plot_main_figures.py
 
     This script will plot:
-        figure 3: Detailed analysis of the baseline test case
-        figure 4: Sensitivity tests 
-        figure 5: velocity response
+        paper figure 2: Detailed analysis of the baseline test case
+        paper figure 3: Sensitivity tests 
+        paper figure 4: velocity response
+    Optionally, it can also plot:
+        Additional sensitivyity plots, and movie S1
 
 """
 import sys
@@ -150,11 +152,11 @@ ax2.set_zlabel('Elevation (m asl.)', rotation=90, labelpad=0)
 
 
 # Save figure
-os.makedirs(os.path.join(filedir, 'figure2'), exist_ok=True)
-fig2.savefig(os.path.join(filedir, 'figure2/figure2.png'), dpi=300)
-fig2.savefig(os.path.join(filedir, 'figure2/figure2.pdf'), dpi=300)
-fig2.savefig(os.path.join(filedir, 'figure2/figure2.eps'), dpi=300)
-fig2.savefig(os.path.join(filedir, 'figure2/figure2.svg'), dpi=300)
+os.makedirs(os.path.join(filedir, 'mesh_setup'), exist_ok=True)
+fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.png'), dpi=300)
+fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.pdf'), dpi=300)
+fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.eps'), dpi=300)
+fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.svg'), dpi=300)
 
 # FIGURE 3
 ############################################################
@@ -238,7 +240,7 @@ ax1.plot(tt, lh[lakepos, :], color='black', linestyle='-', label='$l_\mathrm{h}$
 rect = matplotlib.patches.Rectangle(
     (6.9, 17),         # (x, y) bottom-left corner
     11.1 - 6.9,        # width
-    59,              # height
+    61,              # height
     linewidth=1,
     edgecolor='black',
     facecolor='none',  # transparent fill
@@ -250,7 +252,7 @@ ax1.scatter(tt[idx2], lh[lakepos, idx2], color='black', marker='o', s=8, label='
 ax1.scatter(tt[idx3], lh[lakepos, idx3], color='black', marker='o', s=8, label='e')
 ax1.text(tt[idx1] + 0.2, lh[lakepos, idx1] - 4.5, 'c', fontsize=10)
 ax1.text(tt[idx2] + 0.05, lh[lakepos, idx2] + 2, 'd', fontsize=10)
-ax1.text(tt[idx3] + 0.2, lh[lakepos, idx3] - 2, 'e', fontsize=10)
+ax1.text(tt[idx3] + 0.25, lh[lakepos, idx3] - 1, 'e', fontsize=10)
 ax1.set_ylim(15, 80)
 ax1.set_xlim(0, 15)
 ax1.margins(x=0, y=0)
@@ -281,7 +283,7 @@ ax2.scatter(tt[idx1],Qr[lakepos, idx1],color='gray',marker='o',s=8,label='c')
 ax2.scatter(tt[idx2],Qr[lakepos, idx2],color='gray',marker='o',s=8,label='d')
 ax2.scatter(tt[idx3],Qr[lakepos, idx3],color='gray',marker='o',s=8,label='e')
 ax2.text(tt[idx1] - 0.5, Qr[lakepos, idx1] + 4, 'c', fontsize=10)
-ax2.text(tt[idx2] + 0.2, Qr[lakepos, idx2] - 2.85, 'd', fontsize=10)
+ax2.text(tt[idx2] + 0.2, Qr[lakepos, idx2] - 3.85, 'd', fontsize=10)
 ax2.text(tt[idx3] + 0.2, Qr[lakepos, idx3] + 3, 'e', fontsize=10)
 
 ax2.set_ylim(-5,55)
@@ -568,136 +570,17 @@ for ax, label, (x, y) in zip(axes, labels, label_positions):
         x, y, label,
         transform=ax.transAxes,
         ha='right', va='top',
-        fontsize=10,
+        fontsize=12,
         fontweight='bold'
     )
 
 
 # Save figure
-os.makedirs(os.path.join(filedir, 'figure3'), exist_ok=True)
-fig3.savefig(os.path.join(filedir, 'figure3/figure3.png'), dpi=300)
-fig3.savefig(os.path.join(filedir, 'figure3/figure3.pdf'), dpi=300)
-fig3.savefig(os.path.join(filedir, 'figure3/figure3.eps'), dpi=300)
-fig3.savefig(os.path.join(filedir, 'figure3/figure3.svg'), dpi=300)
-
-############################################################
-# Figure 3 /v2 plotting the flotation fraction, velocity, 
-# and channel discharge during a flood cycle
-fig3b = plt.figure(figsize=(7.04724*0.95, 8.75*0.95))
-gs = gridspec.GridSpec(7, 3, figure=fig3b, hspace=0.01, wspace=0.05)
-fig3b.subplots_adjust(left=0.055, right=0.995, top=0.96, bottom=0.05)
-
-#define indexes for a full flood cycle
-idx1b = np.argmin(np.abs(tt - 7))
-idx2b = np.argmin(np.abs(tt - 7.93))
-idx3b = np.argmin(np.abs(tt - 8.24))
-idx4b = np.argmin(np.abs(tt - 8.4))
-idx5b = np.argmin(np.abs(tt - 8.68))
-
-# Create mesh
-mtri = Triangulation(mesh['x'], mesh['y'], mesh['elements']-1)
-
-# First row
-ax1a = fig3b.add_subplot(gs[0,0])
-tric1a = ax1a.tripcolor(mtri, N[:,idx1b]/1e6, shading='gouraud', cmap=cmocean.cm.rain,vmin=0, vmax=1.6)
-ax1a.set_aspect('equal')
-ax1a.set_xlim([0, 10e3])
-ax1a.set_ylim([0, 3e3])
-ax1a.set_xticks(np.linspace(0, 10e3, 5))
-ax1a.set_xticklabels([])
-ax1a.set_yticks(np.linspace(0, 3e3, 2))
-ax1a.set_yticklabels((ax1a.get_yticks() / 1e3).astype(int))
-
-# FF colorbar
-divider1a = make_axes_locatable(ax1a)
-#set up divider for ax6
-cax1a = divider1a.append_axes("top", size="20%", pad=0.175)
-cbar1a = fig3b.colorbar(tric1a, cax = cax1a, orientation='horizontal')
-cax1a.xaxis.set_ticks_position('top')
-cax1a.xaxis.set_label_position('top')
-cbar1a.set_label('$N$ [MPa]')
-
-ax1b = fig3b.add_subplot(gs[0,1])
-tric1b = ax1b.tripcolor(mtri, vel[:,idx1b], shading='gouraud', cmap=cmocean.cm.deep,vmin=0, vmax=200)
-ax1b.set_aspect('equal')
-ax1b.set_xlim([0, 10e3])
-ax1b.set_ylim([0, 3e3])
-ax1b.set_xticks(np.linspace(0, 10e3, 5))
-ax1b.set_xticklabels([])
-ax1b.set_yticks(np.linspace(0, 3e3, 2))
-ax1b.set_yticklabels([])
-
-# FF colorbar
-divider1b = make_axes_locatable(ax1b)
-#set up divider for ax6
-cax1b = divider1b.append_axes("top", size="20%", pad=0.175)
-cbar1b = fig3b.colorbar(tric1b, cax = cax1b, orientation='horizontal')
-cax1b.xaxis.set_ticks_position('top')
-cax1b.xaxis.set_label_position('top')
-cbar1b.set_label('$U_{\mathrm{b}}$ [$m^{3}s^{-1}$]')
-
-
-ax1c = fig3b.add_subplot(gs[0,2])
-ax1c, sm1c = plotchannels(mesh, np.abs(Qc[:, idx1b]),contours=True,phi=phi[:,idx1b]/1e6, ax=ax1c, min=0.5,max=50, quiver=False)
-#ax1c, sm1c = plotchannels2(mesh, Qc[:, idx1b], contours=True, phi=phi[:, idx1b] / 1e6, ax=ax1c, vmin=0.5, vmax=50)
-ax1c.set_xlim([0, 10e3])
-ax1c.set_ylim([0, 3e3])
-ax1c.text(-0.55, 1.15, f"{tt[idx1b]:.2f} yrs", transform=plt.gca().transAxes,
-         ha='center', va='center', fontsize=10)
-ax1c.set_xticks(np.linspace(0, 10e3, 5))
-ax1c.set_xticklabels([])
-ax1c.set_yticks(np.linspace(0, 3e3, 2))
-ax1c.set_yticklabels([])
-
-# Adjust colorbar size
-divider1c = make_axes_locatable(ax1c)
-cax1c = divider1c.append_axes("top", size="20%", pad=0.175)  # Reduce size and padding
-cbar1c = fig3.colorbar(sm1c, cax=cax1c,orientation='horizontal')
-cax1c.xaxis.set_ticks_position('top')
-cax1c.xaxis.set_label_position('top')
-cbar1c.set_label('$Q_{\mathrm{c}}$ [m$^3$s$^{-1}$]')  # Rotate label and adjust padding
-
-# Second row
-ax2a = fig3b.add_subplot(gs[1,0])
-tric2a = ax2a.tripcolor(mtri, N[:,idx2b]/1e6, shading='gouraud', cmap=cmocean.cm.rain,vmin=0, vmax=1.6)
-ax2a.set_aspect('equal')
-ax2a.set_xlim([0, 10e3])
-ax2a.set_ylim([0, 3e3])
-ax2a.set_xticks(np.linspace(0, 10e3, 5))
-ax2a.set_xticklabels([])
-ax2a.set_yticks(np.linspace(0, 3e3, 2))
-ax2a.set_yticklabels((ax2a.get_yticks() / 1e3).astype(int))
-
-
-ax2b = fig3b.add_subplot(gs[1,1])
-tric2b = ax2b.tripcolor(mtri, vel[:,idx2b], shading='gouraud', cmap=cmocean.cm.deep,vmin=20, vmax=200)
-ax2b.set_aspect('equal')
-ax2b.set_xlim([0, 10e3])
-ax2b.set_ylim([0, 3e3])
-ax2b.set_xticks(np.linspace(0, 10e3, 5))
-ax2b.set_xticklabels([])
-ax2b.set_yticks(np.linspace(0, 3e3, 2))
-ax2b.set_yticklabels([])
-
-ax2c = fig3b.add_subplot(gs[1,2])
-ax2c, sm2c = plotchannels(mesh, np.abs(Qc[:, idx2b]),contours=True,phi=phi[:,idx2b]/1e6, ax=ax2c, min=0.5,max=50, quiver=False)
-ax2c.set_xlim([0, 10e3])
-ax2c.set_ylim([0, 3e3])
-ax2c.text(-0.55, 1.15, f"{tt[idx2b]:.2f} yrs", transform=plt.gca().transAxes,
-         ha='center', va='center', fontsize=10)
-ax2c.set_xticks(np.linspace(0, 10e3, 5))
-ax2c.set_xticklabels([])
-ax2c.set_yticks(np.linspace(0, 3e3, 2))
-ax2c.set_yticklabels([])
-
-
-
-os.makedirs(os.path.join(filedir, 'figure3b'), exist_ok=True)
-fig3b.savefig(os.path.join(filedir, 'figure3b/figure3b.png'), dpi=300)
-fig3b.savefig(os.path.join(filedir, 'figure3b/figure3b.pdf'), dpi=300)
-fig3b.savefig(os.path.join(filedir, 'figure3b/figure3b.eps'), dpi=300)
-fig3b.savefig(os.path.join(filedir, 'figure3b/figure3b.svg'), dpi=300)
-
+os.makedirs(os.path.join(filedir, 'defaultCaseEvolution'), exist_ok=True)
+fig3.savefig(os.path.join(filedir, 'defaultCaseEvolution/PaperFigure2Components.png'), dpi=300)
+fig3.savefig(os.path.join(filedir, 'defaultCaseEvolution/PaperFigure2Components.pdf'), dpi=300)
+fig3.savefig(os.path.join(filedir, 'defaultCaseEvolution/PaperFigure2Components.eps'), dpi=300)
+fig3.savefig(os.path.join(filedir, 'defaultCaseEvolution/PaperFigure2Components.svg'), dpi=300)
 
 
 ############################################################
@@ -819,7 +702,7 @@ ax2.yaxis.tick_right()
 ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax2.xaxis.set_minor_locator(MultipleLocator(1))
-ax2.text(1.52, 0.7, r"$k_{\mathrm{c}} = 0.25\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax2.text(1.52, 0.7, r"$k_{\mathrm{c}} = 0.2\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
 ax2.text(1.5, 0.5, r"$k_{\mathrm{c}} = 0.1\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
@@ -1125,17 +1008,17 @@ for ax, label, (x, y) in zip(axes, labels, label_positions):
         x, y, label,
         transform=ax.transAxes,
         ha='left', va='top',
-        fontsize=10,
+        fontsize=12,
         fontweight='bold'
     )
 
 
 # Save figure
-os.makedirs(os.path.join(filedir, 'figure4'), exist_ok=True)
-fig4.savefig(os.path.join(filedir, 'figure4/figure4.png'), dpi=300)
-fig4.savefig(os.path.join(filedir, 'figure4/figure4.pdf'), dpi=300)
-fig4.savefig(os.path.join(filedir, 'figure4/figure4.eps'), dpi=300)
-fig4.savefig(os.path.join(filedir, 'figure4/figure4.svg'), dpi=300)
+os.makedirs(os.path.join(filedir, 'sensitivityTests'), exist_ok=True)
+fig4.savefig(os.path.join(filedir, 'sensitivityTests/PaperFigure3Components.png'), dpi=300)
+fig4.savefig(os.path.join(filedir, 'sensitivityTests/PaperFigure3Components.pdf'), dpi=300)
+fig4.savefig(os.path.join(filedir, 'sensitivityTests/PaperFigure3Components.eps'), dpi=300)
+fig4.savefig(os.path.join(filedir, 'sensitivityTests/PaperFigure3Components.svg'), dpi=300)
 
 ############################################################
 print('Making supplementary version of figure 4!')
@@ -1395,16 +1278,16 @@ for ax, label, (x, y) in zip(axes, labels, label_positions):
         x, y, label,
         transform=ax.transAxes,
         ha='left', va='top',
-        fontsize=10,
+        fontsize=12,
         fontweight='bold'
     )
 
 # Save figure
-os.makedirs(os.path.join(filedir, 'figure4'), exist_ok=True)
-fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.png'), dpi=300)
-fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.pdf'), dpi=300)
-fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.eps'), dpi=300)
-fig4b.savefig(os.path.join(filedir, 'figure4/SUPPfigure4.svg'), dpi=300)
+os.makedirs(os.path.join(filedir, 'sensitivityTests'), exist_ok=True)
+fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.png'), dpi=300)
+fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.pdf'), dpi=300)
+fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.eps'), dpi=300)
+fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.svg'), dpi=300)
 
 
 ############################################################
@@ -1478,7 +1361,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 50, vmax + 1, 50)
 cbar1.set_ticks(ticks)
 cbar2.set_ticks(ticks)
 
-ax1.text(0.5, 9.5, r"$k_{\mathrm{c}} = 0.25\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax1.text(0.5, 9.5, r"$k_{\mathrm{c}} = 0.2\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
 
@@ -1801,7 +1684,7 @@ ax6.text(0.5, 9.5, r"$h_{\mathrm{b}} = 0.01\ \mathrm{m} $",
  # ax3 and ax4: sheet conductivity
 
  # Labels for subplots: (a) to (g)
-labels = ['a', 'b', 'c', 'd', 'e','f']
+labels = ['a','d','b','e','c','f']
 axes = [ax1, ax2, ax3, ax4, ax5, ax6]
 
 # Custom (x, y) positions for each label in axis coordinates
@@ -1826,11 +1709,11 @@ for ax, label, (x, y) in zip(axes, labels, label_positions):
 
 
 # Save figure
-os.makedirs(os.path.join(filedir, 'figure5'), exist_ok=True)
-fig5.savefig(os.path.join(filedir, 'figure5/figure5.png'), dpi=300)
-fig5.savefig(os.path.join(filedir, 'figure5/figure5.pdf'), dpi=300)
-fig5.savefig(os.path.join(filedir, 'figure5/figure5.eps'), dpi=300)
-fig5.savefig(os.path.join(filedir, 'figure5/figure5.svg'), dpi=300)
+os.makedirs(os.path.join(filedir, 'velocityFigure'), exist_ok=True)
+fig5.savefig(os.path.join(filedir, 'velocityFigure/PaperFigure4.png'), dpi=300)
+fig5.savefig(os.path.join(filedir, 'velocityFigure/PaperFigure4.pdf'), dpi=300)
+fig5.savefig(os.path.join(filedir, 'velocityFigure/PaperFigure4.eps'), dpi=300)
+fig5.savefig(os.path.join(filedir, 'velocityFigure/PaperFigure4.svg'), dpi=300)
 
 
 
