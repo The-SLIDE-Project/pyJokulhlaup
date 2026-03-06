@@ -585,7 +585,7 @@ fig3.savefig(os.path.join(filedir, 'defaultCaseEvolution/PaperFigure2Components.
 
 ############################################################
 # BONUS, make a movie
-makemovie = True
+makemovie = False
 
 if makemovie:
 
@@ -702,7 +702,7 @@ ax2.yaxis.tick_right()
 ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax2.xaxis.set_minor_locator(MultipleLocator(1))
-ax2.text(1.52, 0.7, r"$k_{\mathrm{c}} = 0.2\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
+ax2.text(1.5, 0.7, r"$k_{\mathrm{c}} = 0.2\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
 ax2.text(1.5, 0.5, r"$k_{\mathrm{c}} = 0.1\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
