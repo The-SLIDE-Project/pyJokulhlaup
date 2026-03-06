@@ -10,7 +10,7 @@
 *.npy
 *tar
 *.tar.gz
-
+*.log
 manuscript/Coauthor_comments/
 manuscript/Lake_drainage_preprint/
 
@@ -24,6 +24,8 @@ build/
 *egg-info*
 
 *OUTPUT*
+*logs*
+*RES*
 *TMP*
 *[R]UN*
 *STATUSES*

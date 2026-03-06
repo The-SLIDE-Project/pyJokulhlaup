@@ -10,7 +10,7 @@ sys.path.append(os.path.join(ISSM_DIR, 'src/m/dev/'))
 import devpath
 from issmversion import issmversion
 from hydrologyglads import hydrologyglads
-from generic import generic
+from ernie import ernie
 from paterson import *
 from solve import *
 from bcgslbjacobioptions import *
@@ -174,7 +174,7 @@ md.transient.deactivateall()
 md.transient.ishydrology = True
 md.transient.isstressbalance = True
 # Execution path
-md.cluster = generic('name',socket.gethostname(),'np', 20)
+md.cluster = ernie('name',socket.gethostname(),'np', 22)
 cwd = os.getcwd()
 expath = os.path.join(cwd, 'TMP/')
 if not os.path.exists(expath):
