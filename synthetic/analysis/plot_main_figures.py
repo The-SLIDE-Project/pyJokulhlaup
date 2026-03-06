@@ -1332,7 +1332,7 @@ ax1r.plot(tt_HiKc, Qr_HiKc[lakepos, :], color='k', label='Qr', linewidth=1.5)
 #ax1r.set_ylabel('$Q_r$ [m$^3$ s$^{-1}$]', color='k', rotation=270, labelpad=15)  # Rotate label and adjust padding
 ax1r.tick_params(axis='y', labelcolor='k')
 ax1.set_xlim(7, 11)
-ax1r.set_ylim(-5, 150)
+ax1r.set_ylim(-5, 110)
 ax1.set_ylim(0.25, 10)  # Convert to km
 ticks_X = [5, 10]
 ax1.set_yticks(ticks_X)
