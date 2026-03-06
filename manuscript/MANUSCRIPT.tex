@@ -1,6 +1,6 @@
 % !BIB TS-program = biber
-%\documentclass[review,jog]{igs}
-\documentclass[jog]{igs}
+\documentclass[review,jog]{igs}
+%\documentclass[jog]{igs}
 %\documentclass[review,aog]{igs}
 
 \usepackage[utf8]{inputenc}
@@ -9,6 +9,8 @@
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{siunitx}
+
+\usepackage{float}
 
 \usepackage{igsnatbib}
 
@@ -134,7 +136,7 @@ the channel enlarges by way of heat dissipation from flowing water, leading to a
 In this paper we build upon earlier 1D work \citep{kingslake2013modelling} by incorporating a physically-consistent representation of ice-marginal lake drainage into the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}, part of the Ice-sheet and Sea-level System Model \citep[ISSM; ][, \texttt{commit a9a3804}]{larour2012continental}. Our work includes several couplings i) between the subglacial hydrological system and the ice-marginal lake ii) the subglacial hydrological system and ice dynamics, and iii) the ice-marginal lake and ice dynamics (Fig.~\ref{FIG:1}). In Section~\ref{methods:GlaDS} we describe the coupled ISSM-GlaDS model and relevant additional modifications to the version originally presented by \citep{werder2013modeling}. We describe the equations governing ice-marginal lake drainage in Section~\ref{methods:Lake}, and our method of numerical solution is given in Section~\ref{methods:Numeric}. 
 
 \begin{figure}
-\centering{\includegraphics{./figures/Figure_1/Figure_1.png}}
+\centering{\includegraphics[width=0.45\textwidth]{./figures/Figure_1/Figure_1.png}}
 \caption{Schematic illustration of our model, showing a glacier (with thickness, $H$) and ice-marginal lake (with height, $l_{\mathrm{h}}$, and input, $Q_{\mathrm{in}}$). The lake is connected two-ways to a subglacial channel (with discharge, $Q_{\mathrm{c}}$) and a `sheet' of linked cavities (with discharge $q_{\mathrm{s}}$) fed by a basal melt term ($M_{\mathrm{r}}$). Changes in $l_{\mathrm{h}}$ modifies $Q_{\mathrm{s}}$ and $q_{\mathrm{s}}$ which in turn changes basal velocity, $U_{\mathrm{b}}$ through effective pressure, $N$. Note, although the ice-marginal lake is shown as connected to one channel, in our model an ice-marginal lake can be connected to the subglacial system at multiple outlets. \texttt{[SINGLE-COLUMN]}}
 \label{FIG:1}
 \end{figure}
@@ -250,9 +252,10 @@ Model variables are given in Table~\ref{tab:Var} and our synthetic model paramet
 
 \begin{table}
 \footnotesize
-\begin{minipage}{86mm}
+%\begin{minipage}{86mm}
+\begin{minipage}{172mm}
 \footnotesize
-\caption{[NOTE, this fits in two-column mode!] Input parameters in our synthetic domain. The parameters we varied are highlighted in bold, with the reference case value given first and the range over which they varied in parentheses.}
+\caption{Input parameters in our synthetic domain. The parameters we varied are highlighted in bold, with the reference case value given first and the range over which they varied in parentheses.}
 \label{tab:Synth}
 \begin{tabular}{@{\,\,\,}l@{\,\,\,}c@{\,\,\,}c@{\,\,\,}c@{\,\,\,}}
 
@@ -275,7 +278,7 @@ Budd friction coefficient & $C_{\mathrm{b}}$ & 100 & \\
 First friction law exponent & $r$ & 1/4 & \hfill \\
 Second friction law exponent & $s$ & 1/4 & \hfill \\
 %\hfill \\
-Channel conductivity & $k_{\mathrm{c}}$ & \textbf{0.1 (0.25--0.01)} & m$^{\frac{3}{2}}$kg$^{-\frac{1}{2}}$ \\
+Channel conductivity & $k_{\mathrm{c}}$ & \textbf{0.1 (0.2--0.01)} & m$^{\frac{3}{2}}$kg$^{-\frac{1}{2}}$ \\
 Sheet conductivity\footnote{Note that following \cite{hill2024improved} the units for $k_{s}$ differ from those given by \cite{werder2013modeling}} & $k_{s}$ & \textbf{0.002 (0.05--0.005)} & Pa s$^{-1}$ \\
 Englacial void ratio & $e_{\mathrm{v}}$ & 1$\times$10$^{-4}$ & \hfill \\
 First sheet flow exponent & $\alpha_{\mathrm{s}}$ & 5/4 & \hfill \\
@@ -308,12 +311,12 @@ During the lake filling phase, increasing $l_\mathrm{{h}}$ drives $\phi_{\mathrm
 Basal velocity, $U_{\mathrm{b}}$ changes significantly throughout a flood cycle and tracking the development of a significant channelised drainage system (e.g., Fig.~\ref{FIG:2}g). Our synthetic glacier gradually accelerating during the flood initiation phase before channelised drainage is widely established, then abruptly decelerating $\approx$two months before the flood peak (Fig.~\ref{FIG:2}g) once channels are well established. Ice flow acceleration propagates from the lake outlet towards the terminus, with maximum velocity sustained within 2 km of the lake outlet. 
 
 
-
-\begin{figure*}[!h]
-\centering{\includegraphics[width=0.95\textwidth]{./figures/Figure_2/Figure_2.png}}
+%\clearpage
+\begin{figure}
+\centering{\includegraphics[width=0.9\textwidth]{./figures/Figure_2/Figure_2.png}}
 \caption{Evolution of the 'reference' model configuration in our synthetic modelling domain. \textbf{a}) Lake height, $l_{\mathrm{h}}$ through time. Black points indicate $l_{\mathrm{h}}$ in panels \textbf{c}--\textbf{e}. \textbf{b}) Sum discharge at the lake outlet, $Q_{\mathrm{r}}$ through time. Grey points indicate $Q_{\mathrm{r}}$ in panels \textbf{c}--\textbf{e} the grey box indicates the time span of panel \textbf{g}. \textbf{c}--\textbf{e}) Channel discharge, $Q_{\mathrm{c}}$ at $t=$7.10 years (\textbf{c}), 8.38 years (\textbf{d}) and 9.00 years (\textbf{e}). In each panel, effective pressure, $N$ is shown as grey contours and the lake outlet is marked by a magenta star. \textbf{f}) Phase-plane diagram showing the evolution of $Q_{\mathrm{r}}$ and $N$ through time at the ice-marginal lake outlet. Arrows and shading indicate the direction of time. The horizontal dashed line denotes the lake refill rate, $Q_{\mathrm{in}} =$ 10 m$^{3}$s$^{-1}$. The vertical dashed line indicates $N$ when $l_{\mathrm{h}}=$0 m. \textbf{g}) Filled contour plot showing the across-flow averaged velocity through time. White contours represent velocity (every 10 ma$^{-1}$) and the black line shows $Q_{\mathrm{r}}$ between years 7--11.}
 \label{FIG:2}
-\end{figure*}
+\end{figure}
 %\clearpage
 %\addtocounter{figure}{-1}
 %\noindent\captionof{figure}{test}
@@ -335,20 +338,21 @@ Finally, increasing input of water into the either the glacier via basal melt ra
 
 In all simulations, the maximum lake height remains below the maximum ice thickness and does not surpass the effective pressure $N=0$ necessary to initiate ice flotation. In the majority of simulations the lake lowstand does not fall below $\sim$10 m, only draining completely when $k_{\mathrm{c}}$ = 0.25 m$^{\frac{3}{2}}$kg$^{-\frac{1}{2}}$, and when $h_{\mathrm{b}}=0.05\ \mathrm{m}$.
 
-\begin{figure*}[!h]
-\centering{\includegraphics[width=1\textwidth]{./figures/Figure_3/Figure_3.png}}
+%\clearpage
+\begin{figure}
+\centering{\includegraphics[width=0.9\textwidth]{./figures/Figure_3/Figure_3.png}}
 \caption{\textbf{NOT FINAL VERSION!} Lake height, $l_{\mathrm{h}}$ (left panels, i) and sum discharge at the lake outlet, $Q_{\mathrm{r}}$ (right panels, ii) across a range of key model parameters. \textbf{a}) Channel conductivity, $k_{\mathrm{c}}$. \textbf{b}) Sheet conductivity, $k_{\mathrm{s}}$. \textbf{c}) Basal bump height, $h_{\mathrm{b}}$. \textbf{d}) Channel sheet width, $l_{\mathrm{c}}$. \textbf{e}) Cavity spacing, $l_{\mathrm{r}}$. \textbf{f}) Basal melt rate, $M_{\mathrm{r}}$. \textbf{g}) Lake refill rate, $Q_{\mathrm{in}}$. In all panels, the default parameter run is shown in grey.}
 \label{FIG:3}
-\end{figure*}
+\end{figure}
 
 The characteristics of the lake filling-drainage cycle across our parameter space also strongly influences the resulting basal velocity signal, and Figure~\ref{FIG:4} shows the width-averaged velocity during at least one complete flood cycle for $k_{\mathrm{c}}$, $k_{\mathrm{s}}$, and $h_{\mathrm{b}}$. Each model follows the reference case with velocity peaking before peak discharge is reached, and dropping rapidly thereafter along the falling limb of a flood. In general, shorter more intense flood cycles lead to a more rapid and higher magnitude velocity response, whereas more broad and less intense flood cycles yield a similar velocity response, maintaining peak velocity for a longer duration. However, the highest basal velocity ($>300 \mathrm{m a}^{-1}$) is associated with the low $k_{\mathrm{c}}$ case (Fig.~\ref{FIG:4}), characterised by muted lake filling-drainage cycles but a relatively high lake-level (Fig.~\ref{FIG:3}a[i]). 
 
 
-\begin{figure*}[!h]
-\centering{\includegraphics[width=1\textwidth]{./figures/Figure_4/Figure_4.png}}
+\begin{figure}
+\centering{\includegraphics[width=0.9\textwidth]{./figures/Figure_4/Figure_4.png}}
 \caption{\textbf{NOT FINAL VERSION!} Across-flow velocity through time for key GlaDS parameters in the synthetic experiment. \textbf{a--c}) The high channel conductivity ($k_{\mathrm{c}}$, a), sheet conductivity ($k_{\mathrm{s}}$, b), and bump height ($h_{b}$, c) cases. \textbf{d--e}) The low $k_{\mathrm{c}}$ (d), $k_{\mathrm{s}}$ (e), and $h_{b}$ (f) cases. In each panel, white contours represent velocity (every 10 ma$^{-1}$) and the black line shows $Q_{\mathrm{r}}$ between years 7--11.}
 \label{FIG:4}
-\end{figure*}
+\end{figure}
 
 \section{Model application to a real domain}\label{application:greenland}
 
@@ -366,18 +370,18 @@ Our primary model phase, in which we ran our model for a total of 45 years with 
 
 
 
-\begin{figure*}[!h]
-\centering{\includegraphics[width=1\textwidth]{./figures/Figure_5/Figure_5.png}}
+\begin{figure}
+\centering{\includegraphics[width=0.9\textwidth]{./figures/Figure_5/Figure_5.png}}
 \caption{Ice-marginal lake drainage in the Isunnguata Sermia glacier catchment. \textbf{a}) the location of our model domain (panel b) in southwest Greenland. \textbf{b} our modelling domain, coloured by the bed elevation \citep{Morlighem_Et_Al_2022}, the extent of panel c is outlined. \textbf{c}) channel discharge, $Q_{\mathrm{c}}$ at the end of the 2018 melt season. The primary drainage axes is located within the along-flow orientated subglacial trough. The location of the lake outlets and the glacier outlets are marked by a pink star and a cyan triangles respectively The location of subglacial lakes 0--3 discussed in \cite{livingstone2025ice} are shown in black polygons. \textbf{d}) 95$^{th}$ percentile runoff during the spinup (dashed line) and transient modelling phase (solid line). Runoff increases by 10\% each year during the spin-up phase (1997--2007). \textbf{e}) sum outlet discharge, $Q_{\mathrm{r}}$ at the lake outlets during the spinup (dashed line) and transient modelling phase (solid line). Values lower than zero indicate net discharge into the lake, and vice versa when $Q_{\mathrm{r}} > 0$.\textbf{f}) modelled lake height, $l_{\mathrm{h}}$ during the spinup (dashed line) and transient modelling phase (solid line). \textbf{g}) Measured $l_{\mathrm{h}}$ and uncertainty values taken from \cite{livingstone2025ice}. The dashed vertical line in panels d--f shows the time represented by panel c, and the shaded grey box indicates the time span shown in Fig~\ref{FIG:6}.} 
 \label{FIG:5}
-\end{figure*}
+\end{figure}
 
 The full transient phase of our Greenland simulation is shown in Fig~\ref{FIG:5}. The spin-up phase (dashed line in Fig~\ref{FIG:5}d--f) is characterised by the development of a catchment wide sub-glacial drainage system together with a gradual increase in lake height during successively more intense melt summers (Fig~\ref{FIG:5}d) before the first drainage in 2010. From 2013 onwards, once the model is subject to full-annual melt-forcing, the lake repeatedly fills and drains with a recurrence interval between floods of $\sim$2 years. As in the synthetic case, lake fill and drainage cycles are characterised by a gradual lake filling phase and a rapid lake drainage phase, though the signal is notably more complex. Lake drainages typically occur at the end of a melt season. Lake levels then remain low during the subsequent winter, before filling in a stepwise fashion, with the lake filling more rapidly during summer melt seasons and remaining stable, or lowering slightly, during the intervening winter period. Lake drainage is triggered following the second melt season, and the cycle begins anew. 
 
 Unlike in the synthetic case, and likely reflecting variability in the meltwater forcing, the recurrence of floods is not stable, with flood characteristics variable year-on-year. 
 
-\begin{figure}[!h]
-\centering{\includegraphics{./figures/Figure_6/Figure_6.png}}
+\begin{figure}
+\centering{\includegraphics[width=0.45\textwidth]{./figures/Figure_6/Figure_6.png}}
 \caption{Channel development during a complete lake filling--drainage cycle. \textbf{a}) lake height, $l_{\mathrm{h}}$ and flood outlet discharge, $Q_{\mathrm{r}}$ through time. \textbf{b--e}) snapshots of channel discharge, $Q_{\mathrm{c}}$ through time, with the location of lake outlets and the glacier outlet marked by pink stars and a cyan triangle respectively. The location of subglacial lakes 0--3 discussed in \cite{livingstone2025ice} are shown in black polygons. Dashed lines in panel a indicate the snapshot times in panels b--e. [SINGLE-COLUMN] }
 \label{FIG:6}
 \end{figure}
@@ -400,8 +404,8 @@ Variable & Units & Description \\
 
 \section{Discussion} 
 
-\begin{figure}[!h]
-\centering{\includegraphics{./figures/Figure_7/Figure_7.png}}
+\begin{figure}
+\centering{\includegraphics[width=0.45\textwidth]{./figures/Figure_7/Figure_7.png}}
 \caption{Comparison of modelled (a--d) and observed (e--h) velocity during a lake drainage. \textbf{a--b}) Mean modelled velocity components, $u_{\mathrm{b}}$ (a) and  $v_{\mathrm{b}}$ (b), for the model years 2014--2025. \textbf{c--d}) Anomalies in velocity components, $u_{\mathrm{b}}$ (c) and  $v_{\mathrm{b}}$ (d), during the modelled 2018 lake drainage (see Fig~\ref{FIG:5} \& \ref{FIG:6}. \textbf{e--f}) Mean observed velocity components, $u_{\mathrm{b}}$ (e) and  $v_{\mathrm{b}}$ (f), between 2014--2025. \textbf{g--h}) Anomalies in velocity components, $u_{\mathrm{b}}$ (g) and  $v_{\mathrm{b}}$ (h), during an observed lake drainage in 2023 (see Fig~\ref{FIG:5}g). Lake drainage anomalies (c--d \& g--h) calculated by subtracting mean velocity components (2014--2025) from the mean velocity components during a lake drainage event, red colours indicate higher velocity during the lake drainage and blue colours indicate slower velocity. Observed velocity components estimated from Sentinel-1a and Sentinel-1b Synthetic  Aperture  Radar  (SAR), see \cite{livingstone2025ice} for details.}
 \label{FIG:7}
 \end{figure}

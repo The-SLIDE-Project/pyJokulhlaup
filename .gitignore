@@ -12,6 +12,13 @@
 *tar
 *.tar.gz
 *.log
+*.bst
+*.cls
+*.sty
+*.aux
+*.bbl
+*.bak
+*.synctex.gz
 manuscript/Coauthor_comments/
 manuscript/Lake_drainage_preprint/
 
