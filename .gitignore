@@ -4,6 +4,7 @@
 *.pyc
 *.mat
 *.nc
+*.af
 *.o
 *.hpp
 *.pkl
