@@ -356,14 +356,16 @@ The characteristics of the lake filling-drainage cycle across our parameter spac
 
 \section{Model application to a real domain}\label{application:greenland}
 
-We applied our model to Isunnguata Sermia, an outlet glacier in West Greenland draining a catchment of  $\approx\!16\,000\ \mathrm{km}^2$. The central drainage axis of Isunnguata Sermia is characterised by a deep, flow-parallel trough with an anabranching structure in its upper reaches. A recently described  $\approx\!3\ \mathrm{km}^2$, $\approx\!100\ \mathrm{m}$ deep ice-dammed lake \citep{livingstone2025ice} abuts the northern margin of Isunnguata Sermia's tongue. The lake drains subglacially with a periodicity of 1--3 years, undergoing at least 12 fill-drain cycles in the observational period between 1987--2024 \citep{livingstone2025ice}. There are two ice-contact boundaries between Isunnguata Sermia and the ice-marginal lake, a prominent boundary along the western margin of the lake through which the lake appears to drain, and an intermittent boundary along the eastern margin that is established once lake level is sufficiently high \citep{livingstone2025ice}.
+
+We applied our model to Isunnguata Sermia, an outlet glacier in West Greenland draining a catchment of  $\approx\!16\,000\ \mathrm{km}^2$. The central drainage axis of Isunnguata Sermia is characterised by a deep, flow-parallel trough with an anabranching structure in its upper reaches. A recently described  $\approx\!3\ \mathrm{km}^2$, $\approx\!100\ \mathrm{m}$ deep ice-dammed lake \citep{livingstone2025ice} abuts the northern margin of Isunnguata Sermia's tongue. The lake drains subglacially with a periodicity of 1--3 years, undergoing at least 12 fill-drain cycles between 1987--2024 \citep[][Fig.~\ref{FIG:5}f]{livingstone2025ice}. There are two ice-contact boundaries between Isunnguata Sermia and the ice-marginal lake, a prominent boundary along the western margin of the lake through which the lake appears to drain, and an intermittent boundary along the eastern margin that is established once lake level is sufficiently high \citep{livingstone2025ice}.
+
+\subsection{Model setup} \label{application:setup}
 
 % Field data, including passive seismics, GNSS, and time-lapse imagery is available for one drainage in 2023 \citep[see; ][]{livingstone2025ice}. 
 
-We discretised our Isunnguata Sermia domain (Source of original catchment?) using an anistropic mesh with an edge length of XX m close to terminus, dropping to XX km close to the upper margin of our domain at the approximate ELA (at \( H \approx 1600\ \text{m} \)). Bedmachine v5 is used for $z_{\mathrm{b}}$ and $H$ \citep{Morlighem_Et_Al_2022}. An initialisation $U_{\mathrm{b}}$ was taken from the 2021 MEaSUREs annual mosaic \citep{MEASURES}, from which we inverted for the basal friction coefficient using an L-curve scheme \citep[following; ][]{wolovick2023regularization}. Because we have an observational constraint on ice-surface velocity, we used a Schoof-style friction law (see Eq.~\ref{eq:frictionSchoof}, Section~\ref{methods:GlaDS}) which has been shown to more faithfully represent ice-dynamics with a GlaDS derived $N$ than the Budd-style friction law used in our synthetic experiments \citep{mcarthur2023basal}. Geothermal heat flux was taken from \citep{shapiro2004inferring}, basal melt rates were taken from \cite{karlsson2021first} and surface ice temperature was taken from \citep{ettema2009higher}. 
+We discretised our Isunnguata Sermia domain (Source of original catchment?) using an anistropic mesh with an edge length of 150 m close to terminus, increasing to 2 km close to the upper margin of our domain at the approximate ELA (at \( H \approx 1600\ \text{m} \)). The mesh was further refined to a typical edge length of 50 m close to the lake outlets (Fig.~\ref{FIG:5}b,c). Bedmachine v5 was used for $z_{\mathrm{b}}$ and $H$ \citep[][Fig.~\ref{FIG:5}b,c]{Morlighem_Et_Al_2022}. An initialisation $U_{\mathrm{b}}$ was taken from the 2021 MEaSUREs annual mosaic \citep{MEASURES}, from which we inverted for the basal friction coefficient using an L-curve scheme \citep[following; ][]{wolovick2023regularization}. Because we have an observational constraint on ice-surface velocity, we used a Schoof-style friction law (see Eq.~\ref{eq:frictionSchoof}, Section~\ref{methods:GlaDS}) which has been shown to more faithfully represent ice-dynamics with a GlaDS derived $N$ than the Budd-style friction law used in our synthetic experiments \citep{mcarthur2023basal}. Geothermal heat flux was taken from \citep{shapiro2004inferring}, basal melt rates were taken from \cite{karlsson2021first} and surface ice temperature was taken from \citep{ettema2009higher}. The flow-law rate factor $A$ within the ice-column was derived using these surface ice temperatures and assuming a temperature-dependent Arrhenius relation following \cite{cuffey2010physics}.
 
-As boundary conditions to our hydrology solution, we imposed Dirichlet conditions along the western and eastern margins of the lake, as well as at the glacier terminus. Neumann (zero-inflow) conditions were imposed elsewhere. Along the western lake margin (where the glacier is always in contact with the lake), we fixed bed elevation equal to the minimum lake elevation (257.9 m a.s.l) at five vertices and allowed $\phi_\mathrm{outlet}$ to evolve with $l_{\mathrm{h}}$ (equation~\ref{eq:lakephi}, magenta star in Fig.~\ref{FIG:4}). At the glacier terminus and eastern margin we prescribe $\phi$ equal to atmospheric pressure at the lowest elevation vertex locally (cyan triangles in Fig.~\ref{FIG:5}c). Because the lake model is spatially lumped and cannot dynamically represent intermittent lake–glacier contact along the eastern margin, prescribing atmospheric conditions there provides a simple and consistent boundary treatment during periods when the lake is not in contact with the glacier. Within the ice-dynamic solution, the boundary velocity is given by the initialisation $U_{\mathrm{b}}$ (Dirichlet), except at the western lake margin where velocity is allowed to evolve freely (Neumann). 
-
+As boundary conditions to our hydrology solution, we imposed Dirichlet conditions along the western and eastern margins of the lake, as well as at the glacier terminus. Neumann (zero-inflow) conditions were imposed elsewhere. Along the western lake margin (where the glacier is always in contact with the lake), we fixed bed elevation equal to the minimum lake elevation (257.9 m a.s.l) at seven vertices, and at the eastern margin we identified the lowest elevation vertex within a group of vertices close to the observed stream and fixed this at 257.9 m. At each lake outlet (magenta stars in Fig.~\ref{FIG:4}), $\phi_\mathrm{outlet}$ was allowed to evolve with $l_{\mathrm{h}}$ (equation~\ref{eq:lakephi}). Because the lake model is spatially lumped and cannot dynamically represent intermittent lake–glacier contact along the eastern margin, prescribing the same boudary conditions here as along the western lake boundary provides a simple and consistent boundary treatment and ensures subglacial channel discharge is fed into the ice-marginal lake. At the glacier terminus we prescribe $\phi$ equal to atmospheric pressure at the lowest elevation boundary vertex (cyan triangle in Fig.~\ref{FIG:5}c). Within the ice-dynamic solution, the boundary velocity is given by the initialisation $U_{\mathrm{b}}$ (Dirichlet), except at the western lake margin where velocity is allowed to evolve freely (Neumann). 
 
 As climate forcing, we used the 10 km resolution daily Modèle Atmosphérique Régional (MAR, v3.14) runoff and accumlation data \citep{fettweis2017reconstructions} between 2007--2025. In the synthetic test case, we kept $Q_{\mathrm{in}$ fixed through time, however the rate of lake refill is likely to be variable in time as a function of air-temperature and climate \citep{ng2009temporal}. To account for this, we use a simple temperature index \citep[as in][]{kingslake2015chaotic}, where $Q_{\mathrm{in}}$ is given by: 
 
@@ -374,38 +376,16 @@ As climate forcing, we used the 10 km resolution daily Modèle Atmosphérique R�
 Q_{\mathrm{in}} =
 \begin{cases}
 kT, & T > 0 \\
-0, & T \le 0
+1, & T \le 0
 \end{cases}
 \end{aligned}
 \end{equation}
 
-where the temperature-index coefficient $ k = 2\mathrm{m}^{3}\mathrm{s}^{-1}\mathrm{K}^{-1}$ 
-
-
-
-
-
-
-
-
-
-
-
-Our Greenland-specific GlaDS parameters, those which differ from in the synthetic case, are given in Table~\ref{tab:Synth}. 
-
-
-
-
-
-
-
-
-
-
+where the temperature-index coefficient $ k $ is equal to $2\mathrm{m}^{3}\mathrm{s}^{-1}\mathrm{K}^{-1}$. We set $Q_{\mathrm{in}} > 1$ to capture positive changes in lake elevation observed between melt seasons in Fig~\ref{FIG:5}f. Our Greenland-specific GlaDS parameters, those which differ from in the synthetic case, are given in Table~\ref{tab:Synth}. 
 
 Our experimental approach was split into two phases, the first of which was to obtain a basal friction coefficient $C$. We ran an initial inversion for $C$ using an empirically-derived $N$ taking into account bed topography and ice thickness, before running a simple GlaDS-only model run over 10 years, which did not include an ice-marginal lake, surface melt or two-way coupling to ice dynamics. This allowed us to derive a more realistic and spatially variable $N$ from which a second inversion for basal friction could be obtained. Such an approach has previously been demonstrated to yield more faithful basal inversions in a coupled hydrology model \citep[see;][]{ehrenfeucht2023seasonal,mcarthur2023basal}. 
 
-Our primary model phase, in which we ran our model for a total of 38 years with a 5 minute timestep, consisted of a `steady state' phase, followed by a `spin-up' into a full transient simulation. In the steady state phase, we ran our model for 20 years, until the 95\textsuperscript{th} percentile difference in sheet thickness between successive timesteps fell below $1\times10^{-6} \mathrm{m}$. During the steady state phase, we allowed the ice-marginal lake to freely evolve from an initial height of $l_{\mathrm{h}}=70\ \mathrm{m}$, or the mean lake height between 1987--2024 \citep{livingstone2025ice}. The steady state phase allowed the model to reach a condition which approximates wintertime hydrological conditions where there is limited channel activity and water pressures across the domain are close to the flotation fraction ($p_{\mathrm{w}}\approx 0.7-0.9 p_{\mathrm{i}}$). In the transient phase, taking the results of the steady-state run as initial conditions, we spun our model up over 10 years with a climate forcing that was gradually introduced by increasing the 2007 runoff by 10\% each year. Following this spin-up, the full transient simulation proceeded from 2007 onwards using the MAR timeseries until the end of 2025.
+Our primary model phase, in which we ran our model for a total of 38 years with a 5 minute timestep, consisted of a `steady state' phase, followed by a `spin-up' into a full transient simulation. In the steady state phase, we ran our model for 20 years, until the 95\textsuperscript{th} percentile difference in sheet thickness between successive timesteps fell below $1\times10^{-6} \mathrm{m}$. During the steady state phase, we allowed the ice-marginal lake to freely evolve from an initial height of $l_{\mathrm{h}}=70\ \mathrm{m}$, or the mean lake height between 1987--2024 \citep{livingstone2025ice}. The steady state phase allowed the model to reach a condition which approximates the anticipated wintertime hydrological conditions in which there is limited channel activity and water pressures across the domain are close to the flotation fraction ($p_{\mathrm{w}}\approx 0.7-0.9 p_{\mathrm{i}}$). In the transient phase, taking the results of the steady-state run as initial conditions, we spun our model up over 10 years with a climate forcing that was gradually introduced by increasing the 2007 runoff by 10\% each year. Following this spin-up, the full transient simulation proceeded from 2007 onwards using the MAR timeseries until the end of 2025.
 
 
 
@@ -415,9 +395,18 @@ Our primary model phase, in which we ran our model for a total of 38 years with 
 \label{FIG:5}
 \end{figure}
 
-The full primary phase of our Greenland simulation is shown in Fig~\ref{FIG:5}. The spin-up phase (dashed line in Fig~\ref{FIG:5}d--f) is characterised by three lake filling cycles, each of which reach successively higher lake highstands and have a shorter return period than the flood prior, tracking the development of a catchment wide sub-glacial drainage system together with successively more intense melt summers (Fig~\ref{FIG:5}d). From 2007 onwards, once the model is subject to the full extent of annual melt-forcing, the lake repeatedly fills and drains with a recurrence interval between floods of $\sim$4 years. As in the synthetic case, lake fill and drainage cycles are characterised by a gradual lake filling phase and a rapid lake drainage phase, though the signal is notably more complex. Lake drainages typically occur at the end of a melt season. Lake levels then remain low during the subsequent winter, before filling in a stepwise fashion, with the lake filling more rapidly during summer melt seasons and remaining stable, or lowering slightly, during the intervening winter period. Lake drainage is triggered following the second melt season, and the cycle begins anew. 
+\subsection{Flood cycles in West Greenland} \label{application:results}
 
-Unlike in the synthetic case, and likely reflecting variability in the meltwater forcing, the recurrence of floods is not stable, with flood characteristics variable year-on-year. 
+
+The full primary phase of our Greenland simulation is shown in Fig~\ref{FIG:5}. The spin-up phase (dashed line in Fig~\ref{FIG:5}d--f) is characterised by three cycles of lake filling and partial drainage, each of which reach successively higher lake highstands and have a shorter return period than the flood prior, tracking the development of a catchment wide sub-glacial drainage system together with successively more intense melt summers (Fig~\ref{FIG:5}d). From 2007 onwards, once the model is subject to the full extent of annual melt-forcing, the lake repeatedly fills and drains with a recurrence interval between floods of $\sim$2--4 years. As in the synthetic case, lake fill and drainage cycles are characterised by a gradual lake filling phase and a rapid lake drainage phase, though the signal is notably more complex. Lake drainages typically occur at the end of a melt season. Lake levels then remain low during the subsequent winter, before filling in a stepwise fashion, with the lake filling more rapidly during summer melt seasons and remaining stable, or lowering slightly, during the intervening winter period. Lake drainage is triggered following the second or third melt season, and the cycle begins anew. 
+
+The timing of lake 
+
+
+
+Though variable in peak discharge and duration, a flood will typically commence with the development of 
+
+The velocity pattern 
 
 \begin{figure}
 \centering{\includegraphics[width=0.45\textwidth]{./figures/Figure_6/Figure_6.png}}
