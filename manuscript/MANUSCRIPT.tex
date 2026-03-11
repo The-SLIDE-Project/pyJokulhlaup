@@ -291,10 +291,10 @@ Channel sheet width & $l_{\mathrm{c}}$ & \textbf{20 (50--5)} & m \\
 Cavity spacing & $l_{\mathrm{r}}$ & \textbf{5 (20--1)} & m \\
 Basal melt rate & $M_{\mathrm{r}}$ & \textbf{0.25 (5--0.1)} & m a$^{-1}$ \\
 Lake refill rate & $Q_{\mathrm{in}}$ & \textbf{10 (20--5)} & m$^{3}$s$^{-1}$ \\
-Elastic sheet depth scale & $h_{\mathrm{c}}$ & 0 & m \\
-Elastic sheet exponent & $\gamma$ & 1 & \hfill \\
-Uplift regularisation rate & $h_{\varepsilon}$ & 1$\times$10$^{-6}$ & m Pa$^{-1}$ \\
-Regularising pressure & $N_{\varepsilon}$ & 1$\times$10$^{4}$ & Pa \\
+%Elastic sheet depth scale & $h_{\mathrm{c}}$ & 0 & m \\
+%Elastic sheet exponent & $\gamma$ & 1 & \hfill \\
+%Uplift regularisation rate & $h_{\varepsilon}$ & 1$\times$10$^{-6}$ & m Pa$^{-1}$ \\
+%Regularising pressure & $N_{\varepsilon}$ & 1$\times$10$^{4}$ & Pa \\
 \hline
 \end{tabular}
 \end{minipage}
@@ -366,7 +366,7 @@ We discretised our Isunnguata Sermia domain (Source of original catchment?) usin
 
 As boundary conditions to our hydrology solution, we imposed Dirichlet conditions along the western and eastern margins of the lake, as well as at the glacier terminus. Neumann (zero-inflow) conditions were imposed elsewhere. Along the western lake margin (where the glacier is always in contact with the lake), we fixed bed elevation equal to the minimum lake elevation (257.9 m a.s.l) at seven vertices, and at the eastern margin we identified the lowest elevation vertex within a group of vertices close to the observed stream and fixed this at 257.9 m. At each lake outlet (magenta stars in Fig.~\ref{FIG:4}), $\phi_\mathrm{outlet}$ was allowed to evolve with $l_{\mathrm{h}}$ (equation~\ref{eq:lakephi}). Because the lake model is spatially lumped and cannot dynamically represent intermittent lake-glacier contact along the eastern margin, prescribing the same boundary conditions here as along the western lake boundary provides a simple and consistent boundary treatment and ensures subglacial channel discharge is fed into the ice-marginal lake. At the glacier terminus we prescribe $\phi$ equal to atmospheric pressure at the lowest elevation boundary vertex (cyan triangle in Fig.~\ref{FIG:5}c). Within the ice-dynamic solution, the boundary velocity is given by the initialisation $U_{\mathrm{b}}$ (Dirichlet), except at the western lake margin where velocity is allowed to evolve freely (Neumann). 
 
-As climate forcing, we used the 10 km resolution daily Modèle Atmosphérique Régional (MAR, v3.14) runoff and accumlation data \citep{fettweis2017reconstructions} between 2007--2025. In the synthetic test case, we kept $Q_{\mathrm{in}}$ fixed through time, however the rate of lake refill is likely to be variable in time as a function of air-temperature and climate \citep{ng2009temporal}. To account for this, we use a simple temperature index \citep[as in][]{kingslake2015chaotic}, where $Q_{\mathrm{in}}$ is given by: 
+As climate forcing, we used the 10 km resolution daily Modèle Atmosphérique Régional (MAR, v3.14) runoff and accumlation data \citep{fettweis2017reconstructions} between 2007--2025 inclusive. In the synthetic test case, we kept $Q_{\mathrm{in}}$ fixed through time, however the rate of lake refill is likely to be variable in time as a function of air-temperature and climate \citep{ng2009temporal}. To account for this, we use a simple temperature index \citep[as in][]{kingslake2015chaotic}, where $Q_{\mathrm{in}}$ is given by: 
 
 
 \begin{equation}
@@ -380,16 +380,23 @@ kT, & T > 0 \\
 \end{aligned}
 \end{equation}
 
-where the temperature-index coefficient $ k $ is equal to $2\mathrm{m}^{3}\mathrm{s}^{-1}\mathrm{K}^{-1}$. We set $Q_{\mathrm{in}} > 1$ to capture positive changes in lake elevation observed between melt seasons in Fig~\ref{FIG:5}f. Our Greenland-specific GlaDS parameters, those which differ from in the synthetic case, are given in Table~\ref{tab:Synth}. 
+where the temperature-index coefficient $ k $ is equal to $2\ \mathrm{m}^{3}\mathrm{s}^{-1}\mathrm{K}^{-1}$. We set $Q_{\mathrm{in}} \geq 1 \ \mathrm{m}^{3}\mathrm{s}^{-1}$ to capture positive changes in lake elevation observed between melt seasons in Fig~\ref{FIG:5}f. Our Greenland-specific GlaDS parameters, those which differ from in the synthetic case, are given in Table~\ref{tab:Synth}. 
 
 \begin{table}
 \begin{minipage}{86mm}
 \caption{Parameters in our Greenland run, listing those which differ from Table~\ref{tab:Synth}}
 \label{tab:Greenland}
-\begin{tabular}{@{}ccc}
+\begin{tabular}{@{}cccc}
 \hline
-Variable & Units & Description \\
-\hline
+Description & Symbol & Value & Units \\
+Schoof friction coefficient & $C_{\mathrm{s}}$ & & \\
+Iken's bound & $C_{\mathrm{max}}$ & 0.5 & \\
+Channel conductivity & $k_{\mathrm{c}}$ & 0.02 & $\mathrm{m}^{\frac{3}{2}}\mathrm{kg}^{-\frac{1}{2}}$ \\
+Sheet conductivity & $k_{\mathrm{s}}$& 0.05 & $\mathrm{Pa\ s}^{-1}$ \\ 
+Basal bump height & $h_{\mathrm{b}}$& & \\
+Englacial void ratio & $e_{\mathrm{v}}$ & 0.01 & \\
+Channel sheet width & $l_{\mathrm{c}}$& 10 & $\mathrm{m}$ \\
+Cavity spacing & $l_{\mathrm{r}}$& 10 & $\mathrm{m}$ \\
 \hline
 \end{tabular}
 
