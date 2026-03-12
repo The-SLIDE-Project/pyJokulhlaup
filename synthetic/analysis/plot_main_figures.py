@@ -1618,7 +1618,7 @@ ticks = np.arange(np.ceil(vmin / 100) * 50, vmax + 1, 50)
 cbar9.set_ticks(ticks)
 cbar10.set_ticks(ticks)
 
-ax5.text(0.5, 9.5, r"$h_{\mathrm{b}} = 1\ \mathrm{m} $", 
+ax5.text(0.5, 9.5, r"$h_{\mathrm{b}} = 0.25\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='black')
 
