@@ -21,12 +21,14 @@
 
 \begin{document}
 
-\title[2D model of recurring Jökulhlaup]{A physically consistent representation of recurring Jökulhlaup floods in a fully-coupled 2D subglacial hydrology model}
+\title[2D model of Jökulhlaup]{A physically consistent representation of Jökulhlaup floods in a fully-coupled 2D subglacial hydrology model}
 
 \author[Hepburn and others]{Adam J. HEPBURN,$^{1,*}$
 Sammie BUZZARD,$^{2}$
 Stephen LIVINGSTONE,$^{3}$
 Andrew SOLE,$^{3}$
+\textbf{Felix NG},$^{3}$
+\textbf{Mathieu Morlighem}, $^{?}$
 Liz BAGSHAW,$^{4}$
 Guilhem BARRUOL,$^{5}$
 Gianluca BIANCHI,$^{6}$
@@ -60,6 +62,7 @@ Tun Jan YOUNG,$^{15}$
 \textbf{1.} Centre for Glaciology, Department of Geography and Earth Sciences, Aberystwyth University, Aberystwyth, UK
 \textbf{2.} Department of Geography and Environmental Sciences, Northumbria University, Newcastle upon Tyne, UK
 \textbf{3.} Department of Geography, The University of Sheffield, Sheffield, UK
+\textbf{?.} Department of Earth Sciences, Dartmouth College, Hanover, NH, USA 
 \textbf{4.} School of Geographical Sciences, University of Bristol, Bristol, UK
 \textbf{5.} Institut des Géosciences de l'Environnement (IGE), Université Grenoble Alpes, CNRS, IRD, Grenoble INP, Saint Martin d'Hères, France
 \textbf{6.} School of Earth and Environmental Sciences, Cardiff University, Cardiff, UK
@@ -149,7 +152,7 @@ We used the GlaDS model \citep{werder2013modeling} as integrated into ISSM \cite
 
 %In addition to the ice-marginal lake modifications which we describe below (Section~\ref{methods:Lake}), we note two key differences between the original GlaDS \citep{werder2013modeling} and the ISSM version used here: i) rather than assuming water flow within the sheet to always be turbulent \citep[cf:][]{werder2013modeling}, we make use of the \cite{hill2024improved} transition parametrisation, whereby sheet flow switches between laminar and turbulent flow according to the local Reynolds number, and ii) following \cite{stevens2022tidewater}, we implemented a viscously deforming `elastic sheet layer' which crudely represents hydraulic jacking where water pressure exceeds ice overburden pressure (see Section~\ref{Appendix:GlaDS}). 
 
-To capture the influence of ice-marginal lake drainage on ice dynamics, we include a two-way coupling between ice flow and subglacial hydrology. The GlaDS derived effective pressure ($N=p_{\mathrm{i}}-p_{\mathrm{w}}$, where $p_{\mathrm{i}}$ is ice pressure and $p_{\mathrm{w}}$ is water pressure, $Pa$) modifies basal velocity $U_{\mathrm{b}}$ ($\mathrm{m}\, \mathrm{a}^{-1}$)by governing frictional resistance at the ice-bed interface. In turn, the magnitude of $U_{\mathrm{b}}$ modifies the rate at which cavities open and thereby controls the thickness of the sheet (Eq.~\ref{appeqn: hs_cav}--\ref{appeqn: basal sliding}*). Two-way coupling between ISSM and GlaDS is a relatively new development, and the influence of friction parameters remains the subject of ongoing research \citep[e.g.,][ADD MORE REF]{khan2024inland}, though model response is known to be strongly influenced by the choice of friction law \citep{choi2023impact}. We view this work as necessarily explorative [Flesh this out more], and we do not undertake a full analysis of the modelling interactions between subglacial hydrology and ice dynamics, which is beyond the scope of this work. Rather, we seek to capture the broad influence ice-marginal lake drainage cycles have upon ice dynamics. Accordingly, we present results using two widely applied friction laws: i) the `Budd-style' friction law [REF] implemented in ISSM in terms of basal stress with the form:
+To capture the influence of ice-marginal lake drainage on ice dynamics, we include a two-way coupling between ice flow and subglacial hydrology. The GlaDS derived effective pressure ($N=p_{\mathrm{i}}-p_{\mathrm{w}}$, where $p_{\mathrm{i}}$ is ice pressure and $p_{\mathrm{w}}$ is water pressure, $Pa$) modifies basal velocity $U_{\mathrm{b}}$ ($\mathrm{m}\, \mathrm{a}^{-1}$)by governing frictional resistance at the ice-bed interface. In turn, the magnitude of $U_{\mathrm{b}}$ modifies the rate at which cavities open and thereby controls the thickness of the sheet (Eq.~\ref{appeqn: hs_cav}--\ref{appeqn: basal sliding}*). Two-way coupling between ISSM and GlaDS is a relatively new development, and the influence of friction parameters remains the subject of ongoing research \citep[e.g.,][ADD MORE REF]{khan2024inland}, though model response is known to be strongly influenced by the choice of friction law \citep{choi2023impact}. We view this work as necessarily explorative, and we do not undertake a full analysis of the modelling interactions between subglacial hydrology and ice dynamics, which is beyond the scope of this work. Rather, we seek to capture the broad influence ice-marginal lake drainage cycles have upon ice dynamics. Accordingly, we present results using two widely applied friction laws: i) the `Budd-style' friction law [REF] implemented in ISSM in terms of basal stress with the form:
 
 \begin{equation}
 \label{eq:frictionBudd}
@@ -389,11 +392,12 @@ where the temperature-index coefficient $ k $ is equal to $2\ \mathrm{m}^{3}\mat
 \begin{tabular}{@{}cccc}
 \hline
 Description & Symbol & Value & Units \\
+\hline
 Schoof friction coefficient & $C_{\mathrm{s}}$ & & \\
 Iken's bound & $C_{\mathrm{max}}$ & 0.5 & \\
 Channel conductivity & $k_{\mathrm{c}}$ & 0.02 & $\mathrm{m}^{\frac{3}{2}}\mathrm{kg}^{-\frac{1}{2}}$ \\
 Sheet conductivity & $k_{\mathrm{s}}$& 0.05 & $\mathrm{Pa\ s}^{-1}$ \\ 
-Basal bump height & $h_{\mathrm{b}}$& & \\
+Basal bump height & $h_{\mathrm{b}}$& 0.05 & m \\
 Englacial void ratio & $e_{\mathrm{v}}$ & 0.01 & \\
 Channel sheet width & $l_{\mathrm{c}}$& 10 & $\mathrm{m}$ \\
 Cavity spacing & $l_{\mathrm{r}}$& 10 & $\mathrm{m}$ \\
@@ -426,7 +430,7 @@ Each flood reaches a higher peak discharge (Fig.~\ref{FIG:5}e) than in the synth
 
 The timing of lake highstands in our transient phase aligns well with that in the observed record. Eight clear lake highstands are evident in the observed record (Fig.~\ref{FIG:5}g) between 2007--2024, seven of which corresponds with an observed lake highstand to within $\sim$2 months (Fig.~\ref{FIG:5}f). Further, There is overall agreement between model and observation for events in which the lake was observed to partially drain (e.g., 2010--2011) rather than drain completely (e.g., 2007--2008) though this match is not perfect (e.g., 2013) and is likely partly influenced by gaps in the observational record \citep{livingstone2025ice}. 
 
-Though variable in peak discharge and duration, the typical evolution of channels during a flood cycle is shown in Fig.~\ref{FIG:6}. On reaching lake highstand, the development of a significant channel connection between the lake and the primary drainage axis enables flood onset and the sharp drop in lake level (Fig.~\ref{FIG:6}b). Once the lake is empty, and $\nabla\phi$ sufficiently low at the western lake outlet, the lake draining channel is starved of supply and shuts down by creep closure. At the lake lowstand, once $\nabla\phi$ is close to atmospheric pressure, drainage into the lake from the eastern lake outlet begins in summer (2020) and the lake quickly fills to $\sim 50\\mathrm{m}$. In the 2021 summer (Fig.~\ref{FIG:6}d) and 2022 summer, no significant channels develop at the eastern lake outlet, and $Q_{\mathrm{in}}$ accounts for the rise in $l_{\mathrm{h}}$. By the end of the 2022 melt season (Fig.\ref{Fig:5}c, \& Fig.~\ref{FIG:6}e), a relatively high discharge flood drains the lake via a series of channels connected to the primary drainage axis. Though seven vertices along the western lake outlet are connected to the lake, discharge at the lake boundary is concentrated within a single high-discharge channel. Closer towards the terminus this channel diverges and branches into multiple lower discharge channels running sub-parallel to the main lake-draining channel. 
+Though variable in peak discharge and duration, the typical evolution of channels during a flood cycle is shown in Fig.~\ref{FIG:6}. On reaching lake highstand, the development of a significant channel connection between the lake and the primary drainage axis enables flood onset and the sharp drop in lake level (Fig.~\ref{FIG:6}b). Once the lake is empty, and $\nabla\phi$ sufficiently low at the western lake outlet, the lake draining channel is starved of supply and shuts down by creep closure. At the lake lowstand, once $\nabla\phi$ is close to atmospheric pressure, drainage into the lake from the eastern lake outlet begins in summer (2020) and the lake quickly fills to $\sim 50\\mathrm{m}$. In the 2021 summer (Fig.~\ref{FIG:6}d) and 2022 summer, no significant channels develop at the eastern lake outlet, and $Q_{\mathrm{in}}$ accounts for the rise in $l_{\mathrm{h}}$. By the end of the 2022 melt season (Fig.\ref{Fig:5}c, \& Fig.~\ref{FIG:6}e), a relatively high discharge flood drains the lake via a series of channels connected to the primary drainage axis. Though seven vertices along the western lake outlet are connected to the lake, discharge at the lake boundary is concentrated within a single high-discharge channel. Closer towards the terminus this channel diverges and branches into multiple lower discharge channels running sub-parallel to the main lake-draining channel and perpendicular to $\nabla \phi$ (see Section~\ref{application:synth}). 
 
 Fig.~\ref{FIG:7} shows the mean $U_{\mathrm{b}}$ between 2014--2025 and the $U_{\mathrm{b}}$ anomaly associated with the modelled 2022 flood (Fig.~\ref{Fig:7}a--d) and the observed 2023 flood (Fig.~\ref{Fig:7}e--h) from \cite{livingstone2025ice}. Each are interpolated onto the same model mesh. Decomposed into $x-$/$y-$ components of basal velocity $U_{\mathrm{b}}$ the mean model velocity (Fig.~\ref{FIG:7}a,b) is in close agreement with the mean observed velocity (Fig.~\ref{FIG:7}e,f), although the model predicts a higher mean $y-$ component of $U_{\mathrm{b}}$ close to the lake margin (Fig.~\ref{FIG:7}b) than is observed (Fig.~\ref{FIG:7}h). The lake-drainage anomalies (Fig.~\ref{FIG:7}c,d,g,h), generated by subtracting the overall mean velocity from the mean velocity during a lake drainage event, agree well in terms of overall pattern of slow-down and acceleration, but differ in both detail and magnitude. The observed lake-drainage anomalies are higher in  magnitude, particularly close to the model boundary. The observed $y-$ component of $U_{\mathrm{b}}}$ is also more spatially variable than the equivalent model data, showing ice-acceleration towards the ice-marginal lake across a wider area of the terminus than the model, where acceleration is concentrated close to the lake-margin. 
 
@@ -448,6 +452,43 @@ Fig.~\ref{FIG:7} shows the mean $U_{\mathrm{b}}$ between 2014--2025 and the $U_{
 
 
 \section{Discussion} 
+
+The model presented here, the first time a time-evolving ice-marginal lakes has been coupled to a 2D representation of subglacial hydrology, corroborates many of the findings from earlier 1D work (e.g., REF). 
+
+
+In our synthetic domain stable and recurrent jökulhlaup are a feature of the default case (Fig.~\ref{FIG:2}) and across the majority of sensitivity tests (Fig.~\ref{FIG:3}). The lake gradually fills at a rate governed by the magnitude of the extraglacial input rate, $Q_{\mathrm{in}}$ and floods initiate once lake depth, $l_{\mathrm{h}}$ reaches between 50--80$\%$ of ice thickness, $H$, corresponding to between 55--90$\%$ of ice overburden pressure. Across our sensitivity tests, higher peak flood discharge, $Q_{\mathrm{r}}$ is typically associated with higher $l_{\mathrm{h}}$ and reflects parameter combinations in which the efficiency or capacity of the distributed sheet is reduced (e.g., lower sheet conductivity, $k_{\mathrm{s}}$, lower bump height, $h_{\mathrm{b}}$, higher cavity spacing, $l_{\mathrm{r}}$). Decreasing the relative efficiency of the sheet inhibits leakage from the lake into the distributed system and permits a greater $\nabla\phi$ close to the lake outlet, which once sufficiently steep, then promotes relatively rapid lake drainage via subglacial channels. Increasing the capacity or efficiency of the distributed sheet either prevents lake drainage entirely with $Q_{\mathrm{in}}$ equilibrium with $Q_{\mathrm{r}}$, or limits the lake highstand and ensures a lower lake volume drains more gradually, with a higher proportion of discharge accommodated without recourse to efficient channelisation. Peak $l_{\mathrm{h}}$ is reduced when the efficiency of the channel is increased (high 
+
+The response of the model to more melt is not expected...
+
+Velocity also follows a similar response...
+
+
+That this model matches well to early work is no surprise, the lake is governed by the same filling/draining equations as in earlier work and the underlying hydrology models are subject to many of the same physical assumptions. The novelty of the work presented here lies in the introduction of two-dimensions to the description of the lake-adjacent glacier. 
+
+We see lateral propogation and channels developing sub-parallel to the angle of surface slope, we see good match to empircal measurements of lake records
+
+
+
+
+However, the model fails to match discharge... why?
+
+
+
+
+
+
+As in the earlier 1D work, both our synthetic and Greenland domains predict unrealistically long flood durations, extending over multiple months, rather than the weeks or days Jökulhlaup have been observed to occur over in Isunnguata Sermia \citep{livingstone2025ice} and elsewhere [REF]. 
+
+
+
+\subsection{Future considerations}
+
+
+
+
+
+
+
 
 
 
