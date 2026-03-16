@@ -5,7 +5,9 @@ Plot the (Greenland relevant) figures for the main paper
     Usage: python plot_Greenland_figures.py
 
     This script will plot:
-        figure 1: Bed topography, 
+        figure 1: Study site, bed topography, typical channel config during a flood, and time-series of Qin, Qr, and lh (modelled and measured)
+        figure 2: Modelled lake height and channel discharge evolution during the flood, with snapshots of the spatial distribution of lh and Qc at key time steps.
+        figure 3: Modelled lake height and channel discharge evolution during the flood, with snapshots of the spatial distribution of lh and Qc at key time steps, but with a different time span to highlight the early flood evolution.
 
 """
 import sys
@@ -17,9 +19,10 @@ import geopandas as gpd
 import imageio
 from datetime import datetime
 import matplotlib
+#matplotlib.rcParams['text.usetex'] = True  # full LaTeX rendering
 import matplotlib.image 
 import matplotlib.patches
-from matplotlib.ticker import MultipleLocator, FormatStrFormatter
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter, FuncFormatter
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.collections import LineCollection, PolyCollection, PatchCollection
 from matplotlib.path import Path
@@ -49,7 +52,8 @@ from src.utils import *
 
 #Set model path
 #IS_dir = '../models/18-FricNLim1Cmax8-transient-13-01-2026-17-53'
-IS_dir = '../models/87-hiOmega-transient-02-03-2026-14-31'
+#IS_dir = '../models/87-hiOmega-transient-02-03-2026-14-31'
+IS_dir = '../models/65-LowBh-transient-17-02-2026-13-12'
 print(os.getcwd())
 Fig_dir = 'figures'
 if not os.path.exists(Fig_dir):
@@ -117,6 +121,7 @@ meshtri = Triangulation(x, y, md.mesh.elements-1)
 #spcpos  = 167-1
 
 lakepos = np.where(lakemask==1)[0]
+lakeposE = max(lakepos)
 lakepos_centered = (lakepos[3])
 spcpos = np.where(spc>1)[0]
 
@@ -136,11 +141,10 @@ print(f"Glacier outlet position (index): {spcpos}")
 #time_to_show_4 = 1925
 #time_to_show_5 = 2000
 
-time_to_show_1 = 3750 # span start
-time_to_show_2 = 3954
-time_to_show_3 = 4123
-time_to_show_4 = 4297
-time_to_show_5 = 4531 # span end
+time_to_show_1 = 4183 # span start
+time_to_show_2 = 4298
+time_to_show_4 = 4481
+time_to_show_5 = 4708 # span end
 
 # Create a figure with GridSpec
 fig1 = plt.figure(figsize=(7.04724, 7.5))
@@ -174,7 +178,7 @@ ax1.set_axis_off()
 Qcmin = 1
 Qcmax = 300
 cnorm = matplotlib.colors.Normalize(vmin=Qcmin, vmax=Qcmax)
-time_to_show = 3954
+time_to_show = 4709
 Q_arr = Qc[:,time_to_show]
 
 lscale = 1.5 
@@ -228,9 +232,9 @@ ax1.text(bar_x + bar_length/2, bar_y + bar_height + 0.075*(ymax - ymin),  # a li
 #lakepos_centered = [lakepos1[2], lakepos2]
 
 ax1.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', markeredgecolor='black', markersize=11)
+ax1.plot(x[lakeposE], y[lakeposE], marker='*', color='fuchsia', markeredgecolor='black', markersize=11)
 
-for idx in spcpos:  # use spcpos because np.where returns a tuple
-    ax1.plot(x[idx], y[idx], marker='^', color='turquoise',markeredgecolor='black', markersize=9)
+ax1.plot(x[spcpos], y[spcpos], marker='^', color='turquoise',markeredgecolor='black', markersize=9)
 
 # Create dummy handles for legend
 lake_handle = plt.Line2D([], [], marker='*', color='fuchsia',markeredgecolor='black', linestyle='none',
@@ -267,32 +271,32 @@ ax1.legend(
 
 # Get coordinates for all lake outlets
 #west_out_coords = (np.mean(x[lakepos1]), np.mean(y[lakepos1]))
-#east_out_coords = (x[lakepos2], y[lakepos2])
-#east_label = "\n".join(textwrap.wrap("East lake outlet", width=12))
+east_out_coords = (x[lakeposE], y[lakeposE])
+east_label = "\n".join(textwrap.wrap("E. lake outlet", width=12))
 west_out_coords = (x[lakepos_centered], y[lakepos_centered])
-west_label = "\n".join(textwrap.wrap("Lake outlets", width=12))
+west_label = "\n".join(textwrap.wrap("W. lake outlets", width=12))
 
 # Combine lake coordinates into a list
 #lake_coords = [lake_coords, lake_coord2]
 # Annotate west lake
 # Use the third row (index 2), first and second columns as x and y
 wx, wy = west_out_coords[0], west_out_coords[1]
-#ax1.annotate(
-#    west_label,
-#    xy=(wx, wy), xycoords='data',
-#    xytext=(wx + 2.5e3, wy + 2.1e3),
-#    arrowprops=dict(facecolor='black', arrowstyle="-", lw=0.8),
-#    ha='center', va='bottom', fontsize=9
-#)
+ax1.annotate(
+    west_label,
+    xy=(wx, wy), xycoords='data',
+    xytext=(wx + 2.e3, wy + 2.1e3),
+    arrowprops=dict(facecolor='black', arrowstyle="-", lw=0.8),
+    ha='center', va='bottom', fontsize=9
+)
 
-# Annotate east lake
-#ax1.annotate(
-#    east_label,
-#    xy=east_out_coords, xycoords='data',
-#    xytext=(east_out_coords[0] + 4e3, east_out_coords[1] + 1e3),
-#    arrowprops=dict(facecolor='black', arrowstyle="-", lw=0.8),
-#    ha='center', va='bottom', fontsize=9
-#)
+#Annotate east lake
+ax1.annotate(
+    east_label,
+    xy=east_out_coords, xycoords='data',
+    xytext=(east_out_coords[0] + 3e3, east_out_coords[1] + 2.1e3),
+    arrowprops=dict(facecolor='black', arrowstyle="-", lw=0.8),
+    ha='center', va='bottom', fontsize=9
+)
 
 
 
@@ -379,48 +383,68 @@ runoff_spinup_mask = runoff_tt < split_year
 runoff_transient_mask = runoff_tt >= split_year
 
 # --- thrid row, SMB ---
-percentile_runoff = np.percentile(runoff, 95, axis=0)
-ax4.plot(runoff_tt[runoff_spinup_mask],percentile_runoff[runoff_spinup_mask], color='black', linewidth=1/2,linestyle='--')
-ax4.plot(runoff_tt[runoff_transient_mask],percentile_runoff[runoff_transient_mask], color='black', linewidth=1/2)
-ax4.set_ylabel('P95 Runoff \n[m w.e. a$^{-1}$]',fontsize=10,labelpad=0.5)
-ax4.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
-ax4.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
-ax4.xaxis.set_minor_locator(MultipleLocator(1))
+#percentile_runoff = np.percentile(runoff, 95, axis=0)
+#ax4.plot(runoff_tt[runoff_spinup_mask],percentile_runoff[runoff_spinup_mask], color='black', linewidth=1/2,linestyle='--')
+#ax4.plot(runoff_tt[runoff_transient_mask],percentile_runoff[runoff_transient_mask], color='black', linewidth=1/2)
+#ax4.set_ylabel('P95 Runoff \n[m w.e. a$^{-1}$]',fontsize=10,labelpad=0.5)
+#ax4.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+#ax4.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+#ax4.xaxis.set_minor_locator(MultipleLocator(1))
+#ax4.set_xlabel('')  # Hide the x-axis label
+#ax4.margins(x=0,y=0)
+#ax4.axvspan(
+#    tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
+Qin_max = np.max(Qin[:-1,:], axis=0)
+
+ax4.plot(runoff_tt[runoff_spinup_mask], Qin_max[runoff_spinup_mask], color='black', linewidth=1/2, linestyle='--')
+ax4.plot(runoff_tt[runoff_transient_mask], Qin_max[runoff_transient_mask], color='black', linewidth=1/2)
+ax4.set_ylabel('$Q_{\mathrm{in}}$ \n[m$^3$ s$^{-1}$]', fontsize=10, labelpad=0.5)
+ax4.set_ylim(0, 22)  # Set y-axis limits
+ax4.yaxis.set_minor_locator(MultipleLocator(5))
+ax4.yaxis.set_major_locator(MultipleLocator(10))   
+ax4.xaxis.set_major_locator(MultipleLocator(1))          # Tick every year
+ax4.xaxis.set_major_formatter(FuncFormatter(lambda x, pos: f'{int(x)}' if x % 3 == 0 else ''))
+ax4.xaxis.set_minor_locator(MultipleLocator(1/12))       # Monthly minor ticks
 ax4.set_xlabel('')  # Hide the x-axis label
 ax4.margins(x=0,y=0)
-ax4.axvspan(
-    tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
+#ax4.axvspan(tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
+ax4.set_xlim([np.floor(np.min(runoff_tt)), np.ceil(np.max(runoff_tt))])
+
 
 # --- fourth row, modelled Qr ---
 ax5.plot(tt[spinup_mask],np.max(Qr[:,spinup_mask],axis=0), color='black', linewidth=1,linestyle='--')
 ax5.plot(tt[transient_mask],np.max(Qr[:,transient_mask],axis=0), color='black', linewidth=1)
 ax5.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]',fontsize=10,labelpad=0.5)
-ax5.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
-ax5.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
-ax5.xaxis.set_minor_locator(MultipleLocator(1))
+ax5.set_ylim(-10,200)  # Set y-axis limits
+ax5.yaxis.set_major_locator(MultipleLocator(100))
+ax5.yaxis.set_minor_locator(MultipleLocator(10))
+ax5.xaxis.set_major_locator(MultipleLocator(1))          # Tick every year
+ax5.xaxis.set_major_formatter(FuncFormatter(lambda x, pos: f'{int(x)}' if x % 3 == 0 else ''))
+ax5.xaxis.set_minor_locator(MultipleLocator(1/12))
 
 ax5.set_xlim([np.floor(np.min(runoff_tt)), np.ceil(np.max(runoff_tt))])
 ax5.margins(x=0,y=0.05)
 ax5.axvspan(
-    tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
+    tt[time_to_show_1]-0.3, tt[time_to_show_5]+0.3,alpha=0.15,color='grey')
 
 
 # --- fifth row, modelled lh ---
 ax6.plot(tt[spinup_mask],np.max(lh[:,spinup_mask],axis=0), color='black', linewidth=1,linestyle='--', label='$l_{\mathrm{h}}$ (model)')
 ax6.plot(tt[transient_mask],np.max(lh[:,transient_mask],axis=0), color='black', linewidth=1, label='$l_{\mathrm{h}}$ (model)')
 
-ax6.set_ylabel('$\mathrm{Model.}$ $l_\mathrm{h}$ [m]',fontsize=10,labelpad=0.5)
+ax6.set_ylabel('$\mathrm{Model.}$\n $l_\mathrm{h}$ [m]',fontsize=10,labelpad=0.5)
+ax6.yaxis.set_minor_locator(MultipleLocator(10))
 #ax5.set_xticklabels([])  # Hide the x-axis ticks
-ax6.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
-ax6.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
-ax6.xaxis.set_minor_locator(MultipleLocator(1))
+ax6.xaxis.set_major_locator(MultipleLocator(1))          # Tick every year
+ax6.xaxis.set_major_formatter(FuncFormatter(lambda x, pos: f'{int(x)}' if x % 3 == 0 else ''))
+ax6.xaxis.set_minor_locator(MultipleLocator(1/12))       # Monthly minor ticks
 ax6.set_xlim([np.floor(np.min(runoff_tt)), np.ceil(np.max(runoff_tt))])
 ax6.set_ylim(0,130)
 ax6.margins(x=0,y=0.05)
 #ax5.legend(loc='upper right', fontsize=6, frameon=True, handlelength=0.5, handletextpad=0.2,
 #           labelspacing=0.1, borderpad=0.1, borderaxespad=0.1,facecolor='white',edgecolor='none')
 ax6.axvspan(
-    tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
+    tt[time_to_show_1]-0.3, tt[time_to_show_5]+0.3,alpha=0.15,color='grey')
 
 # --- sixth row, measured lh ---
 
@@ -463,19 +487,20 @@ ax7.fill_between(dectime, lhm-minlhm-err, lhm-minlhm+err, color='grey', alpha=0.
 
 
 
-ax7.set_ylabel('$\mathrm{Meas.}$ $l_\mathrm{h}$ [m]',fontsize=10,labelpad=0.5)
+ax7.set_ylabel('$\mathrm{Meas.}$\n $l_\mathrm{h}$ [m]',fontsize=10,labelpad=0.5)
+ax7.yaxis.set_minor_locator(MultipleLocator(10))
 #ax5.set_xticklabels([])  # Hide the x-axis ticks
-ax7.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
-ax7.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
-ax7.xaxis.set_minor_locator(MultipleLocator(1))
-ax7.set_xlabel('Model time [yrs]',fontsize=10)
+ax7.xaxis.set_major_locator(MultipleLocator(1))          # Tick every year
+ax7.xaxis.set_major_formatter(FuncFormatter(lambda x, pos: f'{int(x)}' if x % 3 == 0 else ''))
+ax7.xaxis.set_minor_locator(MultipleLocator(1/12))       # Monthly minor ticks
+ax7.set_xlabel('$t$ [yrs]',fontsize=10)
 ax7.set_xlim([np.floor(np.min(runoff_tt)), np.ceil(np.max(runoff_tt))])
 ax7.set_ylim(0,130)
 ax7.margins(x=0,y=0.05)
 #ax5.legend(loc='upper right', fontsize=6, frameon=True, handlelength=0.5, handletextpad=0.2,
 #           labelspacing=0.1, borderpad=0.1, borderaxespad=0.1,facecolor='white',edgecolor='none')
-ax7.axvspan(
-    tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
+#ax7.axvspan(
+#    tt[time_to_show_1]-0.2, tt[time_to_show_5]+0.2,alpha=0.15,color='grey')
 
 # Add vertical line
 ax4.axvline(tt[time_to_show], color='gray', linestyle='--', linewidth=1)
@@ -484,28 +509,28 @@ ax6.axvline(tt[time_to_show], color='gray', linestyle='--', linewidth=1)
 ax7.axvline(tt[time_to_show], color='gray', linestyle='--', linewidth=1)
 # Add label 'c' slightly above the line
 ax4.text(
-    tt[time_to_show]-0.4, 0.83,
+    tt[time_to_show]+0.3, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax4.transData, ax4.transAxes)    
 )
 ax5.text(
-    tt[time_to_show]-0.4, 0.83,
+    tt[time_to_show]+0.3, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax5.transData, ax5.transAxes)    
 )
 ax6.text(
-    tt[time_to_show]-0.4, 0.83,
+    tt[time_to_show]+0.3, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax6.transData, ax6.transAxes)    
 )
 ax7.text(
-    tt[time_to_show]-0.4, 0.83,
+    tt[time_to_show]+0.3, 0.83,
     'c',
     ha='center', va='bottom',
     fontsize=10,
@@ -515,38 +540,38 @@ ax7.text(
 mid_tt = tt[time_to_show_1] + (tt[time_to_show_5] - tt[time_to_show_1]) / 2
 
 # Label span of figure 2
-ax4.text(
-    tt[time_to_show_5]+0.05, 0.83,
-    'Fig.6',
-    ha='right', va='bottom',
-    fontsize=8,
-    color='gray',
-    transform=matplotlib.transforms.blended_transform_factory(ax4.transData, ax4.transAxes)    
-)
+#ax4.text(
+#    tt[time_to_show_5]+0.05, 0.83,
+#    'Fig.6',
+#    ha='right', va='bottom',
+#    fontsize=8,
+#    color='gray',
+#    transform=matplotlib.transforms.blended_transform_factory(ax4.transData, ax4.transAxes)    
+#)
 ax5.text(
-    tt[time_to_show_5]+0.05, 0.83,
+    tt[time_to_show_1]+0.05, 0.83,
     'Fig.6',
-    ha='right', va='bottom',
+    ha='left', va='bottom',
     fontsize=8,
     color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax5.transData, ax5.transAxes)    
 )
 ax6.text(
-    tt[time_to_show_5]+0.05, 0.83,
+    tt[time_to_show_1]+0.05, 0.83,
     'Fig.6',
-    ha='right', va='bottom',
+    ha='left', va='bottom',
     fontsize=8,
     color='gray',
     transform=matplotlib.transforms.blended_transform_factory(ax6.transData, ax6.transAxes)    
 )
-ax7.text(
-    tt[time_to_show_5]+0.05, 0.83,
-    'Fig.6',
-    ha='right', va='bottom',
-    fontsize=8,
-    color='gray',
-    transform=matplotlib.transforms.blended_transform_factory(ax7.transData, ax7.transAxes)    
-)
+#ax7.text(
+#    tt[time_to_show_5]+0.05, 0.83,
+#    'Fig.6',
+#    ha='right', va='bottom',
+#    color='gray',
+#    fontsize=8,
+#    transform=matplotlib.transforms.blended_transform_factory(ax7.transData, ax7.transAxes)    
+#)
 
 # Labels for subplots: (a) to (g)
 labels = ['c', 'a', 'b', 'd', 'e', 'f', 'g']
@@ -556,7 +581,7 @@ axes = [ax1, ax1, ax1, ax4, ax5, ax6, ax7]
 label_positions = [
     (-0.02, 0.8),  # ax1
     (-0.02, 1.28),   # ax2
-    (0.275, 1.28),  # ax3
+    (0.375, 1.28),  # ax3
     (-0.085, 1.15),  # ax4
     (-0.085, 1.15),  # ax5
     (-0.085, 1.15),  # ax6
@@ -612,10 +637,12 @@ ax1.set_xlabel('Model time [yrs]', fontsize=10)
 ax1_secondary = ax1.twinx()
 ax1_secondary.plot(tt, np.max(Qr, axis=0), color='black', linewidth=1, label='$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]')
 ax1_secondary.set_ylabel('$Q_\mathrm{r}$ [m$^3$ s$^{-1}$]', fontsize=10,rotation=270, labelpad=12,color='black')
-ax1.set_xlim(tt[time_to_show_1]-0.2,tt[time_to_show_5]+0.2)
+ax1.set_xlim(tt[time_to_show_1]-0.3,tt[time_to_show_5]+0.3)
 ax1.margins(x=0, y=0)
 ax1.set_ylim(0, 120)
-ax1_secondary.set_ylim(0, 200)
+ax1.yaxis.set_minor_locator(MultipleLocator(10))
+ax1_secondary.set_ylim(-10, 200)
+ax1_secondary.yaxis.set_minor_locator(MultipleLocator(10))
 
 
 ax1.axvline(tt[time_to_show_1], color='gray', linestyle='--', linewidth=1)
@@ -646,14 +673,14 @@ ax1.text(
 #    transform=matplotlib.transforms.blended_transform_factory(ax1.transData, ax1.transAxes)    
 #)
 ax1.text(
-    tt[time_to_show_4]-0.1, 0.83,
+    tt[time_to_show_4]+0.1, 0.83,
     'd',
     ha='center', va='bottom',
     fontsize=10,
     transform=matplotlib.transforms.blended_transform_factory(ax1.transData, ax1.transAxes)    
 )
 ax1.text(
-    tt[time_to_show_5]-0.1, 0.83,
+    tt[time_to_show_5]+0.1, 0.83,
     'e',
     ha='center', va='bottom',
     fontsize=10,
@@ -702,9 +729,9 @@ lc1.set(rasterized=True)
 ax2.add_collection(lc1)
 
 ax2.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax2.plot(x[lakeposE], y[lakeposE], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
 
-for idx in spcpos:  # use spcpos because np.where returns a tuple
-    ax2.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+ax2.plot(x[spcpos], y[spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 
 # Get the exterior coordinates
 xl0, yl0 = polyL0.exterior.xy
@@ -793,9 +820,9 @@ lc2.set(rasterized=True)
 ax3.add_collection(lc2)
 cax3 = ax3.inset_axes((0.1, -0.9, 0.7, 0.06))
 ax3.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax3.plot(x[lakeposE], y[lakeposE], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
 
-for idx in spcpos:  # use spcpos because np.where returns a tuple
-    ax3.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+ax3.plot(x[spcpos], y[spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 
 # Plot the polygon as a black line with transparent fill
 ax3.plot(xl0, yl0, color='k', linewidth=1)  # black outline
@@ -903,9 +930,9 @@ ax5.text(bar_x + bar_length/2, bar_y + bar_height + 0.15*(ymax - ymin),  # a lit
 
 
 ax5.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax5.plot(x[lakeposE], y[lakeposE], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
 
-for idx in spcpos:  # use spcpos because np.where returns a tuple
-    ax5.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+ax5.plot(x[spcpos], y[spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 # Plot the polygon as a black line with transparent fill
 ax5.plot(xl0, yl0, color='k', linewidth=1)  # black outline
 # Optional: fill with transparent color
@@ -980,9 +1007,9 @@ lc5 = LineCollection(lc_xy5, colors=lc_colors5, linewidths=lc_lw5,
 lc5.set(rasterized=True)
 ax6.add_collection(lc5)
 ax6.plot(x[lakepos_centered], y[lakepos_centered], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
+ax6.plot(x[lakeposE], y[lakeposE], marker='*', color='fuchsia', markeredgecolor='black', markersize=8, markeredgewidth=0.5)
 
-for idx in spcpos:  # use spcpos because np.where returns a tuple
-    ax6.plot(x[idx], y[idx], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
+ax6.plot(x[spcpos], y[spcpos], marker='^', color='turquoise', markeredgecolor='black', markersize=6, markeredgewidth=0.5)
 
 # Plot the polygon as a black line with transparent fill
 ax6.plot(xl0, yl0, color='k', linewidth=1)  # black outline
@@ -1076,8 +1103,8 @@ ttspanmax = 2025.3779
 mean_vx = np.mean(vx[:,(tt >= ttspanmin) & (tt <= ttspanmax)], axis=1)
 mean_vy = np.mean(vy[:,(tt >= ttspanmin) & (tt <= ttspanmax)], axis=1)
 # idx the correct observation period
-idx1 = np.argmin(np.abs(tt - 2018.5))
-idx2 = np.argmin(np.abs(tt - 2018.75))
+idx1 = np.argmin(np.abs(tt - 2022.6))
+idx2 = np.argmin(np.abs(tt - 2022.8))
 #idx1 = 1903
 #idx2 = 1950
 anomaly_vx = np.mean(vx[:, idx1:idx2+1], axis=1) - mean_vx
@@ -1101,6 +1128,11 @@ xmax = -220 * 1e3
 ymin = -2498 * 1e3
 ymax = -2489 * 1e3
 
+# Create mask for data within spatial extent
+x = md.mesh.x
+y = md.mesh.y
+spatial_mask = (x >= xmin) & (x <= xmax) & (y >= ymin) & (y <= ymax)
+
 # set cax dimensions
 cax_width = 0.75
 cax_height = 0.05
@@ -1111,7 +1143,8 @@ cax_y = 0.15
 # First plot
 ax1 = fig3.add_subplot(gs3[0, 0])
 
-tric1 = ax1.tripcolor(meshtri, mean_vx, cmap=cmocean.cm.tempo)
+tric1 = ax1.tripcolor(meshtri, mean_vx, cmap=cmocean.cm.tempo, 
+                      vmin=mean_vx[spatial_mask].min(), vmax=mean_vx[spatial_mask].max())
 ax1.set_xlim([xmin, xmax])
 ax1.set_ylim([ymin, ymax])
 ax1.set_axis_off()
@@ -1120,12 +1153,13 @@ ax1.set_aspect('equal')
 # Add colorbar
 cax1 = ax1.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar1 = fig3.colorbar(tric1, shrink=0.5, pad=0.02, cax=cax1, orientation='horizontal')
-cbar1.set_label('Mean $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar1.set_label('Mean $\mathrm{u}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Second plot
 ax2 = fig3.add_subplot(gs3[0, 1])
 
-tric2 = ax2.tripcolor(meshtri, mean_vy, cmap=cmocean.cm.tempo)
+tric2 = ax2.tripcolor(meshtri, mean_vy, cmap=cmocean.cm.tempo, 
+                      vmin=mean_vy[spatial_mask].min(), vmax=mean_vy[spatial_mask].max())
 ax2.set_xlim([xmin, xmax])
 ax2.set_ylim([ymin, ymax])
 ax2.set_axis_off()
@@ -1134,15 +1168,15 @@ ax2.set_aspect('equal')
 # Add colorbar
 cax2 = ax2.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar2 = fig3.colorbar(tric2, shrink=0.5, pad=0.02, cax=cax2, orientation='horizontal')
-cbar2.set_label('Mean $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar2.set_label('Mean $\mathrm{v}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Third plot
 ax3 = fig3.add_subplot(gs3[1, 0])
 
 # Center the colormap on 0 by setting vmin and vmax symmetrically
-umin = -max(abs(anomaly_vx.min()), abs(anomaly_vx.max()))
-umax = max(abs(anomaly_vx.min()), abs(anomaly_vx.max()))
-tric3 = ax3.tripcolor(meshtri, anomaly_vx, cmap=cmocean.cm.balance, vmin=umin, vmax=umax)
+umin = -max(abs(anomaly_vx[spatial_mask].min()), abs(anomaly_vx[spatial_mask].max()))
+umax = max(abs(anomaly_vx[spatial_mask].min()), abs(anomaly_vx[spatial_mask].max()))
+tric3 = ax3.tripcolor(meshtri, anomaly_vx, cmap=cmocean.cm.balance_r, vmin=umin, vmax=umax)
 ax3.set_xlim([xmin, xmax])
 ax3.set_ylim([ymin, ymax])
 ax3.set_axis_off()
@@ -1151,15 +1185,15 @@ ax3.set_aspect('equal')
 # Add colorbar
 cax3 = ax3.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar3 = fig3.colorbar(tric3, shrink=0.5, pad=0.02, cax=cax3, orientation='horizontal')
-cbar3.set_label('Flood anomaly \n $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar3.set_label('Flood anomaly \n $\mathrm{u}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Fourth plot
 ax4 = fig3.add_subplot(gs3[1, 1])
 
 # Center the colormap on 0 by setting vmin and vmax symmetrically
-vmin = -max(abs(anomaly_vy.min()), abs(anomaly_vy.max()))
-vmax = max(abs(anomaly_vy.min()), abs(anomaly_vy.max()))
-tric4 = ax4.tripcolor(meshtri, anomaly_vy, cmap=cmocean.cm.balance, vmin=vmin, vmax=vmax)
+vmin = -max(abs(anomaly_vy[spatial_mask].min()), abs(anomaly_vy[spatial_mask].max()))
+vmax = max(abs(anomaly_vy[spatial_mask].min()), abs(anomaly_vy[spatial_mask].max()))
+tric4 = ax4.tripcolor(meshtri, anomaly_vy, cmap=cmocean.cm.balance_r, vmin=-15, vmax=15)
 
 ax4.set_xlim([xmin, xmax])
 ax4.set_ylim([ymin, ymax])
@@ -1169,13 +1203,14 @@ ax4.set_aspect('equal')
 # Add colorbar
 cax4 = ax4.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar4 = fig3.colorbar(tric4, shrink=0.5, pad=0.02, cax=cax4, orientation='horizontal')
-cbar4.set_label('Flood anomaly \n $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar4.set_label('Flood anomaly \n $\mathrm{v}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Observed data
 # First plot
 ax5 = fig3.add_subplot(gs3[2, 0])
 
-tric5 = ax5.tripcolor(meshtri, obs_mean_vx, cmap=cmocean.cm.tempo)
+tric5 = ax5.tripcolor(meshtri, obs_mean_vx, cmap=cmocean.cm.tempo, 
+                      vmin=obs_mean_vx[spatial_mask].min(), vmax=obs_mean_vx[spatial_mask].max())
 ax5.set_xlim([xmin, xmax])
 ax5.set_ylim([ymin, ymax])
 ax5.set_axis_off()
@@ -1184,12 +1219,13 @@ ax5.set_aspect('equal')
 # Add colorbar
 cax5 = ax5.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar5 = fig3.colorbar(tric5, shrink=0.5, pad=0.02, cax=cax5, orientation='horizontal')
-cbar5.set_label('Mean $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar5.set_label('Mean $\mathrm{u}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Second plot
 ax6 = fig3.add_subplot(gs3[2, 1])
 
-tric6 = ax6.tripcolor(meshtri, obs_mean_vy, cmap=cmocean.cm.tempo)
+tric6 = ax6.tripcolor(meshtri, obs_mean_vy, cmap=cmocean.cm.tempo, 
+                      vmin=obs_mean_vy[spatial_mask].min(), vmax=obs_mean_vy[spatial_mask].max())
 ax6.set_xlim([xmin, xmax])
 ax6.set_ylim([ymin, ymax])
 ax6.set_axis_off()
@@ -1198,16 +1234,16 @@ ax6.set_aspect('equal')
 # Add colorbar
 cax6 = ax6.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar6 = fig3.colorbar(tric6, shrink=0.5, pad=0.02, cax=cax6, orientation='horizontal')
-cbar6.set_label('Mean $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar6.set_label('Mean $\mathrm{v}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Third plot
 ax7 = fig3.add_subplot(gs3[3, 0])
 
 # Center the colormap on 0 by setting vmin and vmax symmetrically
 anomaly_vx_obs = obs_lake_vx
-umin_obs = -max(abs(anomaly_vx_obs.min()), abs(anomaly_vx_obs.max()))
-umax_obs = max(abs(anomaly_vx_obs.min()), abs(anomaly_vx_obs.max()))
-tric7 = ax7.tripcolor(meshtri, obs_lake_vx, cmap=cmocean.cm.balance, vmin=umin_obs, vmax=umax_obs)
+umin_obs = -max(abs(anomaly_vx_obs[spatial_mask].min()), abs(anomaly_vx_obs[spatial_mask].max()))
+umax_obs = max(abs(anomaly_vx_obs[spatial_mask].min()), abs(anomaly_vx_obs[spatial_mask].max()))
+tric7 = ax7.tripcolor(meshtri, obs_lake_vx, cmap=cmocean.cm.balance_r, vmin=umin_obs, vmax=umax_obs)
 ax7.set_xlim([xmin, xmax])
 ax7.set_ylim([ymin, ymax])
 ax7.set_axis_off()
@@ -1216,16 +1252,16 @@ ax7.set_aspect('equal')
 # Add colorbar
 cax7 = ax7.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar7 = fig3.colorbar(tric7, shrink=0.5, pad=0.02, cax=cax7, orientation='horizontal')
-cbar7.set_label('Flood anomaly \n $u_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar7.set_label('Flood anomaly \n $\mathrm{u}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 # Fourth plot
 ax8 = fig3.add_subplot(gs3[3, 1])
 
 # Center the colormap on 0 by setting vmin and vmax symmetrically
 anomaly_vy_obs = obs_lake_vy
-vmin_obs = -max(abs(anomaly_vy_obs.min()), abs(anomaly_vy_obs.max()))
-vmax_obs = max(abs(anomaly_vy_obs.min()), abs(anomaly_vy_obs.max()))
-tric8 = ax8.tripcolor(meshtri, obs_lake_vy, cmap=cmocean.cm.balance, vmin=vmin_obs, vmax=vmax_obs)
+vmin_obs = -max(abs(anomaly_vy_obs[spatial_mask].min()), abs(anomaly_vy_obs[spatial_mask].max()))
+vmax_obs = max(abs(anomaly_vy_obs[spatial_mask].min()), abs(anomaly_vy_obs[spatial_mask].max()))
+tric8 = ax8.tripcolor(meshtri, obs_lake_vy, cmap=cmocean.cm.balance_r, vmin=vmin_obs, vmax=vmax_obs)
 
 ax8.set_xlim([xmin, xmax])
 ax8.set_ylim([ymin, ymax])
@@ -1235,7 +1271,7 @@ ax8.set_aspect('equal')
 # Add colorbar
 cax8 = ax8.inset_axes((cax_x, cax_y, cax_width, cax_height))
 cbar8 = fig3.colorbar(tric8, shrink=0.5, pad=0.02, cax=cax8, orientation='horizontal')
-cbar8.set_label('Flood anomaly \n $v_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
+cbar8.set_label('Flood anomaly \n $\mathrm{v}_{\mathrm{b}}$ [m a$^{-1}$]', fontsize=10)
 
 axes = [ax1, ax2, ax3, ax4, ax5, ax6, ax7, ax8]
 labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
