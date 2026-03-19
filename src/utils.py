@@ -34,10 +34,10 @@ def import_table(table_path):
     -------
         ValueError: If any row has a different number of columns than the header.
     """
-    n_column = 18 # number of columns in the table
+    n_column = 17 # number of columns in the table
 
     filepath = table_path  # Define filepath as table_path
-    expected_columns = 18  # Define expected_columns
+    expected_columns = 17  # Define expected_columns
 
     with open(filepath, 'r', newline='') as f:
         reader = csv.reader(f)
