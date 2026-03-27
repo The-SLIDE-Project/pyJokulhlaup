@@ -921,7 +921,7 @@ ax12.xaxis.set_minor_locator(MultipleLocator(1))
 ax12.text(1.5, 0.7, r"$M_{\mathrm{r}} = 5\ \mathrm{m}\ \mathrm{a}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
-ax12.text(1.54, 0.5, r"$M_{\mathrm{r}} = 0.25\ \mathrm{m}\ \mathrm{a}^{-1}$", 
+ax12.text(1.5, 0.5, r"$M_{\mathrm{r}} = 1\ \mathrm{m}\ \mathrm{a}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='grey')
 ax12.text(1.52, 0.3, r"$M_{\mathrm{r}} = 0.1\ \mathrm{m}\ \mathrm{a}^{-1}$", 
