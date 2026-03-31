@@ -19,8 +19,9 @@
 *.bbl
 *.bak
 *.synctex.gz
-manuscript/Coauthor_comments/
+manuscript/coauthor_comments/
 manuscript/Lake_drainage_preprint/
+
 
 oldpar/
 test/
