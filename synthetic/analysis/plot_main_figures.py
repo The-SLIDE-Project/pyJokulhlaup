@@ -65,98 +65,88 @@ filedir = 'figures/'
 ############################################################
 
 # Plot the model geometry and mesh
-
-
 # Create figure with J. Glaciol. dual column spec
-fig2 = plt.figure(figsize=(7.04724 / 2, 8.75 / 2))
-gs = gridspec.GridSpec(2, 1, figure=fig2, hspace=0.15, wspace=0.25)
-fig2.subplots_adjust(left=0.125, right=0.8, top=0.99, bottom=0.05)
+from matplotlib.ticker import MultipleLocator, FuncFormatter
 
-# Add subplot
-ax1 = fig2.add_subplot(gs[0, 0])
-
-# Mesh triangulation and outline plot
+fig2 = plt.figure(figsize=(7.04724, 2.5))
+fig2.subplots_adjust(left=0.05, right=0.85, top=0.99, bottom=0.08)
+ax = fig2.add_subplot(111, projection='3d', computed_zorder=False, facecolor='none')
 mtri = Triangulation(md.mesh.x, md.mesh.y, md.mesh.elements - 1)
-ax1.tripcolor(mtri, 0 * md.mesh.x, facecolor='none', edgecolor='k')
+zeros = np.zeros_like(md.mesh.x)
 
-# Annotate lake outlet
-x_pos, y_pos = md.mesh.x[lakepos], md.mesh.y[lakepos]
-ax1.annotate(
-    'Lake \noutlet',
-    xy=(x_pos, y_pos),
-    xycoords='data',
-    xytext=(1.1, 0.5),
-    textcoords='axes fraction',
-    arrowprops=dict(facecolor='black', arrowstyle='->'),
-    fontsize=10,
-    color='black',
-    ha='left',
-    va='center',
-    bbox=dict(boxstyle='round,pad=0.1', fc='white', ec='white', lw=0.9)
-)
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+# --- Kill background panes and grid ---
+for pane in (ax.xaxis.pane, ax.yaxis.pane, ax.zaxis.pane):
+    pane.fill = False
+    pane.set_edgecolor('none')
+ax.grid(False)
 
 
-# Set aspect ratio
-ax1.set_aspect('equal')
+# --- Lake box ---
+z_bot = np.max(bed)
+z_top = 30.0
+dx, dy = 1000, 1000
+x_c, y_c = md.mesh.x[lakepos], md.mesh.y[lakepos]
+x_margin = 10e3
+x0, x1 = x_margin, x_margin + 2 * dx
+y0, y1 = y_c - dy, y_c + dy
 
-# Axis tick settings
-ax1.xaxis.set_major_locator(MultipleLocator(5e3))
-ax1.xaxis.set_minor_locator(MultipleLocator(1e3))
-ax1.xaxis.set_major_formatter(FormatStrFormatter('%d'))
+lake_verts = [
+    [(x0,y0,z_bot),(x1,y0,z_bot),(x1,y1,z_bot),(x0,y1,z_bot)],
+    [(x0,y0,z_top),(x1,y0,z_top),(x1,y1,z_top),(x0,y1,z_top)],
+    [(x0,y0,z_bot),(x1,y0,z_bot),(x1,y0,z_top),(x0,y0,z_top)],
+    [(x0,y1,z_bot),(x1,y1,z_bot),(x1,y1,z_top),(x0,y1,z_top)],
+    [(x0,y0,z_bot),(x0,y1,z_bot),(x0,y1,z_top),(x0,y0,z_top)],
+    [(x1,y0,z_bot),(x1,y1,z_bot),(x1,y1,z_top),(x1,y0,z_top)],
+]
+lake_box = Poly3DCollection(lake_verts,
+    alpha=0.4, facecolor='steelblue', edgecolor='navy',
+    linewidth=0.5, zorder=4)
+ax.add_collection3d(lake_box)
 
-ax1.yaxis.set_major_locator(MultipleLocator(3e3))
-ax1.yaxis.set_minor_locator(MultipleLocator(1.5e3))
-ax1.yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
+# --- Bed surface ---
+ax.plot_trisurf(mtri, bed,
+    cmap=cmocean.cm.ice, vmin=0, vmax=60,
+    antialiased=False, rasterized=True, zorder=3)
 
-# Set axis limits
-ax1.set_xlim([0, 10e3])
-ax1.set_ylim([0, 3e3])
-
-# Convert ticks to km labels
-ax1.set_xticklabels([f"{x / 1e3:.0f}" for x in ax1.get_xticks()])
-ax1.set_yticklabels([f"{y / 1e3:.0f}" for y in ax1.get_yticks()])
-ax1.set_xlabel('$X$ [km]')
-ax1.set_ylabel('$Y$ [km]')
-
-ax2 = fig2.add_subplot(gs[1, 0],projection='3d', computed_zorder=False, facecolor='none')
-ax2.plot_trisurf(mtri, bed, cmap=cmocean.cm.ice, vmin=0, vmax=60,
-    edgecolor='none', linewidth=0., antialiased=False, rasterized=True)
-tripc3d = ax2.plot_trisurf(mtri, surface, cmap=cmocean.cm.ice, alpha=1,
-    antialiased=True, vmin=0, vmax=300, zorder=5, rasterized=True)
-ax2.view_init(elev=30, azim=-125) #Works!
-ax2.set_box_aspect((20, 5, 5))
-ax2.set_aspect('equalxy')
-# Axis tick settings
-ax2.xaxis.set_major_locator(MultipleLocator(5e3))
-ax2.xaxis.set_minor_locator(MultipleLocator(1e3))
-ax2.xaxis.set_major_formatter(FormatStrFormatter('%d'))
-ax2.yaxis.set_major_locator(MultipleLocator(3e3))
-ax2.yaxis.set_minor_locator(MultipleLocator(1.5e3))
-ax2.yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
-
-# Set axis limits
-ax2.set_xlim([0, 10e3])
-ax2.set_ylim([0, 3e3])
-
-# Convert ticks to km labels
-ax2.set_xticklabels([f"{x / 1e3:.0f}" for x in ax1.get_xticks()])
-ax2.set_yticklabels([f"{y / 1e3:.0f}" for y in ax1.get_yticks()])
-ax2.set_xlabel('$X$ [km]',labelpad=1)
-ax2.set_ylabel('$Y$ [km]',labelpad=0.5)
-ax2.set_zlim([0, 300])
-ax2.xaxis.set_rotate_label(True)
-ax2.yaxis.set_rotate_label(True)
-ax2.zaxis.set_rotate_label(False)
-ax2.set_zlabel('Elevation (m asl.)', rotation=90, labelpad=0)
+# --- Ice surface ---
+ax.plot_trisurf(mtri, surface,
+    cmap=cmocean.cm.ice, alpha=0.85, vmin=0, vmax=300,
+    antialiased=True, rasterized=True, zorder=5)
 
 
+# --- View & aspect ---
+ax.view_init(elev=22, azim=-110)
+ax.set_box_aspect((22, 5, 5))   # widened to match extended xlim
+ax.set_aspect('equalxy')
 
-# Save figure
+# --- Axis limits (extended to show lake box) ---
+ax.set_xlim([0, 10e3])
+ax.set_ylim([0, 3e3])
+ax.set_zlim([0, 300])
+
+# --- Ticks: use FuncFormatter to avoid label/tick misalignment ---
+ax.xaxis.set_major_locator(MultipleLocator(5e3))
+ax.xaxis.set_minor_locator(MultipleLocator(1e3))
+ax.yaxis.set_major_locator(MultipleLocator(3e3))
+ax.yaxis.set_minor_locator(MultipleLocator(1.5e3))
+ax.zaxis.set_major_locator(MultipleLocator(100))
+
+ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v/1e3:.0f}"))
+ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v/1e3:.0f}"))
+
+ax.set_xlabel('$X$ [km]', labelpad=1)
+ax.set_ylabel('$Y$ [km]', labelpad=0.5)
+ax.set_zlabel('Z [m]', rotation=90, labelpad=0)
+ax.xaxis.set_rotate_label(True)
+ax.yaxis.set_rotate_label(True)
+ax.zaxis.set_rotate_label(False)
+
+# --- Save ---
 os.makedirs(os.path.join(filedir, 'mesh_setup'), exist_ok=True)
-fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.png'), dpi=300)
-fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.pdf'), dpi=300)
-fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.eps'), dpi=300)
-fig2.savefig(os.path.join(filedir, 'mesh_setup/mesh_2_panel.svg'), dpi=300)
+for ext in ['png', 'pdf', 'eps', 'svg']:
+    fig2.savefig(os.path.join(filedir, f'mesh_setup/mesh_1_panel.{ext}'), dpi=300)
 
 # FIGURE 3
 ############################################################
@@ -702,6 +692,10 @@ ax2.yaxis.tick_right()
 ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax2.xaxis.set_minor_locator(MultipleLocator(1))
+
+ax2.text (1.5, 1, r"Channel conductivity",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax2.text(1.5, 0.7, r"$k_{\mathrm{c}} = 0.2\ \mathrm{m}^{3/2}\ \mathrm{kg}^{-1/2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -743,6 +737,10 @@ ax4.yaxis.tick_right()
 ax4.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax4.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax4.xaxis.set_minor_locator(MultipleLocator(1))
+
+ax4.text (1.5, 1, r"Sheet conductivity",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax4.text(1.5, 0.7, r"$k_{\mathrm{s}} = 0.05\ \mathrm{Pa}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -786,6 +784,9 @@ ax6.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax6.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax6.xaxis.set_minor_locator(MultipleLocator(1))
 
+ax6.text (1.5, 1, r"Bed bump height",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax6.text(1.52, 0.7, r"$h_{\mathrm{b}} = 0.25\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -832,6 +833,10 @@ ax8.xaxis.set_minor_locator(MultipleLocator(1))
 ax8.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$s$^{-1}$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
 ax8.yaxis.set_label_position("right")
 
+
+ax8.text (1.5, 1, r"Channel" + "\n" + r"sheet width",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax8.text(1.52, 0.7, r"$l_{\mathrm{c}} = 50\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -875,6 +880,9 @@ ax10.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax10.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax10.xaxis.set_minor_locator(MultipleLocator(1))
 
+ax10.text (1.5, 1, r"Cavity spacing",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax10.text(1.52, 0.7, r"$l_{\mathrm{r}} = 20\ \mathrm{m} $", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -918,6 +926,9 @@ ax12.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax12.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax12.xaxis.set_minor_locator(MultipleLocator(1))
 
+ax12.text (1.5, 1, r"Basal melt rate",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax12.text(1.5, 0.7, r"$M_{\mathrm{r}} = 5\ \mathrm{m}\ \mathrm{a}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -963,6 +974,9 @@ ax14.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax14.xaxis.set_minor_locator(MultipleLocator(1))
 ax14.set_xlabel('$t$ [yrs]')
 
+ax14.text (1.5, 1, r"Extraglacial" + "\n" + r"lake input",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
 ax14.text(1.52, 0.7, r"$Q_{\mathrm{in}} = 20\ \mathrm{m}^{3}\ \mathrm{s}^{-1}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
