@@ -261,7 +261,7 @@ ax2.plot(tt, Qr[lakepos, :], color='gray', linestyle='-', label='$Q_r$ (Lake Dis
 rect = matplotlib.patches.Rectangle(
     (6.9, -2),         # (x, y) bottom-left corner
     11.1 - 6.9,        # width
-    54,              # height
+    60,              # height
     linewidth=1,
     edgecolor='gray',
     facecolor='none',  # transparent fill
@@ -273,10 +273,10 @@ ax2.scatter(tt[idx1],Qr[lakepos, idx1],color='gray',marker='o',s=8,label='c')
 ax2.scatter(tt[idx2],Qr[lakepos, idx2],color='gray',marker='o',s=8,label='d')
 ax2.scatter(tt[idx3],Qr[lakepos, idx3],color='gray',marker='o',s=8,label='e')
 ax2.text(tt[idx1] - 0.5, Qr[lakepos, idx1] + 4, 'c', fontsize=10)
-ax2.text(tt[idx2] + 0.2, Qr[lakepos, idx2] - 3.85, 'd', fontsize=10)
+ax2.text(tt[idx2] + 0.2, Qr[lakepos, idx2] - 6.85, 'd', fontsize=10)
 ax2.text(tt[idx3] + 0.2, Qr[lakepos, idx3] + 3, 'e', fontsize=10)
 
-ax2.set_ylim(-5,55)
+ax2.set_ylim(-5,60)
 ax2.set_xlim(0, 15)
 ax2.margins(x=0, y=0)
 ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
@@ -307,18 +307,33 @@ ax3.text(0.01, 0.9, f"{tt[idx1]:.2f} yrs", transform=plt.gca().transAxes,
 # Annotate lake outlet
 x_pos, y_pos = md.mesh.x[lakepos], md.mesh.y[lakepos]
 ax3.annotate(
-    'Lake \noutlet',
+    'Ice-lake \ncontact',
     xy=(x_pos, y_pos),
     xycoords='data',
-    xytext=(1.1, 0.5),
+    xytext=(1.1, 0.95),
     textcoords='axes fraction',
-    arrowprops=dict(facecolor='black', arrowstyle='->'),
+    #arrowprops=dict(facecolor='black', arrowstyle='->'),
     fontsize=10,
     color='black',
-    ha='left',
+    ha='center',
     va='center',
     bbox=dict(boxstyle='round,pad=0.1', fc='white', ec='white', lw=0.9)
 )
+
+ax3.annotate(
+    'Lake',
+    xy=(x_pos, y_pos),
+    xycoords='data',
+    xytext=(1.1, 0.15),
+    textcoords='axes fraction',
+    #arrowprops=dict(facecolor='black', arrowstyle='->'),
+    fontsize=10,
+    color='black',
+    ha='center',
+    va='center',
+    bbox=dict(boxstyle='round,pad=0.1', fc='white', ec='white', lw=0.9)
+)
+
 
 
 
