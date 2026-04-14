@@ -272,9 +272,11 @@ ax1.legend(
 # Get coordinates for all lake outlets
 #west_out_coords = (np.mean(x[lakepos1]), np.mean(y[lakepos1]))
 east_out_coords = (x[lakeposE], y[lakeposE])
-east_label = "\n".join(textwrap.wrap("E. lake outlet", width=12))
+east_label = "\n".join(textwrap.wrap("E. ice-lake contact", width=12))
 west_out_coords = (x[lakepos_centered], y[lakepos_centered])
-west_label = "\n".join(textwrap.wrap("W. lake outlets", width=12))
+west_label = "\n".join(textwrap.wrap("W. ice-lake contact", width=12))
+
+lake_label = "\n".join(textwrap.wrap("Lake", width=12))
 
 # Combine lake coordinates into a list
 #lake_coords = [lake_coords, lake_coord2]
@@ -284,7 +286,7 @@ wx, wy = west_out_coords[0], west_out_coords[1]
 ax1.annotate(
     west_label,
     xy=(wx, wy), xycoords='data',
-    xytext=(wx + 2.e3, wy + 2.1e3),
+    xytext=(wx + 1.5e3, wy + 3.1e3),
     arrowprops=dict(facecolor='black', arrowstyle="-", lw=0.8),
     ha='center', va='bottom', fontsize=9
 )
@@ -298,7 +300,11 @@ ax1.annotate(
     ha='center', va='bottom', fontsize=9
 )
 
-
+ax1.annotate(
+    lake_label,
+    xy=(wx, wy), xycoords='data',
+    xytext=(wx + 1.65e3, wy + 1.9e3),
+)
 
 # Load the shapefile
 lake0_shp = gpd.read_file('SubglacialLakes/Lake0.shp')
@@ -598,10 +604,10 @@ for ax, label, (x, y) in zip(axes, labels, label_positions):
     )
 
 os.makedirs(os.path.join(Fig_dir, 'figure1'), exist_ok=True)
-fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.png'), dpi=300)
-fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.pdf'), dpi=300)
-fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.eps'), dpi=300)
-fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.svg'), dpi=300)
+fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.png'), dpi=1200)
+fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.pdf'), dpi=1200)
+fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.eps'), dpi=1200)
+fig1.savefig(os.path.join(Fig_dir, 'figure1/figure1.svg'), dpi=1200)
 
 # Create a figure with GridSpec
 x = md.mesh.x
