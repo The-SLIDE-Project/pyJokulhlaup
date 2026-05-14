@@ -11,9 +11,10 @@
 \Author[3]{Felix}{Ng}
 \Author[4]{Mathieu}{Morlighem}
 \Author[5]{Caroline}{Clason}
-\Author[6]{Christine F.}{Dow}
+\Author[6]{Lisa}{Craw}
+\Author[7]{Christine F.}{Dow}
 \Author[1]{Samuel}{Doyle}
-\Author[7]{Jonathan}{Hawkins}
+\Author[6]{Jonathan}{Hawkins}
 \Author[1]{Matthew}{Peacey}
 \Author[8]{Robert}{Storrar}
 
@@ -22,11 +23,11 @@
 \affil[3]{Department of Geography and Planning, The University of Sheffield, Sheffield, UK}
 \affil[4]{Department of Earth Sciences, Dartmouth College, Hanover, NH, USA}
 \affil[5]{Department of Geography, Durham University, Durham, UK}
-\affil[6]{Department of Geography and Environmental Management, University of Waterloo, Waterloo, ON, Canada}
-\affil[7]{School of Earth and Environmental Sciences, Cardiff University, Cardiff, UK}
+\affil[6]{School of Earth and Environmental Sciences, Cardiff University, Cardiff, UK}
+\affil[7]{Department of Geography and Environmental Management, University of Waterloo, Waterloo, ON, Canada}
 \affil[8]{Department of Natural and Built Environment, Sheffield Hallam University, Sheffield, UK}
 
-\runningtitle{TEXT}
+\runningtitle{2D model of jökulhlaup propagation}
 
 \runningauthor{TEXT}
 
@@ -54,7 +55,7 @@ Ice-marginal lakes are an increasingly common feature of glacierised landscapes,
 
 \introduction
 
-Ice-marginal lakes, glacier-abutting water bodies dammed by ice, are increasing in size and frequency as a result of lake basin geometry changes driven by glacier thinning and retreat \citep{clague2012climate,shugar2020rapid,molg2021inventory}. Around the Greenland Ice Sheet, $>$3,300 ice-marginal lakes have been recorded \citep{how2021greenland,carrivick2022ice}. Ice-marginal lakes have a significant influence on ice dynamics \citep{carrivick2022ice,domgaard2024altimetry,harpur2025emerging,harpur2026ice,livingstone2025ice}, and many hold potential to repeatedly and catastrophically drain beneath glaciers in flood events called jökulhlaups \citep{ng2003clague}. These events pose significant risk for downstream communities \citep{mernild2008jokulhlaup}, are increasingly important considerations with respect to hydropower infrastructure \citep{ahlstrom2008evaluation,priebe2024glacial}, and Pleistocene jökulhlaups are considered large enough to have precipitated abrupt changes in global ocean circulation and climate \citep{teller1995history,clark2001freshwater,mangerud2004ice,sufke2022arctic}.
+Ice-marginal lakes, glacier-abutting water bodies dammed by ice, are increasing in size and frequency as a result of lake basin geometry changes driven by glacier thinning and retreat \citep{clague2012climate,shugar2020rapid,molg2021inventory}. Around the Greenland Ice Sheet, $>$3,300 ice-marginal lakes have been recorded \citep{how2021greenland}. Ice-marginal lakes have a significant influence on ice dynamics \citep{carrivick2022ice,domgaard2024altimetry,harpur2025emerging,harpur2026ice,livingstone2025ice}, and many hold potential to repeatedly and catastrophically drain beneath glaciers in flood events called jökulhlaups \citep{ng2003clague}. These events pose significant risk for downstream communities \citep{mernild2008jokulhlaup}, are increasingly important considerations with respect to hydropower infrastructure \citep{ahlstrom2008evaluation,priebe2024glacial}, and Pleistocene jökulhlaups are considered large enough to have precipitated abrupt changes in global ocean circulation and climate \citep{teller1995history,clark2001freshwater,mangerud2004ice,sufke2022arctic}.
 
 Numerous attempts to realise a numerical jökulhlaup theory have been made \citep[e.g.,][]{nye1976water,spring1981numerical,clarke1982glacier,ng1998mathematical,fowler1999breaking,ng2003clague,kessler2004testing,ng2007climatic,kingslake2013modelling}. \citet{nye1976water} presented the first thermomechanical description, in which an ice-dammed lake drains via a single semi-circular subglacial channel melted upwards into the ice base and which is connected to the glacier terminus. During the first stage of a flood (the `rising limb' of a flood hydrograph) the cross-sectional area of the channel increases as heat dissipated by flowing water drives wall melting. A positive feedback between channel enlargement and the rate of melting causes escalating discharge and rapid lake drainage. As the lake drains, water pressure drops, the rate of channel enlargement falls, and ice deformation leads to channel closure and flood termination (the `falling limb' of a flood hydrograph).
 
@@ -351,7 +352,7 @@ Finally, our model results reproduce some of the observations relating to ice-dy
 
 \subsection{Model limitations and future outlook}\label{discussion:limitations}
 
-In this work, we assess the  ability of a continuum model of subglacial hydrology to represent jökulhlaups. The primary discrepancy between our model and observations is that, as in the earlier 1D work \citep[e.g.,][]{kingslake2013modelling}, our experiments produce unrealistically long jökulhlaup durations extending multiple months. This stands in clear contrast to the days--weeks more typically associated with jökulhlaups \citep[e.g.,][]{bjornsson1992jokulhlaups,bjornsson2010understanding,einarsson2016spectrum,magnusson2026subglacial} and is much longer than the 5--8 day jökulhlaup duration observed at Isunnguata Sermia itself \citep{livingstone2025ice}. Results in Section~\ref{application:results} are presented from one model run at Isunnguata Sermia, chosen as the best match to lake level through time (Fig.~\ref{FIG:5}); parameter testing was not exhaustive, and untested combinations may improve agreement with jökulhlaup duration. However, we expect the discrepancy to be attributable, at least in part, to limitations in our modelling setup (Sections~\ref{methods:GlaDS}--\ref{methods:Lake}) and in GlaDS more generally \citep{werder2013modeling}. 
+The primary discrepancy between our model and observations is that, as in the earlier 1D work \citep[e.g.,][]{kingslake2013modelling}, our experiments produce unrealistically long jökulhlaup durations extending multiple months. This stands in clear contrast to the days--weeks more typically associated with jökulhlaups \citep[e.g.,][]{bjornsson1992jokulhlaups,bjornsson2010understanding,einarsson2016spectrum,magnusson2026subglacial} and is much longer than the 5--8 day jökulhlaup duration observed at Isunnguata Sermia itself \citep{livingstone2025ice}. Results in Section~\ref{application:results} are presented from one model run at Isunnguata Sermia, chosen as the best match to lake level through time (Fig.~\ref{FIG:5}); parameter testing was not exhaustive, and untested combinations may improve agreement with jökulhlaup duration. However, we expect the discrepancy to be attributable, at least in part, to limitations in our modelling setup (Sections~\ref{methods:GlaDS}--\ref{methods:Lake}) and with GlaDS more generally \citep{werder2013modeling}. 
 
 As a continuum model, representing smoothly distributed drainage properties, GlaDS is not ideally suited to represent rapid, localised changes in subglacial water pressure or hydraulic connectivity \citep{rada2018channelized,hill2025emulator}. In ISSM-GlaDS, there is no physical representation of elastic uplift of ice once water pressure exceeds ice overburden pressure. This, together with our decision to prevent cavity expansion when effective pressure is negative (effectively fixing maximum sheet thickness to the basal bump height), means that our model is unable to replicate the instantaneous changes in sheet transmissivity expected once water pressure exceed ice overburden pressure \citep[e.g.,][]{tsai2010model,schoof2012flotation,dow2015modeling}. Work by \citet{flowers2004coupled}, albeit with a prescribed rate of flux from a subglacial lake, found that an elastic model able to represent a sheet thickness exceeding tens of metres can explain rapid escalations in jökulhlaup discharge over hours to days. Recent repeat satellite observations identified metres of uplift along a jökulhlaup pathway, suggesting that instantaneous ice uplift in a high water-pressure regime is crucial to enabling high jökulhlaup discharge \citep{magnusson2026subglacial}. A simple model of elastic deformation has been included in similar hydrology models elsewhere \citep[e.g.,][]{stevens2022tidewater}, and is worth exploring in future work. Here, with no physically-informed representation of rapid cavity expansion, our model is unable to reproduce this specific mode of fast flood onset and instead floods primarily evolve as a result of channel expansion. 
 
@@ -374,40 +375,13 @@ We present an ice-marginal lake coupled to a 2D model of subglacial hydrology an
 \appendix
 \section{Video supplement}
 \textbf{Movie A1.} Evolution of the reference parameter experiment~\ref{FIG:2} through time Channel discharge $Q_{\mathrm{c}}$ is shown, and contours of hydraulic potential $\phi$ are shown in grey. A graphical representation of lake height, $l_{\mathrm{h}}$ is also shown. \label{Apfig:SuppMovie}
+
+
 \section{Additional model description}\label{Appendix:MODEL}
 
 %\setcounter{equation}{0}
 %\renewcommand\theequation{A\arabic{equation}}
-\subsection{Model variables and units}
 
-\begin{table}[t]
-\caption{Variables and Units\footnote{The first section lists dependent variables and the second section lists coordinates}}
- 
- \label{tab:Var}
-\begin{tabular}{@{}ccc}
-\hline
-Variable & Units & Description \\
-\hline
-$\phi$ & Pa & Hydraulic potential \\
-$N$ & Pa & Effective pressure \\
-$Q_{\mathrm{c}}$ & $\mathrm{m}^{3}\, \mathrm{s}^{-1}$ & Channel discharge \\
-$q_{\mathrm{s}}$ & $\mathrm{m}^{2}\,\mathrm{s}^{-1}$ & Sheet discharge \\
-$h_{\mathrm{s}}$ & m & Sheet thickness \\
-$l_{\mathrm{h}}$ & m & Lake Height \\
-$Q_{\mathrm{r}}$ & $\mathrm{m}^{3}\, \mathrm{s}^{-1}$ & Lake discharge \\
-$U_{\mathrm{b}}$ & $\mathrm{m\,a}^{-1}$ & Magnitude of basal velocity\\
-$\mathrm{u}_{\mathrm{b}}$ & $\mathrm{m\,a}^{-1}$ & x-component of basal velocity \\
-$\mathrm{v}_{\mathrm{b}}$ & $\mathrm{m\,a}^{-1}$ & y-component of basal velocity \\
-$S$ & $\mathrm{m}^2$ & Channel cross-sectional area \\
-\hfill \\
-$t$ & years & Time coordinate \\
-$X$ & km & Horizontal coordinate \\
-$Y$ & km & Vertical coordinate \\
-
-\hline
-\end{tabular}
-\belowtable{$^{1}$The first section lists dependent variables and the second section lists coordinates}
-\end{table}
 
 \subsection{The Glacier Drainage System model}\label{Appendix:GlaDS}
 
@@ -510,8 +484,40 @@ Q_{\mathrm{c}} = -k_{\mathrm{c}}S^{\alpha_{\mathrm{c}}}\left|\frac{\partial \phi
 
 where $k_{\mathrm{c}}$ is the channel conductivity; $s$ is the horizontal coordinate along a channel; and $\alpha_{\mathrm{c}}$ and $\beta_{\mathrm{c}}$ are channel flow exponents.
 
-\noappendix 
+\newpage
+\section{Model variables and units}
 
+\begin{table}[h!]
+\caption{Variables and Units\footnote{The first section lists dependent variables and the second section lists coordinates}}
+ 
+ \label{tab:Var}
+\begin{tabular}{@{}ccc}
+\hline
+Variable & Units & Description \\
+\hline
+$\phi$ & Pa & Hydraulic potential \\
+$N$ & Pa & Effective pressure \\
+$Q_{\mathrm{c}}$ & $\mathrm{m}^{3}\, \mathrm{s}^{-1}$ & Channel discharge \\
+$q_{\mathrm{s}}$ & $\mathrm{m}^{2}\,\mathrm{s}^{-1}$ & Sheet discharge \\
+$h_{\mathrm{s}}$ & m & Sheet thickness \\
+$l_{\mathrm{h}}$ & m & Lake Height \\
+$Q_{\mathrm{r}}$ & $\mathrm{m}^{3}\, \mathrm{s}^{-1}$ & Lake discharge \\
+$U_{\mathrm{b}}$ & $\mathrm{m\,a}^{-1}$ & Magnitude of basal velocity\\
+$\mathrm{u}_{\mathrm{b}}$ & $\mathrm{m\,a}^{-1}$ & x-component of basal velocity \\
+$\mathrm{v}_{\mathrm{b}}$ & $\mathrm{m\,a}^{-1}$ & y-component of basal velocity \\
+$S$ & $\mathrm{m}^2$ & Channel cross-sectional area \\
+\hfill \\
+$t$ & years & Time coordinate \\
+$X$ & km & Horizontal coordinate \\
+$Y$ & km & Vertical coordinate \\
+
+\hline
+\end{tabular}
+\belowtable{$^{1}$The first section lists dependent variables and the second section lists coordinates}
+\end{table}
+
+\noappendix 
+\newpage
 \authorcontribution{The research was conceptualised by A.J. Hepburn, S. Buzzard, A. Sole, and S.J. Livingstone. A. Hepburn developed the model, with assistance from F. Ng and M. Morlighem, carried out the experiments, and prepared the analysis. A. Hepburn wrote the manuscript, with input from S. Buzzard, A. Sole, S. Livingstone, and F. Ng. All authors reviewed and edited the manuscript. Fellowship funding was acquired by A. Hepburn and project funding by S. Livingstone, R. Storrar, S. Buzzard, \& A.Sole.} %% this section is mandatory
 
 \competinginterests{At least one of the (co-)authors is a member of the editorial board of The Cryosphere. No additional competing interests are present.} %% this section is mandatory even if you declare that no competing interests are present
