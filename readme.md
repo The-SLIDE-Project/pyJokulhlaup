@@ -1,7 +1,7 @@
 # pyJökulhlaup README
 ## Supplementary material for Simulating jökulhlaups from an ice-marginal lake within a 2D model of subglacial drainage and basal sliding
 
-Adam J. Hepburn,<sup>*,1</sup> , Sammie Buzzard<sup>2</sup> , Andrew J. Sole<sup>3</sup> , Stephen J. Livingstone<sup>3</sup> , Felix Ng<sup>3</sup>,
+Adam J. Hepburn<sup>*,1</sup> , Sammie Buzzard<sup>2</sup>, Andrew J. Sole<sup>3</sup>, Stephen J. Livingstone<sup>3</sup>, Felix Ng<sup>3</sup>,
 Mathieu Morlighem<sup>4</sup>, Elizabeth Bagshaw<sup>5</sup>, Caroline Clason<sup>6</sup>, Lisa Craw<sup>7</sup>, Christine F. Dow<sup>8</sup>,
 Samuel Doyle<sup>1</sup>, Jonathan Hawkins<sup>7</sup>, Matthew Peacey<sup>1</sup>, and Robert Storrar<sup>9</sup>
 
@@ -21,7 +21,7 @@ Department of Earth Sciences, Dartmouth College, Hanover, NH, USA
 <sup>5</sup>
 School of Geographical Sciences, University of Bristol, Bristol, UK
 
-<sup>6</sup>v
+<sup>6</sup>
 Department of Geography, Durham University, Durham, UK
 
 <sup>7</sup>
@@ -39,13 +39,13 @@ This repo contains everything necessary to run a suite of simulations in ISSM-Gl
 
 The `synthetic/` folder contains the data, parameterisation files, and analysis files necessary to run experiments on a synthetic domain.
 
-The `Greenland/` folder contains the cde necessary to analyse the Greenland model ([data avliable here](URL))
+The `Greenland/` folder contains the cde necessary to analyse the Greenland model ([data available here](https://dx.doi.org/10.5281/zenodo.20269306))
 
 The `src/` folder contains code and utilities necessary to run a job, read the job table etc.
 
 The `manuscript/` folder contains the paper material (final figures, and `.tex` files)
 
-Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes, which is avaliable [here](URL) 
+Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes, which is available [here](https://dx.doi.org/10.5281/zenodo.20269306) 
 
 ## Package install
 We suggest running this as an editable pip package.
