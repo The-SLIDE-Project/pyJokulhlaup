@@ -37,13 +37,20 @@ Department of Natural and Built Environment, Sheffield Hallam University, Sheffi
 
 This repo contains everything necessary to run a suite of simulations in ISSM-GlaDS with a fully-coupled ice-marginal lake.
 
-The `synthetic` folder contains the data, parameterisation files, and analysis files necessary to run experiments on a synthetic domain.
+The `synthetic/` folder contains the data, parameterisation files, and analysis files necessary to run experiments on a synthetic domain.
 
-The `manuscript` folder contains 
+The `Greenland/` folder contains the cde necessary to analyse the Greenland model ([data avliable here](URL))
+
+The `src/` folder contains code and utilities necessary to run a job, read the job table etc.
+
+The `manuscript/` folder contains the paper material (final figures, and `.tex` files)
 
 Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes, which is avaliable [here](URL) 
 
-Python dependancies are included in requirements.txt and we suggest installing a python3.12 virtual environment using venv or similar. 
+## Package install
+We suggest running this as an editable pip package.
+
+Python dependancies are included in `requirements.txt` and we suggest installing a python3.12 virtual environment using venv or similar. 
 
 e.g., `python3.12 -m venv issm-jokulhlaup`
 
@@ -62,3 +69,6 @@ Finally, to use this packages, `cd` into `pyjokulhlaup` and then run:
 `python 3.12 pip install -e .`
 
 This will install pyjokulhlaup as an editable package on your local system only. 
+
+## Citation
+
