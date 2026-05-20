@@ -100,11 +100,6 @@ md.hydrology.creep_open_flag = 0
 md.hydrology.melt_flag = 1
 md.hydrology.moulin_input = 0.*onevec
 # UNDER DEVELOPMENT
-md.hydrology.elastic_sheet_flag = 0
-md.hydrology.elastic_sheet_depth_scale = 0
-md.hydrology.elastic_sheet_exponent = 1.
-md.hydrology.uplift_reg_rate = 0.01/1.e3/9.81
-md.hydrology.reg_pressure = 1.e4
 
 # Lakes
 md.hydrology.islakes = 1
@@ -139,7 +134,6 @@ md.initialization.lake_depth[lakepos] = 30.  # m
 md.initialization.lake_outletQr = 0. * onevec
 md.initialization.lake_channelQr = 0. * onevec
 md.initialization.watercolumn = 0.5 * md.hydrology.bump_height
-md.initialization.elastic_sheet = 0. * onevec
 md.initialization.hydraulic_potential = phi_bed + (0.9 * p_ice)
 md.initialization.sheet_discharge = 0. * onevec
 md.initialization.channelarea = 0. * oneedges
@@ -151,7 +145,6 @@ md.hydrology.requested_outputs = [
     'EffectivePressure',
     'HydrologySheetThickness',
     'HydrologySheetDischarge',
-    'HydrologyElasticSheetThickness',
     'ChannelDischarge',
     'ChannelArea',
     'HydrologyWaterVx',
