@@ -39,13 +39,13 @@ This repo contains everything necessary to run a suite of simulations in ISSM-Gl
 
 The `synthetic/` folder contains the data, parameterisation files, and analysis files necessary to run experiments on a synthetic domain.
 
-The `Greenland/` folder contains the cde necessary to analyse the Greenland model ([data available here](https://dx.doi.org/10.5281/zenodo.20269306))
+The `Greenland/` folder contains the code necessary to analyse the Greenland model ([data available here](https://dx.doi.org/10.5281/zenodo.20269306))
 
 The `src/` folder contains code and utilities necessary to run a job, read the job table etc.
 
 The `manuscript/` folder contains the paper material (final figures, and `.tex` files)
 
-Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes, which is available [here](https://dx.doi.org/10.5281/zenodo.20269306) 
+Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes, which is available [here](https://dx.doi.org/10.5281/zenodo.20269306). Please also note that the Zenodo material is reviewer-embargoed but is available upon reasonable request. Once the paper is accepted, all data will be made publicly accessible.
 
 ## Package install
 We suggest running this as an editable pip package.
