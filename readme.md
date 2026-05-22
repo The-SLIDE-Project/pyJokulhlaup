@@ -2,7 +2,7 @@
 ## Supplementary material for Simulating jökulhlaups from an ice-marginal lake within a 2D model of subglacial drainage and basal sliding
 
 Adam J. Hepburn<sup>*,1</sup> , Sammie Buzzard<sup>2</sup>, Andrew J. Sole<sup>3</sup>, Stephen J. Livingstone<sup>3</sup>, Felix Ng<sup>3</sup>,
-Mathieu Morlighem<sup>4</sup>, Elizabeth Bagshaw<sup>5</sup>, Caroline Clason<sup>6</sup>, Lisa Craw<sup>7</sup>, Christine F. Dow<sup>8</sup>,
+Mathieu Morlighem<sup>4</sup>, Elizabeth A. Bagshaw<sup>5</sup>, Caroline Clason<sup>6</sup>, Lisa Craw<sup>7</sup>, Christine F. Dow<sup>8</sup>,
 Samuel Doyle<sup>1</sup>, Jonathan Hawkins<sup>7</sup>, Matthew Peacey<sup>1</sup>, and Robert Storrar<sup>9</sup>
 
 <sup>*</sup>email: `adam.hepburn@aber.ac.uk`
