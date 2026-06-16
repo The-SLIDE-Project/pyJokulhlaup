@@ -1,5 +1,24 @@
 \documentclass[tc, manuscript]{copernicus}
 
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\pagestyle{fancy}
+
+\fancyhf{} % clear existing header/footer
+
+\fancyfoot[L]{%
+\footnotesize
+EGUSphere discussion version available here:
+\href{https://egusphere.copernicus.org/preprints/2026/egusphere-2026-2948/}{https://egusphere.copernicus.org/preprints/2026/egusphere-2026-2948/}
+}
+
+\fancyfoot[R]{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
 \begin{document}
 
 \title{Simulating jökulhlaups from an ice-marginal lake within a 2D model of subglacial drainage and basal sliding}
