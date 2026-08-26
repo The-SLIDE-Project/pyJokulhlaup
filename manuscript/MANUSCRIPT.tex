@@ -74,7 +74,7 @@ These coupled solutions of jökulhlaups have remained one-dimensional (1D), in t
 Meanwhile, the development of spatially-extended continuum models of subglacial hydrology \citep[e.g.,][]{werder2013modeling,sommers2018shakti}, and their coupling to ice dynamics \citep{gilbert2022consistent,cook2022fully,pelle2024subglacial}, has enabled widespread application of 2D models to investigate subglacial drainage processes in real-world domains \citep[e.g.,][]{dow2019role,ehrenfeucht2023seasonal,ehrenfeucht2025Antarctic,narayanan2025simulating}. Enabled by these advancements, here we extend the work of \citet{kingslake2013modelling} to couple jökulhlaup behaviour with the subglacial drainage system and glacier motion. We use a sophisticated 2D subglacial hydrological model coupled to an ice-flow model that accounts for basal sliding, and pose an ice-marginal lake (with evolving water depth) as a boundary condition. We experiment with this model first on a synthetic domain under controlled conditions (Section~\ref{application:synth}), and then apply it to Isunnguata Sermia, an outlet glacier in West Greenland (Section~\ref{application:greenland}). The synthetic tests serve to characterise model sensitivity and establish parameter bounds, while the Greenland application assesses the model's ability to reproduce an observed record of ice-marginal lake fill--drain cycles.
 
 \section{Model formulation}
-We simulate subglacial hydrology through multiple jökulhlaup cycles by modifying the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}, specifically the version of GlaDS as integrated into the Ice-sheet and Sea-level System Model \citep[ISSM; ][ commit a9a3804]{larour2012continental}. The underlying numerical solvers in ISSM are implemented in C++, and models configured in either a MATLAB or Python interface. Below, we present results generated using both the Python and MATLAB ISSM interface. 
+We simulate subglacial hydrology through multiple jökulhlaup cycles by modifying the 2D \sloppy{Glacier Drainage System} (GlaDS) model \citep{werder2013modeling}, specifically the version of GlaDS as integrated into the Ice-sheet and Sea-level System Model \citep[ISSM; ][ commit a9a3804]{larour2012continental}. The underlying numerical solvers in ISSM are implemented in C++, and model runs are configured in either a MATLAB or Python interface. Below, we present results generated using both the Python and MATLAB ISSM interface. 
 
 For simplicity, the lake is assumed to have a fixed horizontal cross-sectional area (i.e., no hypsometric variation) and lake depth through time which varies according to water flux at the lake/glacier boundary. To represent the evolution of the lake and its influence on ice-dynamics, our model includes coupling between: i) the subglacial hydrological system and the ice-marginal lake, ii) the subglacial hydrological system and ice dynamics, and iii) the ice-marginal lake and ice dynamics (Fig.~\ref{FIG:1}). In Section~\ref{methods:GlaDS} we describe the ISSM--GlaDS model and relevant additional modifications to the version originally presented by \citet{werder2013modeling}. We describe the equations governing ice-marginal lake evolution in Section~\ref{methods:Lake}, and our method of numerical solution in Section~\ref{methods:Numeric}. 
 
@@ -352,7 +352,7 @@ Subglacial flood channel locations are not predefined in our model; they emerge 
 
 Coupling ice-marginal lake evolution to a 2D description of subglacial hydrology is an essential advance over previous work, because the resulting model can be applied to specific glaciers to study jökulhlaup behaviour in a realistic manner. Model application to Isunnguata Sermia (Section~\ref{application:greenland}), shows that the evolution of $l_{\mathrm{h}}$ through time in our model (Fig.~\ref{FIG:5}f) closely matches the observed record reported by \citet[][Fig.~\ref{FIG:5},g]{livingstone2025ice}. Between 2007 and mid 2024, eight significant floods from the ice-marginal lake are recorded from remote sensing records (Fig.~\ref{FIG:5}g). Of these floods, seven are hindcasted by our model (Fig.~\ref{FIG:5}f), closely agreeing with observations in terms of timing and the amplitude of change in $l_{\mathrm{h}}$. The eighth flood, not hindcasted by our model, is characterised by a short return interval relative to previous floods (see Section~\ref{discussion:limitations}).
 
-We caution that the successful hindcasting of $l_{\mathrm{h}}$ is not in and of itself validation of our modelling approach or parameter choice alone. We note that the evolution of $l_{\mathrm{h}}$ through time (Fig.~\ref{FIG:5}f) is driven in part by forcing our model with a realistic, time-varying climate, which drives both the lake input $Q_{\mathrm{in}}$ and $\nabla \phi$ through the glacier-wide melt input to the bed (see Section~\ref{application:greenland}). In our synthetic experiments flood cycles are cyclical when the system is forced with constant basal melt and lake input (see Section~\ref{application:synth}). Indeed, in lower-order models, nonlinear variability in flood discharge arises when a transient climate is imposed \citep{kingslake2015chaotic, ng2009temporal}. Given a fixed lake area and realistic inflow, it is reasonable to expect that the lake will eventually drain once it reaches a highstand, irrespective of the state of the subglacial system. However, the timing, magnitude and variability of drainage depend on the evolving state of the subglacial system adjacent to the lake. In our model, drainage occurs when the hydraulic potential gradient across the ice--lake contact becomes sufficiently large to drive substantial water flux from the lake into the subglacial drainage system. Thus, while the imposed climate and lake geometry contribute to the successful hindcast, the timing and character of individual drainage events emerge from the coupled lake--subglacial hydrology.
+We caution that the reasonably successful hindcasting of $l_{\mathrm{h}}$ here is not in and of itself validation of our modelling approach or parameter choice. The nonlinear evolution of $l_{\mathrm{h}}$ and $Q_{\mathrm{r}}$ through time (Fig.~\ref{FIG:5}f) is driven in part by forcing our model with a realistic, time-varying climate, which drives both the lake input $Q_{\mathrm{in}}$ and $\nabla \phi$ through the glacier-wide melt input to the bed (see Section~\ref{application:greenland}). In contrast, flood cycles are cyclical in our synthetic model when the system is forced with constant basal melt and lake input (see Section~\ref{application:synth}). Elsewhere, nonlinear variability in flood discharge has been shown to arise when a transient climate is imposed \citep{kingslake2015chaotic, ng2009temporal}. Given a fixed lake area and realistic inflow, it is reasonable to expect that the lake will eventually drain once it reaches a highstand, irrespective of the state of the subglacial system and the nature of lake--glacier coupling. However, the timing, magnitude and variability of drainage depend on the evolving state of the subglacial system adjacent to the lake. In our model, drainage occurs when the hydraulic potential gradient across the ice--lake contact becomes sufficiently large to drive substantial water flux from the lake into the subglacial drainage system. Thus, while the imposed climate and lake geometry contribute to the successful hindcasting of $l_{\mathrm{h}}$, the timing and character of individual drainage events emerge from the coupled lake--subglacial hydrology.
 
 
 %Here, because climate variability modulates both the lake input $Q_{\mathrm{in}}$ (see Fig.~\ref{FIG:5}d) and the system-wide $\nabla \phi$, thereby modulating the subglacial capacity to transmit water, this forcing enables our model to effectively represent an observed record of lake drainage timing. 
@@ -368,7 +368,7 @@ Finally, our model results reproduce some of the observations relating to ice-dy
 
 The primary discrepancy between our model and observations is that, as in the earlier 1D work \citep[e.g.,][]{kingslake2013modelling}, our experiments produce unrealistically long jökulhlaup durations extending multiple months. This stands in clear contrast to the days--weeks more typically associated with jökulhlaups \citep[e.g.,][]{bjornsson1992jokulhlaups,bjornsson2010understanding,einarsson2016spectrum,magnusson2026subglacial} and is much longer than the 5--8 day jökulhlaup duration observed at Isunnguata Sermia itself \citep{livingstone2025ice}. Results in Section~\ref{application:results} are presented from one model run at Isunnguata Sermia, chosen as the best match to lake level through time (Fig.~\ref{FIG:5}); parameter testing was not exhaustive, and untested combinations may improve agreement with jökulhlaup duration. However, we expect the discrepancy to be attributable, at least in part, to limitations in our modelling setup (Sections~\ref{methods:GlaDS}--\ref{methods:Lake}) and with GlaDS more generally \citep{werder2013modeling}. 
 
-As a continuum model, representing smoothly distributed drainage properties, GlaDS is not ideally suited to represent rapid, localised changes in subglacial water pressure or hydraulic connectivity \citep{rada2018channelized,hill2025emulator}. In ISSM--GlaDS, there is no physical representation of elastic uplift of ice once water pressure exceeds ice overburden pressure. This, together with our decision to prevent cavity expansion when effective pressure is negative (effectively fixing maximum sheet thickness to the basal bump height), means that our model is unable to replicate the instantaneous changes in sheet transmissivity expected once water pressure exceeds ice overburden pressure \citep[e.g.,][]{tsai2010model,schoof2012flotation,dow2015modeling,magnusson2026subglacial}. The englacial void ratio in our Greenland experiment (Table~\ref{tab:Greenland}) partially compensates for this missing phenomena and buffers water pressure during flood propagation, producing weeks--months long flood durations (e.g., Fig.~\ref{FIG:5}e,f). Work by \citet{flowers2004coupled} on subglacial lake Grímsvötn, albeit with a prescribed rate of flux from the lake, found that an elastic model able to represent sheet thicknesses on the order of ten metres can explain rapid escalations in jökulhlaup discharge observed over hours to days at the site \citep{haraldsson1997vatnajokull}. Recent repeat satellite observations identified $\sim\,\mathrm{m}$ of uplift along a jökulhlaup pathway, suggesting that instantaneous ice uplift in a high water-pressure regime is crucial to enabling high jökulhlaup discharge \citep{magnusson2026subglacial}. A simple model of elastic deformation has been included in similar hydrology models elsewhere \citep[e.g.,][]{stevens2022tidewater}, and is worth exploring in future work. Here, with no physically-informed representation of rapid cavity expansion, our model is unable to reproduce this specific mode of fast flood onset and instead floods primarily evolve as a result of channel expansion. 
+As a continuum model, representing smoothly distributed drainage properties, GlaDS is not ideally suited to represent rapid, localised changes in subglacial water pressure or hydraulic connectivity \citep{rada2018channelized,hill2025emulator}. In ISSM--GlaDS, there is no physical representation of elastic uplift of ice once water pressure exceeds ice overburden pressure. This, together with our decision to prevent cavity expansion when effective pressure is negative (effectively fixing maximum sheet thickness to the basal bump height), means that our model is unable to replicate the instantaneous changes in sheet transmissivity expected once water pressure exceeds ice overburden pressure \citep[e.g.,][]{tsai2010model,schoof2012flotation,dow2015modeling,magnusson2026subglacial}. The englacial void ratio in our Greenland experiment (Table~\ref{tab:Greenland}) partially compensates for this missing phenomena and buffers water pressure during flood propagation, producing weeks--months long flood durations (e.g., Fig.~\ref{FIG:5}e,f). Work by \citet{flowers2004coupled} on subglacial lake Grímsvötn, albeit with a prescribed rate of flux from the lake, found that an elastic model able to represent sheet thicknesses on the order of ten metres can explain rapid escalations in jökulhlaup discharge observed over hours to days at the site \citep{haraldsson1997vatnajokull}. Recent repeat satellite observations identified $\sim 1 \,\mathrm{m}$ of uplift along a jökulhlaup pathway, suggesting that instantaneous ice uplift in a high water-pressure regime is crucial to enabling high jökulhlaup discharge \citep{magnusson2026subglacial}. A simple model of elastic deformation has been included in similar hydrology models elsewhere \citep[e.g.,][]{stevens2022tidewater}, and is worth exploring in future work. Here, with no physically-informed representation of rapid cavity expansion, our model is unable to reproduce this specific mode of fast flood onset and instead floods primarily evolve as a result of channel expansion. 
 
 However, uplift alone is likely not the only reason for our excessive flood durations. In our synthetic experiments on a relatively small glacier resting on a sloping bed (Section~\ref{application:synth}), the steep hydraulic gradient means that water is efficiently evacuated from the system and water pressure does not exceed flotation at the outlet (Fig.~\ref{FIG:2}f), precluding uplift triggered rapid drainage. Previous work \citep[e.g.,][]{clarke2003hydraulics,ng2007climatic,carrivick2017ice} has established that high water temperature increases the heat energy available for channel expansion via wall melting, resulting in higher peak discharge and shorter duration floods \citep[see Fig. 6A in][]{carrivick2017ice}. Here, we assume water in the subglacial system is always at pressure melting point (Section~\ref{methods:GlaDS}). Without detailed field measurements of lake temperature in our Greenland experiment, we effectively assume that the temperature of water leaving the lake across the ice--lake contact is also at the pressure melting point. Inclusion of this factor may simultaneously resolve our underprediction of flood peak discharge and our overprediction of flood duration (discussed above). On an alpine glacier with an analogous supraglacial lake, and using the \citet{spring1981numerical} equations for channel enlargement, \citet{werder2010hazard} found that increasing the lake temperature from 1$^{\circ}$C to 4$^{\circ}$C increases peak discharge from 380 $\mathrm{m}^3 \, \mathrm{s}^{-1}$ to 960 $\mathrm{m}^3 \, \mathrm{s}^{-1}$. 
 
@@ -380,9 +380,9 @@ Notwithstanding these limitations, and recognising that our model successfully r
 
 We present an ice-marginal lake coupled to a 2D model of subglacial hydrology and ice dynamics, advancing beyond previous 1D models to include lateral flood propagation and coupling between the lake and distributed and channelised drainage components. Our model reproduces characteristic jökulhlaup cycles and patterns of basal sliding, but additionally shows that system-wide pressure changes are important controls on jökulhlaup timing and peak discharge. These water pressure changes, whether driven by basal meltwater availability or system efficiency, alter the `leakage' rate of the lake, and control whether drainage is routed via high discharge channels or is accommodated within the distributed system. Our model is applied to Isunnguata Sermia in West Greenland, where it successfully reproduces observed lake-level fluctuations over a 17-year record, without tuning to individual jökulhlaups. Predicted jökulhlaups remain unrealistically long and too low in peak discharge, which we attribute to missing physics, specifically, no representation of ice uplift and constant lake-water temperatures. Nonetheless, we emphasise that our approach has produced results consistent with observations, is readily extensible, and is transferable to other glacier-lake systems.
 
-\codedataavailability{ISSM \citep{larour2012continental} is open-source and available at: \url{https://github.com/ISSMteam/ISSM} (last access, 07/05/2026). A static copy of the source code, including all modifications necessary to add ice-marginal lakes to ISSM is available at: \url{https://dx.doi.org/10.5281/zenodo.20269306} \citep{Hepburn2026suppmat}. All code used to generate the synthetic experiments, and the figures, is available at: \url{https://github.com/The-SLIDE-Project/pyJokulhlaup#} \citep{Hepburn2026github}. For the Greenland run, the input model (.mat) and the output data (.npy), is available at: \url{https://dx.doi.org/10.5281/zenodo.20269306}. \citep{Hepburn2026suppmat}} 
+\codedataavailability{ISSM \citep{larour2012continental} is open-source and available at: \url{https://github.com/ISSMteam/ISSM} (last access, 07/05/2026). A static copy of the source code, including all modifications necessary to add ice-marginal lakes to ISSM is available at: \url{https://dx.doi.org/10.5281/zenodo.20269306} \citep{Hepburn2026suppmat}. All code used to generate the synthetic experiments, and the figures, is available at: \url{https://github.com/The-SLIDE-Project/pyJokulhlaup#} \citep{Hepburn2026github}. For the Greenland run, the input model (.mat) and the output data (.npy), is available at: \url{https://dx.doi.org/10.5281/zenodo.20269306} \citep{Hepburn2026suppmat}.} 
 
-\videosupplement{\hyperref[Apfig:SuppMovie]{Movie A1} is available at: \url{https://dx.doi.org/10.5281/zenodo.20269306} \citep{Hepburn2026suppmat}}
+\videosupplement{\hyperref[Apfig:SuppMovie]{Movie A1} is available at: \url{https://dx.doi.org/10.5281/zenodo.20269306} \citep{Hepburn2026suppmat}.}
 
 \appendix
 \section{Video supplement}
@@ -487,7 +487,7 @@ r(h,N) = Ah_{\mathrm{s}}|N|^{n-1}N,
 
 where $A$ is the rheological constant of ice, multiplied by a first order geometrical factor ($h_{\mathrm{s}}$), and $n$ is Glen's flow law exponent. 
 
-Sheet elements exchange water with channels, the cross-sectional of which, $S$, evolves through time as a function of an opening rate ($\Xi - \Pi/\rho_{\mathrm{i}}L$) and closure rate $v_{\mathrm{c}}$
+Sheet elements exchange water with channels, the cross-sectional area of which, $S$, evolves through time as a function of an opening rate ($\Xi - \Pi/\rho_{\mathrm{i}}L$) and closure rate $v_{\mathrm{c}}$
 
 \begin{equation}
 \label{apeq:channel cross section}
@@ -495,20 +495,43 @@ Sheet elements exchange water with channels, the cross-sectional of which, $S$, 
 \end{equation}
 \noindent
 
-where $\Pi$ is the rate of dissipation of potential energy per unit length of channel, $\Xi$ is the rate of change of sensible heat per unit length of channel, $\rho_{\mathrm{i}}$ is the ice density $L$ is the latent heat of fusion, and $v_{\mathrm{c}}$ is a channel closure rate.
-
-The rate of change of sensible heat per unit length is given by: 
+where $\Pi$ is the rate of dissipation of potential energy per unit length of channel, $\Xi$ is the rate of change of sensible heat per unit length of channel, $\rho_{\mathrm{i}}$ is the ice density $L$ is the latent heat of fusion, and $v_{\mathrm{c}}$ is a channel closure rate. The rate of change of sensible heat per unit length is given by: 
 
 \begin{equation}
 \label{appeqn: Xi}
 \begin{aligned}
-\Xi = \left|Q\frac{\partial \phi}{\partial s}\right| + \left|l_{\mathrm{c}}q_{\mathrm{c}}\frac{\partial \phi}{\partial s}\right|,
+\Xi = \left|Q_{\mathrm{c}}\frac{\partial \phi}{\partial s}\right| + \left|l_{\mathrm{c}}q_{\mathrm{c}}\frac{\partial \phi}{\partial s}\right|,
 \end{aligned}
 \end{equation}
 
-where $q_{\mathrm{c}}$ is the discharge in the sheet flowing towards the channel. The first term in Eq.~\ref{appeqn: Xi} represents the contribution of water within the channel. The second term represents the contribution of water flowing within width $l_{\mathrm{c}}$ of the sheet beneath the channel.
+where $q_{\mathrm{c}}$ is the discharge in the sheet flowing towards the channel. The first term in Eq.~\ref{appeqn: Xi} represents the contribution of water within the channel. The second term represents the contribution of water flowing within width $l_{\mathrm{c}}$ of the sheet beneath the channel. The rate of dissipation of potential energy is given by: 
+\begin{equation}
+\label{appeqn: Pi}
+\begin{aligned} 
+\Pi & =-c_{\mathrm{t}} c_{\mathrm{w}} \rho_{\mathrm{w}}\left(Q_{\mathrm{c}}+f l_{\mathrm{c}} q_{\mathrm{c}}\right) \frac{\partial p_{\mathrm{w}}}{\partial s} \\ & =-c_{\mathrm{t}} c_{\mathrm{w}} \rho_{\mathrm{w}}\left(Q_{\mathrm{c}}+f l_{\mathrm{c}} q_{\mathrm{c}}\right) \frac{\partial}{\partial s}\left(\phi-\phi_{\mathrm{m}}\right),
+\end{aligned}
+\end{equation}
+where $c_{\mathrm{c}}$ is the Clapeyron slope, $c_{\mathrm{w}}$ is the specific heat capacity of water, and $f$ is a conditional switch which prevents channel area becoming negative: 
 
-Finally, channel discharge, $Q_{\mathrm{c}}$ is also related to the hydraulic potential gradient by:
+\begin{equation}
+\label{appeqn: f}
+\begin{aligned}
+f = 
+\begin{cases} 
+1 & \text{if } S > 0 \text{ or } q_{\mathrm{c}}\frac{\partial p_{\mathrm{w}}}{\partial s} > 0 \\ 0 &\text{otherwise}.
+\end{cases}
+\end{aligned}
+\end{equation}
+
+The closure rate of a channel due to viscous creep is given by: 
+\begin{equation}
+\label{appeqn: closure}
+\begin{aligned}
+v_{\mathrm{c}}\left(S,N\right) = A_{\mathrm{b}}S\left|N\right|^{n-1}N.
+\end{aligned}
+\end{equation}
+
+Finally, channel discharge, $Q_{\mathrm{c}}$ is related to the hydraulic potential gradient by:
 
 \begin{equation}
 \label{appeqn: Qc}
@@ -519,7 +542,7 @@ Q_{\mathrm{c}} = -k_{\mathrm{c}}S^{\alpha_{\mathrm{c}}}\left|\frac{\partial \phi
 
 where $k_{\mathrm{c}}$ is the channel conductivity; $s$ is the horizontal coordinate along a channel; and $\alpha_{\mathrm{c}}$ and $\beta_{\mathrm{c}}$ are channel flow exponents.
 
-%\newpage
+\newpage
 \section{Model variables and units}
 
 \begin{table}[h!]
@@ -568,7 +591,7 @@ $Y$ & km & Vertical coordinate \\
 
 
 \begin{acknowledgements}
-A.J. Hepburn is funded by an Aberystwyth University 150th Anniversary Vice Chancellor's Fellowship. Work was carried out as part of the NERC-funded SLIDE project (grant No. NE/X000257/1, awarded to S.J. Livingstone, S. Buzzard, A.J Sole, E. Bagshaw, \& R. Storrar). T. Irvine-Fynn is thanked for his assistance producing Figure 1.
+A.J. Hepburn is funded by an Aberystwyth University 150th Anniversary Vice Chancellor's Fellowship. Work was carried out as part of the NERC-funded SLIDE project (grant No. NE/X000257/1, awarded to S.J. Livingstone, S. Buzzard, A.J Sole, E. Bagshaw, \& R. Storrar). T. Irvine-Fynn is thanked for his assistance producing Figure 1. We thank T. Jóhannesson and an anonymous reviewer for their helpful feedback to improve our manuscript.
 \end{acknowledgements}
 
 
