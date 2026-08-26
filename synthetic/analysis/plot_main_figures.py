@@ -1351,6 +1351,9 @@ ax1.margins(x=0, y=0)
 ax1.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax1.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax1.xaxis.set_minor_locator(MultipleLocator(1))
+ax1.set_xlabel('$t$ [yrs]')
+ax1.set_ylabel('$l_{\mathrm{h}}$ [m]', labelpad=0.05)  # Reduce padding between label and tick labels
+
 
 ax2 = figD1.add_subplot(gs[0, 1])
 ax2.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
@@ -1363,9 +1366,12 @@ ax2.yaxis.tick_right()
 ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
 ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
 ax2.xaxis.set_minor_locator(MultipleLocator(1))
-ax2.text (1.5, 1, r"Englacial void ratio",
+ax2.set_xlabel('$t$ [yrs]')
+ax2.set_ylabel('$Q_{\mathrm{r}}$ [m$^3$s$^{-1}$]',rotation=270, labelpad=15)  # Reduce padding between label and tick labels
+ax2.yaxis.set_label_position("right")
+ax2.text (1.5, 1.1, r"Englacial void ratio",
          transform=plt.gca().transAxes,
-         ha='center', va='center', fontsize=9,color='black')
+         ha='center', va='top', fontsize=9,color='black')
 ax2.text(1.5, 0.7, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-2}$", 
          transform=plt.gca().transAxes,
          ha='center', va='center', fontsize=9,color='red')
@@ -1383,7 +1389,7 @@ axes = [ax1,ax2]
 # Custom (x, y) positions for each label in axis coordinates
 label_positions = [
     (-0.23, 1.1),  # ax1
-    (-0.1, 1.1),  # ax2
+    (-0.09, 1.1),  # ax2
 ]
 
 for ax, label, (x, y) in zip(axes, labels, label_positions):
