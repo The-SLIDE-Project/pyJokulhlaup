@@ -1318,7 +1318,89 @@ fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.pdf'), dpi=300
 fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.eps'), dpi=300)
 fig4b.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigure1.svg'), dpi=300)
 
+print('Making appendix figure D1!')
 
+
+figD1 = plt.figure(figsize=(7.04724, 8.75))  # J.Glac dual column figure spec
+gs = gridspec.GridSpec(7, 3, figure=figD1, hspace=0.35, wspace=0.15, width_ratios=[0.4, 0.4, 0.2])
+figD1.subplots_adjust(left=0.075, right=0.925, top=0.98, bottom=0.075)
+
+# Load default results once
+default_dir = '../experiments/RES/output_run_1_Default'
+lh_default = np.load(os.path.join(default_dir, 'l_h.npy'))
+Qr_default = np.load(os.path.join(default_dir, 'Qr.npy'))
+tt_default = np.load(os.path.join(default_dir, 'tt.npy'))
+
+# --- Ax1-2: Englacial void ratio
+HiEVR_dir = '../experiments/RES/output_run_6_HiEVR'
+LoEVR_dir = '../experiments/RES/output_run_7_LoEVR'
+lh_HiEVR = np.load(os.path.join(HiEVR_dir, 'l_h.npy'))
+lh_LoEVR = np.load(os.path.join(LoEVR_dir, 'l_h.npy'))
+Qr_HiEVR = np.load(os.path.join(HiEVR_dir, 'Qr.npy'))
+Qr_LoEVR = np.load(os.path.join(LoEVR_dir, 'Qr.npy'))
+tt_HiEVR = np.load(os.path.join(HiEVR_dir, 'tt.npy'))
+tt_LoEVR = np.load(os.path.join(LoEVR_dir, 'tt.npy'))
+
+ax1 = figD1.add_subplot(gs[0, 0])
+ax1.plot(tt_default, lh_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax1.plot(tt_HiEVR, lh_HiEVR[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax1.plot(tt_LoEVR, lh_LoEVR[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax1.set_xlim(0, 15)
+ax1.set_ylim(-5, 125)
+ax1.margins(x=0, y=0)
+ax1.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax1.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax1.xaxis.set_minor_locator(MultipleLocator(1))
+
+ax2 = figD1.add_subplot(gs[0, 1])
+ax2.plot(tt_default, Qr_default[lakepos, :], color='gray', linestyle='-', linewidth=1.25,label='Default')
+ax2.plot(tt_HiEVR, Qr_HiEVR[lakepos, :], color='red', linestyle='-', linewidth=1.25)
+ax2.plot(tt_LoEVR, Qr_LoEVR[lakepos, :], color='blue', linestyle='-', linewidth=1.25)
+ax2.set_xlim(0, 15)
+ax2.set_ylim(-5, 150)
+ax2.margins(x=0, y=0)
+ax2.yaxis.tick_right()
+ax2.xaxis.set_major_locator(MultipleLocator(3))         # Tick every 3 years
+ax2.xaxis.set_major_formatter(FormatStrFormatter('%d')) # No decimal places
+ax2.xaxis.set_minor_locator(MultipleLocator(1))
+ax2.text (1.5, 1, r"Englacial void ratio",
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='black')
+ax2.text(1.5, 0.7, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-2}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='red')
+ax2.text(1.5, 0.5, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-4}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='grey')
+ax2.text(1.5, 0.3, r"$e_{\mathrm{v}} = 1\mathrm{e}^{-5}$", 
+         transform=plt.gca().transAxes,
+         ha='center', va='center', fontsize=9,color='blue')
+
+# Labels for subplots: (a) to (g)
+labels = ['a', 'b']
+axes = [ax1,ax2]
+
+# Custom (x, y) positions for each label in axis coordinates
+label_positions = [
+    (-0.23, 1.1),  # ax1
+    (-0.1, 1.1),  # ax2
+]
+
+for ax, label, (x, y) in zip(axes, labels, label_positions):
+    ax.text(
+        x, y, label,
+        transform=ax.transAxes,
+        ha='left', va='top',
+        fontsize=12,
+        fontweight='bold'
+    )
+
+# Save figure
+os.makedirs(os.path.join(filedir, 'sensitivityTests'), exist_ok=True)
+figD1.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigureD1.png'), dpi=300)
+figD1.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigureD1.pdf'), dpi=300)
+figD1.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigureD1.eps'), dpi=300)
+figD1.savefig(os.path.join(filedir, 'sensitivityTests/SUPPfigureD1.svg'), dpi=300)
 ############################################################
 
 print('creating figure 5!')
