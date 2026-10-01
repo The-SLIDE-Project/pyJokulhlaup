@@ -6,7 +6,7 @@ This subdirectory contains the material necessary to run and analyse the synthet
 
 `default.py` contains the generic properties used to setup each of the sensitivity test model runs, and should be modified to adjust the number of cores your machine has.
 
-E.g., `md.cluster = ernie('name',socket.gethostname(),'np', 22)` should become: `md.cluster = generic('name',socket.gethostname(),'np',8)` if your machine has 8 cores. 
+E.g., `md.cluster = generic('name',socket.gethostname(),'np', 8)` should become: `md.cluster = generic('name',socket.gethostname(),'np',4)` if your machine has 4 cores. 
 
 ### `data/`
  This contains the geometry file (`square_domain.exp`) and scripts (`make_mesh.py`,`make_surface_bed.py`) necessary to generate a model geometry. Running the scripts by:

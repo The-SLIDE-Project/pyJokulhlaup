@@ -33,7 +33,7 @@ from issmversion import issmversion
 
 from model import model
 from meshconvert import meshconvert
-from hydrologyglads import *
+from hydrologyimlglads import *
 from SetIceSheetBC import SetIceSheetBC
 from setflowequation import setflowequation
 from setmask import setmask

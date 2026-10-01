@@ -9,8 +9,8 @@ ISSM_DIR = os.getenv('ISSM_DIR')
 sys.path.append(os.path.join(ISSM_DIR, 'src/m/dev/'))
 import devpath
 from issmversion import issmversion
-from hydrologyglads import hydrologyglads
-from ernie import ernie
+from hydrologyimlglads import hydrologyimlglads
+from generic import generic
 from paterson import *
 from solve import *
 from bcgslbjacobioptions import *
@@ -79,7 +79,7 @@ md.basalforcings.geothermalflux = (68./1000.) * onevec
 
 # Hydrology
 print('Setting up hydrology')
-md.hydrology = hydrologyglads()
+md.hydrology = hydrologyimlglads()
 # parameters
 md.hydrology.sheet_conductivity = 0.05*onevec
 md.hydrology.sheet_alpha = 5./4.
@@ -129,8 +129,8 @@ md.hydrology.spcphi[pos] = 5.e4
 # Initialization
 phi_bed = md.constants.g * md.materials.rho_freshwater * md.geometry.bed
 p_ice = md.constants.g * md.materials.rho_ice * md.geometry.thickness
-md.initialization.lake_depth = 0. * onevec
-md.initialization.lake_depth[lakepos] = 30.  # m
+md.initialization.lake_height = 0. * onevec
+md.initialization.lake_height[lakepos] = 30.  # m
 md.initialization.lake_outletQr = 0. * onevec
 md.initialization.lake_channelQr = 0. * onevec
 md.initialization.watercolumn = 0.5 * md.hydrology.bump_height
@@ -155,7 +155,7 @@ md.hydrology.requested_outputs = [
 ]
 
 # Timestepping
-nyears = 15 # years
+nyears = 1.5 # years
 hour = 3600 # seconds
 day = 86400 # seconds
 dt_hours = 30/60
@@ -168,7 +168,7 @@ md.transient.deactivateall()
 md.transient.ishydrology = True
 md.transient.isstressbalance = True
 # Execution path
-md.cluster = ernie('name',socket.gethostname(),'np', 22)
+md.cluster = generic('name',socket.gethostname(),'np', 8)
 cwd = os.getcwd()
 expath = os.path.join(cwd, 'TMP/')
 if not os.path.exists(expath):
@@ -176,10 +176,10 @@ if not os.path.exists(expath):
 md.cluster.executionpath = expath
 print(md.cluster.executionpath)
 # Solver
-md.stressbalance.maxiter = 50
-md.stressbalance.abstol = np.nan
-md.stressbalance.reltol = np.nan
-md.stressbalance.restol = 1.e-3
+md.hydrology.maxiter = 50
+md.hydrology.abstol = np.nan
+md.hydrology.reltol = np.nan
+md.hydrology.restol = 1.e-3
 md.debug.gprof = 0
 md.debug.profiling = 1
 md.toolkits.DefaultAnalysis = bcgslbjacobioptions()

@@ -28,7 +28,7 @@ Department of Geography, Durham University, Durham, UK
 School of Earth and Environmental Sciences, Cardiff University, Cardiff, UK
 
 <sup>8</sup>
-Department of Geography and Environmental Management, University of Waterloo, Waterlo
+Department of Geography and Environmental Management, University of Waterloo, Waterloo
 
 <sup>9</sup>
 Department of Natural and Built Environment, Sheffield Hallam University, Sheffield, UK
@@ -45,7 +45,12 @@ The `src/` folder contains code and utilities necessary to run a job, read the j
 
 The `manuscript/` folder contains the paper material (final figures, and `.tex` files)
 
-Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes, which is available [here](https://dx.doi.org/10.5281/zenodo.20269306). Please also note that the Zenodo material is reviewer-embargoed but is available upon reasonable request. Once the paper is accepted, all data will be made publicly accessible.
+Note, this does require an ISSM install with the necessary modifications to add ice-marginal lakes. There are two options for this: 
+
+1. A static version of the ISSM code used in our modelling is available [here](https://dx.doi.org/10.5281/zenodo.20269306). If using this version of ISSM, the relevant class can be called using `md.hydrology = hydrologyglads`. 
+
+2. However, we have now merged our code with the current version of ISSM available [here](https://github.com/ISSMteam/ISSM). We strongly recommend the use of this version over the static code, as it restores a version of GlaDS with no lake capability, and instead adds a new hydrology class called IML-GlaDS which can be called using `md.hydrology = hydrologyimlglads`. The repository has been updated to reflect this preference.
+
 
 ## Package install
 We suggest running this as an editable pip package.
