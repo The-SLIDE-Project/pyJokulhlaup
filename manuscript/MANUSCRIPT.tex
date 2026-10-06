@@ -1,10 +1,23 @@
 \documentclass[tc, manuscript]{copernicus}
 
 \usepackage{bm}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
 
+\pagestyle{fancy}
+\fancyhf{}
 
-%\renewcommand{\headrulewidth}{0pt}
-%\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[L]{%
+    \footnotesize
+    Please note that the final, published version of this manuscript is available at:
+    \href{https://doi.org/10.5194/tc-20-5675-2026}{%
+        \textcolor{blue}{https://doi.org/10.5194/tc-20-5675-2026}%
+    }%
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 
 \begin{document}
@@ -44,11 +57,11 @@
 
 
 
-\received{}
-\pubdiscuss{} %% only important for two-stage journals
-\revised{}
-\accepted{}
-\published{}
+\received{22 May 2026}
+\pubdiscuss{16 Jun 2026} %% only important for two-stage journals
+\revised{08 Sep 2026}
+\accepted{26 Sep 2026}
+\published{06 Oct 2026}
 
 %% These dates will be inserted by Copernicus Publications during the typesetting process.
 
