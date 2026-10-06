@@ -76,4 +76,7 @@ Finally, to use this packages, `cd` into `pyjokulhlaup` and then run:
 This will install pyjokulhlaup as an editable package on your local system only. 
 
 ## Citation
-How to cite. Hepburn, A. J., Buzzard, S., Sole, A. J., Livingstone, S. J., Ng, F., Morlighem, M., Bagshaw, E. A., Clason, C., Craw, L., Dow, C., Doyle, S., Hawkins, J., Peacey, M., and Storrar, R.: Simulating jökulhlaups from an ice-marginal lake within a 2D model of subglacial drainage and basal sliding, EGUsphere [preprint], https://doi.org/10.5194/egusphere-2026-2948, 2026.
+How to cite. Hepburn, A. J., Buzzard, S., Sole, A., Livingstone, S., Ng, F., Morlighem, M., Bagshaw, E.A., Clason,
+C., Craw, L., Dow, C., Doyle, Hawkins, J., S., Peacey, M., Storrar, R., 2026. Simulating jökulhlaups from
+an ice-marginal lake within a 2D model of subglacial drainage and basal sliding. The Cryosphere, 20,
+5675–5696. [https://doi.org/10.5194/tc-20-5675-2026].
