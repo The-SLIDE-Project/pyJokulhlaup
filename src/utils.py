@@ -6,6 +6,8 @@ from pydoc import importfile
 
 import time
 import csv
+import os
+import sys
 
 import numpy as np
 from scipy import stats
@@ -16,6 +18,11 @@ from matplotlib.colors import Normalize
 import matplotlib.pyplot as plt
 from matplotlib.tri import Triangulation
 
+ISSM_DIR = os.getenv('ISSM_DIR')
+sys.path.append(os.path.join(ISSM_DIR, 'src/m/dev/'))
+import devpath
+from issmversion import issmversion
+from GetAreas import GetAreas
 
 def import_table(table_path):
 
@@ -450,4 +457,41 @@ def lakeheightminmax(x):
     print("Trough indices:", troughs)
     return peaks, troughs
 
+def getCharacteristicEdgeLength(md):
+    """
+    Compute the characteristic edge length of a triangular mesh.
+
+    Parameters
+    ----------
+    md : model instance
+        A model instance containing the mesh information with keys:
+        - 'x': x-coordinates of vertices
+        - 'y': y-coordinates of vertices
+        - 'elements': connectivity of the mesh elements (triangles)
+    Returns
+    -------
+    float
+        The characteristic edge length of the mesh.
+    """
+
+    areas = GetAreas(
+        md.mesh.elements,
+        md.mesh.x,
+        md.mesh.y
+    )
+
+    CL = np.sqrt(2.0 * areas)
+
+    lakenum = int(np.max(md.hydrology.lake_mask))
+
+    L = np.zeros_like(md.mesh.x, dtype=float)
+
+    for i in range(1, lakenum + 1):
+        lakepos = np.where(md.hydrology.lake_mask == i)[0]
+
+        for vertex in lakepos:
+            row = np.where(md.mesh.elements==vertex+1)[0]
+            L[vertex] = np.mean(CL[row])
+
+    return L
     
