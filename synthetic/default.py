@@ -5,6 +5,8 @@ import numpy as np
 import os
 import sys
 import socket
+from src.utils import *
+
 ISSM_DIR = os.getenv('ISSM_DIR')
 sys.path.append(os.path.join(ISSM_DIR, 'src/m/dev/'))
 import devpath
@@ -99,8 +101,6 @@ md.hydrology.channel_beta = 3./2.
 md.hydrology.creep_open_flag = 0
 md.hydrology.melt_flag = 1
 md.hydrology.moulin_input = 0.*onevec
-# UNDER DEVELOPMENT
-
 # Lakes
 md.hydrology.islakes = 1
 md.hydrology.lake_mask = 0* onevec
@@ -109,6 +109,8 @@ md.hydrology.num_lakes = np.max(md.hydrology.lake_mask)
 md.hydrology.max_lake_area = 0. * onevec
 md.hydrology.max_lake_area[lakepos] = 5e6  # m^2
 md.hydrology.lake_Qin = 0. * onevec
+md.hydrology.characteristic_edge_length = getCharacteristicEdgeLength(md)
+print("the characteristic edge length of the lake outlet is: ", f"{md.hydrology.characteristic_edge_length[lakepos]:.2f} m")
 
 # flags
 md.hydrology.ischannels = 1
